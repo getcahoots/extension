@@ -1,5 +1,7 @@
 span[class^="CahootsID"] {
-	background: #fc7294;
+	background: #e6e6f5;
+	cursor: pointer;
+	/* background-image: url(data:image/png;base64,) top left no-repeat; */
 }
 
 .tooltipster-content p {
