@@ -5,14 +5,14 @@
 	width: 320px;
 	border-radius: 2px; 
 	border: 1px solid #b1b1b9;
-	background: #fff;
+	background: #f2f2f4;
 	box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-	color: rgb(60,60,70);
+	color: #222;
 }
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font-family: 'Lato', sans-serif;
+	font-family: Arial, sans-serif;
 	font-size: 14px;
 	line-height: 16px;
 	padding: 0;
@@ -48,20 +48,18 @@
 	top: 0;
 	z-index: 9999999;
 	pointer-events: none;
-	width: 320px;
+	width: auto;
 	overflow: visible;
-}
-.tooltipster-base .tooltipster-content {
-	overflow: hidden;
-	font-family: 'Lato', sans-serif;
-	height: auto;
-	background: #fff;
-	color: rgb(60,60,70);
 }
 .tooltipster-base p {
 	line-height: 1.3em;
 	padding: 12px 14px;
 	margin: 0;
+}
+.tooltipster-base .tooltipster-content {
+	overflow: hidden;
+	font-family: Arial, sans-serif;
+	height: auto;
 }
 .cahoots_middle {
 	background: #fff;
@@ -107,7 +105,6 @@
 .cahoots_button:first-child {
 	margin-right: 9px;
 }
-
 
 
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
