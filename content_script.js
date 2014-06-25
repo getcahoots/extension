@@ -6,17 +6,17 @@ jQuery(document).ready(function($) {
 
 	$('span[class*=CahootsID]').each(function() {
 		var id = $(this).attr('class').replace(' tooltipstered','');
-		console.log(id);
+		//console.log(id);
 
 		$('span.'+id).tooltipster({
 			animation: 'fade',
 			delay: '60',
-			maxWidth: 260,
+			maxWidth: 300,
 			interactive: true,
 			content: $('<p>Loading...</p>'),
 			functionBefore: function(origin, continueTooltip) {
 				continueTooltip();
-				var cahoots_content;
+				//var cahoots_content;
 				$.getJSON(chrome.extension.getURL('db.json'), function(db) {
 					console.log(id);
 					console.log(db[id]);
@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 		            	cahoots_content += v.src;
 		            	cahoots_content += '">Quelle</a></li>';
 		            });
-		            console.log(cahoots_content);
+		            //console.log(cahoots_content);
 		            origin.tooltipster('content', $('.tooltipster-content').html(cahoots_content));
 				});
 				

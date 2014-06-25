@@ -6,16 +6,16 @@
       "run_at": "document_end"
    } ],
    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-   "description": "Expose the influence of money in Congress by downloading the new browser extension. Join the fight to end political corruption.",
+   "description": "Cahoots zeigt dir welche Verbindungen Journalisten zu Lobbyorganisationen haben.",
    "icons": {
       "128": "img/icon128.png",
       "16": "img/icon16.png",
       "48": "img/icon48.png"
    },
    "manifest_version": 2,
-   "name": "Test",
+   "name": "Cahoots",
    "permissions": [ "http://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.0.6",
-   "web_accessible_resources": [ "db.json", "tooltip.html" ]
+   "version": "0.0.1",
+   "web_accessible_resources": [ "db.json" ]
 }

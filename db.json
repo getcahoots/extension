@@ -28,9 +28,59 @@
         "name": "Robert Leicht",
         "cahoots": [
             {
-                "name": "Atlantik Brücke",
+                "name": "Atlantik-Brücke e.V.",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
                 "src": "http://spiegelkabinett-blog.blogspot.de/2013/03/journalisten-der-atlantikbrucke-in.html"
+            }
+        ]
+    },
+     "CahootsID_0003": {
+        "name": "Josef Joffe",
+        "cahoots": [
+            {
+                "name": "Aspen Institut",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            },
+            {
+                "name": "American Institute for Contemporary German Studies",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            },
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            }
+        ]
+    },
+    "CahootsID_0004": {
+        "name": "Matthias Naß",
+        "cahoots": [
+            {
+                "name": "Transatlantic Academy",
+                "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
+                "src": "http://de.wikipedia.org/wiki/Matthias_Na%C3%9F#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            },
+            {
+                "name": "Institut für Auslandsbeziehungen",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Auslandsbeziehungen"
+            }
+        ]
+    },
+    "CahootsID_0005": {
+        "name": "Michael Thumann",
+        "cahoots": [
+            {
+                "name": "(Ehem.) Transatlantic Academy",
+                "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
+                "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
+            },
+            {
+                "name": "(Ehem.) Woodrow Wilson International Center for Scholars",
+                "more_info": "http://de.wikipedia.org/wiki/Woodrow_Wilson_International_Center_for_Scholars",
+                "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
             }
         ]
     }
