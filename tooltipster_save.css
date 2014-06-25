@@ -1,21 +1,19 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
-	width: 320px;
+	width: 260px;
 	border-radius: 2px; 
 	border: 1px solid #b1b1b9;
-	background: #fff;
+	background: #f2f2f4;
 	box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-	color: rgb(60,60,70);
+	color: #222;
 }
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font-family: 'Lato', sans-serif;
+	font-family: Arial, sans-serif;
 	font-size: 14px;
 	line-height: 16px;
-	padding: 0;
+	padding: 8px 10px;
 	overflow: hidden;
 }
 
@@ -48,66 +46,14 @@
 	top: 0;
 	z-index: 9999999;
 	pointer-events: none;
-	width: 320px;
+	width: auto;
 	overflow: visible;
 }
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;
-	font-family: 'Lato', sans-serif;
-	height: auto;
-	background: #fff;
-	color: rgb(60,60,70);
+	font-family: Arial, sans-serif;
+	height: 200px;
 }
-.tooltipster-base p {
-	line-height: 1.3em;
-	padding: 12px 14px;
-	margin: 0;
-}
-.cahoots_middle {
-	background: #fff;
-	padding: 12px 14px;
-	border-top: 1px solid rgb(190,190,200);
-}
-.cahoots_footer {
-	padding: 12px 8px 12px 14px;
-}
-.cahoots_item {
-	list-style: none;
-	padding: 9px 0;
-	width: 290px;
-	border-bottom: 1px solid rgb(216,216,226);
-}
-.cahoots_item a:link {
-	color: rgb(250,50,100);
-	font-weight: 700;
-}
-.cahoots_item:last-child {
-	border: none;
-}
-#cahoots_list {
-	padding: 0;
-	margin: 0;
-}
-.quelle {
-	float: right;
-}
-.quelle {
-	float: right;
-	color: rgb(60,60,70) !important;
-	font-weight: 400;
-}
-.cahoots_button {
-	background: rgb(200,200,210);
-	border: none;
-	outline: none;
-	border-radius: 3px;
-	padding: 8px 9px;
-	border-top: 1px solid rgb(190,190,200);
-}
-.cahoots_button:first-child {
-	margin-right: 9px;
-}
-
 
 
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
