@@ -21,9 +21,9 @@ $(document).ready(function() {
 
 	function cahoots_generate(id, callback) {
 		$.getJSON(chrome.extension.getURL('db.json'), function(db) {
-			cahoots_content = '<p>Für ';
+			cahoots_content = '<p class="cahoots_top">Für <strong>';
 			cahoots_content += db[id].name;
-			cahoots_content += ' wurden die folgenden Einträge gefunden</p>';
+			cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
 			cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
 			$.each(db[id].cahoots, function(i,v){
             	cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';

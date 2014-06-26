@@ -78,9 +78,19 @@
                 "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
             },
             {
-                "name": "(Ehem.) Woodrow Wilson International Center for Scholars",
+                "name": "(Ehem.) Woodrow Wilson Center",
                 "more_info": "http://de.wikipedia.org/wiki/Woodrow_Wilson_International_Center_for_Scholars",
                 "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
+            }
+        ]
+    },
+    "CahootsID_0006": {
+        "name": "Jörg Lau",
+        "cahoots": [
+            {
+                "name": "(Ehem.) German Marshall Fund",
+                "more_info": "http://de.wikipedia.org/wiki/German_Marshall_Fund",
+                "src": "http://de.wikipedia.org/wiki/J%C3%B6rg_Lau#Leben_und_Werk"
             }
         ]
     }

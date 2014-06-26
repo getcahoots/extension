@@ -12,7 +12,7 @@
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font-family: Arial, sans-serif;
+	font-family: 'Lato', Arial, sans-serif !important;
 	font-size: 14px;
 	line-height: 16px;
 	padding: 0;
@@ -24,14 +24,11 @@
 	/* border-color: ... !important; */
 }
 
-
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {
 	cursor: help;
 	margin-left: 4px;
 }
-
-
 
 /* This is the base styling required to make all Tooltipsters work */
 .tooltipster-base {
@@ -53,46 +50,49 @@
 }
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;
-	font-family: Arial, sans-serif;
 	height: auto;
 }
-.cahoots_middle {
+.tooltipster-content .cahoots_top {
+	font-family: 'Lato', sans-serif !important;
+	font-size: 14px !important;
+}
+.tooltipster-content .cahoots_middle {
 	background: #fff;
 	padding: 12px 14px;
 	border-top: 1px solid rgb(190,190,200);
 }
-.cahoots_footer {
+.tooltipster-content .cahoots_footer {
 	padding: 12px 8px 12px 14px;
 }
-.cahoots_item {
+.tooltipster-content .cahoots_item {
 	list-style: none;
 	padding: 9px 0;
 	width: 290px;
 	border-bottom: 1px solid rgb(216,216,226);
 }
-.cahoots_item a:link {
+.tooltipster-content .cahoots_item a:link {
 	color: rgb(250,50,100);
 	font-weight: 700;
 }
-.cahoots_item a:visited {
+.tooltipster-content .cahoots_item a:visited {
 	color: rgb(250,50,100);
 }
-.cahoots_item:last-child {
+.tooltipster-content .cahoots_item:last-child {
 	border: none;
 }
-#cahoots_list {
+.tooltipster-content #cahoots_list {
 	padding: 0;
 	margin: 0;
 }
-.quelle {
+.tooltipster-content .quelle {
 	float: right;
 }
-.quelle {
+.tooltipster-content .quelle {
 	float: right;
 	color: rgb(60,60,70) !important;
 	font-weight: 400;
 }
-.cahoots_button {
+.tooltipster-content .cahoots_button {
 	background: rgb(200,200,210);
 	border: none;
 	outline: none;
@@ -100,7 +100,7 @@
 	padding: 8px 9px;
 	border-top: 1px solid rgb(190,190,200);
 }
-.cahoots_button:first-child {
+.tooltipster-content .cahoots_button:first-child {
 	margin-right: 9px;
 }
 
