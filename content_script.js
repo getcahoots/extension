@@ -7,6 +7,7 @@ $(document).ready(function() {
 	$('span[class*=CahootsID]').tooltipster({
 		interactive: true,
 		contentAsHTML: true,
+		maxWidth: 320,
 		content: 'Loading...',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();

@@ -33,11 +33,6 @@
 
 
 
-
-
-
-
-
 /* This is the base styling required to make all Tooltipsters work */
 .tooltipster-base {
 	padding: 0;
@@ -78,6 +73,9 @@
 .cahoots_item a:link {
 	color: rgb(250,50,100);
 	font-weight: 700;
+}
+.cahoots_item a:visited {
+	color: rgb(250,50,100);
 }
 .cahoots_item:last-child {
 	border: none;
