@@ -7,4 +7,5 @@ var author = {
 'Jörg Lau' : 'CahootsID_0006',
 'Matthias Krupa' : 'CahootsID_0007',
 'Michael Naumann' : 'CahootsID_0008',
+'Kai Diekmann' : 'CahootsID_0009',
 }
