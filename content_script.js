@@ -8,7 +8,11 @@ $(document).ready(function() {
 		interactive: true,
 		contentAsHTML: true,
 		maxWidth: 320,
+		animation: 'fade',
 		content: 'Loading...',
+		delay: '300',
+		speed: '300',
+		timer: '450',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');
