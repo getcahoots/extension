@@ -103,6 +103,31 @@
                 "src": "https://www.buildingeurope.eu/de/referenten/matthias-krupa.120/"
             }
         ]
+    },
+    "CahootsID_0008": {
+        "name": "Michael Naumann",
+        "cahoots": [
+            {
+                "name": "SPD (Partei)",
+                "more_info": "http://de.wikipedia.org/wiki/Sozialdemokratische_Partei_Deutschlands",
+                "src": "http://de.wikipedia.org/wiki/Michael_Naumann"
+            }
+        ]
+    },
+    "CahootsID_0009": {
+        "name": "Kai Diekmann",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Kai_Diekmann#Mitgliedschaft"
+            },
+            {
+                "name": "Franconia Münster",
+                "more_info": "http://www.franconia-muenster.de/",
+                "src": "http://www.zeit.de/karriere/beruf/2012-07/karriere-nutzen-studentenverbindung"
+            }
+        ]
     }
         
 }
