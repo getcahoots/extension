@@ -93,6 +93,16 @@
                 "src": "http://de.wikipedia.org/wiki/J%C3%B6rg_Lau#Leben_und_Werk"
             }
         ]
+    },
+    "CahootsID_0007": {
+        "name": "Matthias Krupa",
+        "cahoots": [
+            {
+                "name": "Building Tomorrow's Europe",
+                "more_info": "https://www.buildingeurope.eu/de/kongress/",
+                "src": "https://www.buildingeurope.eu/de/referenten/matthias-krupa.120/"
+            }
+        ]
     }
         
 }

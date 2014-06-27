@@ -4,6 +4,9 @@ span[class^="CahootsID"] {
 	cursor: pointer;
 	padding: 1px 3px 1px 0;
 }
+span[class^="CahootsID"] > a:hover {
+	text-decoration: none !important;
+}
 span[class^="CahootsID"]::before
 { 
 	background: url('http://abload.de/img/icon14vfsum.png') center center no-repeat;

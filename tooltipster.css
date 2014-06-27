@@ -12,8 +12,7 @@
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font-family: 'Lato', Arial, sans-serif !important;
-	font-size: 14px;
+	font: 400 14px 'Lato',arial,sans-serif !important;
 	line-height: 16px;
 	padding: 0;
 	overflow: hidden;
@@ -52,10 +51,6 @@
 	overflow: hidden;
 	height: auto;
 }
-.tooltipster-content .cahoots_top {
-	font-family: 'Lato', sans-serif !important;
-	font-size: 14px !important;
-}
 .tooltipster-content .cahoots_middle {
 	background: #fff;
 	padding: 4px 14px;
@@ -71,9 +66,8 @@
 	width: 290px;
 	border-bottom: 1px solid rgb(216,216,226);
 }
-.tooltipster-content .cahoots_item a:link {
-	color: rgb(250,50,100);
-	font-weight: 700;
+.tooltipster-content .cahoots_item a {
+	
 }
 .tooltipster-content .cahoots_item a:visited {
 	color: rgb(250,50,100);
@@ -87,6 +81,10 @@
 }
 .tooltipster-content .quelle {
 	float: right;
+	font-weight: 700;
+}
+.tooltipster-content .quelle a{
+	font-weight: 700 !important;
 }
 .tooltipster-content .quelle {
 	float: right;
@@ -98,10 +96,13 @@
 	border: none;
 	outline: none;
 	border-radius: 3px;
-	padding: 8px 9px;
+	letter-spacing: 0;
+	font-weight: 400;
+	padding: 8px 10px;
+	font: 400 14px 'Lato',arial,sans-serif !important;
 }
-.tooltipster-content .cahoots_button:first-child {
-	margin-right: 9px;
+.tooltipster-content a:first-child .cahoots_button {
+	margin-right: 11px;
 }
 .tooltipster-content .cahoots_button:hover {
 	background: rgb(204,204,210);
@@ -109,7 +110,10 @@
 .tooltipster-content .cahoots_button:active {
 	box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
 }
-
+.cahoots_item a {
+	font: 700 14px 'Lato',arial,sans-serif !important;
+	color: rgb(250,50,100);
+}
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
 .tooltipster-arrow {
 	display: block;
