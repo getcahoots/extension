@@ -3,6 +3,11 @@
         "name": "Jochen Bittner",
         "cahoots": [
             {
+                "name": "German Marshall Fund",
+                "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
+                "src": "http://de.wikipedia.org/wiki/German_Marshall_Fund"
+            },
+            {
                 "name": "Europa-Union",
                 "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
                 "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
@@ -108,7 +113,7 @@
         "name": "Michael Naumann",
         "cahoots": [
             {
-                "name": "SPD (Partei)",
+                "name": "SPD Parteimitglied",
                 "more_info": "http://de.wikipedia.org/wiki/Sozialdemokratische_Partei_Deutschlands",
                 "src": "http://de.wikipedia.org/wiki/Michael_Naumann"
             }
