@@ -1,0 +1,133 @@
+{
+    "CahootsID_0001": {
+        "name": "Jochen Bittner",
+        "cahoots": [
+            {
+                "name": "Europa-Union",
+                "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
+                "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            },
+            {
+                "name": "Brussels Forum",
+                "more_info": "http://brussels.gmfus.org/about-the-forum/about/",
+                "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            },
+            {
+                "name": "Bertelsmann-Stiftung",
+                "more_info": "http://de.wikipedia.org/wiki/Bertelsmann-Stiftung",
+                "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            },
+            {
+                "name": "Körber-Stiftung",
+                "more_info": "http://de.wikipedia.org/wiki/K%C3%B6rber-Stiftung",
+                "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            }
+        ]
+    },
+    "CahootsID_0002": {
+        "name": "Robert Leicht",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://spiegelkabinett-blog.blogspot.de/2013/03/journalisten-der-atlantikbrucke-in.html"
+            }
+        ]
+    },
+     "CahootsID_0003": {
+        "name": "Josef Joffe",
+        "cahoots": [
+            {
+                "name": "Aspen Institut",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            },
+            {
+                "name": "American Institute for Contemporary German Studies",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            },
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            }
+        ]
+    },
+    "CahootsID_0004": {
+        "name": "Matthias Naß",
+        "cahoots": [
+            {
+                "name": "Transatlantic Academy",
+                "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
+                "src": "http://de.wikipedia.org/wiki/Matthias_Na%C3%9F#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+            },
+            {
+                "name": "Institut für Auslandsbeziehungen",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Auslandsbeziehungen"
+            }
+        ]
+    },
+    "CahootsID_0005": {
+        "name": "Michael Thumann",
+        "cahoots": [
+            {
+                "name": "(Ehem.) Transatlantic Academy",
+                "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
+                "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
+            },
+            {
+                "name": "(Ehem.) Woodrow Wilson Center",
+                "more_info": "http://de.wikipedia.org/wiki/Woodrow_Wilson_International_Center_for_Scholars",
+                "src": "http://de.wikipedia.org/wiki/Michael_Thumann"
+            }
+        ]
+    },
+    "CahootsID_0006": {
+        "name": "Jörg Lau",
+        "cahoots": [
+            {
+                "name": "(Ehem.) German Marshall Fund",
+                "more_info": "http://de.wikipedia.org/wiki/German_Marshall_Fund",
+                "src": "http://de.wikipedia.org/wiki/J%C3%B6rg_Lau#Leben_und_Werk"
+            }
+        ]
+    },
+    "CahootsID_0007": {
+        "name": "Matthias Krupa",
+        "cahoots": [
+            {
+                "name": "Building Tomorrow's Europe",
+                "more_info": "https://www.buildingeurope.eu/de/kongress/",
+                "src": "https://www.buildingeurope.eu/de/referenten/matthias-krupa.120/"
+            }
+        ]
+    },
+    "CahootsID_0008": {
+        "name": "Michael Naumann",
+        "cahoots": [
+            {
+                "name": "SPD (Partei)",
+                "more_info": "http://de.wikipedia.org/wiki/Sozialdemokratische_Partei_Deutschlands",
+                "src": "http://de.wikipedia.org/wiki/Michael_Naumann"
+            }
+        ]
+    },
+    "CahootsID_0009": {
+        "name": "Kai Diekmann",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Kai_Diekmann#Mitgliedschaft"
+            },
+            {
+                "name": "Franconia Münster",
+                "more_info": "http://www.franconia-muenster.de/",
+                "src": "http://www.zeit.de/karriere/beruf/2012-07/karriere-nutzen-studentenverbindung"
+            }
+        ]
+    }
+        
+}
