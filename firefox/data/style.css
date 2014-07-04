@@ -1,0 +1,24 @@
+span[class^="CahootsID"] {
+	background: rgba(250,50,100,0.10);
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 1px 3px 1px 0;
+}
+span[class^="CahootsID"] > a:hover {
+	text-decoration: none !important;
+}
+span[class^="CahootsID"]::before
+{ 
+	background: url('http://abload.de/img/icon14vfsum.png') center center no-repeat;
+	background-size: 13px 13px;
+	display: inline;
+	min-width: 14px;
+	min-height: 14px;
+	content:"CH";
+	color: transparent;
+	margin-right: 0px;
+}
+
+.tooltipster-content p {
+	font-family: sans-serif !important;
+}

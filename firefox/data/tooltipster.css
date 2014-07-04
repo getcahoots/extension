@@ -1,19 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
-	width: 260px;
-	border-radius: 2px; 
+	width: 320px;
+	border-radius: 3px; 
 	border: 1px solid #b1b1b9;
 	background: #f2f2f4;
-	box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+	box-shadow: 0 2px 40px rgba(0,0,0,0.5);
 	color: #222;
 }
 
 /* Use this next selector to style things like font-size and line-height: */
 .tooltipster-default .tooltipster-content {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font: 400 14px 'Lato',arial,sans-serif !important;
 	line-height: 16px;
-	padding: 8px 10px;
+	padding: 0;
 	overflow: hidden;
 }
 
@@ -22,19 +23,11 @@
 	/* border-color: ... !important; */
 }
 
-
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {
 	cursor: help;
 	margin-left: 4px;
 }
-
-
-
-
-
-
-
 
 /* This is the base styling required to make all Tooltipsters work */
 .tooltipster-base {
@@ -49,13 +42,78 @@
 	width: auto;
 	overflow: visible;
 }
+.tooltipster-base p {
+	line-height: 1.3em;
+	padding: 12px 14px;
+	margin: 0;
+}
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;
-	font-family: Arial, sans-serif;
-	height: 200px;
+	height: auto;
 }
-
-
+.tooltipster-content .cahoots_middle {
+	background: #fff;
+	padding: 4px 14px;
+	border-top: 1px solid rgb(190,190,200);
+	border-bottom: 1px solid rgb(190,190,200);
+}
+.tooltipster-content .cahoots_footer {
+	padding: 16px 8px 16px 14px;
+}
+.tooltipster-content .cahoots_item {
+	list-style: none;
+	padding: 10px 0;
+	width: 290px;
+	border-bottom: 1px solid rgb(216,216,226);
+}
+.tooltipster-content .cahoots_item a {
+	
+}
+.tooltipster-content .cahoots_item a:visited {
+	color: rgb(250,50,100);
+}
+.tooltipster-content .cahoots_item:last-child {
+	border: none;
+}
+.tooltipster-content #cahoots_list {
+	padding: 0;
+	margin: 0;
+}
+.tooltipster-content .quelle {
+	float: right;
+	font-weight: 700;
+}
+.tooltipster-content .quelle a{
+	font-weight: 700 !important;
+}
+.tooltipster-content .quelle {
+	float: right;
+	color: rgb(60,60,70) !important;
+	font-weight: 400;
+}
+.tooltipster-content .cahoots_button {
+	background: rgb(214,214,220);
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	letter-spacing: 0;
+	font-weight: 400;
+	padding: 8px 10px;
+	font: 400 14px 'Lato',arial,sans-serif !important;
+}
+.tooltipster-content a:first-child .cahoots_button {
+	margin-right: 11px;
+}
+.tooltipster-content .cahoots_button:hover {
+	background: rgb(204,204,210);
+}
+.tooltipster-content .cahoots_button:active {
+	box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+.cahoots_item a {
+	font: 700 14px 'Lato',arial,sans-serif !important;
+	color: rgb(250,50,100);
+}
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
 .tooltipster-arrow {
 	display: block;
