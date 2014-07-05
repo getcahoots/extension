@@ -9,7 +9,7 @@
 	border: 1px solid #b1b1b9;
 	background: #f2f2f4;
 	box-shadow: 0 2px 40px rgba(0,0,0,0.5);
-	color: #222;
+	color: rgb(60,60,70);
 }
 
 /* Use this next selector to style things like font-size and line-height: */
@@ -112,7 +112,6 @@
 	width: 140px;
 	border-radius: 3px;
 	letter-spacing: 0;
-	font-weight: 400;
 	padding: 8px 5px !important;
 	border-radius: 2px !important;
 	font: 400 14px 'Lato',arial,sans-serif !important;

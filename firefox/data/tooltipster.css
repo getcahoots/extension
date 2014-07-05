@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
+
+
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
 	width: 320px;
@@ -7,7 +9,7 @@
 	border: 1px solid #b1b1b9;
 	background: #f2f2f4;
 	box-shadow: 0 2px 40px rgba(0,0,0,0.5);
-	color: #222;
+	color: rgb(60,60,70);
 }
 
 /* Use this next selector to style things like font-size and line-height: */
@@ -41,11 +43,14 @@
 	pointer-events: none;
 	width: auto;
 	overflow: visible;
+	text-align: left;
+	text-decoration: none;
 }
 .tooltipster-base p {
 	line-height: 1.3em;
 	padding: 12px 14px;
 	margin: 0;
+	color: rgb(60,60,70);
 }
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;
@@ -60,6 +65,9 @@
 .tooltipster-content .cahoots_footer {
 	padding: 16px 8px 16px 14px;
 }
+.tooltipster-content strong {
+	font-weight: 700;
+}
 .tooltipster-content .cahoots_item {
 	list-style: none;
 	padding: 10px 0;
@@ -67,7 +75,12 @@
 	border-bottom: 1px solid rgb(216,216,226);
 }
 .tooltipster-content .cahoots_item a {
-
+	text-decoration: none;
+	color: rgb(250,50,100);
+}
+.tooltipster-content .cahoots_item a:hover {
+	text-decoration: underline;
+	color: rgb(250,50,100);
 }
 .tooltipster-content .cahoots_item a:visited {
 	color: rgb(250,50,100);
@@ -93,14 +106,17 @@
 }
 .tooltipster-content .cahoots_button {
 	background: rgb(214,214,220);
+	color: rgb(60,60,70);
 	border: none;
 	outline: none;
 	width: 140px;
 	border-radius: 3px;
 	letter-spacing: 0;
-	font-weight: 400;
-	padding: 8px 10px;
+	padding: 8px 5px !important;
+	border-radius: 2px !important;
 	font: 400 14px 'Lato',arial,sans-serif !important;
+	text-transform: none;
+	cursor: pointer;
 }
 .tooltipster-content a:first-child .cahoots_button {
 	margin-right: 10px;
