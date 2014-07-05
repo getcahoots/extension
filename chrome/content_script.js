@@ -16,14 +16,14 @@ $(document).ready(function() {
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');
-			cahoots_generate(id, function(){
+			cahootsGenerate(id, function(){
 				origin.tooltipster('content', cahoots_content);
 			});
 		}
 	});
 
 
-	function cahoots_generate(id, callback) {
+	function cahootsGenerate(id, callback) {
 		$.getJSON(chrome.extension.getURL('db.json'), function(db) {
 			cahoots_content = '<p class="cahoots_top">Für <strong>';
 			cahoots_content += db[id].name;
