@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
+
+
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
 	width: 320px;
@@ -41,6 +43,8 @@
 	pointer-events: none;
 	width: auto;
 	overflow: visible;
+	text-align: left;
+	text-decoration: none;
 }
 .tooltipster-base p {
 	line-height: 1.3em;
@@ -67,7 +71,10 @@
 	border-bottom: 1px solid rgb(216,216,226);
 }
 .tooltipster-content .cahoots_item a {
-	
+	text-decoration: none;
+}
+.tooltipster-content .cahoots_item a:hover {
+	text-decoration: underline;
 }
 .tooltipster-content .cahoots_item a:visited {
 	color: rgb(250,50,100);
