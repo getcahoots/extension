@@ -1,8 +1,8 @@
 {
   "name": "cahoots",
-  "title": "firefox",
+  "title": "Cahoots",
   "id": "jid1-mQ1GT2z5DSpT9g",
-  "description": "a basic add-on",
+  "description": "Cahoots zeigt dir, welche Verbindungen Journalisten zu Lobbyorganisationen haben.",
   "author": "",
   "license": "MPL 2.0",
   "version": "0.1"

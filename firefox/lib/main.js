@@ -13,8 +13,7 @@ pageMod.PageMod({
   					   data.url("tooltipster.css")],
   	onAttach: function(worker) {
   		worker.port.on("gotID", function(id) {
-  			console.log("got id from cs: "+id);
-  			console.log(data.url('db.json'));
+  			// console.log(data.url('db.json'));
   			Request ({
   				url: data.url('db.json'),
   				onComplete: function(response) {
@@ -23,7 +22,7 @@ pageMod.PageMod({
   					cahoots_content += db[id].name;
 					cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
 					cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
-					console.log(db[id].cahoots);
+					// console.log(db[id].cahoots);
 					for (var v in db[id].cahoots) {
 						console.log(v);
 						cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
