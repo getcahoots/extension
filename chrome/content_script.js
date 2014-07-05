@@ -40,7 +40,7 @@ $(document).ready(function() {
             });
 	        cahoots_content += '</ul></section>';
 	        cahoots_content += '<section class="cahoots_footer">';
-	        cahoots_content += '<a target="_blank" href="http://jonasbergmeier.net/cahoots/contribute.html"><button class="cahoots_button">Informationen eintragen</button></a>';
+	        cahoots_content += '<a target="_blank" href="http://jonasbergmeier.net/cahoots/contribute.html"><button class="cahoots_button">Verbindung melden</button></a>';
 	        cahoots_content += '<a target="_blank" href="http://jonasbergmeier.net/cahoots/XYZ.html"><button class="cahoots_button">Fehler melden</button></a>';
 	        cahoots_content += '</section>';
 

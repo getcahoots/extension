@@ -95,6 +95,7 @@
 	background: rgb(214,214,220);
 	border: none;
 	outline: none;
+	width: 140px;
 	border-radius: 3px;
 	letter-spacing: 0;
 	font-weight: 400;
@@ -102,7 +103,7 @@
 	font: 400 14px 'Lato',arial,sans-serif !important;
 }
 .tooltipster-content a:first-child .cahoots_button {
-	margin-right: 11px;
+	margin-right: 10px;
 }
 .tooltipster-content .cahoots_button:hover {
 	background: rgb(204,204,210);
