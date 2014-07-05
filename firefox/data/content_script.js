@@ -15,7 +15,6 @@ $(document).ready(function() {
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');
-			console.log("sent id to main.js");
 			self.port.emit('gotID', id);
 			self.port.on('gotContent', function(cahoots_content){
 				origin.tooltipster('content', cahoots_content);
