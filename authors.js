@@ -10,4 +10,6 @@ var author = {
 'Kai Diekmann' : 'CahootsID_0009',
 'Klaus-Dieter Frankenberger' : 'CahootsID_0010',
 'Stefan Kornelius' : 'CahootsID_0011',
+'Christoph von Marschall' : 'CahootsID_0012',
+'Martin Klingst' : 'CahootsID_0013',
 }

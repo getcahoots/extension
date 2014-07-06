@@ -188,5 +188,25 @@
                 "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
             }
         ]
-    }    
+    },
+    "CahootsID_0012": {
+        "name": "Christoph von Marschall",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Liste_von_Mitgliedern_der_Atlantik-Br%C3%BCcke"
+            }
+        ]
+    },
+    "CahootsID_0013": {
+        "name": "Martin Klingst",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Liste_von_Mitgliedern_der_Atlantik-Br%C3%BCcke"
+            }
+        ]
+    }
 }

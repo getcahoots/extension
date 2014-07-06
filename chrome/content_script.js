@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$.each(author, function(key, value) {
-		$("p").highlight(key, {caseSensitive: false, className: value });
+		$("*").highlight(key, {caseSensitive: false, className: value });
 	});
 
 
