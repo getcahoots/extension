@@ -3,11 +3,6 @@
         "name": "Jochen Bittner",
         "cahoots": [
             {
-                "name": "German Marshall Fund",
-                "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
-                "src": "http://de.wikipedia.org/wiki/German_Marshall_Fund"
-            },
-            {
                 "name": "Europa-Union",
                 "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
                 "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
@@ -113,7 +108,7 @@
         "name": "Michael Naumann",
         "cahoots": [
             {
-                "name": "SPD Parteimitglied",
+                "name": "SPD (Partei)",
                 "more_info": "http://de.wikipedia.org/wiki/Sozialdemokratische_Partei_Deutschlands",
                 "src": "http://de.wikipedia.org/wiki/Michael_Naumann"
             }
@@ -133,6 +128,65 @@
                 "src": "http://www.zeit.de/karriere/beruf/2012-07/karriere-nutzen-studentenverbindung"
             }
         ]
-    }
-        
+    },
+    "CahootsID_0010": {
+        "name": "Klaus-Dieter Frankenberger",
+        "cahoots": [
+            {
+                "name": "Trilaterale Kommission",
+                "more_info": "http://de.wikipedia.org/wiki/Trilaterale_Kommission",
+                "src": "http://de.wikipedia.org/wiki/Klaus-Dieter_Frankenberger#Mitgliedschaften.2C_Verbindungen_zur_Politik"
+            },
+            {
+                "name": "Atlantische Initiative",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantische_Initiative",
+                "src": "http://de.wikipedia.org/wiki/Klaus-Dieter_Frankenberger#Mitgliedschaften.2C_Verbindungen_zur_Politik"
+            },
+            {
+                "name": "Bundesakademie für Sicherheitspolitik",
+                "more_info": "http://de.wikipedia.org/wiki/Bundesakademie_f%C3%BCr_Sicherheitspolitik",
+                "src": "http://de.wikipedia.org/wiki/Klaus-Dieter_Frankenberger#Mitgliedschaften.2C_Verbindungen_zur_Politik"
+            },
+            {
+                "name": "Institut für Europäische Politik",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantische_Initiative",
+                "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Europ%C3%A4ische_Politik"
+            },
+            {
+                "name": "Transatlantic Academy",
+                "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
+                "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Europ%C3%A4ische_Politik"
+            }
+        ]
+    },
+    "CahootsID_0011": {
+        "name": "Stefan Kornelius",
+        "cahoots": [
+            {
+                "name": "Körber-Stiftung",
+                "more_info": "http://de.wikipedia.org/wiki/K%C3%B6rber-Stiftung",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            },
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            },
+            {
+                "name": "Deutschen Gesellschaft für Auswärtige Politik",
+                "more_info": "http://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Ausw%C3%A4rtige_Politik",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            },
+            {
+                "name": "Bundesakademie für Sicherheitspolitik",
+                "more_info": "http://de.wikipedia.org/wiki/Bundesakademie_f%C3%BCr_Sicherheitspolitik",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            },
+            {
+                "name": "Deutsch-russisches Forum",
+                "more_info": "http://de.wikipedia.org/wiki/Deutsch-Russisches_Forum",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            }
+        ]
+    }    
 }

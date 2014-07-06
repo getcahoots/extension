@@ -8,4 +8,6 @@ var author = {
 'Matthias Krupa' : 'CahootsID_0007',
 'Michael Naumann' : 'CahootsID_0008',
 'Kai Diekmann' : 'CahootsID_0009',
+'Klaus-Dieter Frankenberger' : 'CahootsID_0010',
+'Stefan Kornelius' : 'CahootsID_0011',
 }
