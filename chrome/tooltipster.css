@@ -73,10 +73,13 @@
 	padding: 10px 0;
 	width: 290px;
 	border-bottom: 1px solid rgb(216,216,226);
+	margin: 0;
 }
 .tooltipster-content .cahoots_item a {
 	text-decoration: none;
 	color: rgb(250,50,100);
+	padding: 0;
+	margin: 0;
 }
 .tooltipster-content .cahoots_item a:hover {
 	text-decoration: underline;
