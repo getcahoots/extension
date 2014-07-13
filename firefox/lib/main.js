@@ -35,8 +35,8 @@ pageMod.PageMod({
 					}
 					cahoots_content += '</ul></section>';
         			cahoots_content += '<section class="cahoots_footer">';
-        			cahoots_content += '<a target="_blank" href="http://jonasbergmeier.net/cahoots/contribute.html"><button class="cahoots_button">Verbindung melden</button></a>';
-        			cahoots_content += '<a target="_blank" href="http://jonasbergmeier.net/cahoots/XYZ.html"><button class="cahoots_button">Fehler melden</button></a>';
+        			cahoots_content += '<a target="_blank" href="http://cahoots-extension.github.io/index.html#contribute"><button class="cahoots_button">Verbindung melden</button></a>';
+        			cahoots_content += '<a target="_blank" href="mailto:mail@cahoots.pw?subject=Fehler"><button class="cahoots_button">Fehler melden</button></a>';
         			cahoots_content += '</section>';
 
   					worker.port.emit('gotContent', cahoots_content);
