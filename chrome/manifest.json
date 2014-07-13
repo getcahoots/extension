@@ -6,7 +6,7 @@
       "run_at": "document_end"
    } ],
    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-   "description": "Cahoots zeigt dir, welche Verbindungen Journalisten zu Lobbyorganisationen haben.",
+   "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
    "icons": {
       "128": "img/icon128.png",
       "16": "img/icon16.png",
@@ -16,6 +16,6 @@
    "name": "Cahoots",
    "permissions": [ "http://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.0.2",
+   "version": "0.1",
    "web_accessible_resources": [ "db.json" ]
 }

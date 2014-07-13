@@ -2,8 +2,8 @@
   "name": "cahoots",
   "title": "Cahoots",
   "id": "jid1-mQ1GT2z5DSpT9g",
-  "description": "Cahoots zeigt dir, welche Verbindungen Journalisten zu Lobbyorganisationen haben.",
+  "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
   "author": "",
   "license": "MPL 2.0",
-  "version": "0.2"
+  "version": "0.1"
 }
