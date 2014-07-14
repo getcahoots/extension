@@ -79,15 +79,18 @@
 .tooltipster-content .cahoots_item a {
 	text-decoration: none;
 	color: rgb(250,50,100) !important;
+	background: transparent !important;
 	padding: 0;
 	margin: 0;
 }
 .tooltipster-content .cahoots_item a:hover {
 	text-decoration: underline;
 	color: rgb(250,50,100) !important;
+	background: transparent !important;
 }
 .tooltipster-content .cahoots_item a:visited {
 	color: rgb(250,50,100) !important;
+	background: transparent !important;
 }
 .tooltipster-content .cahoots_item:last-child {
 	border: none;
