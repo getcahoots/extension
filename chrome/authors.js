@@ -18,5 +18,4 @@ var author = {
 'Werner Mussler' : 'CahootsID_0017',
 'Rüdiger Soldt' : 'CahootsID_0018',
 'Robert von Lucius' : 'CahootsID_0019',
-'Irmgard Bayer' : 'CahootsID_0020',
 }
