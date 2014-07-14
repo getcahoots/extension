@@ -190,22 +190,87 @@
         ]
     },
     "CahootsID_0012": {
-        "name": "Christoph von Marschall",
+        "name": "Constanze Kurz",
         "cahoots": [
             {
-                "name": "Atlantik-Brücke",
-                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
-                "src": "http://de.wikipedia.org/wiki/Liste_von_Mitgliedern_der_Atlantik-Br%C3%BCcke"
+                "name": "Chaos Computer Club",
+                "more_info": "http://de.wikipedia.org/wiki/Chaos_Computer_Club",
+                "src": "http://inka.htw-berlin.de/inka/constanze/"
             }
         ]
     },
     "CahootsID_0013": {
-        "name": "Martin Klingst",
+        "name": "Stefan Niggemeier",
         "cahoots": [
             {
-                "name": "Atlantik-Brücke",
-                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
-                "src": "http://de.wikipedia.org/wiki/Liste_von_Mitgliedern_der_Atlantik-Br%C3%BCcke"
+                "name": "Bildblog",
+                "more_info": "http://de.wikipedia.org/wiki/Bildblog",
+                "src": "http://de.wikipedia.org/wiki/Stefan_Niggemeier"
+            }
+        ]
+    },
+    "CahootsID_0014": {
+        "name": "Christoph Hein",
+        "cahoots": [
+            {
+                "name": "(Ehem.) BASF",
+                "more_info": "http://de.wikipedia.org/wiki/BASF",
+                "src": "http://www.faz.net/redaktion/christoph-hein-11123670.html"
+            }
+        ]
+    },
+    "CahootsID_0015": {
+        "name": "Henrike Roßbach",
+        "cahoots": [
+            {
+                "name": "Die Lebensmittelwirtschaft",
+                "more_info": "http://www.lebensmittelwirtschaft.org/verein/",
+                "src": "http://www.lebensmittelwirtschaft.org/symposium/referenten/"
+            }
+        ]
+    },
+    "CahootsID_0016": {
+        "name": "Henning Peitsmeier",
+        "cahoots": [
+            {
+                "name": "Club Wirtschaftspresse München",
+                "more_info": "http://www.wirtschaftspresse-muenchen.de/Plone/ueber-uns-1",
+                "src": "http://www.wirtschaftspresse-muenchen.de/Plone/user_info?userid=peitsmeier"
+            }
+        ]
+    },
+    "CahootsID_0017": {
+        "name": "Werner Mussler",
+        "cahoots": [
+            {
+                "name": "Club Wirtschaftspresse München",
+                "more_info": "http://en.wikipedia.org/wiki/Wilfried_Martens_Centre_for_European_Studies",
+                "src": "http://martenscentre.eu/users/werner-mussler"
+            },
+            {
+                "name": "(Ehem.) Institut zur Zukunft der Arbeit",
+                "more_info": "http://de.wikipedia.org/wiki/Institut_zur_Zukunft_der_Arbeit",
+                "src": "http://www.iza.org/en/webcontent/personnel/photos/index_html?key=4306"
+            }
+        ]
+    },
+    "CahootsID_0018": {
+        "name": "Rüdiger Soldt",
+        "cahoots": [
+            {
+                "name": "Berliner Republik",
+                "more_info": "http://de.wikipedia.org/wiki/Berliner_Republik_(Zeitschrift)",
+                "src": "http://www.b-republik.de/berliner-republik/autoren?details=20"
+            }
+        ]
+    },
+    "CahootsID_0019": {
+        "name": "Robert von Lucius",
+        "cahoots": [
+            {
+                "name": "(Ehem.) McCloy Academic Scholarship Program",
+                "more_info": "http://de.wikipedia.org/wiki/McCloy_Academic_Scholarship_Program",
+                "src": "http://de.wikipedia.org/wiki/Robert_von_Lucius"
             }
         ]
     }
