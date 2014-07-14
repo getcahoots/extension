@@ -11,7 +11,7 @@ var author = {
 'Klaus-Dieter Frankenberger' : 'CahootsID_0010',
 'Stefan Kornelius' : 'CahootsID_0011',
 'Constanze Kurz' : 'CahootsID_0012',
-'Stefan Niggemeier' : 'CahootsID_0013',
+
 'Christoph Hein' : 'CahootsID_0014',
 'Henrike Roßbach' : 'CahootsID_0015',
 'Henning Peitsmeier' : 'CahootsID_0016',
