@@ -74,19 +74,20 @@
 	width: 290px;
 	border-bottom: 1px solid rgb(216,216,226);
 	margin: 0;
+	background: transparent !important;
 }
 .tooltipster-content .cahoots_item a {
 	text-decoration: none;
-	color: rgb(250,50,100);
+	color: rgb(250,50,100) !important;
 	padding: 0;
 	margin: 0;
 }
 .tooltipster-content .cahoots_item a:hover {
 	text-decoration: underline;
-	color: rgb(250,50,100);
+	color: rgb(250,50,100) !important;
 }
 .tooltipster-content .cahoots_item a:visited {
-	color: rgb(250,50,100);
+	color: rgb(250,50,100) !important;
 }
 .tooltipster-content .cahoots_item:last-child {
 	border: none;
