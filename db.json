@@ -273,5 +273,25 @@
                 "src": "http://de.wikipedia.org/wiki/Robert_von_Lucius"
             }
         ]
+    },
+    "CahootsID_0020": {
+        "name": "Irmgard Bayer",
+        "cahoots": [
+            {
+                "name": "Österreichische Volkspartei",
+                "more_info": "http://de.wikipedia.org/wiki/%C3%96sterreichische_Volkspartei",
+                "src": "http://www.journalist.at/archiv/2010-2/ausgabe-08092010/warum-journalisten-politiker-werden/"
+            },
+            {
+                "name": "Industriellenvereinigung (IV)",
+                "more_info": "http://de.wikipedia.org/wiki/Industriellenvereinigung",
+                "src": "http://www.journalist.at/archiv/2010-2/ausgabe-08092010/warum-journalisten-politiker-werden/"
+            },
+            {
+                "name": "Wirtschaftskammer Österreich",
+                "more_info": "http://de.wikipedia.org/wiki/Wirtschaftskammer_%C3%96sterreich",
+                "src": "http://www.journalist.at/archiv/2010-2/ausgabe-08092010/warum-journalisten-politiker-werden/"
+            }
+        ]
     }
 }
