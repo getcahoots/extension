@@ -48,7 +48,7 @@
 }
 .tooltipster-base p {
 	line-height: 1.3em;
-	padding: 12px 14px;
+	padding: 14px 14px;
 	margin: 0;
 	color: rgb(60,60,70);
 }
@@ -63,7 +63,7 @@
 	border-bottom: 1px solid rgb(190,190,200);
 }
 .tooltipster-content .cahoots_footer {
-	padding: 16px 8px 16px 14px;
+	padding: 14px 8px 14px 14px;
 }
 .tooltipster-content strong {
 	font-weight: 700;
@@ -90,6 +90,10 @@
 .tooltipster-content .cahoots_item a:visited {
 	background: transparent !important;
 }
+.cahoots_item a {
+	max-width: 236px !important;
+	display: inline-block !important;
+}
 .tooltipster-content .cahoots_item:last-child {
 	border: none;
 }
@@ -98,8 +102,8 @@
 	margin: 0;
 }
 .tooltipster-content .quelle {
-	float: right;
-	font-weight: 700;
+	float: right !important;
+	font-weight: 700 !important;
 }
 .tooltipster-content .cahoots_item a.quelle, .tooltipster-content .quelle a, .tooltipster-content .quelle a:visited {
 	font-weight: 700 !important;
@@ -108,11 +112,11 @@
 .tooltipster-content .quelle {
 	float: right;
 	color: rgb(60,60,70) !important;
-	font-weight: 400;
+	font-weight: 400 !important;
 }
 .tooltipster-content .cahoots_button {
-	background: rgb(214,214,220);
-	color: rgb(60,60,70);
+	background: rgb(214,214,220) !important;
+	color: rgb(60,60,70) !important;
 	border: none;
 	outline: none;
 	width: 140px;
@@ -125,7 +129,7 @@
 	cursor: pointer;
 }
 .tooltipster-content a:first-child .cahoots_button {
-	margin-right: 10px;
+	margin-right: 11px;
 }
 .tooltipster-content .cahoots_button:hover {
 	background: rgb(204,204,210);

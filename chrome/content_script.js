@@ -18,10 +18,10 @@ $(document).ready(function() {
 		contentAsHTML: true,
 		maxWidth: 320,
 		animation: 'grow',
-		content: 'Loading...',
+		content: 'Daten werden geladen…',
 		delay: '200',
 		speed: '200',
-		timer: '450',
+		timer: '400',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');
