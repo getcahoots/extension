@@ -103,7 +103,7 @@
 	float: right;
 	font-weight: 700;
 }
-.tooltipster-content .quelle a{
+.tooltipster-content .quelle a, .tooltipster-content .quelle a:visited {
 	font-weight: 700 !important;
 	color: rgb(60,60,70) !important;
 }
