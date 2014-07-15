@@ -85,11 +85,9 @@
 }
 .tooltipster-content .cahoots_item a:hover {
 	text-decoration: underline;
-	color: rgb(250,50,100) !important;
 	background: transparent !important;
 }
 .tooltipster-content .cahoots_item a:visited {
-	color: rgb(250,50,100) !important;
 	background: transparent !important;
 }
 .tooltipster-content .cahoots_item:last-child {
@@ -103,7 +101,7 @@
 	float: right;
 	font-weight: 700;
 }
-.tooltipster-content .quelle a, .tooltipster-content .quelle a:visited {
+.tooltipster-content .cahoots_item a.quelle, .tooltipster-content .quelle a, .tooltipster-content .quelle a:visited {
 	font-weight: 700 !important;
 	color: rgb(60,60,70) !important;
 }
