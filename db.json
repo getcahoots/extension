@@ -51,6 +51,11 @@
                 "name": "Atlantik-Brücke e.V.",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
                 "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Mitgliedschaften"
+            },
+            {
+                "name": "(Teilnehmer) Bilderberg-Konferenz",
+                "more_info": "http://de.wikipedia.org/wiki/Bilderberg-Konferenz",
+                "src": "http://de.wikipedia.org/wiki/Liste_von_Teilnehmern_an_Bilderberg-Konferenzen"
             }
         ]
     },
@@ -200,8 +205,14 @@
         ]
     },
     "CahootsID_0013": {
-        "name": "",
-        "cahoots": []
+        "name": "Stephan Urbach",
+        "cahoots": [
+            {
+                "name": "Junge Piraten Deutschland",
+                "more_info": "http://de.wikipedia.org/wiki/Piratenpartei_Deutschland",
+                "src": "https://wiki.junge-piraten.de/w/images/6/66/Bundesmitgliedsversammlung_2009.2_Protokoll.pdf"
+            }
+        ]
     },
     "CahootsID_0014": {
         "name": "Christoph Hein",
@@ -285,6 +296,116 @@
                 "name": "Wirtschaftskammer Österreich",
                 "more_info": "http://de.wikipedia.org/wiki/Wirtschaftskammer_%C3%96sterreich",
                 "src": "http://www.journalist.at/archiv/2010-2/ausgabe-08092010/warum-journalisten-politiker-werden/"
+            }
+        ]
+    },
+    "CahootsID_0021": {
+        "name": "Astrid Geisler",
+        "cahoots": [
+            {
+                "name": "Piratenpartei",
+                "more_info": "http://de.wikipedia.org/wiki/Piratenpartei_Deutschland",
+                "src": "http://blogs.taz.de/hausblog/2013/03/08/bucher-von-taz-autoren-piratenbraut/"
+            }
+        ]
+    },
+    "CahootsID_0022": {
+        "name": "Felix Dachsel",
+        "cahoots": [
+            {
+                "name": "SPD",
+                "more_info": "http://de.wikipedia.org/wiki/Sozialdemokratische_Partei_Deutschlands",
+                "src": "http://blogs.taz.de/hausblog/2013/01/13/bekenntnis-ich-bin-taz-redakteur-und-parteimitglied/"
+            }
+        ]
+    },
+    "CahootsID_0023": {
+        "name": "Malte Kreutzfeldt",
+        "cahoots": [
+            {
+                "name": "Attac",
+                "more_info": "http://de.wikipedia.org/wiki/Die_Linke",
+                "src": "http://de.wikipedia.org/wiki/Kategorie:Attac-Mitglied"
+            }
+        ]
+    },
+    "CahootsID_0024": {
+        "name": "Claus Kleber",
+        "cahoots": [
+            {
+                "name": "Aspen Institute",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen-Institut",
+                "src": "https://de.wikipedia.org/wiki/Claus_Kleber#Leben"
+            },
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "https://de.wikipedia.org/wiki/Claus_Kleber#Leben"
+            }
+        ]
+    },
+    "CahootsID_0025": {
+        "name": "Stefan Niggemeier",
+        "cahoots": [
+            {
+                "name": "Freischreiber e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Freischreiber",
+                "src": "http://de.wikipedia.org/wiki/Freischreiber"
+            }
+        ]
+    },
+    "CahootsID_0026": {
+        "name": "Wolfgang Büchner",
+        "cahoots": [
+            {
+                "name": "Reporter ohne Grenzen",
+                "more_info": "http://de.wikipedia.org/wiki/Reporter_ohne_Grenzen",
+                "src": "https://de.wikipedia.org/wiki/Wolfgang_B%C3%BCchner"
+            },
+            {
+                "name": "Verband Deutscher Zeitschriftenverleger",
+                "more_info": "https://de.wikipedia.org/wiki/Verband_Deutscher_Zeitschriftenverleger",
+                "src": "https://de.wikipedia.org/wiki/Wolfgang_B%C3%BCchner#cite_note-9"
+            }
+        ]
+    },
+    "CahootsID_0027": {
+        "name": "Katja Gloger",
+        "cahoots": [
+            {
+                "name": "Reporter ohne Grenzen",
+                "more_info": "http://de.wikipedia.org/wiki/Reporter_ohne_Grenzen",
+                "src": "http://de.wikipedia.org/wiki/Katja_Gloger#Leben"
+            }
+        ]
+    },
+    "CahootsID_0028": {
+        "name": "Matthias Matussek",
+        "cahoots": [
+            {
+                "name": "Pro Papa – Solidarität mit dem Papst e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Deutschland_pro_Papa",
+                "src": "http://de.wikipedia.org/wiki/Matthias_Matussek#Positionen"
+            }
+        ]
+    },
+    "CahootsID_0029": {
+        "name": "Richard Kiessler",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Richard_Kiessler#Leben"
+            },
+            {
+                "name": "Lions Club",
+                "more_info": "http://de.wikipedia.org/wiki/Lions_Club",
+                "src": "http://de.wikipedia.org/wiki/Richard_Kiessler#Leben"
+            },
+            {
+                "name": "Deutsche Gesellschaft für Auswärtige Politik",
+                "more_info": "http://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Ausw%C3%A4rtige_Politik",
+                "src": "http://de.wikipedia.org/wiki/Richard_Kiessler#Leben"
             }
         ]
     }

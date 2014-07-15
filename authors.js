@@ -11,11 +11,21 @@ var author = {
 'Klaus-Dieter Frankenberger' : 'CahootsID_0010',
 'Stefan Kornelius' : 'CahootsID_0011',
 'Constanze Kurz' : 'CahootsID_0012',
-
+'Stephan Urbach' : 'CahootsID_0013',
 'Christoph Hein' : 'CahootsID_0014',
 'Henrike Roßbach' : 'CahootsID_0015',
 'Henning Peitsmeier' : 'CahootsID_0016',
 'Werner Mussler' : 'CahootsID_0017',
 'Rüdiger Soldt' : 'CahootsID_0018',
 'Robert von Lucius' : 'CahootsID_0019',
-}
+'Irmgard Bayer' : 'CahootsID_0020',
+'Astrid Geisler' : 'CahootsID_0021',
+'Felix Dachsel' : 'CahootsID_0022',
+'Malte Kreutzfeldt' : 'CahootsID_0023',
+'Claus Kleber' : 'CahootsID_0024',
+'Stefan Niggemeier' : 'CahootsID_0025',
+'Wolfgang Büchner' : 'CahootsID_0026',
+'Katja Gloger' : 'CahootsID_0027',
+'Matthias Matussek' : 'CahootsID_0028',
+'Richard Kiessler' : 'CahootsID_0029',
+} 
