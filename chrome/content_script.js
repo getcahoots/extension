@@ -17,10 +17,10 @@ $(document).ready(function() {
 		interactive: true,
 		contentAsHTML: true,
 		maxWidth: 320,
-		animation: 'fade',
+		animation: 'grow',
 		content: 'Loading...',
-		delay: '300',
-		speed: '300',
+		delay: '200',
+		speed: '200',
 		timer: '450',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
