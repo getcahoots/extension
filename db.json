@@ -56,6 +56,36 @@
                 "name": "(Teilnehmer) Bilderberg-Konferenz",
                 "more_info": "http://de.wikipedia.org/wiki/Bilderberg-Konferenz",
                 "src": "http://de.wikipedia.org/wiki/Liste_von_Teilnehmern_an_Bilderberg-Konferenzen"
+            },
+            {
+                "name": "American Academy in Berlin",
+                "more_info": "http://de.wikipedia.org/wiki/American_Academy_in_Berlin",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Leben"
+            },
+            {
+                "name": "Europe’s World",
+                "more_info": "http://de.wikipedia.org/wiki/Friends_of_Europe",
+                "src": "http://europesworld.org/author/josefjoffe/"
+            },
+            {
+                "name": "Goldman Sachs",
+                "more_info": "http://de.wikipedia.org/wiki/Goldman_Sachs",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Leben"
+            },
+            {
+                "name": "Hypovereinsbank",
+                "more_info": "http://de.wikipedia.org/wiki/Hypovereinsbank",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Leben"
+            },
+            {
+                "name": "International Institute for Strategic Studies",
+                "more_info": "http://de.wikipedia.org/wiki/International_Institute_for_Strategic_Studies",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Leben"
+            },
+            {
+                "name": "Münchner Sicherheitskonferenz",
+                "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
+                "src": "http://de.wikipedia.org/wiki/Josef_Joffe#Leben"
             }
         ]
     },
@@ -71,6 +101,16 @@
                 "name": "Institut für Auslandsbeziehungen",
                 "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
                 "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Auslandsbeziehungen"
+            },
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://www.atlantik-bruecke.org/service/dokumente/jahresbericht-2008-2009.pdf"
+            },
+            {
+                "name": "(Teilnehmer) Bilderberg Konferenz",
+                "more_info": "https://en.wikipedia.org/wiki/Bilderberg_Group",
+                "src": "http://de.wikipedia.org/wiki/Liste_von_Teilnehmern_an_Bilderberg-Konferenzen"
             }
         ]
     },
@@ -161,6 +201,11 @@
                 "name": "Transatlantic Academy",
                 "more_info": "http://de.wikipedia.org/wiki/Transatlantic_Academy",
                 "src": "http://de.wikipedia.org/wiki/Institut_f%C3%BCr_Europ%C3%A4ische_Politik"
+            },
+            {
+                "name": "(Teilnehmer) Münchner Sicherheitskonferenz",
+                "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
+                "src": "http://de.wikipedia.org/wiki/Klaus-Dieter_Frankenberger#Mitgliedschaften.2C_Verbindungen_zur_Politik"
             }
         ]
     },
@@ -191,6 +236,21 @@
                 "name": "Deutsch-russisches Forum",
                 "more_info": "http://de.wikipedia.org/wiki/Deutsch-Russisches_Forum",
                 "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+            },
+            {
+                "name": "American Institute for Contemporary German Studies",
+                "more_info": "http://www.aicgs.org/",
+                "src": "http://www.aicgs.org/by-author/stefan-kornelius/"
+            },
+            {
+                "name": "Deutsche Atlantische Gesellschaft",
+                "more_info": "http://www.deutscheatlantischegesellschaft.de/cms/front_content.php?idcat=73&lang=1",
+                "src": "http://www.aicgs.org/by-author/stefan-kornelius/"
+            },
+            {
+                "name": "Münchner Sicherheitskonferenz",
+                "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
+                "src": "https://www.securityconference.de/de/veranstaltungen/munich-security-conference/msc-2014/teilnehmer/"
             }
         ]
     },
@@ -406,6 +466,101 @@
                 "name": "Deutsche Gesellschaft für Auswärtige Politik",
                 "more_info": "http://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Ausw%C3%A4rtige_Politik",
                 "src": "http://de.wikipedia.org/wiki/Richard_Kiessler#Leben"
+            }
+        ]
+    },
+    "CahootsID_0030": {
+        "name": "Heribert Prantl",
+        "cahoots": [
+            {
+                "name": "European Law Students’ Association",
+                "more_info": "http://de.wikipedia.org/wiki/European_Law_Students%E2%80%99_Association",
+                "src": "http://de.wikipedia.org/wiki/Heribert_Prantl"
+            },
+            {
+                "name": "Stiftung Pro Justitia",
+                "more_info": "http://de.wikipedia.org/wiki/Stiftung_Pro_Justitia",
+                "src": "http://de.wikipedia.org/wiki/Heribert_Prantl"
+            },
+            {
+                "name": "Deutsche Nationalstiftung",
+                "more_info": "http://de.wikipedia.org/wiki/Deutsche_Nationalstiftung",
+                "src": "http://de.wikipedia.org/wiki/Heribert_Prantl"
+            }
+        ]
+    },
+    "CahootsID_0031": {
+        "name": "Michael Stürmer",
+        "cahoots": [
+            {
+                "name": "Deutsche Gesellschaft für Auswärtige Politik",
+                "more_info": "http://de.wikipedia.org/wiki/Michael_St%C3%BCrmer",
+                "src": "http://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Ausw%C3%A4rtige_Politik#Mitgliedschaft"
+            },
+            {
+                "name": "European Council on Foreign Relations",
+                "more_info": "http://de.wikipedia.org/wiki/Stiftung_Pro_Justitia",
+                "src": "http://de.wikipedia.org/wiki/European_Council_on_Foreign_Relations"
+            },
+            {
+                "name": "German British Forum",
+                "more_info": "http://www.gbf.com/",
+                "src": "http://wikispooks.com/wiki/German-British_Forum"
+            },
+            {
+                "name": "Münchner Sicherheitskonferenz",
+                "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
+                "src": "https://www.securityconference.de/de/veranstaltungen/munich-security-conference/msc-2014/teilnehmer/"
+            },
+            {
+                "name": "Valdai Discussion Club",
+                "more_info": "http://en.wikipedia.org/wiki/Valdai_International_Discussion_Club",
+                "src": "http://en.wikipedia.org/wiki/Valdai_International_Discussion_Club#History"
+            }
+        ]
+    },
+    "CahootsID_0032": {
+        "name": "Marc Brost",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke",
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://de.wikipedia.org/wiki/Liste_von_Mitgliedern_der_Atlantik-Br%C3%BCcke"
+            }
+        ]
+    },
+    "CahootsID_0033": {
+        "name": "Peter Frey",
+        "cahoots": [
+            {
+                "name": "Körber-Stiftung",
+                "more_info": "http://de.wikipedia.org/wiki/Bundesakademie_f%C3%BCr_Sicherheitspolitik",
+                "src": "http://de.wikipedia.org/wiki/K%C3%B6rber-Stiftung"
+            },
+            {
+                "name": "(Ehem.) Bundesakademie für Sicherheitspolitik",
+                "more_info": "http://de.wikipedia.org/wiki/Bundesakademie_f%C3%BCr_Sicherheitspolitik",
+                "src": "http://de.wikipedia.org/wiki/Peter_Frey_(Journalist)#Leben"
+            }
+        ]
+    },
+    "CahootsID_0034": {
+        "name": "Winfried Wolf",
+        "cahoots": [
+            {
+                "name": "Attac",
+                "more_info": "http://de.wikipedia.org/wiki/Attac",
+                "src": "http://de.wikipedia.org/wiki/Kategorie:Attac-Mitglied"
+            },
+            {
+                "name": "Bildungsgemeinschaft SALZ",
+                "more_info": "http://de.wikipedia.org/wiki/Bildungsgemeinschaft_SALZ",
+                "src": "http://de.wikipedia.org/wiki/Winfried_Wolf_(Journalist)"
+            },
+            {
+                "name": "Die Linke",
+                "more_info": "http://de.wikipedia.org/wiki/Die_Linke",
+                "src": "http://www.linksfraktion.de/abgeordnete/sabine-leidig/mitarbeiterinnen/"
             }
         ]
     }

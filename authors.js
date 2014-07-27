@@ -28,4 +28,9 @@ var author = {
 'Katja Gloger' : 'CahootsID_0027',
 'Matthias Matussek' : 'CahootsID_0028',
 'Richard Kiessler' : 'CahootsID_0029',
+'Heribert Prantl' : 'CahootsID_0030',
+'Michael Stürmer' : 'CahootsID_0031',
+'Marc Brost' : 'CahootsID_0032',
+'Peter Frey' : 'CahootsID_0033',
+'Winfried Wolf' : 'CahootsID_0034',
 } 
