@@ -7,8 +7,11 @@ $(document).ready(function() {
 		if (!author.hasOwnProperty(key)) {
 			continue;
 		}
+		if ( $('form:contains("'+key+'")').length > 0 ) {
+			break;	
+		}
 		if ( $('body:contains("'+key+'")').length > 0 ) {
-			$("*").highlight(key, {caseSensitive: false, className: author[key] });
+			$("*").not("form").highlight(key, {caseSensitive: false, className: author[key] });
 		}
 	}
 
