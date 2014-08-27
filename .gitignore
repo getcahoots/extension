@@ -1,2 +1,4 @@
 *.db
 firefox/cahoots_testing.xpi
+firefox/*db
+firefox/Thumbs.db
