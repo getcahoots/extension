@@ -11,7 +11,7 @@ $(document).ready(function() {
 			break;	
 		}
 		if ( $('body:contains("'+key+'")').length > 0 ) {
-			$("*").not("form").highlight(key, {caseSensitive: false, className: author[key] });
+			$("*").highlight(key, {caseSensitive: false, className: author[key] });
 		}
 	}
 
