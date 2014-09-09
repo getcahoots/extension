@@ -86,6 +86,11 @@
                 "name": "Münchner Sicherheitskonferenz",
                 "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
+            },
+            {
+                "name": "International Institute for Strategic Studies",
+                "more_info": "http://www.iiss.org/",
+                "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             }
         ]
     },
@@ -235,7 +240,7 @@
             {
                 "name": "Deutsch-russisches Forum",
                 "more_info": "http://de.wikipedia.org/wiki/Deutsch-Russisches_Forum",
-                "src": "http://de.wikipedia.org/wiki/Stefan_Kornelius#Mitgliedschaften"
+                "src": "http://www.deutsch-russisches-forum.de/fileadmin/image_archive/sonstiges/Mitgliederliste_2012_Mailversand.pdf"
             },
             {
                 "name": "American Institute for Contemporary German Studies",
@@ -401,6 +406,11 @@
                 "name": "Atlantik-Brücke e.V.",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
                 "src": "https://de.wikipedia.org/wiki/Claus_Kleber#Leben"
+            },
+            {
+                "name": "(Teilnehmer) Münchner Sicherheitskonferenz 2010",
+                "more_info": "https://www.securityconference.de/",
+                "src": "https://www.securityconference.de/veranstaltungen/munich-security-conference/msc-2010/teilnehmer/"
             }
         ]
     },
@@ -561,6 +571,206 @@
                 "name": "Die Linke",
                 "more_info": "http://de.wikipedia.org/wiki/Die_Linke",
                 "src": "http://www.linksfraktion.de/abgeordnete/sabine-leidig/mitarbeiterinnen/"
+            }
+        ]
+    },
+    "CahootsID_0035": {
+        "name": "Heike Göbel",
+        "cahoots": [
+            {
+                "name": "Ludwig-Erhard-Stiftung",
+                "more_info": "https://de.wikipedia.org/wiki/Ludwig-Erhard-Stiftung",
+                "src": "https://web.archive.org/web/20130605140454/http://www.ludwig-erhard-stiftung.de/index.php?seite=8"
+            }
+        ]
+    },
+    "CahootsID_0036": {
+        "name": "Thomas Gutschker",
+        "cahoots": [
+            {
+                "name": "Amerikahaus NRW",
+                "more_info": "http://www.amerikahaus-nrw.de",
+                "src": "http://www.amerikahaus-nrw.de/redner-kuenstler.html?show=4206"
+            }
+        ]
+    },
+    "CahootsID_0037": {
+        "name": "Ken Jebsen",
+        "cahoots": [
+            {
+                "name": "compact",
+                "more_info": "http://de.wikipedia.org/wiki/Compact_%28Magazin%29",
+                "src": "https://www.taz.de/1/archiv/digitaz/artikel/?ressort=pb&dig=2012%2F04%2F07%2Fa0035&cHash=9dde16445a"
+            }
+        ]
+    },
+    "CahootsID_0038": {
+        "name": "Konrad Schuller",
+        "cahoots": [
+            {
+                "name": "Reemtsma Liberty Award",
+                "more_info": "https://de.wikipedia.org/wiki/Liberty_Award",
+                "src": "https://de.wikipedia.org/wiki/Konrad_Schuller"
+            }
+        ]
+    },
+    "CahootsID_0039": {
+        "name": "Berthold Kohler",
+        "cahoots": [
+            {
+                "name": "(Teilnehmer) Münchner Sicherheitskonferenz 2009",
+                "more_info": "https://www.securityconference.de/",
+                "src": "https://www.securityconference.de/de/veranstaltungen/munich-security-conference/msc-2009/teilnehmer/"
+            }
+        ]
+    },
+    "CahootsID_0040": {
+        "name": "Matthias Küntzel",
+        "cahoots": [
+            {
+                "name": "Deutsche Gesellschaft für Auswärtige Politik",
+                "more_info": "https://dgap.org/de",
+                "src": "http://www.matthiaskuentzel.de/contents/ueber-den-autor/"
+            }
+        ]
+    },
+    "CahootsID_0041": {
+        "name": "Frank Rieger",
+        "cahoots": [
+            {
+                "name": "Chaos Computer Club (CCC)",
+                "more_info": "http://www.ccc.de/",
+                "src": "http://de.wikipedia.org/wiki/Frank_Rieger"
+            }
+        ]
+    },
+    "CahootsID_0042": {
+        "name": "Helmut Markwort",
+        "cahoots": [
+            {
+                "name": "FPD (Partei)",
+                "more_info": "https://de.wikipedia.org/wiki/Freie_Demokratische_Partei",
+                "src": "https://de.wikipedia.org/wiki/Helmut_Markwort#Weitere_T.C3.A4tigkeiten"
+            }
+        ]
+    },
+    "CahootsID_0043": {
+        "name": "Helmut Schmidt",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.welt.de/welt_print/vermischtes/hamburg/article6752622/Der-Afghanistan-Konflikt-kann-nicht-militaerisch-gewonnen-werden.html"
+            }
+        ]
+    },
+    "CahootsID_0044": {
+        "name": "Martin Klingst",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+            }
+        ]
+    },
+    "CahootsID_0045": {
+        "name": "Christoph von Marschall",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.atlantik-bruecke.org/programme/arbeits-und-regionalgruppen/regionalgruppen/"
+            }
+        ]
+    },
+    "CahootsID_0046": {
+        "name": "Anna Marohn",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+            }
+        ]
+    },
+    "CahootsID_0047": {
+        "name": "Ingo Zamperoni",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+            }
+        ]
+    },
+    "CahootsID_0048": {
+        "name": "Tina Hassel",
+        "cahoots": [
+            {
+                "name": "Atlantik-Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+            }
+        ]
+    },
+    "CahootsID_0049": {
+        "name": "Rudolf Hickel",
+        "cahoots": [
+            {
+                "name": "Intitut Arbeit und Wirtschaft",
+                "more_info": "https://de.wikipedia.org/wiki/Institut_Arbeit_und_Wirtschaft",
+                "src": "https://de.wikipedia.org/wiki/Rudolf_Hickel"
+            }
+        ]
+    },
+    "CahootsID_0050": {
+        "name": "Ronald G. Asch",
+        "cahoots": [
+            {
+                "name": "Alternative für Deutschland (AfD) (Partei)",
+                "more_info": "http://de.wikipedia.org/wiki/Alternative_f%C3%BCr_Deutschland",
+                "src": "http://www.badische-zeitung.de/freiburg/alternative-fuer-deutschland-gruendet-freiburger-partei--72771947.html"
+            }
+        ]
+    },
+    "CahootsID_0051": {
+        "name": "Ronnie Grob",
+        "cahoots": [
+            {
+                "name": "Verein Direktedemokratie",
+                "more_info": "http://www.direktedemokratie.com/",
+                "src": "https://web.archive.org/web/20140903041329/http://blog.ronniegrob.com/author/"
+            }
+        ]
+    },
+    "CahootsID_0052": {
+        "name": "Michael Wolffsohn",
+        "cahoots": [
+            {
+                "name": "Deutsche Bank Beirat Ost",
+                "more_info": "http://en.wikipedia.org/wiki/Deutsche_Bank",
+                "src": "https://geschaeftsbericht.deutsche-bank.de/2010/gb/serviceseiten/downloads/files/dbfy2010_verzeichnis_beiratsmitglieder.pdf"
+            }
+        ]
+    },
+    "CahootsID_0053": {
+        "name": "Ruth Ciesinger",
+        "cahoots": [
+            {
+                "name": "American Council on Germany (Stipendiatin)",
+                "more_info": "http://de.wikipedia.org/wiki/American_Council_on_Germany",
+                "src": "https://web.archive.org/web/20140909125513/http://www.boell.de/de/navigation/aussen-sicherheit-6241.html"
+            }
+        ]
+    },
+    "CahootsID_0054": {
+        "name": "Nikolaus Blome",
+        "cahoots": [
+            {
+                "name": "Atlantik Brücke e.V.",
+                "more_info": "https://www.atlantik-bruecke.org/",
+                "src": "https://web.archive.org/web/20140728192825/http://spiegelkabinett-blog.blogspot.de/2013/03/journalisten-der-atlantikbrucke-in.html"
             }
         ]
     }
