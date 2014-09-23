@@ -263,7 +263,7 @@
         "name": "Constanze Kurz",
         "cahoots": [
             {
-                "name": "Chaos Computer Club",
+                "name": "Chaos Computer Club (Sprecherin)",
                 "more_info": "http://de.wikipedia.org/wiki/Chaos_Computer_Club",
                 "src": "http://inka.htw-berlin.de/inka/constanze/"
             }
@@ -273,7 +273,7 @@
         "name": "Stephan Urbach",
         "cahoots": [
             {
-                "name": "Junge Piraten Deutschland",
+                "name": "(Ehem.) Junge Piraten Deutschland",
                 "more_info": "http://de.wikipedia.org/wiki/Piratenpartei_Deutschland",
                 "src": "https://wiki.junge-piraten.de/w/images/6/66/Bundesmitgliedsversammlung_2009.2_Protokoll.pdf"
             }
@@ -290,17 +290,17 @@
         ]
     },
     "CahootsID_0015": {
-        "name": "Henrike Roßbach",
+        "name": "Henrike Roßbach (Referentin)",
         "cahoots": [
             {
                 "name": "Die Lebensmittelwirtschaft",
                 "more_info": "http://www.lebensmittelwirtschaft.org/verein/",
-                "src": "http://www.lebensmittelwirtschaft.org/symposium/referenten/"
+                "src": "https://web.archive.org/web/20131113072648/http://www.lebensmittelwirtschaft.org/symposium/referenten/"
             }
         ]
     },
     "CahootsID_0016": {
-        "name": "Henning Peitsmeier",
+        "name": "Henning Peitsmeier (Mitglied)",
         "cahoots": [
             {
                 "name": "Club Wirtschaftspresse München",
