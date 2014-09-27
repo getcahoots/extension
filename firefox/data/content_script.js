@@ -7,9 +7,17 @@ $(document).ready(function() {
 		if ( $('form:contains("'+key+'")').length > 0 ) {
 			break;	
 		}
-		if ( $('body:contains("'+key+'")').length > 0 ) {
-			$("*").highlight(key, {caseSensitive: false, className: author[key] });
-		}
+        if ( $('body:contains("'+key+'")').length <= 0 ) {
+            continue;
+        }
+
+        containingElements= $('body *:contains("'+key+'")');
+        if ( containingElements.length > 0 ) {
+            var filteredElements = containingElements.filter(function() {
+                return ($(this).clone().children().remove().end().text().indexOf(key) > -1)
+            });
+            $(filteredElements).highlight(key, {caseSensitive: false, className: author[key] });
+        }
 	}
 
 	$('span[class*=CahootsID]').tooltipster({
