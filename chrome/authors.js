@@ -35,7 +35,7 @@ var author = {
 'Winfried Wolf' : 'CahootsID_0034',
 'Heike Göbel' : 'CahootsID_0035',
 'Thomas Gutschker' : 'CahootsID_0036',
-'Ken Jebsen' : 'CahootsID_0037',
+
 'Konrad Schuller' : 'CahootsID_0038',
 'Berthold Kohler' : 'CahootsID_0039',
 'Matthias Küntzel' : 'CahootsID_0040',
