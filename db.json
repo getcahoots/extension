@@ -3,12 +3,12 @@
         "name": "Jochen Bittner",
         "cahoots": [
             {
-                "name": "Europa-Union",
+                "name": "Europa-Union (Referent)",
                 "more_info": "http://de.wikipedia.org/wiki/Europa-Union",
-                "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
+                "src": "http://web.archive.org/web/20141002080207/http://www.eu-kiel.de/inhalt/veranst32013.htm"
             },
             {
-                "name": "Brussels Forum",
+                "name": "Brussels Forum (Teilnehmer)",
                 "more_info": "http://brussels.gmfus.org/about-the-forum/about/",
                 "src": "http://www.gmfus.org/brusselsforum/2008/doc/BFParticipantList03.11REVISED.pdf"
             },
@@ -18,7 +18,7 @@
                 "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
             },
             {
-                "name": "Körber-Stiftung",
+                "name": "Körber-Stiftung (Gast)",
                 "more_info": "http://de.wikipedia.org/wiki/K%C3%B6rber-Stiftung",
                 "src": "http://web.archive.org/web/20140503040659/http://www.koerber-stiftung.de/koerberforum/programm/details/termin/europa-vermitteln.html"
             }
@@ -28,7 +28,7 @@
         "name": "Robert Leicht",
         "cahoots": [
             {
-                "name": "Atlantik-Brücke e.V.",
+                "name": "Atlantik-Brücke e.V. (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
                 "src": "http://web.archive.org/web/20140728192825/http://spiegelkabinett-blog.blogspot.de/2013/03/journalisten-der-atlantikbrucke-in.html"
             }
@@ -39,57 +39,52 @@
         "cahoots": [
             {
                 "name": "Aspen Institut",
-                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
+                "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut (Beiratsmitglied)",
                 "src": "http://web.archive.org/web/20140508062405/http://zeitreisen.zeit.de/interviews/begegnung-mit-josef-joffe"
             },
             {
-                "name": "American Institute for Contemporary German Studies",
+                "name": "American Institute for Contemporary German Studies (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Aspen_Institut",
                 "src": "http://web.archive.org/web/20140726035059/http://www.aicgs.org/by-author/josef-joffe/"
             },
             {
-                "name": "Atlantik-Brücke e.V.",
+                "name": "Atlantik-Brücke e.V. (Trustee)",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
                 "src": "http://web.archive.org/web/20140508062405/http://zeitreisen.zeit.de/interviews/begegnung-mit-josef-joffe"
             },
             {
-                "name": "(Teilnehmer) Bilderberg-Konferenz",
+                "name": "Bilderberg-Konferenz (Teilnehmer)",
                 "more_info": "http://de.wikipedia.org/wiki/Bilderberg-Konferenz",
                 "src": "http://de.wikipedia.org/wiki/Liste_von_Teilnehmern_an_Bilderberg-Konferenzen"
             },
             {
-                "name": "American Academy in Berlin",
+                "name": "American Academy in Berlin (Beiratsmitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/American_Academy_in_Berlin",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             },
             {
-                "name": "Europe’s World",
+                "name": "Europe’s World (Autor)",
                 "more_info": "http://de.wikipedia.org/wiki/Friends_of_Europe",
                 "src": "http://web.archive.org/web/20140825160210/http://europesworld.org/author/josefjoffe/"
             },
             {
-                "name": "Goldman Sachs",
+                "name": "Goldman Sachs Foundation (Beiratsmitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Goldman_Sachs",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             },
             {
-                "name": "Hypovereinsbank",
+                "name": "(Ehem.) Hypovereinsbank (Beiratsmitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Hypovereinsbank",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             },
             {
-                "name": "International Institute for Strategic Studies",
+                "name": "International Institute for Strategic Studies (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/International_Institute_for_Strategic_Studies",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             },
             {
-                "name": "Münchner Sicherheitskonferenz",
+                "name": "Münchner Sicherheitskonferenz (Teilnehmer)",
                 "more_info": "http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz",
-                "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
-            },
-            {
-                "name": "International Institute for Strategic Studies",
-                "more_info": "http://www.iiss.org/",
                 "src": "http://web.archive.org/web/20140825161247/http://tec.fsi.stanford.edu/people/josef_joffe/"
             }
         ]
