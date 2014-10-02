@@ -8,7 +8,7 @@
                 "src": "http://de.wikipedia.org/wiki/Jochen_Bittner#Mitgliedschaften.2C_Teilnahme_an_Kongressen"
             },
             {
-                "name": "Brussels Forum",
+                "name": "Brussels Forum (Teilnehmer)",
                 "more_info": "http://brussels.gmfus.org/about-the-forum/about/",
                 "src": "http://www.gmfus.org/brusselsforum/2008/doc/BFParticipantList03.11REVISED.pdf"
             },
@@ -223,24 +223,24 @@
                 "src": "https://web.archive.org/web/20140302133310/http://www.koerber-stiftung.de/koerberforum/gaeste/gaeste-details/gast/stefan-kornelius.html"
             },
             {
-                "name": "Atlantik-Brücke (Vortragender)",
+                "name": "Atlantik-Brücke (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
-                "src": "https://web.archive.org/web/20140915113722/http://www.atlantik-bruecke.org/eng/information/events/events-2013/september-2013/stefan-kornelius-ny/"
+                "src": "http://web.archive.org/web/20141002093703/https://github.com/wuwi/cahoots/blob/master/misc/stefan_kornelius_mail.txt"
             },
             {
-                "name": "Deutschen Gesellschaft für Auswärtige Politik (Autor)",
+                "name": "Deutschen Gesellschaft für Auswärtige Politik (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Deutsche_Gesellschaft_f%C3%BCr_Ausw%C3%A4rtige_Politik",
-                "src": "https://web.archive.org/web/20140914125448/https://dgap.org/de/ip-archiv/autoren/1153"
+                "src": "http://web.archive.org/web/20141002093703/https://github.com/wuwi/cahoots/blob/master/misc/stefan_kornelius_mail.txt"
             },
             {
                 "name": "Bundesakademie für Sicherheitspolitik (Beiratsmitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Bundesakademie_f%C3%BCr_Sicherheitspolitik",
-                "src": "https://web.archive.org/web/20140429124925/https://www.baks.bund.de/de/die-baks/der-beirat"
+                "src": "http://web.archive.org/web/20141002093703/https://github.com/wuwi/cahoots/blob/master/misc/stefan_kornelius_mail.txt"
             },
             {
-                "name": "Deutsch-russisches Forum (Mitglied)",
+                "name": "Deutsch-Russisches Forum (Mitglied)",
                 "more_info": "http://de.wikipedia.org/wiki/Deutsch-Russisches_Forum",
-                "src": "http://www.deutsch-russisches-forum.de/epaper/Mitgliederliste_Februar_2013.pdf"
+                "src": "http://web.archive.org/web/20141002093703/https://github.com/wuwi/cahoots/blob/master/misc/stefan_kornelius_mail.txt"
             },
             {
                 "name": "American Institute for Contemporary German Studies (Mitwirkender)",
@@ -590,7 +590,7 @@
             {
                 "name": "Amerikahaus NRW",
                 "more_info": "http://www.amerikahaus-nrw.de",
-                "src": "http://www.amerikahaus-nrw.de/redner-kuenstler.html?show=4206"
+                "src": "http://web.archive.org/web/20141002125701/http://www.amerikahaus-nrw.de/redner-kuenstler.html?show=4206"
             }
         ]
     },
@@ -608,9 +608,9 @@
         "name": "Berthold Kohler",
         "cahoots": [
             {
-                "name": "(Teilnehmer) Münchner Sicherheitskonferenz 2009",
+                "name": "Münchner Sicherheitskonferenz 2009 (Teilnehmer)",
                 "more_info": "https://www.securityconference.de/",
-                "src": "https://www.securityconference.de/de/veranstaltungen/munich-security-conference/msc-2009/teilnehmer/"
+                "src": "http://web.archive.org/web/20140716021357/https://www.securityconference.de/de/veranstaltungen/munich-security-conference/msc-2009/teilnehmer/"
             }
         ]
     },
@@ -650,7 +650,7 @@
             {
                 "name": "Atlantik-Brücke e.V.",
                 "more_info": "https://www.atlantik-bruecke.org/",
-                "src": "http://www.welt.de/welt_print/vermischtes/hamburg/article6752622/Der-Afghanistan-Konflikt-kann-nicht-militaerisch-gewonnen-werden.html"
+                "src": "http://web.archive.org/web/20141002125028/http://www.welt.de/welt_print/vermischtes/hamburg/article6752622/Der-Afghanistan-Konflikt-kann-nicht-militaerisch-gewonnen-werden.html"
             }
         ]
     },
@@ -660,7 +660,7 @@
             {
                 "name": "Atlantik-Brücke e.V.",
                 "more_info": "https://www.atlantik-bruecke.org/",
-                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+                "src": "http://web.archive.org/web/20131103145043/http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
             }
         ]
     },
@@ -680,7 +680,7 @@
             {
                 "name": "Atlantik-Brücke e.V.",
                 "more_info": "https://www.atlantik-bruecke.org/",
-                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+                "src": "http://web.archive.org/web/20131103145043/http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
             }
         ]
     },
@@ -689,8 +689,8 @@
         "cahoots": [
             {
                 "name": "Atlantik-Brücke e.V.",
-                "more_info": "https://www.atlantik-bruecke.org/",
-                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://web.archive.org/web/20131103145043/http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
             }
         ]
     },
@@ -699,8 +699,8 @@
         "cahoots": [
             {
                 "name": "Atlantik-Brücke e.V.",
-                "more_info": "https://www.atlantik-bruecke.org/",
-                "src": "http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
+                "more_info": "http://de.wikipedia.org/wiki/Atlantik-Br%C3%BCcke",
+                "src": "http://web.archive.org/web/20131103145043/http://www.atlantik-bruecke.org/w/files/dokumente/120628_jahresbericht_2012.pdf"
             }
         ]
     },
@@ -710,7 +710,7 @@
             {
                 "name": "Intitut Arbeit und Wirtschaft",
                 "more_info": "https://de.wikipedia.org/wiki/Institut_Arbeit_und_Wirtschaft",
-                "src": "https://de.wikipedia.org/wiki/Rudolf_Hickel"
+                "src": "http://web.archive.org/web/20130301202042/http://www.iaw.uni-bremen.de/ccm/navigation/das-institut/mitglieder/aktive-mitglieder/"
             }
         ]
     },
@@ -761,6 +761,66 @@
                 "name": "Atlantik Brücke e.V.",
                 "more_info": "https://www.atlantik-bruecke.org/",
                 "src": "https://web.archive.org/web/20140728192825/http://spiegelkabinett-blog.blogspot.de/2013/03/journalisten-der-atlantikbrucke-in.html"
+            }
+        ]
+    },
+    "CahootsID_0055": {
+        "name": "Albrecht Müller",
+        "cahoots": [
+            {
+                "name": "NachDenkSeiten (Herausgeber)",
+                "more_info": "https://de.wikipedia.org/wiki/NachDenkSeiten",
+                "src": "http://web.archive.org/web/20140722170553/http://www.nachdenkseiten.de/?page_id=5"
+            }
+        ]
+    },
+    "CahootsID_0056": {
+        "name": "Wolfgang Lieb",
+        "cahoots": [
+            {
+                "name": "NachDenkSeiten (Herausgeber)",
+                "more_info": "https://de.wikipedia.org/wiki/NachDenkSeiten",
+                "src": "http://web.archive.org/web/20140722170553/http://www.nachdenkseiten.de/?page_id=5"
+            }
+        ]
+    },
+    "CahootsID_0057": {
+        "name": "Jens Berger",
+        "cahoots": [
+            {
+                "name": "NachDenkSeiten (Autor)",
+                "more_info": "https://de.wikipedia.org/wiki/NachDenkSeiten",
+                "src": "http://web.archive.org/web/20140722170553/http://www.nachdenkseiten.de/?page_id=5"
+            }
+        ]
+    },
+    "CahootsID_0058": {
+        "name": "Jörg Himmelreich",
+        "cahoots": [
+            {
+                "name": "German Marshall Fund",
+                "more_info": "http://de.wikipedia.org/wiki/German_Marshall_Fund",
+                "src": "http://web.archive.org/web/20141002130424/http://www.koerber-stiftung.de/internationale-politik/bergedorfer-gespraechskreis/teilnehmer/teilnehmer-detail/vita/himmelreich.html"
+            }
+        ]
+    },
+    "CahootsID_0059": {
+        "name": "Georg Mascolo",
+        "cahoots": [
+            {
+                "name": "German Conference at Harvard (Teilnehmer)",
+                "more_info": "http://www.germanconference.org/",
+                "src": "http://web.archive.org/web/20140328154603/http://www.germanconference.org/2014/03Speakers.html"
+            }
+        ]
+    },
+    "CahootsID_0060": {
+        "name": "Jan-Eric Peters",
+        "cahoots": [
+            {
+                "name": "Young Global Leader Forum / WEF Davos",
+                "more_info": "http://en.wikipedia.org/wiki/World_Economic_Forum",
+                "src": "http://web.archive.org/web/20141002132111/http://snd2014.de/project/jan-eric-peters/"
             }
         ]
     }

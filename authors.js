@@ -53,4 +53,10 @@ var author = {
 'Michael Wolffsohn' : 'CahootsID_0052',
 'Ruth Ciesinger' : 'CahootsID_0053',
 'Nikolaus Blome' : 'CahootsID_0054',
+'Albrecht Müller' : 'CahootsID_0055',
+'Wolfgang Lieb' : 'CahootsID_0056',
+'Jens Berger' : 'CahootsID_0057',
+'Jörg Himmelreich' : 'CahootsID_0058',
+'Georg Mascolo' : 'CahootsID_0059',
+'Jan-Eric Peters' : 'CahootsID_0060',
 } 
