@@ -23,12 +23,12 @@ $(document).ready(function() {
 	$('span[class*=CahootsID]').tooltipster({
 		interactive: true,
 		contentAsHTML: true,
-		maxWidth: 320,
+		maxWidth: 344,
 		animation: 'grow',
 		content: 'Daten werden geladen…',
-		delay: '200',
-		speed: '200',
-		timer: '400',
+		delay: '220',
+		speed: '210',
+		timer: '440',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');

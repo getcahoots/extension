@@ -24,10 +24,12 @@ pageMod.PageMod({
 					cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
 					// console.log(db[id].cahoots);
 					for (var v in db[id].cahoots) {
-						console.log(v);
 						cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
         				cahoots_content += db[id].cahoots[v].more_info;
         				cahoots_content += '">';
+                if ( db[id].cahoots[v].verified_info ) {
+                  cahoots_content += '<img src="http://abload.de/img/verifiedshkvl.png" title="Vom Autor verifizierte Verbindung">';
+                } else {  }
         				cahoots_content += db[id].cahoots[v].name;
         				cahoots_content += '</a><a target="_blank" class="quelle" href="';
         				cahoots_content += db[id].cahoots[v].src;

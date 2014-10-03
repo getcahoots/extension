@@ -4,7 +4,7 @@
 
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
-	width: 320px;
+	width: 334px;
 	border-radius: 3px; 
 	border: 1px solid #b1b1b9;
 	background: #f2f2f4;
@@ -50,6 +50,7 @@
 	line-height: 1.3em;
 	padding: 14px 14px;
 	margin: 0;
+	font-size: 14px;
 	color: rgb(60,60,70);
 }
 .tooltipster-base .tooltipster-content {
@@ -69,9 +70,10 @@
 	font-weight: 700;
 }
 .tooltipster-content .cahoots_item {
+	display: block;
 	list-style: none;
 	padding: 10px 0;
-	width: 290px;
+	width: 314px;
 	border-bottom: 1px solid rgb(216,216,226);
 	margin: 0;
 	background: transparent !important;
@@ -82,6 +84,11 @@
 	background: transparent !important;
 	padding: 0;
 	margin: 0;
+}
+.tooltipster-content .cahoots_item a img {
+	padding: 0 4px 3px 0;
+	margin: 2px 0 0 0;
+	vertical-align: top;
 }
 .tooltipster-content .cahoots_item a:hover {
 	text-decoration: underline;
@@ -119,7 +126,7 @@
 	color: rgb(60,60,70) !important;
 	border: none;
 	outline: none;
-	width: 140px;
+	width: 152px;
 	border-radius: 3px;
 	letter-spacing: 0;
 	padding: 8px 5px !important;

@@ -23,12 +23,12 @@ $(document).ready(function() {
 	$('span[class*=CahootsID]').tooltipster({
 		interactive: true,
 		contentAsHTML: true,
-		maxWidth: 320,
+		maxWidth: 344,
 		animation: 'grow',
 		content: 'Daten werden geladen…',
-		delay: '200',
-		speed: '200',
-		timer: '400',
+		delay: '220',
+		speed: '210',
+		timer: '440',
 		functionBefore: function(origin, continueTooltip) {
 			continueTooltip();
 			var id = $(this).attr('class').replace(' tooltipstered','');
@@ -46,12 +46,13 @@ $(document).ready(function() {
 			cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
 			cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
 			$.each(db[id].cahoots, function(i,v){
-				if ( v.verified_info ) {
-					cahoots_content += '<img src="img/verified.png">';
-				} else {  }
-            	cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
+				cahoots_content += '<li class="cahoots_item">';
+            	cahoots_content += '<a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
             	cahoots_content += v.more_info;
             	cahoots_content += '">';
+            	if ( v.verified_info ) {
+					cahoots_content += '<img src="http://abload.de/img/verifiedshkvl.png" title="Vom Autor verifizierte Verbindung">';
+				} else {  }
             	cahoots_content += v.name;
             	cahoots_content += '</a><a target="_blank" class="quelle" href="';
             	cahoots_content += v.src;

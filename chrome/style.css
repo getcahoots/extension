@@ -1,8 +1,8 @@
 span[class^="CahootsID"] {
-	background: rgba(250,50,100,0.10);
+	background: rgba(250,50,100,0.07);
 	border-radius: 3px;
 	cursor: pointer;
-	padding: 1px 3px 1px 0;
+	padding: 3px 3px 3px 0;
 }
 span[class^="CahootsID"] > a:hover {
 	text-decoration: none !important;
