@@ -35,7 +35,7 @@ var author = {
 'Winfried Wolf' : 'CahootsID_0034',
 'Heike Göbel' : 'CahootsID_0035',
 'Thomas Gutschker' : 'CahootsID_0036',
-
+'Ken Jebsen' : 'CahootsID_0037',
 'Konrad Schuller' : 'CahootsID_0038',
 'Berthold Kohler' : 'CahootsID_0039',
 'Matthias Küntzel' : 'CahootsID_0040',
@@ -53,4 +53,10 @@ var author = {
 'Michael Wolffsohn' : 'CahootsID_0052',
 'Ruth Ciesinger' : 'CahootsID_0053',
 'Nikolaus Blome' : 'CahootsID_0054',
+'Albrecht Müller' : 'CahootsID_0055',
+'Wolfgang Lieb' : 'CahootsID_0056',
+'Jens Berger' : 'CahootsID_0057',
+'Jörg Himmelreich' : 'CahootsID_0058',
+'Georg Mascolo' : 'CahootsID_0059',
+'Jan-Eric Peters' : 'CahootsID_0060',
 } 

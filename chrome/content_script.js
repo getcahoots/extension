@@ -46,6 +46,9 @@ $(document).ready(function() {
 			cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
 			cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
 			$.each(db[id].cahoots, function(i,v){
+				if ( v.verified_info ) {
+					cahoots_content += '<img src="img/verified.png">';
+				} else {  }
             	cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
             	cahoots_content += v.more_info;
             	cahoots_content += '">';
