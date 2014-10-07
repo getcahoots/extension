@@ -1,0 +1,1 @@
+Die hier stehenden Texte sind Auszüge aus Email Konversationen mit den betreffenden Journalisten. Die Verfasser haben uns freundlicher Weise die Genhemingung erteilt die Textpassagen hier als Quellen zu veröffentlichen.
