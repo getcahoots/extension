@@ -913,5 +913,17 @@
                 "src": "https://github.com/wuwi/cahoots/blob/master/misc/thomas_bauer_mail.txt"
             }
         ]
+    },
+    "CahootsID_0062": {
+        "name": "Laura Meschede",
+        "name_info": "https://twitter.com/LauraMeschede",
+        "cahoots": [
+            {
+                "name": "Slutwalk München",
+                "more_info": "http://slutwalkmuenchen.blogsport.de/",
+                "src": "https://github.com/wuwi/cahoots/blob/master/misc/laura_meschede_mail.txt",
+                "verified_info" : "true"
+            }
+        ]
     }
 }

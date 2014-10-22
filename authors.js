@@ -61,4 +61,5 @@ var author = {
 'Georg Mascolo' : 'CahootsID_0059',
 'Jan-Eric Peters' : 'CahootsID_0060',
 'Thomas Bauer' : 'CahootsID_0061',
+'Laura Meschede' : 'CahootsID_0062',
 } 
