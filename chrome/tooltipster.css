@@ -155,6 +155,7 @@
 	margin: 0;
 	text-decoration: underline;
 }
+
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
 .tooltipster-arrow {
 	display: block;
