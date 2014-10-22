@@ -37,13 +37,13 @@ $(document).ready(function() {
  
 	function cahootsGenerate(id, callback) {
 		$.getJSON(chrome.extension.getURL('db.json'), function(db) {
-			cahoots_content = '<p class="cahoots_top">Für <strong>';
+			cahoots_content = '<p class="cahoots_top">Für <strong><a href="';
+			cahoots_content += db[id].name_info;
+			cahoots_content += '" target="_blank" class="name_info">';
 			cahoots_content += db[id].name;
-			cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
-			cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
+			cahoots_content += '</a></strong> wurden die folgenden Verbindungen gefunden:</p><section class="cahoots_middle"><ul id="cahoots_list">';
 			$.each(db[id].cahoots, function(i,v){
-				cahoots_content += '<li class="cahoots_item">';
-            	cahoots_content += '<a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
+				cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
             	cahoots_content += v.more_info;
             	cahoots_content += '">';
             	if ( v.verified_info ) {
@@ -54,14 +54,7 @@ $(document).ready(function() {
             	cahoots_content += v.src;
             	cahoots_content += '">Quelle</a></li>';
             });
-	        cahoots_content += '</ul></section>';
-	        cahoots_content += '<section class="cahoots_footer">';
-
-	        cahoots_content += '<a target="_blank" href="http://cahoots-extension.github.io/index.html#contribute"><button class="cahoots_button">Verbindung melden</button></a>';
-	        cahoots_content += '<a target="_blank" href="mailto:mail@cahoots.pw?subject=Fehler"><button class="cahoots_button">Fehler melden</button></a>';
-
-	        cahoots_content += '</section>';
-
+	        cahoots_content += '</ul></section><section class="cahoots_footer"><a target="_blank" href="http://cahoots-extension.github.io/index.html#contribute"><button class="cahoots_button">Verbindung melden</button></a><a target="_blank" href="mailto:mail@cahoots.pw?subject=Fehler"><button class="cahoots_button">Fehler melden</button></a></section>';
 	        return callback(cahoots_content);
 		});
 	}

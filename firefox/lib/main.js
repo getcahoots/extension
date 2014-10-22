@@ -18,11 +18,11 @@ pageMod.PageMod({
   				url: data.url('db.json'),
   				onComplete: function(response) {
   					var db = response.json;
-  					cahoots_content = '<p class="cahoots_top">Für <strong>';
-  					cahoots_content += db[id].name;
-					cahoots_content += '</strong> wurden die folgenden Verbindungen gefunden:</p>';
-					cahoots_content += '<section class="cahoots_middle"><ul id="cahoots_list">';
-					// console.log(db[id].cahoots);
+  					cahoots_content = '<p class="cahoots_top">Für <strong><a href="';
+            cahoots_content += db[id].name_info;
+            cahoots_content += '" target="_blank" class="name_info">';
+            cahoots_content += db[id].name;
+            cahoots_content += '</a></strong> wurden die folgenden Verbindungen gefunden:</p><section class="cahoots_middle"><ul id="cahoots_list">';
 					for (var v in db[id].cahoots) {
 						cahoots_content += '<li class="cahoots_item"><a target="_blank" title="Mehr Infos zu dieser Organisation" href="';
         				cahoots_content += db[id].cahoots[v].more_info;
