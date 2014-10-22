@@ -629,6 +629,16 @@
             }
         ]
     },
+    "CahootsID_0037": {
+        "name": "Ken Jebsen",
+        "cahoots": [
+            {
+                "name": "compact",
+                "more_info": "http://de.wikipedia.org/wiki/Compact_%28Magazin%29",
+                "src": "https://www.taz.de/1/archiv/digitaz/artikel/?ressort=pb&dig=2012%2F04%2F07%2Fa0035&cHash=9dde16445a"
+            }
+        ]
+    },
     "CahootsID_0038": {
         "name": "Konrad Schuller",
         "name_info": "http://de.wikipedia.org/wiki/Konrad_Schuller",
