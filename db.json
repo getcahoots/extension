@@ -823,5 +823,25 @@
                 "src": "http://web.archive.org/web/20141002132111/http://snd2014.de/project/jan-eric-peters/"
             }
         ]
+    },
+    "CahootsID_0061": {
+        "name": "Thomas Bauer",
+        "cahoots": [
+            {
+                "name": "Deutscher Journalisten-Verband DJV/BJV (Mitglied)",
+                "more_info": "http://www.bjv.de/",
+                "src": "https://github.com/wuwi/cahoots/blob/master/misc/thomas_bauer_mail.txt"
+            },
+            {
+                "name": "Bundesverband Schauspiel BFFS (Mitglied)",
+                "more_info": "http://www.bffs.de/",
+                "src": "https://github.com/wuwi/cahoots/blob/master/misc/thomas_bauer_mail.txt"
+            },
+            {
+                "name": "Klink-Clowns e.V. (Mitglied)",
+                "more_info": "https://www.klinikclowns.de/",
+                "src": "https://github.com/wuwi/cahoots/blob/master/misc/thomas_bauer_mail.txt"
+            }
+        ]
     }
 }
