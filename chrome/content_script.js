@@ -1,24 +1,20 @@
 $(document).ready(function() {
 	
-	for (var key in author) {
-		if (!author.hasOwnProperty(key)) {
-			continue;
-		}
-		if ( $('form:contains("'+key+'")').length > 0 ) {
-			break;	
-		}
-		if ( $('body:contains("'+key+'")').length <= 0 ) {
+	var foundKeys = [];
+    for (var key in author) {
+        if (!author.hasOwnProperty(key)) {
             continue;
         }
-
-        containingElements= $('body *:contains("'+key+'")');
-        if ( containingElements.length > 0 ) {
-            var filteredElements = containingElements.filter(function() {
-                return ($(this).clone().children().remove().end().text().indexOf(key) > -1)
-            });
-            $(filteredElements).highlight(key, {caseSensitive: false, className: author[key] });
+        if ( $('form:contains("'+key+'")').length > 0 ) {
+            break;
         }
-	}
+        if ( $('body:contains("'+key+'")').length <= 0 ) {
+            continue;
+        }
+        foundKeys.push(key);
+    }
+
+    $("body").highlight(foundKeys, {caseSensitive: false, className: author });
 
 	$('span[class*=CahootsID]').tooltipster({
 		interactive: true,

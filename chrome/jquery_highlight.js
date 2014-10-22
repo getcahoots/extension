@@ -4,6 +4,7 @@
  * Based on highlight v3 by Johann Burkard
  * http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
  *
+ *
  * Code a little bit refactored and cleaned (in my humble opinion).
  * Most important changes:
  *  - has an option to highlight only entire words (wordsOnly - false by default),
@@ -49,10 +50,13 @@ jQuery.extend({
             var match = node.data.match(re);
             if (match) {
                 var highlight = document.createElement(nodeName || 'span');
-                highlight.className = className || 'highlight';
+
                 var wordNode = node.splitText(match.index);
                 wordNode.splitText(match[0].length);
                 var wordClone = wordNode.cloneNode(true);
+
+                highlight.className = className[wordClone.textContent] || 'highlight';
+
                 highlight.appendChild(wordClone);
                 wordNode.parentNode.replaceChild(highlight, wordNode);
                 return 1; //skip added node in parent
