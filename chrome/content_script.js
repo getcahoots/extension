@@ -47,7 +47,7 @@ $(document).ready(function() {
             	cahoots_content += v.more_info;
             	cahoots_content += '">';
             	if ( v.verified_info ) {
-					cahoots_content += '<img src="http://abload.de/img/verifiedshkvl.png" title="Vom Autor verifizierte Verbindung">';
+					cahoots_content += '<img src="https://raw.githubusercontent.com/wuwi/cahoots/master/misc/img/verified.png" title="Vom Autor verifizierte Verbindung">';
 				} else {  }
             	cahoots_content += v.name;
             	cahoots_content += '</a><a target="_blank" class="quelle" href="';
