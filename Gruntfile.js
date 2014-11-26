@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         build_dir_chrome: out_dir+'/exploded-out/chrome',
         export_dir: out_dir+'/packaged-out',
 
-        private_key: "~/PROJEKTE/dasmix/creds/osommer.key"
+        private_key: "test.key"
 
 
     };
