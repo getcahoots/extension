@@ -152,8 +152,7 @@ module.exports = function (grunt) {
                 options: {
                     "mozilla-addon-sdk": "stable",
                     extension_dir: "<%= build_dir_firefox %>",
-                    command: "run",
-                    arguments: " http://de.wikipedia.org/wiki/Ken_Jebsen"
+                    command: "run"
                     /*,
                     arguments: "-b /usr/bin/firefox-nightly -p /tmp/PROFILE_REUSED"*/
                 }
