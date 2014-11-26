@@ -2,3 +2,7 @@
 firefox/cahoots_testing.xpi
 firefox/*db
 firefox/Thumbs.db
+dest
+.idea
+cahoots.iml
+node_modules
