@@ -1,5 +1,6 @@
 {
   "name": "cahoots",
+  "version": "0.2.8",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "0.1.13",
@@ -7,6 +8,7 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-contrib-copy": "0.5.0",
     "grunt-contrib-jshint": "0.10.0",
-    "grunt-mozilla-addon-sdk": "0.3.2"
+    "grunt-mozilla-addon-sdk": "0.3.2",
+    "grunt-crx": "1.0.3"
   }
 }
