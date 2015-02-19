@@ -7,7 +7,7 @@ pageMod.PageMod({
 	contentScriptFile: [
 		data.url("jquery-1.11.1.min.js"),
         data.url("jquery_highlight.js"),
-        data.url("jquery.tooltipster.js"),
+        data.url("jquery.tooltipster.min.js"),
         data.url("authors.js"),
         data.url("content_script.js")
 	],

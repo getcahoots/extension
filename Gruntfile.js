@@ -2,18 +2,8 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    //grunt.loadNpmTasks('grunt-contrib-jshint');
-    //grunt.loadNpmTasks('grunt-contrib-watch');
-    //grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
-    //grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-mozilla-addon-sdk');
-
-    //grunt.loadNpmTasks('grunt-chrome-compile');
     grunt.loadNpmTasks('grunt-crx');
-
-
-    var cahoots_version = "";
 
     var out_dir = 'dest';
     var mozillaConfig = {
@@ -21,6 +11,8 @@ module.exports = function (grunt) {
     }
 
     var userConfig = {
+        pkg: grunt.file.readJSON('package.json'),
+
         src_ff: 'src/main/plugin/firefox',
         src_chrome: 'src/main/plugin/chrome',
         lib_dir: 'cahoots-deps/libs',
@@ -29,13 +21,11 @@ module.exports = function (grunt) {
         build_dir_chrome: out_dir+'/exploded-out/chrome',
         export_dir: out_dir+'/packaged-out',
 
-        private_key: "test.key"
-
-
+        private_key: "./cahoots-devtest.key"
     };
     var taskConfig = {
         clean: [
-            out_dir,
+            out_dir
         ],
         copy: {
             firefox: {
@@ -66,7 +56,7 @@ module.exports = function (grunt) {
                     // firefox libs
                     {expand: true,
                         cwd: 'cahoots-deps/libs',
-                        src: '*.js',
+                        src: ['*.min.js'],
                         dest: '<%= build_dir_firefox %>/data'},
                     // firefox jquery highlight
                     {expand: true,
@@ -103,7 +93,7 @@ module.exports = function (grunt) {
                     // chrome libs
                     {expand: true,
                         cwd: 'cahoots-deps/libs',
-                        src: '*.js',
+                        src: ['*.min.js'],
                         dest: '<%= build_dir_chrome %>'},
                     // chrome jquery highlight
                     {expand: true,
@@ -158,46 +148,26 @@ module.exports = function (grunt) {
                 }
             }
         },
-        /**
-         * https://www.npmjs.org/package/grunt-chrome-compile
-         * https://www.npmjs.org/package/generator-chrome-extension
-         */
-        /*'chrome-extension': {
-            options: {
-                name: "demo-ext",
-                version: "0.0.1",
-                id: "00000000000000000000000000000000",
-                updateUrl: "http://example.com/extension/111111/",
-                chrome: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-                clean: true,
-                certDir: 'cert',
-                buildDir: 'build',
-                resources: [
-                    "js*",
-                    "images*",
-                    "*.html"
-                ]
-            }
-        }*/
 
         /**
          * see https://github.com/oncletom/grunt-crx
          */
+        /*
+        */
         crxPkg: grunt.file.readJSON('package.json'),
-        crxManifest: grunt.file.readJSON(userConfig.src_chrome+'/manifest.json'),
         crx: {
-            cahoots_chrome_extension: {
-                "src": "<%= build_dir_chrome %>",
-                "dest": "<%= export_dir %>/chrome/<%= crxPkg.name %>-<%= crxManifest.version %>-dev.crx",
-                "privateKey": userConfig.private_key
+            cahootsExtension: {
+                "src": ["<%= build_dir_chrome %>/**/*"],
+                "dest": "<%= export_dir %>/chrome",
+                "zipDest": "<%= export_dir %>/chrome",
+                "options": {
+                    "privateKey": userConfig.private_key
+                }
             }
         }
-
     };
 
-
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
-
 
     /**
      * The default task is to build both extensions
@@ -207,7 +177,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'copy:firefox','mozilla-cfx-xpi' ]);
     grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','crx' ]);
-
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','build_firefox','mozilla-cfx' ]);
 
