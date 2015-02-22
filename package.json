@@ -1,6 +1,7 @@
 {
   "name": "cahoots",
   "version": "0.2.8",
+  "license", "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "0.1.13",
