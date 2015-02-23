@@ -1,6 +1,6 @@
 
 describe("basic client tryout",function() {
-    var personService = window.cahoots.api('person');
+    var personService = cahoots.api('person');
 
     it("should do something", function (done) {
         var service = services('person');
