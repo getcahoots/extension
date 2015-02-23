@@ -10,7 +10,7 @@
     "grunt-contrib-jshint": "0.10.0",
     "grunt-contrib-watch": "0.6.1",
     "grunt-crx": "^1.0.3",
-    "grunt-mozilla-addon-sdk": "0.3.2",
+    "grunt-mozilla-addon-sdk": "^0.4.0",
     "jasmine-core": "^2.2.0",
     "jasmine-jquery": "^2.0.6",
     "jquery": "^1.11.1",

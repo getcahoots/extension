@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         build_dir_chrome: out_dir+'/exploded-out/chrome',
         export_dir: out_dir+'/packaged-out',
 
-        private_key: "cahoots-devtest.key"
+        private_key: "development-test.key"
     };
     var taskConfig = {
         clean: [
