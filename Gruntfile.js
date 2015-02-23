@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         build_dir_chrome: out_dir+'/exploded-out/chrome',
         export_dir: out_dir+'/packaged-out',
 
-        private_key: "./cahoots-devtest.key"
+        private_key: "development-test.key"
     };
     var taskConfig = {
         clean: [
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'cahoots-deps/db',
-                        src: ['authors.js','db.json'],
+                        src: ['db.json'],
                         dest: '<%= build_dir_firefox %>/data'},
                     // firefox addon assets: icons
                     {
@@ -55,8 +55,12 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_firefox %>/data'},
                     // firefox libs
                     {expand: true,
-                        cwd: 'cahoots-deps/libs',
-                        src: ['*.min.js'],
+                        cwd: 'bower_components/tooltipster/js/',
+                        src: ['jquery.tooltipster.js'],
+                        dest: '<%= build_dir_firefox %>/data'},
+                    {expand: true,
+                        cwd: 'node_modules/jquery/dist',
+                        src: ['jquery.js'],
                         dest: '<%= build_dir_firefox %>/data'},
                     // firefox jquery highlight
                     {expand: true,
@@ -76,7 +80,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'cahoots-deps/db',
-                        src: ['authors.js','db.json'],
+                        src: ['db.json'],
                         dest: '<%= build_dir_chrome %>'},
                     // chrome addon assets: icons
                     {
@@ -84,6 +88,16 @@ module.exports = function (grunt) {
                         cwd: 'cahoots-deps/assets',
                         src: ['icon14.png','icon16.png','icon19.png','icon48.png','icon128.png','verified.png'],
                         dest: '<%= build_dir_chrome %>/img'},
+
+                    //
+                    {expand: true,
+                        cwd: 'bower_components/tooltipster/js/',
+                        src: ['jquery.tooltipster.js'],
+                        dest: '<%= build_dir_chrome %>'},
+                    {expand: true,
+                        cwd: 'node_modules/jquery/dist',
+                        src: ['jquery.js'],
+                        dest: '<%= build_dir_chrome %>'},
                     // chrome addon business assets: stylesheets
                     {
                         expand: true,
@@ -91,10 +105,10 @@ module.exports = function (grunt) {
                         src: ['*.css'],
                         dest: '<%= build_dir_chrome %>'},
                     // chrome libs
-                    {expand: true,
-                        cwd: 'cahoots-deps/libs',
-                        src: ['*.min.js'],
-                        dest: '<%= build_dir_chrome %>'},
+//                    {expand: true,
+//                        cwd: 'cahoots-deps/libs',
+//                        src: ['*.min.js'],
+//                        dest: '<%= build_dir_chrome %>'},
                     // chrome jquery highlight
                     {expand: true,
                         cwd: 'src/main/js',
@@ -160,6 +174,7 @@ module.exports = function (grunt) {
                 "src": ["<%= build_dir_chrome %>/**/*"],
                 "dest": "<%= export_dir %>/chrome",
                 "zipDest": "<%= export_dir %>/chrome",
+
                 "options": {
                     "privateKey": userConfig.private_key
                 }

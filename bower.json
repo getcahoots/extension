@@ -1,0 +1,20 @@
+{
+  "name": "cahoots",
+  "version": "0.2.9-dev",
+  "homepage": "https://github.com/cahoots-extension/extension",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tooltipster": "~3.3.0"
+  }
+}

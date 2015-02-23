@@ -1,35 +1,37 @@
 
-# cahoots plugin build infos
+# cahoots extension
 
 ## Perequisites
 
 * mozilla addon sdk
 * npm
+* bower
 * grunt
 
-### install addon sdk
-todo 
 
-### install npm 
-todo 
 
-### install grunt 
-`npm install -g grunt-cli`
 
-### prepare project
-after git clone, execute: 
+### install npm + grunt-cli  + bower-cli
+todo: npm
+`# sudo npm install -g grunt-cli`
+
+### fetch project dependencies
+after git clone, cd into extension and execute:
 
 `npm install`
+`bower install`
+### install mozilla addon sdk
+grunt mozilla-addon-sdk
+
 
 ## Build
-
-### activate addon sdk
-`source bin/activate`
-(run this in addon sdl folder)
+Build for Firefox and Chrome:
+`grunt`
 
 
-### run blank firefox with addon
-`grunt clean build_firefox mozilla-cfx`
+### run firefox xpi
+`grunt clean run_firefox`
 
-### build firefox xpi
-`grunt clean build_firefox mozilla-cfx-xpi`
+
+## generate test key for chrome packaging
+`openssl genrsa -out development-test.key 4096`
