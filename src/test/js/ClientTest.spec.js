@@ -1,9 +1,7 @@
-
 describe("basic client tryout",function() {
-    var personService = cahoots.api('person');
 
     it("should do something", function (done) {
-        var service = services('person');
+        var service = cahoots.api('person');
 
         function onFindAll (err, persons) {
             expect(err).toBe(null);
