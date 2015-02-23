@@ -1,20 +1,17 @@
 
 describe("basic client tryout",function() {
-//    var services = cahoots.api;
-//    var service = cahoots.api('person');
-   var personService = cahoots.api('person');
+    var personService = window.cahoots.api('person');
 
-    it("should do something", function() {
-        /*var service = services('person');
+    it("should do something", function (done) {
+        var service = services('person');
 
         function onFindAll (err, persons) {
-            if (err) {
-                return console.error(err);
-            }
+            expect(err).toBe(null);
+            expect(persons.length).not.toBe(0);
 
-            console.log(persons);
+            done();
         }
 
-        */service.findAll(onFindAll);
+        service.findAll(onFindAll);
     })
 })
