@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
-      "css": [ "style.css", "tooltipster.css" ],
-      "js": [ "jquery-1.11.1.min.js", "jquery_highlight.js", "jquery.tooltipster.min.js", "authors.js", "content_script.js" ],
+      "css": [ "style.css", "cahoots-tooltipster.css" ],
+      "js": [ "jquery.js", "jquery_highlight.js", "jquery.tooltipster.js", "chrome_content_script.js", "CahootsRepository.js","CahootsRunner.js" ],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_end"
    } ],
@@ -17,7 +17,7 @@
    "short_name": "Cahoots",
    "permissions": [ "http://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.2.8",
+   "version": "0.2.9",
    "web_accessible_resources": [
     "db.json",
     "verified.png"

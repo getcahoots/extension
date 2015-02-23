@@ -5,13 +5,15 @@
 
 * mozilla addon sdk
 * npm
+* bower
 * grunt
 
 ### install addon sdk
 todo 
 
-### install npm 
-todo 
+### install npm+bower
+todo
+npm -g install bower
 
 ### install grunt 
 `npm install -g grunt-cli`
