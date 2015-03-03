@@ -1,6 +1,6 @@
 {
   "name": "cahoots",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -10,6 +10,7 @@
     "grunt-contrib-jshint": "0.10.0",
     "grunt-contrib-watch": "0.6.1",
     "grunt-crx": "^1.0.3",
+    "grunt-karma": "^0.10.1",
     "grunt-mozilla-addon-sdk": "^0.4.0",
     "jasmine-core": "^2.2.0",
     "jasmine-jquery": "^2.0.6",

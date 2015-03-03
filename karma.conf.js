@@ -18,6 +18,7 @@ module.exports = function(config) {
     files: [
       {pattern: "cahoots-deps/libs/cahoots-api-client.min.js", included: true},
       {pattern: 'src/test/js/mocks.js', included: true},
+        {pattern: 'src/test/js/apiMocks.js', included: true},
       {pattern: 'cahoots-deps/libs/jquery.tooltipster.js', included: true},
       {pattern: 'src/main/js/*js', included: true},
       {pattern: 'src/test/**/*.spec.js', included: true},
@@ -70,6 +71,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    //singleRun: true
   });
 };

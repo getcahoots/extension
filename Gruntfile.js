@@ -4,6 +4,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mozilla-addon-sdk');
     grunt.loadNpmTasks('grunt-crx');
+    grunt.loadNpmTasks('grunt-karma');
 
     var out_dir = 'dest';
     var mozillaConfig = {
@@ -66,7 +67,15 @@ module.exports = function (grunt) {
                     {expand: true,
                         cwd: 'src/main/js',
                         src: '*.js',
-                        dest: '<%= build_dir_firefox %>/data'}
+                        dest: '<%= build_dir_firefox %>/data'},
+                    {expand: true,
+                        cwd: 'cahoots-deps/libs',
+                        src: 'cahoots-api-client.min.js',
+                        dest: '<%= build_dir_firefox %>/lib'},
+                    {expand: true,
+                        cwd: 'cahoots-deps/libs',
+                        src: 'cahoots-api-client.js',
+                        dest: '<%= build_dir_firefox %>/lib'}
                 ]
             },
             chrome: {
@@ -156,9 +165,10 @@ module.exports = function (grunt) {
                 options: {
                     "mozilla-addon-sdk": "stable",
                     extension_dir: "<%= build_dir_firefox %>",
-                    command: "run"
-                    /*,
-                    arguments: "-b /usr/bin/firefox-nightly -p /tmp/PROFILE_REUSED"*/
+                    command: "run",
+
+                    arguments: "-p /Users/sommer/PROJEKTE/cahoots/firefox_profile --binary-args '-jsconsole'"
+                    //arguments: "--binary-args '-url \"www.mozilla.org\" -jsconsole'"
                 }
             }
         },
@@ -179,6 +189,16 @@ module.exports = function (grunt) {
                     "privateKey": userConfig.private_key
                 }
             }
+        },
+
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+                runnerPort: 9999,
+                singleRun: true,
+                //browsers: ['PhantomJS'],
+                logLevel: 'ERROR'
+            }
         }
     };
 
@@ -188,12 +208,12 @@ module.exports = function (grunt) {
      * The default task is to build both extensions
      */
     grunt.registerTask('default', [ 'build_all' ]);
-    grunt.registerTask('build_all', [ 'clean','build_firefox','build_chrome' ]);
+    grunt.registerTask('build_all', [ 'clean','karma','build_firefox','build_chrome' ]);
 
     grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'copy:firefox','mozilla-cfx-xpi' ]);
     grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','crx' ]);
 
-    grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','build_firefox','mozilla-cfx' ]);
+    grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','karma','build_firefox','mozilla-cfx' ]);
 
 
 };

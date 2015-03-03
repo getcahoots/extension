@@ -1,7 +1,7 @@
 
-describe('CahootsRepository', function suite () {
+describe('CahootsJsonRepository', function suite () {
 
-    var cahootsRepository = new CahootsRepository(mockData());
+    var cahootsRepository = new CahootsJsonRepository(mockData());
 
     var expectedAuthors = {
         'Jochen Bittner' : 'CahootsID_0001',

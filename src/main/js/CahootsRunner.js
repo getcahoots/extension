@@ -1,7 +1,7 @@
 'use strict';
 
 function CahootsRunner(cahootsData) {
-    this.cahootsRepository = new CahootsRepository(cahootsData);
+    this.cahootsRepository = new CahootsApiRepository(cahootsData);
 }
 
 
