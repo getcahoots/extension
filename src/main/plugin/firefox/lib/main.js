@@ -20,91 +20,60 @@ var ss = require("sdk/simple-storage");
 
 
 
-myPageMod.on("*", function(e, data) {
-    console.log("pageMod event " + e + " was received");
-    console.log(data)
-});
+//myPageMod.on("*", function(e, data) {
+//    console.log("pageMod event " + e + " was received");
+//    console.log(data)
+//});
 
-exports.setupWorker = function() {
-    var myPageMod = pageMod.PageMod({
-        include: "*",
-        contentScriptFile: [
-            data.url("jquery.js"),
-            data.url("jquery_highlight.js"),
-            data.url("jquery.tooltipster.js"),
-            data.url("CahootsApiRepository.js"),
-            data.url("CahootsRunner.js"),
-            data.url("firefox_content_script.js")
-        ],
-        contentStyleFile: [
-            data.url("style.css"),
-            data.url("cahoots-tooltipster.css")
-        ],
-        onAttach: function(worker) {
-            console.log("pageMod::onAttach")
-            worker.port.on("getAuthorList",function() {
-                Request ({
-                    url: data.url('db.json'),
-                    onComplete: function(response) {
-                        var db = response.json;
-                        worker.port.emit('gotData', db);
-                    }
-                }).get();
-            })
-            worker.port.on("getFullData",function() {
-                Request ({
-                    url: data.url('db.json'),
-                    onComplete: function(response) {
-                        var db = response.json;
-                        worker.port.emit('gotData', db);
-                    }
-                }).get();
-            })
-        }
-    });
-}
+
+
 
 exports.main = function(options, callbacks) {
     console.log("entering addon script main method for reason: " + options.loadReason)
     console.log(this) // CommonJS Module
     //console.log(options)
     //console.log(callbacks)
+    var cahootsApiStorage = require('./CahootsApiRepository')
+    var setupWorker = function() {
 
+
+
+    }
 
     try {
-        var repository = require('repository')
+        var CahootsApiRepository = require("./CahootsApiRepository.js");
+        var repoInstance = new CahootsApiRepository();
+        repoInstance.updateFromRemote();
 
-
-
-/*        console.log("try to load cahoots-api-client")
-        var cahootsServices = require("./cahoots-api-client.js");
-        console.log("... success");
-        console.log("try to resolve personService");
-        var personService = cahootsServices('person');
-        console.log("... success");
-        var onFindAllPersons = function(err, persons) {
-            console.log("persons callback rcvd");
-            console.log(err);
-            console.log(persons);
-
-
-            var organizationService = cahootsServices('organization');
-
-            function onFindAllOrgas (err, organizations) {
-                console.log("organizations callback rcvd");
-                if (err) {
-                    return console.error(err);
-                }
-
-                console.log(organizations);
+        var myPageMod = pageMod.PageMod({
+            include: "*",
+            contentScriptFile: [
+                data.url("jquery.js"),
+                data.url("jquery_highlight.js"),
+                data.url("jquery.tooltipster.js"),
+                //data.url("CahootsApiRepository.js"),
+                data.url("CahootsRunner.js"),
+                data.url("firefox_content_script.js")
+            ],
+            contentStyleFile: [
+                data.url("style.css"),
+                data.url("cahoots-tooltipster.css")
+            ],
+            onAttach: function(worker) {
+                console.log("pageMod::onAttach")
+                worker.port.on("getAuthorHints",function() {
+                    console.log("pageWorker <-[getAuthorHints]-")
+                    var hints = repoInstance.findAuthorNames();
+                    worker.port.emit('gotAuthorHints', hints);
+                    console.log("pageWorker -[gotAuthorHints]->")
+                })
+                worker.port.on("getFullDetails",function(cahootsId) {
+                    var author = repoInstance.findAuthorByCahootsId(cahootsId)
+                    worker.port.emit("gotFullDetails",author);
+                })
             }
+        });
 
-            organizationService.findAll(onFindAllOrgas);
-        }
-
-        console.log("calling findAll()")
-        personService.findAll(onFindAllPersons);
-        console.log("... success");*/
 
     } catch(e) {
         console.log("... caught error: " + e.message)

@@ -1,10 +1,15 @@
 console.log("entering content script body area")
-console.log(this);
-console.log(self)
+//console.log(this);
+//console.log(self)
 $(document).ready(function() {
     console.log("entering content script dom ready area")
-    console.log(this);
-    console.log(self)
+    //console.log(this);
+    //console.log(self)
+
+
+
+    var cahootsRunner = new CahootsRunner(self);
+    cahootsRunner.run();
     console.log("leaving content script dom ready area")
 /*
     var personService = cahoots.api('person');

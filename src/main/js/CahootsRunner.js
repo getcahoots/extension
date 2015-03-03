@@ -1,13 +1,13 @@
 'use strict';
 
-function CahootsRunner(cahootsData) {
-    this.cahootsRepository = new CahootsApiRepository(cahootsData);
+function CahootsRunner($scope) {
+    this.scope = $scope;
 }
 
 
-CahootsRunner.prototype._findMatchingKeys = function() {
+CahootsRunner.prototype._findMatchingKeys = function(keys) {
     var foundKeys = [];
-    for (var key in this.cahootsRepository.findAuthorNames()) {
+    for (var key in keys) {
         if (jQuery('form:contains("' + key + '")').length > 0) {
             break;
         }
@@ -20,9 +20,8 @@ CahootsRunner.prototype._findMatchingKeys = function() {
 }
 
 
-CahootsRunner.prototype._highlightGivenKeys = function(foundKeys) {
-    var authorNames = this.cahootsRepository.findAuthorNames();
-    jQuery("body").highlight(foundKeys, {caseSensitive: false, className: authorNames});
+CahootsRunner.prototype._highlightGivenKeys = function(foundKeys, authorHints) {
+    jQuery("body").highlight(foundKeys, {caseSensitive: false, className: authorHints});
 }
 
 
@@ -38,17 +37,37 @@ CahootsRunner.prototype._tooltipsterize = function() {
         speed: '210',
         timer: '440',
         functionBefore: function(origin, continueTooltip) {
+            //continueTooltip();
+            //var fullCahootsOverlayContent = that._createCahootsContent(this);
+            //origin.tooltipster('content', fullCahootsOverlayContent);
+            var tooltipElement = this;
             continueTooltip();
-            var fullCahootsOverlayContent = that._createCahootsContent(this);
-            origin.tooltipster('content', fullCahootsOverlayContent);
+            var id = $(this).attr('class').replace(' tooltipstered','');
+            // TODO: hacky
+
+
+            var strippedId = id.split("_")[1];
+
+
+
+
+            self.port.on('gotFullDetails', function(cahoots_content){
+                console.log("TooltipResolver <-[gotFullDetails("+cahoots_content+")]-");
+                console.log(cahoots_content);
+                var fullCahootsOverlayContent = that._createCahootsContent(tooltipElement, cahoots_content);
+                origin.tooltipster('content', fullCahootsOverlayContent);
+            });
+            console.log("TooltipResolver -[getFullDetails("+strippedId+")]->");
+            self.port.emit('getFullDetails', strippedId);
+
         }
     });
 }
 
 
-CahootsRunner.prototype._createCahootsContent = function(elem) {
+CahootsRunner.prototype._createCahootsContent = function(elem, data) {
     var id = jQuery(elem).attr('class').replace(' tooltipstered', '');
-    var data = this.cahootsRepository.findAuthorByCahootsId(id);
+    //var data = this.cahootsRepository.findAuthorByCahootsId(id);
 
     var header = jQuery('<p>')
         .addClass("cahoots_top")
@@ -64,7 +83,7 @@ CahootsRunner.prototype._createCahootsContent = function(elem) {
     var middleList = jQuery("<ul>", {id:'cahoots_list'});
     for (var i = 0; i < data.cahoots.length; i++) {
         var listItem = jQuery("<li>").addClass("cahoots_item");
-        var organizationAnchor = jQuery("<a>", {target:"_blank",title:"Mehr Infos zu dieser Organisation",href:data.cahoots[i].more_info});
+        var organizationAnchor = jQuery("<a>", {target:"_blank",title:"Mehr Infos zu dieser Organisation",href:data.cahoots[i].info});
 
         if (data.cahoots[i].verified_info == "true") {
             organizationAnchor.append(jQuery("<img>", {
@@ -75,7 +94,7 @@ CahootsRunner.prototype._createCahootsContent = function(elem) {
         organizationAnchor.append(data.cahoots[i].name);
         listItem.append(organizationAnchor);
 
-        var sourceAnchor = jQuery("<a>", {target:"_blank","href":data.cahoots[i].src}).addClass("quelle").text("Quelle")
+        var sourceAnchor = jQuery("<a>", {target:"_blank","href":data.cahoots[i].source}).addClass("quelle").text("Quelle")
         listItem.append(sourceAnchor);
 
         middleList.append(listItem)
@@ -102,11 +121,23 @@ CahootsRunner.prototype._createCahootsContent = function(elem) {
 }
 
 CahootsRunner.prototype.run = function() {
-    var authors = this.cahootsRepository.findAuthorNames();
-    var foundKeys = this._findMatchingKeys(authors);
 
-    this._highlightGivenKeys(foundKeys);
-    this._tooltipsterize();
+    var that = this;
+    this.scope.port.on("gotAuthorHints", function(authorHints) {
+        console.log("CahootsRunner <-[gotAuthorHints]-")
+        console.log("authorHints:")
+        console.log(authorHints)
+        var foundKeys = that._findMatchingKeys(authorHints);
+        console.log("foundKeys:")
+        console.log(foundKeys)
+        that._highlightGivenKeys(foundKeys, authorHints);
+        that._tooltipsterize();
+        console.log("full cycle done")
+    })
+    console.log("CahootsRunner -[getAuthorHints]->")
+    this.scope.port.emit("getAuthorHints");
+
+
 }
 
 

@@ -75,6 +75,10 @@ module.exports = function (grunt) {
                     {expand: true,
                         cwd: 'cahoots-deps/libs',
                         src: 'cahoots-api-client.js',
+                        dest: '<%= build_dir_firefox %>/lib'},
+                    {expand: true,
+                        cwd: 'src/main/js',
+                        src: 'CahootsApiRepository.js',
                         dest: '<%= build_dir_firefox %>/lib'}
                 ]
             },

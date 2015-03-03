@@ -1,7 +1,8 @@
 
 describe('CahootsApiRepository', function suite () {
 
-    var cahootsRepository = new CahootsApiRepository(apiMockPersons());
+    var cahootsRepository = new CahootsApiRepository();
+    cahootsRepository.updateFromRemote();
 
     var expectedAuthors = {
         'Jonas Bergmeier' : 'CahootsID_a70ac98f6379aca6e45a602ece8d9c28',
@@ -13,6 +14,7 @@ describe('CahootsApiRepository', function suite () {
     beforeEach(function() {
     });
 
+
     it('should return a list of all Authors', function () {
         var result = cahootsRepository.findAuthorNames();
 
@@ -21,10 +23,10 @@ describe('CahootsApiRepository', function suite () {
 
     it('should return full data object', function () {
         var result = cahootsRepository.getFullData();
-        expect(result).toEqual(apiMockPersons())
+        console.log(result)
         expect(result.filter(function(elem){
-            return elem.id=="a70ac98f6379aca6e45a602ece8d9c28";
-        })[0].name).toBe("Jonas Bergmeier")
+            return elem.id=="03f633535c5980522c92ccd8a6fbe07849458232";
+        })[0].name).toBe("Claus Kleber")
     });
 
      it('should return author data by cahoots id', function () {

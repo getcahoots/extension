@@ -16,7 +16,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+
       {pattern: "cahoots-deps/libs/cahoots-api-client.min.js", included: true},
+        {pattern: 'src/test/js/main-test.js', included: true},
       {pattern: 'src/test/js/mocks.js', included: true},
         {pattern: 'src/test/js/apiMocks.js', included: true},
       {pattern: 'cahoots-deps/libs/jquery.tooltipster.js', included: true},
