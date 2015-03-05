@@ -1,78 +1,97 @@
 // Karma configuration
 // Generated on Sun Feb 22 2015 20:56:28 GMT+0100 (CET)
 
-module.exports = function(config) {
-  config.set({
+module.exports = function (config) {
+    config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    //frameworks: ['jasmine-jquery', 'jasmine'],
-    frameworks: ['jasmine-jquery', 'jasmine'],
+        // base path that will be used to resolve all patterns (eg. files, exclude)
+        basePath: '',
 
 
-    // list of files / patterns to load in the browser
-    files: [
+        // frameworks to use
+        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        //frameworks: ['jasmine-jquery', 'jasmine'],
+        frameworks: ['jasmine-jquery','jasmine','commonjs'],
 
-      {pattern: "cahoots-deps/libs/cahoots-api-client.min.js", included: true},
-        {pattern: 'src/test/js/main-test.js', included: true},
-      {pattern: 'src/test/js/mocks.js', included: true},
-        {pattern: 'src/test/js/apiMocks.js', included: true},
-      {pattern: 'cahoots-deps/libs/jquery.tooltipster.js', included: true},
-      {pattern: 'src/main/js/*js', included: true},
-      {pattern: 'src/test/**/*.spec.js', included: true},
+        plugins: [
+            'karma-commonjs',
+            'karma-jasmine',
+            'karma-jasmine-jquery',
 
-      {pattern: 'src/test/html/*.html', watched: true, served: true, included: true},
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-phantomjs-launcher',
+            'karma-nyan-reporter'
+        ],
 
-    ],
-
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
+        // list of files / patterns to load in the browser
+        files: [
 
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+
+            {pattern: 'src/test/js/main-test.js', included: true},
+            //{pattern: "cahoots-deps/libs/cahoots-api-client.js", included: true},
+            {pattern: 'src/test/js/mocks.js', included: true},
+            //{pattern: 'src/test/js/apiMocks.js', included: true},
+            {pattern: 'cahoots-deps/libs/jquery.tooltipster.js', included: true},
+            {pattern: 'src/main/js/*js', included: true},
+            {pattern: 'src/test/**/*.spec.js', included: true},
+
+            {pattern: 'src/test/html/*.html', watched: true, served: true, included: true},
+
+        ],
 
 
-    // web server port
-    port: 9876,
+        // list of files to exclude
+        exclude: [],
 
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        //preprocessors: {},
+
+        preprocessors: {
+            'src/**/*.js': ['commonjs']
+        },
+
+        commonjsPreprocessor: {
+            modulesRoot: 'src/main/js'
+        },
 
 
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        //reporters: ['progress'],
+        reporters: ['nyan'],
 
 
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+        // web server port
+        port: 9876,
 
 
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    //browsers: ['PhantomJS', 'Firefox', 'Chrome'],
-    browsers: ['Firefox'],
-    //browsers: ['PhantomJS'],
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
 
 
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    //singleRun: true
-  });
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
+
+
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
+
+
+        // start these browsers
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        //browsers: ['PhantomJS', 'Firefox', 'Chrome'],
+        browsers: ['Firefox'],
+        //browsers: ['PhantomJS'],
+
+
+        // Continuous Integration mode
+        // if true, Karma captures browsers, runs the tests and exits
+        //singleRun: true
+    });
 };

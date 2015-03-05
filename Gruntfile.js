@@ -78,8 +78,17 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_firefox %>/lib'},
                     {expand: true,
                         cwd: 'src/main/js',
-                        src: 'CahootsApiRepository.js',
+                        src: 'CahootsStorage.js',
+                        dest: '<%= build_dir_firefox %>/lib'},
+                    {expand: true,
+                        cwd: 'src/main/js',
+                        src: 'CahootsQueryService.js',
+                        dest: '<%= build_dir_firefox %>/lib'},
+                    {expand: true,
+                        cwd: 'src/main/js',
+                        src: 'CahootsStorageGenericUpdater.js',
                         dest: '<%= build_dir_firefox %>/lib'}
+
                 ]
             },
             chrome: {

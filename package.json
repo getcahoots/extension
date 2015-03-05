@@ -17,9 +17,12 @@
     "jquery": "^1.11.1",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
+    "karma-commonjs": "0.0.13",
+    "karma-commonjs-require": "0.0.3",
     "karma-firefox-launcher": "^0.1.4",
     "karma-jasmine": "^0.3.5",
     "karma-jasmine-jquery": "^0.1.1",
+    "karma-nyan-reporter": "0.0.51",
     "karma-phantomjs-launcher": "^0.1.4"
   }
 }

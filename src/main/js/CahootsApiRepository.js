@@ -7,7 +7,7 @@ function CahootsApiRepository() {
         hintMap: {}
     };
 
-    this.updateFromRemote();
+    //this.updateFromRemote();
 
 }
 
@@ -23,17 +23,17 @@ CahootsApiRepository.prototype.updateFromRemote= function() {
         console.log("leaving importData()")
     }
 
-    var fetchApiData = function(callbackOnSuccess) {
+    var fetchApiData = function(fetchApiDataCallback) {
         console.log("entering fetchApiData()")
         console.log("try to load cahoots-api-client")
-        var cahootsServices = require("./cahoots-api-client.js");
+        var cahootsServices = require("cahoots-api-client.js");
         console.log("... success");
         console.log("try to resolve personService");
         var personService = cahootsServices('person');
         console.log("... success");
         var onFindAllPersons = function(err, persons) {
             console.log("persons callback rcvd");
-            console.log(err);
+            //console.log(err);
             console.log(persons);
 
 
@@ -46,8 +46,8 @@ CahootsApiRepository.prototype.updateFromRemote= function() {
                 }
 
                 console.log(organizations);
-                importData(persons, organizations);
-                console.log("fetchApiData() cycle complete")
+                fetchApiDataCallback(persons, organizations);
+                console.log("updateFromRemote finished. fetchApiData() cycle complete")
             }
 
             organizationService.findAll(onFindAllOrgas);

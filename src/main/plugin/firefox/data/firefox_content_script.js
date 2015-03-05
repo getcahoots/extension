@@ -8,49 +8,35 @@ $(document).ready(function() {
 
 
 
-    var cahootsRunner = new CahootsRunner(self);
-    cahootsRunner.run();
-    console.log("leaving content script dom ready area")
-/*
-    var personService = cahoots.api('person');
-
-    var onFindAll = function(err, persons) {
-        console.log(err);
-        console.log(persons);
-
-        var cahootsRunner = new CahootsRunner(persons);
-        cahootsRunner.run();
+    var handleFullDetails = function(lookupId, dataCallback) {
+        self.port.once('gotFullDetails', function(data){
+            console.log("handleFullDetails() <-[gotFullDetails("+data+")]-");
+            console.log(data);
+            dataCallback(data);
+        });
+        console.log("handleFullDetails() -[getFullDetails("+lookupId+")]->");
+        self.port.emit('getFullDetails', lookupId);
     }
 
-    personService.findAll(onFindAll);*/
+    var handleAuthorHints = function(dataCallback) {
+        self.port.once("gotAuthorHints", function(authorHints) {
+            console.log("CahootsRunner <-[gotAuthorHints]-")
+            console.log("authorHints:")
+            //console.log(authorHints)
+            dataCallback(authorHints);
+        })
+        console.log("CahootsRunner -[getAuthorHints]->")
+        self.port.emit("getAuthorHints");
+    }
+
+
+
+
+    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
+    cahootsRunner.run();
+    console.log("leaving content script dom ready area")
+
 
 });
 console.log("leaving content script body area")
-
-
-/*
-(function(exports){
-
-    exports.test = function(){
-        return 'hello world'
-    };
-
-    exports.main = function(options, callbacks) {
-        console.log("entering main()")
-    }
-
-
-
-})(typeof exports === 'undefined'? {}: exports);
-*/
-
-
-/*$(document).ready(function() {
-    self.port.on('gotData', function(data){
-        var cahootsRunner = new CahootsRunner(data);
-        cahootsRunner.run();
-    });
-    self.port.emit('getData');
-});*/
-
 

@@ -1,13 +1,16 @@
 'use strict';
 
-function CahootsRunner($scope) {
-    this.scope = $scope;
+function CahootsRunner( handleFullDetails, handleAuthorHints) {
+    this.handleAuthorHints = handleAuthorHints;
+    this.handleFullDetails = handleFullDetails;
 }
 
 
-CahootsRunner.prototype._findMatchingKeys = function(keys) {
+CahootsRunner.prototype.findMatchingKeys = function(authorHints) {
+    console.log("entering findMatchingKeys with authorHints:" )
+    console.log(authorHints)
     var foundKeys = [];
-    for (var key in keys) {
+    for (var key in authorHints) {
         if (jQuery('form:contains("' + key + '")').length > 0) {
             break;
         }
@@ -20,12 +23,12 @@ CahootsRunner.prototype._findMatchingKeys = function(keys) {
 }
 
 
-CahootsRunner.prototype._highlightGivenKeys = function(foundKeys, authorHints) {
+CahootsRunner.prototype.highlightGivenKeys = function(foundKeys, authorHints) {
     jQuery("body").highlight(foundKeys, {caseSensitive: false, className: authorHints});
 }
 
 
-CahootsRunner.prototype._tooltipsterize = function() {
+CahootsRunner.prototype.tooltipsterize = function() {
     var that = this;
     jQuery('span[class*=CahootsID]').tooltipster({
         interactive: true,
@@ -38,7 +41,7 @@ CahootsRunner.prototype._tooltipsterize = function() {
         timer: '440',
         functionBefore: function(origin, continueTooltip) {
             //continueTooltip();
-            //var fullCahootsOverlayContent = that._createCahootsContent(this);
+            //var fullCahootsOverlayContent = that.createCahootsContent(this);
             //origin.tooltipster('content', fullCahootsOverlayContent);
             var tooltipElement = this;
             continueTooltip();
@@ -49,23 +52,16 @@ CahootsRunner.prototype._tooltipsterize = function() {
             var strippedId = id.split("_")[1];
 
 
-
-
-            self.port.on('gotFullDetails', function(cahoots_content){
-                console.log("TooltipResolver <-[gotFullDetails("+cahoots_content+")]-");
-                console.log(cahoots_content);
-                var fullCahootsOverlayContent = that._createCahootsContent(tooltipElement, cahoots_content);
+            that.handleFullDetails(strippedId,function(data) {
+                var fullCahootsOverlayContent = that.createCahootsContent(tooltipElement, data);
                 origin.tooltipster('content', fullCahootsOverlayContent);
-            });
-            console.log("TooltipResolver -[getFullDetails("+strippedId+")]->");
-            self.port.emit('getFullDetails', strippedId);
-
+            })
         }
     });
 }
 
 
-CahootsRunner.prototype._createCahootsContent = function(elem, data) {
+CahootsRunner.prototype.createCahootsContent = function(elem, data) {
     var id = jQuery(elem).attr('class').replace(' tooltipstered', '');
     //var data = this.cahootsRepository.findAuthorByCahootsId(id);
 
@@ -123,19 +119,30 @@ CahootsRunner.prototype._createCahootsContent = function(elem, data) {
 CahootsRunner.prototype.run = function() {
 
     var that = this;
-    this.scope.port.on("gotAuthorHints", function(authorHints) {
-        console.log("CahootsRunner <-[gotAuthorHints]-")
-        console.log("authorHints:")
-        console.log(authorHints)
-        var foundKeys = that._findMatchingKeys(authorHints);
+    this.handleAuthorHints(function(authorHints){
+        console.log("received: " + authorHints)
+        var foundKeys = that.findMatchingKeys(authorHints);
         console.log("foundKeys:")
         console.log(foundKeys)
-        that._highlightGivenKeys(foundKeys, authorHints);
-        that._tooltipsterize();
+        that.highlightGivenKeys(foundKeys, authorHints);
+        that.tooltipsterize();
         console.log("full cycle done")
     })
-    console.log("CahootsRunner -[getAuthorHints]->")
-    this.scope.port.emit("getAuthorHints");
+
+    //var that = this;
+    //this.scope.port.on("gotAuthorHints", function(authorHints) {
+    //    console.log("CahootsRunner <-[gotAuthorHints]-")
+    //    console.log("authorHints:")
+    //    console.log(authorHints)
+    //    var foundKeys = that.findMatchingKeys(authorHints);
+    //    console.log("foundKeys:")
+    //    console.log(foundKeys)
+    //    that.highlightGivenKeys(foundKeys, authorHints);
+    //    that.tooltipsterize();
+    //    console.log("full cycle done")
+    //})
+    //console.log("CahootsRunner -[getAuthorHints]->")
+    //this.scope.port.emit("getAuthorHints");
 
 
 }
