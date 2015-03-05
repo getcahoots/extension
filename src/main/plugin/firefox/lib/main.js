@@ -65,6 +65,8 @@ exports.main = function(options, callbacks) {
     var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1');
 
     //    - checks if outdated or fresh and starts update
+    var currentTimestamp = Date.now() / 1000 | 0;
+
     updater.update(xhr1,xhr2, cahootsStorage,function(){
 
     }); // runs async

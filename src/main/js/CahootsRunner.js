@@ -148,3 +148,5 @@ CahootsRunner.prototype.run = function() {
 }
 
 
+module.exports = CahootsRunner
+
