@@ -1,3 +1,5 @@
+'use strict';
+
 function CahootsQueryService(queryStorage) {
     this.queryStorage = queryStorage;
 }
@@ -42,4 +44,4 @@ CahootsQueryService.prototype.findOrganizationByCahootsId = function(cahootsID) 
     return organization[0];
 }
 
-module.exports = CahootsQueryService;
+exports.CahootsQueryService =  CahootsQueryService

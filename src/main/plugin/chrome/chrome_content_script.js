@@ -20,8 +20,11 @@ $(document).ready(function() {
         });
     }
 
-    var CahootsRunner = cahoots.runner;
-    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
+    var CahootsRunner = cahoots.runner.CahootsRunner;
+    var CahootsUiFormatter = cahoots.formatter.CahootsUiFormatter;
+
+    var uiFormatter = new CahootsUiFormatter();
+    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter);
     cahootsRunner.run();
     console.log("leaving content script dom ready area")
 

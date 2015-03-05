@@ -18,21 +18,22 @@ describe('CahootsQueryService', function(){
     }];
 
     describe('commonjs interfaces',function(){
-        var CahootsQueryService = require('CahootsQueryService');;
-        var CahootsStorage = require('CahootsStorage');
+        var CahootsQueryService = require('CahootsQueryService').CahootsQueryService;
+        var CahootsStorage = require('CahootsStorage').CahootsStorage;
 
+        var storage = null;
         beforeEach(function(){
+            storage = new CahootsStorage({});
+            storage.setPersons(inputPersons)
         })
         it('should create', function() {
 
-            var qs = new CahootsQueryService("loL")
+            var qs = new CahootsQueryService(storage)
             //console.log(qs.findAuthorHints())
         })
 
         it('should find author hints', function() {
-            var storage = new CahootsStorage({});
-            storage.setPersons(inputPersons)
-            var CahootsQueryService = require('CahootsQueryService');
+
             var qs = new CahootsQueryService(storage)
             var ah = qs.findAuthorHints();
             expect(ah).toEqual(expectedAuthorHints);

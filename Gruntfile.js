@@ -250,6 +250,36 @@ module.exports = function (grunt) {
                         standalone: "cahoots.runner"
                     }
                 }
+            },
+            chrome_content_formatter: {
+                src: 'src/main/js/CahootsUiFormatter.js',
+                dest: "<%= build_dir_chrome %>/CahootsUiFormatterBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.formatter"
+                    }
+                }
+            },
+            firefox_content_runner: {
+                src: 'src/main/js/CahootsRunner.js',
+                dest: "<%= build_dir_firefox %>/data/CahootsRunnerBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.runner"
+                    }
+                }
+            },
+            firefox_content_formatter: {
+                src: 'src/main/js/CahootsUiFormatter.js',
+                dest: "<%= build_dir_firefox %>/data/CahootsUiFormatterBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.formatter"
+                    }
+                }
             }
         }
     };
@@ -262,8 +292,17 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [ 'build_all' ]);
     grunt.registerTask('build_all', [ 'clean','karma','build_firefox','build_chrome' ]);
 
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'copy:firefox','mozilla-cfx-xpi' ]);
-    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','browserify','crx' ]);
+    grunt.registerTask('browserify_firefox', [ 'browserify:firefox_content_runner' , 'browserify:firefox_content_formatter' ]);
+    grunt.registerTask('browserify_chrome', [
+        'browserify:chrome_content_runner' ,
+        'browserify:chrome_content_formatter',
+        'browserify:chrome_event_query',
+        'browserify:chrome_event_storage',
+        'browserify:chrome_event_updater'
+    ]);
+
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'copy:firefox','browserify_firefox','mozilla-cfx-xpi' ]);
+    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','browserify_chrome','crx' ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','karma','build_firefox','mozilla-cfx' ]);
 

@@ -1,11 +1,11 @@
 describe("CahootsStorageGenericUpdater", function suite() {
 
     it("should make cross domain call to api endpoint", function test(done) {
-        var CahootsStorage = require("CahootsStorage")
+        var CahootsStorage = require("CahootsStorage").CahootsStorage
         var storage = new CahootsStorage({});
         var xhr1 = new XMLHttpRequest();
         var xhr2 = new XMLHttpRequest();
-        var CahootsStorageGenericUpdater = require("CahootsStorageGenericUpdater");
+        var CahootsStorageGenericUpdater = require("CahootsStorageGenericUpdater").CahootsStorageGenericUpdater;
         var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1/persons');
 
         updater.update(xhr1, xhr2, storage, function(personValues,orgaValues){

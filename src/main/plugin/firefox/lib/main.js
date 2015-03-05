@@ -15,7 +15,7 @@ exports.main = function(options, callbacks) {
     var browserStorageObject = ss.storage.cahoots =  typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
     // 2. create new CahootsStorageRepository from storage element
-    var CahootsStorage = require("./CahootsStorage")
+    var CahootsStorage = require("./CahootsStorage").CahootsStorage
     var cahootsStorage = new CahootsStorage(browserStorageObject)
 
     // 3. create updater
@@ -25,7 +25,7 @@ exports.main = function(options, callbacks) {
     var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
     var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
-    var CahootsStorageGenericUpdater = require("./CahootsStorageGenericUpdater")
+    var CahootsStorageGenericUpdater = require("./CahootsStorageGenericUpdater").CahootsStorageGenericUpdater
     var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1');
 
     //    - checks if outdated or fresh and starts update
@@ -36,7 +36,7 @@ exports.main = function(options, callbacks) {
     }); // runs async
 
     // 3. create query service with storage
-    var CahootsQueryService = require("CahootsQueryService");
+    var CahootsQueryService = require("CahootsQueryService").CahootsQueryService;
     var queryService = new CahootsQueryService(cahootsStorage);
 
     // 4. setup page worker with content script and events
@@ -50,8 +50,8 @@ exports.main = function(options, callbacks) {
                 data.url("jquery.js"),
                 data.url("jquery_highlight.js"),
                 data.url("jquery.tooltipster.js"),
-                //data.url("CahootsApiRepository.js"),
-                data.url("CahootsRunner.js"),
+                data.url("CahootsRunnerBundle.js"),
+                data.url("CahootsUiFormatterBundle.js"),
                 data.url("firefox_content_script.js")
             ],
             contentStyleFile: [

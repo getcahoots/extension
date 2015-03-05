@@ -30,9 +30,11 @@ $(document).ready(function() {
     }
 
 
-
-
-    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
+    var CahootsUiFormatter = cahoots.formatter.CahootsUiFormatter;
+    var CahootsRunner = cahoots.runner.CahootsRunner;
+    
+    var uif = new CahootsUiFormatter();
+    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints,uif);
     cahootsRunner.run();
     console.log("leaving content script dom ready area")
 

@@ -1,8 +1,11 @@
 var CahootsStorageGenericUpdater = function(url) {
+    this.debug = false;
     this.url = url; // 'https://api.cahoots.pw/v1/persons'
 }
 
 CahootsStorageGenericUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, callback) {
+
+    var debug = this.debug;
 
     var url = this.url; //location relative to current webpage
 
@@ -20,10 +23,10 @@ CahootsStorageGenericUpdater.prototype.update = function(xhr1, xhr2, cahootsStor
             //console.log(xhr2.response)
             var orgaValues = JSON.parse(xhr2.response);
 
-            console.log("loaded through.")
+            if(debug) console.log("loaded through.")
             cahootsStorageInstance.setPersons(personValues)
             cahootsStorageInstance.setOrganizations(orgaValues)
-            console.log("loaded through -> callback")
+            if(debug) console.log("loaded through -> callback")
             callback(personValues,orgaValues)
         }
             //console.log(xmlEvent);
@@ -38,4 +41,4 @@ CahootsStorageGenericUpdater.prototype.update = function(xhr1, xhr2, cahootsStor
     xhr1.send();
 }
 
-module.exports=CahootsStorageGenericUpdater
+module.exports.CahootsStorageGenericUpdater=CahootsStorageGenericUpdater

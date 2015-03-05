@@ -13,9 +13,9 @@ describe('CahootsRunner', function suite () {
 
 
 
-    var CahootsRunner = require("CahootsRunner");
-    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
-    cahootsRunner.run();
+    var CahootsRunner = require("CahootsRunner").CahootsRunner;
+    //var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
+    //cahootsRunner.run();
     var cahootsRunner;
     var f;
 

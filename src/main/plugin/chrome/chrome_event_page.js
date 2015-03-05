@@ -1,10 +1,12 @@
 console.log("entering event page body")
-
-var CahootsStorage = cahoots.storage;
+//console.log(cahoots)
+var CahootsStorage = cahoots.storage.CahootsStorage;
 var cahootsStorage = new CahootsStorage(localStorage)
 
-var CahootsStorageGenericUpdater = cahoots.updater;
+var CahootsStorageGenericUpdater = cahoots.updater.CahootsStorageGenericUpdater;
 var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1');
+
+//console.log(cahoots.eventbundle);
 
 var xhr1 = new XMLHttpRequest()
 var xhr2 = new XMLHttpRequest()
@@ -13,7 +15,7 @@ updater.update(xhr1,xhr2, cahootsStorage,function(){
 }); // runs async
 
 // 3. create query service with storage
-var CahootsQueryService = cahoots.query;
+var CahootsQueryService = cahoots.query.CahootsQueryService;
 var queryService = new CahootsQueryService(cahootsStorage);
 
 // 4. wire events
