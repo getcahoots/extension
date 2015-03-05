@@ -1,54 +1,18 @@
 console.log("entering addon script body area")
 //console.log(this); // Sandbox
-//console.log(self)
 
-//var data = require("sdk/self").data;
 var sdkSelf = require("sdk/self");
 var data = sdkSelf.data;
 var lib = sdkSelf.lib;
-
-
-//var Request = require("sdk/request").Request;
-
-//var defer  = require('sdk/core/promise');
-//const { defer } = require('sdk/core/promise');
-//var { setTimeout, clearTimeout } = require("sdk/timers");
-
-//
-//
-//function delay(ms, value) {
-//    let { promise, resolve } = defer();
-//    setTimeout(resolve, ms, value);
-//    return promise;
-//}
-//
-//delay(5000, 'Hello world').then(console.log);
-//console.log('Hello too')
-// After 10ms => 'Helo world'
-
-
-//myPageMod.on("*", function(e, data) {
-//    console.log("pageMod event " + e + " was received");
-//    console.log(data)
-//});
-
-
 
 
 exports.main = function(options, callbacks) {
     console.log("entering addon script main method for reason: " + options.loadReason)
     //console.log(this) // CommonJS Module
 
-
-
-    //var CahootsApiRepository = require("./CahootsApiRepository.js");
-    //var repoInstance = new CahootsApiRepository();
-
     // 1. get the storage element in platform specific way
     var ss = require("sdk/simple-storage");
     var browserStorageObject = ss.storage.cahoots =  typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
-    //ss.storage.myArray = [1, 1, 2, 3, 5, 8, 13];
-    //ss.storage.myBoolean = true;
 
     // 2. create new CahootsStorageRepository from storage element
     var CahootsStorage = require("./CahootsStorage")
@@ -65,7 +29,7 @@ exports.main = function(options, callbacks) {
     var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1');
 
     //    - checks if outdated or fresh and starts update
-    var currentTimestamp = Date.now() / 1000 | 0;
+    //var currentTimestamp = Date.now() / 1000 | 0;
 
     updater.update(xhr1,xhr2, cahootsStorage,function(){
 
@@ -121,20 +85,6 @@ exports.main = function(options, callbacks) {
 exports.onUnload = function() {
     console.log("entering addon script unload method")
     console.log("leaving addon script unload method")
-}
-
-exports.dummy = function () {
-    require("cahoots")
-    require(data.url("cahoots-api-client.min.js"));
-    require('cahoots-api-client');
-    require("sdk/self/cahoots-api-client.min.js")
-    require("resource://jid1-mq1gt2z5dspt9g-at-jetpack/cahoots/data/cahoots-api-client.min.js")
-    require("resource://jid1-mq1gt2z5dspt9g-at-jetpack/cahoots/lib/cahoots-api-client.min.js")
-    require(lib.url("cahoots-api-client.min.js"));
-    require("./cahoots-api-client.min.js")
-    require("./cahoots-api-client.js")
-    require("./cahoots-api-client-old.min.js")
-    require("person.js")
 }
 
 console.log("leaving addon script body area")

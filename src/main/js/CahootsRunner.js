@@ -129,21 +129,6 @@ CahootsRunner.prototype.run = function() {
         console.log("full cycle done")
     })
 
-    //var that = this;
-    //this.scope.port.on("gotAuthorHints", function(authorHints) {
-    //    console.log("CahootsRunner <-[gotAuthorHints]-")
-    //    console.log("authorHints:")
-    //    console.log(authorHints)
-    //    var foundKeys = that.findMatchingKeys(authorHints);
-    //    console.log("foundKeys:")
-    //    console.log(foundKeys)
-    //    that.highlightGivenKeys(foundKeys, authorHints);
-    //    that.tooltipsterize();
-    //    console.log("full cycle done")
-    //})
-    //console.log("CahootsRunner -[getAuthorHints]->")
-    //this.scope.port.emit("getAuthorHints");
-
 
 }
 

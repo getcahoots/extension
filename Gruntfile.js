@@ -5,6 +5,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mozilla-addon-sdk');
     grunt.loadNpmTasks('grunt-crx');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-browserify');
+
 
     var out_dir = 'dest';
     var mozillaConfig = {
@@ -98,12 +100,6 @@ module.exports = function (grunt) {
                         cwd: '<%= src_chrome %>',
                         src: '**',
                         dest: '<%= build_dir_chrome %>'},
-                    // chrome cahoots data
-                    {
-                        expand: true,
-                        cwd: 'cahoots-deps/db',
-                        src: ['db.json'],
-                        dest: '<%= build_dir_chrome %>'},
                     // chrome addon assets: icons
                     {
                         expand: true,
@@ -134,7 +130,7 @@ module.exports = function (grunt) {
                     // chrome jquery highlight
                     {expand: true,
                         cwd: 'src/main/js',
-                        src: '*.js',
+                        src: 'jquery_highlight.js',
                         dest: '<%= build_dir_chrome %>'}
                 ]
             }
@@ -212,6 +208,49 @@ module.exports = function (grunt) {
                 //browsers: ['PhantomJS'],
                 logLevel: 'ERROR'
             }
+        },
+
+        browserify: {
+            chrome_event_query: {
+                src: 'src/main/js/CahootsQueryService.js',
+                dest: "<%= build_dir_chrome %>/CahootsQueryServiceBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.query"
+                    }
+                }
+            },
+            chrome_event_storage: {
+                src: 'src/main/js/CahootsStorage.js',
+                dest: "<%= build_dir_chrome %>/CahootsStorageBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.storage"
+                    }
+                }
+            },
+            chrome_event_updater: {
+                src: 'src/main/js/CahootsStorageGenericUpdater.js',
+                dest: "<%= build_dir_chrome %>/CahootsStorageGenericUpdaterBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.updater"
+                    }
+                }
+            },
+            chrome_content_runner: {
+                src: 'src/main/js/CahootsRunner.js',
+                dest: "<%= build_dir_chrome %>/CahootsRunnerBundle.js",
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.runner"
+                    }
+                }
+            }
         }
     };
 
@@ -224,7 +263,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build_all', [ 'clean','karma','build_firefox','build_chrome' ]);
 
     grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'copy:firefox','mozilla-cfx-xpi' ]);
-    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','crx' ]);
+    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'copy:chrome','browserify','crx' ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','karma','build_firefox','mozilla-cfx' ]);
 

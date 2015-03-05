@@ -18,12 +18,10 @@ describe('CahootsQueryService', function(){
     }];
 
     describe('commonjs interfaces',function(){
-        var CahootsQueryService = null;
-        var CahootsStorage = null;
+        var CahootsQueryService = require('CahootsQueryService');;
+        var CahootsStorage = require('CahootsStorage');
 
         beforeEach(function(){
-            CahootsQueryService = require('CahootsQueryService');
-            CahootsStorage = require('CahootsStorage')
         })
         it('should create', function() {
 

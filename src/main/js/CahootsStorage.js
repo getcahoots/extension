@@ -4,11 +4,11 @@ var CahootsStorage = function(storageObject) {
 
 
 CahootsStorage.prototype.setPersons = function (data) {
-    this.storage.persons = data;
+    this.storage.persons = JSON.stringify(data);
 }
 
 CahootsStorage.prototype.setOrganizations = function (data) {
-    this.storage.organizations = data;
+    this.storage.organizations = JSON.stringify(data);
 }
 
 CahootsStorage.prototype.updateHints = function () {
@@ -16,10 +16,10 @@ CahootsStorage.prototype.updateHints = function () {
 }
 
 CahootsStorage.prototype.getPersons = function() {
-    return this.storage.persons;
+    return JSON.parse(this.storage.persons);
 }
 
 CahootsStorage.prototype.getOrganizations = function() {
-    return this.storage.organizations;
+    return JSON.parse(this.storage.organizations);
 }
 module.exports=CahootsStorage
