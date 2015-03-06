@@ -143,7 +143,7 @@ module.exports = function (grunt) {
                 options: {
                     "mozilla-addon-sdk": "stable",
                     extension_dir: "<%= build_dir_firefox %>",
-                    dist_dir: "<%= export_dir %>/firefox-addon-stable"
+                    dist_dir: "<%= export_dir %>"
                 }
             },
             'experimental': {
@@ -155,15 +155,28 @@ module.exports = function (grunt) {
                 }
             }
         },
-        "mozilla-cfx": {
-            custom_command: {
+        'mozilla-cfx': {
+            'run_stable': {
                 options: {
                     "mozilla-addon-sdk": "stable",
                     extension_dir: "<%= build_dir_firefox %>",
                     command: "run",
 
-                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'"
+                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
+                    pipe_output: true
+
                     //arguments: "--binary-args '-url \"www.mozilla.org\" -jsconsole'"
+                }
+            },
+            'run_experimental': {
+                options: {
+                    "mozilla-addon-sdk": "master",
+                    extension_dir: "<%= build_dir_firefox %>",
+                    command: "run",
+
+                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
+
+                    pipe_output: true
                 }
             }
         },
@@ -177,8 +190,8 @@ module.exports = function (grunt) {
         crx: {
             cahootsExtension: {
                 "src": ["<%= build_dir_chrome %>/**/*"],
-                "dest": "<%= export_dir %>/chrome",
-                "zipDest": "<%= export_dir %>/chrome",
+                "dest": "<%= export_dir %>",
+                "zipDest": "<%= export_dir %>",
 
                 "options": {
                     "privateKey": userConfig.private_key
@@ -219,78 +232,7 @@ module.exports = function (grunt) {
                         standalone: "cahoots.extension"
                     }
                 }
-            },
-
-            //chrome_event_query: {
-            //    src: 'src/main/js/QueryService.js',
-            //    dest: "<%= build_dir_chrome %>/CahootsQueryServiceBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.query"
-            //        }
-            //    }
-            //},
-            //chrome_event_storage: {
-            //    src: 'src/main/js/CahootsStorage.js',
-            //    dest: "<%= build_dir_chrome %>/CahootsStorageBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.storage"
-            //        }
-            //    }
-            //},
-            //chrome_event_updater: {
-            //    src: 'src/main/js/StorageUpdater.js',
-            //    dest: "<%= build_dir_chrome %>/CahootsStorageGenericUpdaterBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.updater"
-            //        }
-            //    }
-            //},
-            //chrome_content_runner: {
-            //    src: 'src/main/js/CahootsRunner.js',
-            //    dest: "<%= build_dir_chrome %>/CahootsRunnerBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.runner"
-            //        }
-            //    }
-            //},
-            //chrome_content_formatter: {
-            //    src: 'src/main/js/CahootsUiFormatter.js',
-            //    dest: "<%= build_dir_chrome %>/CahootsUiFormatterBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.formatter"
-            //        }
-            //    }
-            //},
-            //firefox_content_runner: {
-            //    src: 'src/main/js/CahootsRunner.js',
-            //    dest: "<%= build_dir_firefox %>/data/CahootsRunnerBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.runner"
-            //        }
-            //    }
-            //},
-            //firefox_content_formatter: {
-            //    src: 'src/main/js/CahootsUiFormatter.js',
-            //    dest: "<%= build_dir_firefox %>/data/CahootsUiFormatterBundle.js",
-            //    options: {
-            //        browserifyOptions: {
-            //            debug: true,
-            //            standalone: "cahoots.formatter"
-            //        }
-            //    }
-            //}
+            }
         }
     };
 
@@ -302,22 +244,14 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [ 'build_all' ]);
     grunt.registerTask('build_all', [ 'clean','karma','build_firefox','build_chrome' ]);
 
-
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
 
-    /*grunt.registerTask('browserify_firefox', [ 'browserify:firefox_content_runner' , 'browserify:firefox_content_formatter' ]);
-    grunt.registerTask('browserify_chrome', [
-        'browserify:chrome_content_runner' ,
-        'browserify:chrome_content_formatter',
-        'browserify:chrome_event_query',
-        'browserify:chrome_event_storage',
-        'browserify:chrome_event_updater'
-    ]);*/
-
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon(need activation of sdk beforehand)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi' ]);
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi' ]);
+    grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi' ]);
     grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','copy:chrome','crx' ]);
 
-    grunt.registerTask('run_firefox', "runs the cahoots firefox addon(need activation of sdk beforehand)",[ 'clean','karma','build_firefox','mozilla-cfx' ]);
+    grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma','build_firefox','mozilla-cfx:run_stable' ]);
+    grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);
 
 
 };

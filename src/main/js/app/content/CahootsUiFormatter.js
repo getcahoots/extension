@@ -11,8 +11,6 @@ var CahootsUiFormatter = function() {
 
 
 CahootsUiFormatter.prototype.createDetailsView = function(elem, data) {
-    //var id = jQuery(elem).attr('class').replace(' tooltipstered', '');
-
     var snippets = this.snippets;
 
     var header = jQuery('<p>')
