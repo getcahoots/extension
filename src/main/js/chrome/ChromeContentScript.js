@@ -20,8 +20,8 @@ $(document).ready(function() {
         });
     }
 
-    var CahootsRunner = cahoots.content().CahootsRunner.CahootsRunner;
-    var CahootsUiFormatter = cahoots.content().CahootsUiFormatter.CahootsUiFormatter;
+    var CahootsRunner = cahoots.content.CahootsRunner;
+    var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
 
     var uiFormatter = new CahootsUiFormatter();
     var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter);

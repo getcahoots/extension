@@ -7,7 +7,6 @@ function CahootsRunner( handleFullDetails, handleAuthorHints, uiFormatter) {
     this.debug = false;
 }
 
-
 CahootsRunner.prototype.findMatchingKeys = function(authorHints) {
     if(this.debug) {
         console.log("entering findMatchingKeys with authorHints:")
@@ -46,14 +45,10 @@ CahootsRunner.prototype.tooltipsterize = function() {
         speed: '210',
         timer: '440',
         functionBefore: function(origin, continueTooltip) {
-            //continueTooltip();
-            //var fullCahootsOverlayContent = that.createCahootsContent(this);
-            //origin.tooltipster('content', fullCahootsOverlayContent);
             var tooltipElement = this;
             continueTooltip();
             var id = $(this).attr('class').replace(' tooltipstered','');
             // TODO: hacky
-
 
             var strippedId = id.split("_")[1];
 
@@ -84,4 +79,4 @@ CahootsRunner.prototype.run = function() {
 }
 
 
-exports.CahootsRunner = CahootsRunner
+module.exports = CahootsRunner

@@ -30,4 +30,4 @@ CahootsStorage.prototype.getPersons = function() {
 CahootsStorage.prototype.getOrganizations = function() {
     return JSON.parse(this.storage.organizations);
 }
-module.exports.CahootsStorage=CahootsStorage
+module.exports=CahootsStorage

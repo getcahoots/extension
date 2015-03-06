@@ -44,4 +44,4 @@ CahootsQueryService.prototype.findOrganizationByCahootsId = function(cahootsID) 
     return organization[0];
 }
 
-exports.CahootsQueryService =  CahootsQueryService
+module.exports =  CahootsQueryService

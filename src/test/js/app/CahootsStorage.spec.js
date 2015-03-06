@@ -55,7 +55,7 @@ describe("CahootsStorage", function suite() {
         ]
     };
 
-    var CahootsStorage = require("app/extension/CahootsStorage").CahootsStorage;
+    var CahootsStorage = require("app/extension/CahootsStorage");
 
     it('should create', function () {
         var s = new CahootsStorage({});

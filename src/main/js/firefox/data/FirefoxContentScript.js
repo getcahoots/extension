@@ -30,8 +30,8 @@ $(document).ready(function() {
     }
 
 
-    var CahootsUiFormatter = cahoots.content().CahootsUiFormatter.CahootsUiFormatter;
-    var CahootsRunner = cahoots.content().CahootsRunner.CahootsRunner;
+    var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
+    var CahootsRunner = cahoots.content.CahootsRunner;
     
     var uif = new CahootsUiFormatter();
     var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints,uif);

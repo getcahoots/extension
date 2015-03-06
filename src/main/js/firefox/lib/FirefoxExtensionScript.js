@@ -9,9 +9,9 @@ exports.main = function(options, callbacks) {
         var ss = require("sdk/simple-storage");
         var browserStorageObject = ss.storage.cahoots =  typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
-        var extension = require("./CahootsExtensionBundle")()
+        var extension = require("./CahootsExtensionBundle")
         // 2. create new CahootsStorageRepository from storage element
-        var CahootsStorage = extension.CahootsStorage.CahootsStorage
+        var CahootsStorage = extension.CahootsStorage
 
         var cahootsStorage = new CahootsStorage(browserStorageObject)
 
@@ -22,7 +22,7 @@ exports.main = function(options, callbacks) {
         var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
         var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
-        var CahootsStorageGenericUpdater = extension.CahootsStorageGenericUpdater.CahootsStorageGenericUpdater
+        var CahootsStorageGenericUpdater = extension.CahootsStorageGenericUpdater
         var updater = new CahootsStorageGenericUpdater('https://api.cahoots.pw/v1');
 
         //    - checks if outdated or fresh and starts update
@@ -33,7 +33,7 @@ exports.main = function(options, callbacks) {
         }); // runs async
 
         // 3. create query service with storage
-        var CahootsQueryService = extension.CahootsQueryService.CahootsQueryService
+        var CahootsQueryService = extension.CahootsQueryService
         var queryService = new CahootsQueryService(cahootsStorage);
 
 

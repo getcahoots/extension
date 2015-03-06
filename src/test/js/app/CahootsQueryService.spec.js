@@ -19,8 +19,8 @@ describe('CahootsQueryService', function(){
 
     describe('commonjs interfaces',function(){
 
-        var CahootsQueryService = require('app/extension/CahootsQueryService').CahootsQueryService;
-        var CahootsStorage = require('app/extension/CahootsStorage').CahootsStorage;
+        var CahootsQueryService = require('app/extension/CahootsQueryService');
+        var CahootsStorage = require('app/extension/CahootsStorage');
 
         var storage = null;
         beforeEach(function(){

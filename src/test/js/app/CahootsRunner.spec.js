@@ -13,9 +13,7 @@ describe('CahootsRunner', function suite () {
 
 
 
-    var CahootsRunner = require("app/content/CahootsRunner").CahootsRunner;
-    //var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints);
-    //cahootsRunner.run();
+    var CahootsRunner = require("app/content/CahootsRunner");
     var cahootsRunner;
     var f;
 
@@ -43,13 +41,6 @@ describe('CahootsRunner', function suite () {
             done()
         });
     })
-
-//    it('access', function() {
-//        var htmlContext = f.read(authorsUrl);
-//        console.log(jQuery('br',htmlContext))
-//    });
-
-
 
 
    /* it('should find authors keys from page', function() {

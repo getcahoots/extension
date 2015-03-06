@@ -41,4 +41,4 @@ CahootsStorageGenericUpdater.prototype.update = function(xhr1, xhr2, cahootsStor
     xhr1.send();
 }
 
-module.exports.CahootsStorageGenericUpdater=CahootsStorageGenericUpdater
+module.exports=CahootsStorageGenericUpdater

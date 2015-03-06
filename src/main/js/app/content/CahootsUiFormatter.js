@@ -68,4 +68,4 @@ CahootsUiFormatter.prototype.createDetailsView = function(elem, data) {
 
 
 
-module.exports.CahootsUiFormatter = CahootsUiFormatter
+module.exports = CahootsUiFormatter
