@@ -12,11 +12,9 @@ updater.update(xhr1,xhr2, cahootsStorage,function(){
 
 }); // runs async
 
-// 3. create query service with storage
 var QueryService = cahoots.extension.QueryService;
 var queryService = new QueryService(cahootsStorage);
 
-// 4. wire events
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
     if(request.message=="getAuthorHints") {
         var authorHints = queryService.findAuthorHints();
