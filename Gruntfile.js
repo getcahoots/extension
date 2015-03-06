@@ -246,8 +246,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
 
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi' ]);
-    grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi' ]);
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:stable' ]);
+    grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
     grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','copy:chrome','crx' ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma','build_firefox','mozilla-cfx:run_stable' ]);
