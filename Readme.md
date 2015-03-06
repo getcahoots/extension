@@ -3,7 +3,6 @@
 
 ## Perequisites
 
-* mozilla addon sdk
 * npm
 * bower
 * grunt
@@ -14,13 +13,14 @@
 ### install npm + grunt-cli  + bower-cli
 todo: npm
 `# sudo npm install -g grunt-cli`
+`# sudo npm install -g bower-cli`
 
 ### fetch project dependencies
 after git clone, cd into extension and execute:
 
 `npm install`
 `bower install`
-### install mozilla addon sdk
+### install mozilla addon sdk (one time)
 grunt mozilla-addon-sdk
 
 
