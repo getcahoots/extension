@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "css": [ "style.css", "cahoots-tooltipster.css" ],
-      "js": [ "jquery.js", "jquery_highlight.js", "jquery.tooltipster.js", "CahootsContentBundle.js","ChromeContentScript.js" ],
+      "js": [ "jquery.js", "jquery_highlight.js", "jquery.tooltipster.js", "CahootsContentBundle.js","ChromeContentScriptBundle.js","ChromeContentScriptLoader.js" ],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_end"
    } ],

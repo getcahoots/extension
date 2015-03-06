@@ -214,8 +214,6 @@ module.exports = function (grunt) {
                 browsers: ['Chrome'],
                 logLevel: 'ERROR'
             }
-
-
         },
 
         browserify: {
@@ -239,6 +237,17 @@ module.exports = function (grunt) {
                         standalone: "cahoots.extension"
                     }
                 }
+            },
+
+            chrome_content_script: {
+                src: 'src/main/js/chrome/ChromeContentScript.js',
+                dest: out_dir + "/js/" + 'ChromeContentScriptBundle.js',
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.chrome.content"
+                    }
+                }
             }
         }
     };
@@ -252,10 +261,12 @@ module.exports = function (grunt) {
     grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome' ]);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
+    grunt.registerTask('browserify_chrome', [ 'browserify:chrome_content_script' ]);
 
     grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:stable' ]);
     grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
-    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','copy:chrome','crx' ]);
+
+    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','browserify_chrome','copy:chrome','crx' ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma','build_firefox','mozilla-cfx:run_stable' ]);
     grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);

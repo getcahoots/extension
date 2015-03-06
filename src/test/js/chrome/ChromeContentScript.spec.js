@@ -2,26 +2,29 @@ describe('Chrome Content Script', function suite() {
     var f;
     //var chrome;
     var tabFixture = 'src/test/resources/html/chrome-tab-fixture.html';
+    var originalChrome;
     //var chrome;
     beforeEach(function () {
         f = jasmine.getFixtures();
         f.fixturesPath = 'base';
         f.load(tabFixture);
 
+        originalChrome = chrome;
+        chrome = getChromeMock();
         //jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
-
-
     });
 
 
-    
+    afterEach(function() {
+        chrome = originalChrome;
+    })
 
 
     it('should demand authorHints', function () {
-        var originalChrome = chrome;
+        //var originalChrome = chrome;
         // ensure element does not exist beforehand
 
-        chrome = getChromeMock();
+        //chrome = getChromeMock();
         spyOn(chrome.runtime, 'sendMessage');
 
         // inject content script
@@ -34,13 +37,13 @@ describe('Chrome Content Script', function suite() {
         document.dispatchEvent(event)
 
         expect(chrome.runtime.sendMessage).toHaveBeenCalledWith({message: 'getAuthorHints'}, jasmine.any(Function))
-        chrome = originalChrome;
+        //chrome = originalChrome;
     })
 
 
     it('should tooltipster', function () {
-        var originalChrome = chrome;
-        chrome = getChromeMock();
+        //var originalChrome = chrome;
+        //chrome = getChromeMock();
         // ensure element does not exist beforehand
         var notexistingElement = jQuery("span.CahootsID_c29bca5141c539897b9fb19fc071dd12475e86aa.tooltipstered");
         expect(typeof notexistingElement.get(0)).toBe('undefined')
@@ -58,14 +61,14 @@ describe('Chrome Content Script', function suite() {
         var expectedElement = jQuery('<span class="CahootsID_c29bca5141c539897b9fb19fc071dd12475e86aa tooltipstered">Stefan Kornelius</span>');
         var transformed = jQuery("span.CahootsID_c29bca5141c539897b9fb19fc071dd12475e86aa.tooltipstered");
         expect(transformed.get(0).outerHTML).toBe(expectedElement.get(0).outerHTML);
-        var originalChrome = chrome;
+        //var originalChrome = chrome;
     })
 
     it('should demand authorDetails', function (done) {
-        var originalChrome = chrome;
+        //var originalChrome = chrome;
         // ensure element does not exist beforehand
 
-        chrome = getChromeMock();
+        //chrome = getChromeMock();
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
@@ -100,17 +103,17 @@ describe('Chrome Content Script', function suite() {
                     message: 'getFullDetails',
                     'cahootsID': 'c29bca5141c539897b9fb19fc071dd12475e86aa'
                 }, jasmine.any(Function))
-            chrome = originalChrome;
+            //chrome = originalChrome;
             done();
         }, 1000)
     })
 
 
     it('should display cahoots popover on mouseover', function (done) {
-        var originalChrome = chrome;
+        //var originalChrome = chrome;
         // ensure element does not exist beforehand
 
-        chrome = getChromeMock();
+        //chrome = getChromeMock();
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
@@ -152,7 +155,7 @@ describe('Chrome Content Script', function suite() {
                     'cahootsID': 'c29bca5141c539897b9fb19fc071dd12475e86aa'
                 }, jasmine.any(Function))
 
-            chrome = originalChrome;
+            //chrome = originalChrome;
             done();
         }, 1000)
 
@@ -161,9 +164,9 @@ describe('Chrome Content Script', function suite() {
 
 
     it('should hide cahoots popover on mouseout', function (done) {
-        var originalChrome = chrome;
+        //var originalChrome = chrome;
         // ensure element does not exist beforehand
-        chrome = getChromeMock();
+        //chrome = getChromeMock();
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
@@ -214,7 +217,7 @@ describe('Chrome Content Script', function suite() {
             setTimeout(function () {
                 var elem = document.getElementsByClassName('tooltipster-base').item(0);
                 expect(elem).toBeNull()
-                chrome = originalChrome;
+                //chrome = originalChrome;
                 done();
             },1000);
         }, 1000)
