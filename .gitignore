@@ -1,10 +1,8 @@
 *.db
-firefox/cahoots_testing.xpi
-firefox/*db
-firefox/Thumbs.db
-dest
+target
 .idea
 cahoots.iml
 node_modules
-cahoots-devtest.key
 bower_components
+cahoots-devtest.key
+firefox_profile

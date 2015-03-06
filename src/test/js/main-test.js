@@ -6,3 +6,4 @@ var module = {
 var exports = module.exports*/
 
 
+var MockFactory = {};
