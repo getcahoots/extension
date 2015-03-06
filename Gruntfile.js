@@ -206,6 +206,13 @@ module.exports = function (grunt) {
                 singleRun: true,
                 browsers: ['PhantomJS','Firefox'],
                 logLevel: 'ERROR'
+            },
+            chrome: {
+                configFile: 'karma-chrome.conf.js',
+                runnerPort: 9999,
+                singleRun: true,
+                browsers: ['Chrome'],
+                logLevel: 'ERROR'
             }
 
 
@@ -242,7 +249,7 @@ module.exports = function (grunt) {
      * The default task is to build both extensions
      */
     grunt.registerTask('default', [ 'build_all' ]);
-    grunt.registerTask('build_all', [ 'clean','karma','build_firefox','build_chrome' ]);
+    grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome' ]);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
 
