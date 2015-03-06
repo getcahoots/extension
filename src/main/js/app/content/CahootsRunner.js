@@ -47,7 +47,7 @@ CahootsRunner.prototype.tooltipsterize = function() {
         functionBefore: function(origin, continueTooltip) {
             var tooltipElement = this;
             continueTooltip();
-            var id = $(this).attr('class').replace(' tooltipstered','');
+            var id = jQuery(this).attr('class').replace(' tooltipstered','');
             // TODO: hacky
 
             var strippedId = id.split("_")[1];

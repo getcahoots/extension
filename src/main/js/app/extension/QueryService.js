@@ -30,7 +30,7 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
         }
         orgasNew.push(orgaDto)
     }
-    //person.cahoots = orgasNew;
+
     return {
         name: person.name,
         info: person.info,

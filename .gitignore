@@ -1,8 +1,11 @@
 *.db
 target
 .idea
+*.iml
+*.key
 cahoots.iml
 node_modules
 bower_components
 cahoots-devtest.key
-firefox_profile
+firefox_profile*
+tmp

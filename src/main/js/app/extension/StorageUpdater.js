@@ -2,7 +2,7 @@
 
 var StorageUpdater = function(url) {
     this.debug = false;
-    this.url = url; // 'https://api.cahoots.pw/v1/persons'
+    this.url = url; // 'https://api.cahoots.pw/v1'
 }
 
 StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, callback) {
