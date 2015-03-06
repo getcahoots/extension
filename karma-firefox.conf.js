@@ -26,18 +26,21 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+
             {pattern: 'src/test/js/main-test.js', included: true},
+            {pattern: 'src/test/js/mocks.js', included: true},
 
-            {pattern: 'cahoots-deps/libs/jquery.tooltipster.js', included: true},
 
-            {pattern: 'src/main/js/app/*js', included: true},
-            {pattern: 'src/main/js/firefox/*js', included: true},
+            {pattern: 'src/main/js/jquery/*js', included: true},
+            {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
 
-            {pattern: 'src/test/js/app/*.spec.js', included: true},
+            {pattern: 'src/main/js/firefox/**/*js', included: true},
+
             {pattern: 'src/test/js/firefox/*.spec.js', included: true},
 
-            {pattern: 'src/test/js/mocks.js', included: true},
-            {pattern: 'src/test/html/*.html', watched: true, served: true, included: true},
+
+            {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
+
         ],
 
 
@@ -84,7 +87,7 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Firefox'],
+        browsers: [ 'Firefox']//, 'Chrome'],
         //browsers: ['Firefox','Chrome'],
         //browsers: ['PhantomJS'],
 

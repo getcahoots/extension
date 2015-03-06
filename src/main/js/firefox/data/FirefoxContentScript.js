@@ -1,6 +1,6 @@
 'use strict'
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
     var handleFullDetails = function(lookupId, dataCallback) {
         self.port.once('gotFullDetails', function(data){
