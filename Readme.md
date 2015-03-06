@@ -13,7 +13,7 @@
 ### install npm + grunt-cli  + bower-cli
 todo: npm
 `# sudo npm install -g grunt-cli`
-`# sudo npm install -g bower-cli`
+`# sudo npm install -g bower`
 
 ### fetch project dependencies
 after git clone, cd into extension and execute:
