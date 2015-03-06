@@ -6,3 +6,4 @@ node_modules
 bower_components
 cahoots-devtest.key
 firefox_profile
+tmp
