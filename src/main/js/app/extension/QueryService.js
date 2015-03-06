@@ -1,10 +1,10 @@
 'use strict';
 
-function CahootsQueryService(queryStorage) {
+function QueryService(queryStorage) {
     this.queryStorage = queryStorage;
 }
 
-CahootsQueryService.prototype.findAuthorHints = function() {
+QueryService.prototype.findAuthorHints = function() {
     var persons = this.queryStorage.getPersons();
     var authorMap = {};
     for(var i in persons) {
@@ -13,7 +13,7 @@ CahootsQueryService.prototype.findAuthorHints = function() {
     return authorMap;
 }
 
-CahootsQueryService.prototype.findAuthorDetails = function(cahootsID) {
+QueryService.prototype.findAuthorDetails = function(cahootsID) {
     var person = this.queryStorage.getPersons().filter(function(elem){
         return (elem.id==cahootsID);
     })[0]
@@ -39,9 +39,9 @@ CahootsQueryService.prototype.findAuthorDetails = function(cahootsID) {
     };
 }
 
-CahootsQueryService.prototype.findOrganizationByCahootsId = function(cahootsID) {
+QueryService.prototype.findOrganizationByCahootsId = function(cahootsID) {
     var organization = this.queryStorage.getOrganizations().filter(function(e){return e.id==cahootsID});
     return organization[0];
 }
 
-module.exports =  CahootsQueryService
+module.exports =  QueryService

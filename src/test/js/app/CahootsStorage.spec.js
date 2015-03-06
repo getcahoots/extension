@@ -1,3 +1,5 @@
+'use strict'
+
 describe("CahootsStorage", function suite() {
     var mockPersons = [{
         id: 'f94423e4cf03cff7a4415f79986ee4dc60a5116b',

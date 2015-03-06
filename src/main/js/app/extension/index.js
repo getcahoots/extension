@@ -1,13 +1,14 @@
+'use strict'
 
-var CahootsQueryService= require('./CahootsQueryService');
+var QueryService= require('./QueryService');
 var CahootsStorage = require('./CahootsStorage');
-var CahootsStorageGenericUpdater = require('./CahootsStorageGenericUpdater');
+var StorageUpdater = require('./StorageUpdater');
 
 
 
 
 
 
-module.exports.CahootsQueryService= CahootsQueryService
+module.exports.QueryService= QueryService
 module.exports.CahootsStorage=CahootsStorage
-module.exports.CahootsStorageGenericUpdater= CahootsStorageGenericUpdater
+module.exports.StorageUpdater= StorageUpdater

@@ -222,7 +222,7 @@ module.exports = function (grunt) {
             },
 
             //chrome_event_query: {
-            //    src: 'src/main/js/CahootsQueryService.js',
+            //    src: 'src/main/js/QueryService.js',
             //    dest: "<%= build_dir_chrome %>/CahootsQueryServiceBundle.js",
             //    options: {
             //        browserifyOptions: {
@@ -242,7 +242,7 @@ module.exports = function (grunt) {
             //    }
             //},
             //chrome_event_updater: {
-            //    src: 'src/main/js/CahootsStorageGenericUpdater.js',
+            //    src: 'src/main/js/StorageUpdater.js',
             //    dest: "<%= build_dir_chrome %>/CahootsStorageGenericUpdaterBundle.js",
             //    options: {
             //        browserifyOptions: {

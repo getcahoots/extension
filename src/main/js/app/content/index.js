@@ -1,3 +1,4 @@
+'use strict'
 
 var CahootsRunner= require('./CahootsRunner');
 var CahootsUiFormatter = require('./CahootsUiFormatter');
