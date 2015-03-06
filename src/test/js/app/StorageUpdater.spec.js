@@ -8,7 +8,7 @@ describe("StorageUpdater", function suite() {
         var xhr1 = new XMLHttpRequest();
         var xhr2 = new XMLHttpRequest();
         var StorageUpdater = require("app/extension/StorageUpdater");
-        var updater = new StorageUpdater('https://api.cahoots.pw/v1/persons');
+        var updater = new StorageUpdater('https://api.cahoots.pw/v1');
 
         updater.update(xhr1, xhr2, storage, function(personValues,orgaValues){
 
