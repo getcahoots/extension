@@ -1,7 +1,7 @@
 {
   "name": "cahoots",
   "version": "0.2.9-dev",
-  "homepage": "https://github.com/cahoots-extension/extension",
+  "homepage": "https://github.com/getcahoots/extension",
   "moduleType": [
     "node"
   ],
