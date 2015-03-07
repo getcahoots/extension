@@ -41,27 +41,6 @@ describe('CahootsRunner', function suite () {
             done()
         });
     })
-
-
-   /* it('should find authors keys from page', function() {
-        cahootsRunner = new CahootsRunner(mockData());
-
-        var foundKeys = cahootsRunner.findMatchingKeys(mockAuthors())
-        expect(foundKeys).toEqual([ 'Jochen Bittner', 'Robert Leicht', 'Josef Joffe' ])
-    })
-
-    it('should highlight author occurrences in page', function() {
-
-        cahootsRunner = new CahootsRunner(mockData());
-        cahootsRunner.highlightGivenKeys([ 'Jochen Bittner', 'Robert Leicht', 'Josef Joffe' ]);
-//        console.log(document)
-
-    })
-
-    it('should attach tooltip to highlighted occurrences', function() {
-
-    })
-*/
 });
 
 

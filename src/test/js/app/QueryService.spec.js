@@ -1,23 +1,9 @@
 'use strict'
 
 describe('QueryService', function(){
-    var expectedAuthorHints = {'Jonas Bergmeier':'CahootsID_a70ac98f6379aca6e45a602ece8d9c28',
-        'Alexander Barnickel':'CahootsID_602ece8d9c28aca6e45a602ece8d9c28',
-        'André König':'CahootsID_ecb66435f42c7bb716b20b0d887d83a9'};
+    var expectedAuthorHints = MockFactory.set1.getHints();
 
-    var inputPersons = [{
-        id: 'a70ac98f6379aca6e45a602ece8d9c28',
-        name: 'Jonas Bergmeier',
-        info: 'http://jonasbergmeier.net'
-    },{
-        id: '602ece8d9c28aca6e45a602ece8d9c28',
-        name: 'Alexander Barnickel',
-        info: 'http://alba.io'
-    },{
-        id: 'ecb66435f42c7bb716b20b0d887d83a9',
-        name: 'André König',
-        info: 'http://andrekoenig.info'
-    }];
+    var inputPersons = MockFactory.set1.getPersons();
 
     describe('commonjs interfaces',function(){
 
