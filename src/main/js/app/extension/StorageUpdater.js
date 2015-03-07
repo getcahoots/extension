@@ -28,7 +28,9 @@ StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, c
         }
         xhr2.send();
     };
+
     xhr1.send();
+
 }
 
 module.exports=StorageUpdater

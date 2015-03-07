@@ -28,7 +28,7 @@ module.exports = function (config) {
         files: [
 
             {pattern: 'src/test/js/main-test.js', included: true},
-            {pattern: 'src/test/js/mocks.js', included: true},
+            {pattern: 'src/test/js/mock/**/*.js', included: true},
 
 
             {pattern: 'src/main/js/jquery/*js', included: true},
@@ -37,6 +37,8 @@ module.exports = function (config) {
             {pattern: 'src/main/js/app/**/*js', included: true},
 
             {pattern: 'src/test/js/app/*.spec.js', included: true},
+
+            //{pattern: 'target/test-deps/*.js', included: true},
 
 
             {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
@@ -53,11 +55,14 @@ module.exports = function (config) {
         //preprocessors: {},
 
         preprocessors: {
-            'src/**/*.js': ['commonjs']
+            'src/**/*.js': ['commonjs'],
+            'target/test-deps/**/*.js': ['commonjs']
+            //'node_modules/fake-xml-http-request/*js': ['commonjs']
         },
 
         commonjsPreprocessor: {
             modulesRoot: 'src/main/js'
+            //modulesRoot: '.'
         },
 
 
