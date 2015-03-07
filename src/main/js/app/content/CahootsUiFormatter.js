@@ -29,7 +29,7 @@ CahootsUiFormatter.prototype.createDetailsView = function(elem, data) {
     for (var i = 0; i < data.cahoots.length; i++) {
 
 
-        var listItem = jQuery("<li>").addClass("cahoots_item"+(data.cahoots[i].verified_info == "true" ? " verified" : ""));
+        var listItem = jQuery("<li>").addClass("cahoots_item"+(data.cahoots[i].verified == "true" ? " verified" : ""));
         var organizationAnchor = jQuery("<a>", {target:"_blank",title:"Mehr Infos zu dieser Organisation",href:data.cahoots[i].info});
 
         organizationAnchor.append(data.cahoots[i].name);
