@@ -1,0 +1,109 @@
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Cahoots – Testseite</title>
+
+    <!--<script type="application/javascript" src="/base/node_modules/karma-jasmine-jquery/lib/jasmine-jquery.js?348eb54b50a6726a049b4422f1c7f591563014bd"></script>-->
+    <link type="text/css"
+          href="/base/src/main/resources/css/cahoots-tooltipster.css?330d5b5425233aa95513097d679d9c1dfea858bd"
+          rel="stylesheet">
+    <link type="text/css" href="/base/src/main/resources/css/style.css?651698e09bd5d80c063493c8c7714232d3112cbc"
+          rel="stylesheet">
+
+    <style type="text/css">
+
+        .snap {
+            position:relative;
+        }
+
+    </style>
+</head>
+<body>
+Snippet "cahoots popover fenster":
+
+<div id="wrapper">
+    <div id="placeholder"></div>
+</div>
+<script type="application/javascript">
+
+    function trimMarkup(elm) {
+        elm.style.top = "0";
+        elm.style.left = "0";
+        elm.style["margin-bottom"] = "20px";
+        elm.style.opacity = "1";
+        elm.style["-webkit-backface-visibility"] = "visible";
+        elm.style["-webkit-transform"] = "scale(1.0,1.0)";
+        elm.style["transform"] = "scale(1.0,1.0)";
+        elm.style["position"] = "relative";
+    }
+
+    function addMyClass(elm, className) {
+        var classString = elm.className; // returns the string of all the classes for myDiv
+        var newClass = classString.concat(" " + className); // Adds the class "main__section" to the string (notice the leading space)
+        elm.className = newClass; // sets className to the new string
+    }
+
+    function appendHtml(el, str) {
+        var div = document.createElement('div');
+        div.innerHTML = str;
+        while (div.children.length > 0) {
+            el.appendChild(div.children[0]);
+        }
+    }
+
+    if (localStorage.snippets) {
+
+        try {
+//            console.log(localStorage)
+            var snips = JSON.parse(localStorage.snippets);
+            for (var i in snips) {
+//                console.log(i)
+                var markup = snips[i]
+
+                var theElement = document.createElement("div");
+                theElement.innerHTML = markup;
+                theElement.className="snap"
+                theElement.style.position="relative";
+
+
+                var ph = document.getElementById("placeholder")
+
+                ph.appendChild(theElement);
+//                wrapper.appendChild(theElement)
+
+//                trimMarkup(theElement)
+//
+//                while (wrapper.children.length > 0) {
+//                    ph.appendChild(wrapper.children[0]);
+//                }
+
+                trimMarkup(theElement.firstChild)
+//            document.getElementById("placeholder").appendChild(theElement);
+
+
+
+
+//                while (theElement.children.length > 0) {
+//                    wrapper.appendChild(theElement.children[0]);
+//                }
+
+
+//                console.log(markup)
+
+//                    ph.appendChild(theElement)
+            }
+        } catch(e) {}
+
+
+
+        //        var elm = document.getElementById('placeholder')
+        //        elm.innerHTML = (localStorage.snippets)
+        //        trimMarkup('tooltipster-base')
+    } else {
+        console.log("no local storage")
+    }
+
+
+</script>
+</body>
+</html>

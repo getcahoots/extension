@@ -80,7 +80,7 @@ module.exports = function (grunt) {
                     // chrome plugin skeleton
                     {expand: true,
                         cwd: 'src/main/js/chrome',
-                        src: '**',
+                        src: ['ChromeContentScriptLoader.js','ChromeExtensionScript.js','manifest.json'],
                         dest: '<%= build_dir_chrome %>'},
                     // chrome addon assets: icons
                     {
@@ -207,7 +207,7 @@ module.exports = function (grunt) {
                 browsers: ['PhantomJS','Firefox'],
                 logLevel: 'ERROR'
             },
-            chrome: {
+            chrome_ui_tests: {
                 configFile: 'karma-chrome.conf.js',
                 runnerPort: 9999,
                 singleRun: true,
@@ -258,7 +258,7 @@ module.exports = function (grunt) {
      * The default task is to build both extensions
      */
     grunt.registerTask('default', [ 'build_all' ]);
-    grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome' ]);
+    grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome_ui_tests' ]);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
     grunt.registerTask('browserify_chrome', [ 'browserify:chrome_content_script' ]);

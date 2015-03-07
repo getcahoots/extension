@@ -1,9 +1,5 @@
-/*
-var module = {
-    exports: {}
-}
-
-var exports = module.exports*/
-
-
-var MockFactory = {};
+//MODULES_ROOT = './'
+//
+//
+//
+//console.log("-> http://localhost:9876/base/src/test/resources/html/snippets.html")

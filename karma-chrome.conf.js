@@ -27,9 +27,11 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
 
+            {pattern: 'src/main/resources/css/*.css'},
+
+
             {pattern: 'src/test/js/main-test.js', included: true},
             {pattern: 'src/test/js/mocks.js', included: true},
-
 
             {pattern: 'src/main/js/jquery/*js', included: true},
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
@@ -41,7 +43,8 @@ module.exports = function (config) {
             {pattern: 'src/test/js/chrome/*.js', included: true},
 
             //{pattern: 'src/main/js/chrome/**/*js', included: true},
-
+            //{pattern: 'node_modules/karma-jasmine-jquery/node_modules/bower-installer/node_modules/node-fs/lib/fs.js', included: true, served: true},
+            //{pattern: 'node_modules/node-fs/lib/fs.js', included: true, served: true},
             {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
 
         ],
@@ -94,7 +97,9 @@ module.exports = function (config) {
         //browsers: ['Firefox','Chrome'],
         //browsers: ['PhantomJS'],
 
-        ,browserNoActivityTimeout: 100000
+        ,browserNoActivityTimeout: 8000
+
+        , captureTimeout: 60000
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
