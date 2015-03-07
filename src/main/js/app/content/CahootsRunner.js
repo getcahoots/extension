@@ -38,12 +38,13 @@ CahootsRunner.prototype.tooltipsterize = function() {
     jQuery('span[class*=CahootsID]').tooltipster({
         interactive: true,
         contentAsHTML: false,
-        maxWidth: 344,
+        //maxWidth: 344,
         animation: 'grow',
         content: jQuery('<span>Daten werden geladen…</span>'),
         delay: '220',
         speed: '210',
         timer: '440',
+        autoClose: false,
         functionBefore: function(origin, continueTooltip) {
             var tooltipElement = this;
             continueTooltip();

@@ -26,7 +26,8 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
             id: orga.id,
             info: orga.info,
             name: orga.name,
-            source: orgas[o].source
+            source: orgas[o].source,
+            role: orgas[o].role
         }
         orgasNew.push(orgaDto)
     }
