@@ -44,7 +44,7 @@ CahootsRunner.prototype.tooltipsterize = function() {
         delay: '220',
         speed: '210',
         timer: '440',
-        autoClose: false,
+        autoClose: true,
         functionBefore: function(origin, continueTooltip) {
             var tooltipElement = this;
             continueTooltip();
