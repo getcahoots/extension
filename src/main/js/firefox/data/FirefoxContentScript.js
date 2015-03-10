@@ -1,6 +1,6 @@
 'use strict'
 
-jQuery(document).ready(function() {
+var firefoxContentScript = function() {
 
     var handleFullDetails = function(lookupId, dataCallback) {
         self.port.once('gotFullDetails', function(data){
@@ -22,5 +22,7 @@ jQuery(document).ready(function() {
     var uif = new CahootsUiFormatter();
     var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints,uif);
     cahootsRunner.run();
-});
+};
+
+module.exports = firefoxContentScript
 

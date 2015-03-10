@@ -70,6 +70,10 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_firefox %>/data'},
                     {expand: true,
                         cwd: 'target/js',
+                        src: 'FirefoxContentScriptBundle.js',
+                        dest: '<%= build_dir_firefox %>/data'},
+                    {expand: true,
+                        cwd: 'target/js',
                         src: 'CahootsExtensionBundle.js',
                         dest: '<%= build_dir_firefox %>/lib'}
 
@@ -213,6 +217,13 @@ module.exports = function (grunt) {
                 singleRun: true,
                 browsers: ['Chrome'],
                 logLevel: 'ERROR'
+            },
+            firefox_ui_tests: {
+                configFile: 'karma-firefox.conf.js',
+                runnerPort: 9999,
+                singleRun: true,
+                browsers: ['Chrome'],
+                logLevel: 'ERROR'
             }
         },
 
@@ -248,7 +259,19 @@ module.exports = function (grunt) {
                         standalone: "cahoots.chrome.content"
                     }
                 }
+            },
+
+            firefox_content_script: {
+                src: 'src/main/js/firefox/data/FirefoxContentScript.js',
+                dest: out_dir + "/js/" + 'FirefoxContentScriptBundle.js',
+                options: {
+                    browserifyOptions: {
+                        debug: true,
+                        standalone: "cahoots.firefox.content"
+                    }
+                }
             }
+
         }
     };
 
@@ -258,13 +281,14 @@ module.exports = function (grunt) {
      * The default task is to build both extensions
      */
     grunt.registerTask('default', [ 'build_all' ]);
-    grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome_ui_tests' ]);
+    grunt.registerTask('build_all', [ 'clean','karma:app','build_firefox','build_chrome','karma:chrome_ui_tests','karma:firefox_ui_tests' ]);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle' , 'browserify:extension_bundle' ]);
     grunt.registerTask('browserify_chrome', [ 'browserify:chrome_content_script' ]);
+    grunt.registerTask('browserify_firefox', [ 'browserify:firefox_content_script' ]);
 
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:stable' ]);
-    grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','browserify_firefox','copy:firefox','mozilla-cfx-xpi:stable' ]);
+    //grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
 
     grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','browserify_chrome','copy:chrome','crx' ]);
 

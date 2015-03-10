@@ -27,18 +27,24 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
 
-            {pattern: 'src/test/js/main-test.js', included: true},
-            {pattern: 'src/test/js/mocks.js', included: true},
+            {pattern: 'src/main/resources/css/*.css'},
 
+
+            {pattern: 'src/test/js/main-test.js', included: true},
+            {pattern: 'src/test/js/mock/**/*.js', included: true},
 
             {pattern: 'src/main/js/jquery/*js', included: true},
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
 
-            {pattern: 'src/main/js/firefox/**/*js', included: true},
+            {pattern: 'target/js/*.js', included: true},
 
-            {pattern: 'src/test/js/firefox/*.spec.js', included: true},
+            {pattern: 'src/main/js/firefox/**/*.js', served: true, included: false},
 
+            {pattern: 'src/test/js/firefox/*.js', included: true},
 
+            //{pattern: 'src/main/js/chrome/**/*js', included: true},
+            //{pattern: 'node_modules/karma-jasmine-jquery/node_modules/bower-installer/node_modules/node-fs/lib/fs.js', included: true, served: true},
+            //{pattern: 'node_modules/node-fs/lib/fs.js', included: true, served: true},
             {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
 
         ],
@@ -87,10 +93,13 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: [ 'Firefox']//, 'Chrome'],
+        browsers: [ 'Firefox']//, ''],
         //browsers: ['Firefox','Chrome'],
-        //browsers: ['PhantomJS'],
+        //browsers: ['Chrome']
 
+        ,browserNoActivityTimeout: 8000
+
+        , captureTimeout: 60000
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

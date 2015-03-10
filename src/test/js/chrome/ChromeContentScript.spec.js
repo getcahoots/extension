@@ -1,7 +1,9 @@
-describe('Chrome Content Script', function suite() {
+describe('ChromeContentScript', function suite() {
     var f;
-    var tabFixture = 'src/test/resources/html/chrome-tab-fixture.html';
+    var tabFixture = 'src/test/resources/html/browserTabFixture.html';
     var originalChrome;
+
+    var cs = cahoots.chrome.content //require("chrome/ChromeContentScript")
 
     //var captureSnippet= function(localStorage, snippetName, snippetContent){
     //    //if(!localStorage.snippets) {
@@ -34,8 +36,9 @@ describe('Chrome Content Script', function suite() {
     it('should demand authorHints', function () {
         spyOn(chrome.runtime, 'sendMessage');
 
+        var CahootsUiFormatter = cahoots.chrome.content.CahootsUiFormatter;
         // inject content script
-        var cs = require("chrome/ChromeContentScript")
+
         cs()
 
         // fire dom ready
@@ -53,7 +56,7 @@ describe('Chrome Content Script', function suite() {
         expect(typeof notexistingElement.get(0)).toBe('undefined')
 
         // inject content script
-        var cs = require("chrome/ChromeContentScript")
+        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -71,7 +74,7 @@ describe('Chrome Content Script', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        var cs = require("chrome/ChromeContentScript")
+        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -108,7 +111,7 @@ describe('Chrome Content Script', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        var cs = require("chrome/ChromeContentScript")
+        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -157,7 +160,7 @@ describe('Chrome Content Script', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        var cs = require("chrome/ChromeContentScript")
+        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready

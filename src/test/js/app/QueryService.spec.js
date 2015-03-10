@@ -13,7 +13,7 @@ describe('QueryService', function(){
         var storage = null;
         beforeEach(function(){
             storage = new CahootsStorage({});
-            storage.setPersons(inputPersons)
+            storage._setPersons(inputPersons)
         })
         it('should create', function() {
 

@@ -1,11 +1,15 @@
 'use strict'
 
-var StorageUpdater = function(url) {
+var StorageUpdater = function(cahootsStorageInstance, url) {
     this.debug = false;
+
+    this.storage = cahootsStorageInstance;
     this.url = url; // 'https://api.cahoots.pw/v1'
 }
 
-StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, callback) {
+// TODO: send custom http header
+StorageUpdater.prototype.update = function(xhr1, xhr2, callback) {
+    var that = this;
     // TODO better error handling
     var debug = this.debug;
 
@@ -13,7 +17,8 @@ StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, c
 
     xhr1.open('GET', url+'/persons', true); // async
 
-    xhr1.onload = function(xmlEvent){
+
+    xhr1.onload = function(xmlEvent, two, three){
         var personValues= JSON.parse(xhr1.response);
 
         xhr2.open('GET', url+'/organizations', true); // async
@@ -21,8 +26,9 @@ StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, c
             var orgaValues = JSON.parse(xhr2.response);
 
             if(debug) console.log("loaded through.")
-            cahootsStorageInstance.setPersons(personValues)
-            cahootsStorageInstance.setOrganizations(orgaValues)
+            //that.setPersons(personValues)
+            //that.setOrganizations(orgaValues)
+            that.storage.setData({persons: personValues, organizations: orgaValues})
             if(debug) console.log("loaded through -> callback")
             callback(personValues,orgaValues)
         }
@@ -32,5 +38,12 @@ StorageUpdater.prototype.update = function(xhr1, xhr2, cahootsStorageInstance, c
     xhr1.send();
 
 }
+
+StorageUpdater.prototype.checkUpdate = function(xhr1, xhr2, callback) {
+    if(this.storage.isExpired()) {
+        this.update(xhr1, xhr2, callback)
+    }
+}
+
 
 module.exports=StorageUpdater

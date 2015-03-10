@@ -2,22 +2,32 @@
 
 describe("StorageUpdater", function suite() {
     var apiEndpointUrl ='https://api.cahoots.pw/v1';
+
+    var TestResponses = {
+        getPersons: {
+            success: {
+                status: 200,
+                responseText: JSON.stringify(MockFactory.set1.getPersons())
+            }
+        },
+        getOrganizations: {
+            success: {
+                status: 200,
+                responseText: JSON.stringify(MockFactory.set1.getOrganizations())
+            }
+        }
+    };
+
+    /*
+    test cases to cover:
+    - dns failure
+    - api service down
+    - ( no internet connectivity)
+    - data in storage has expired
+     */
     describe("normal operations", function () {
         it("should make cross domain call to api endpoint", function test(done) {
-            var TestResponses = {
-                getPersons: {
-                    success: {
-                        status: 200,
-                        responseText: JSON.stringify(MockFactory.set1.getPersons())
-                    }
-                },
-                getOrganizations: {
-                    success: {
-                        status: 200,
-                        responseText: JSON.stringify(MockFactory.set1.getOrganizations())
-                    }
-                }
-            };
+
 
             var xhr1 = {
                 open: function(method,url,async){
@@ -41,7 +51,6 @@ describe("StorageUpdater", function suite() {
                     expect(url).toBe(apiEndpointUrl+"/organizations")
                     expect(async).toBe(true)
                 },
-
                 onload: function(){
 
                 },
@@ -63,9 +72,9 @@ describe("StorageUpdater", function suite() {
             //xhr2.respondWith(TestResponses.getOrganizations.success)
 
             var StorageUpdater = require("app/extension/StorageUpdater");
-            var updater = new StorageUpdater(apiEndpointUrl);
+            var updater = new StorageUpdater(storage, apiEndpointUrl);
 
-            updater.update(xhr1, xhr2, storage, function (personValues, orgaValues) {
+            updater.update(xhr1, xhr2, function (personValues, orgaValues) {
                 //expect(XMLHttpRequest.prototype.open).toHaveBeenCalled();
                 //expect(XMLHttpRequest.prototype.send).toHaveBeenCalled();
                 //console.log(typeof data)

@@ -52,8 +52,7 @@ CahootsUiFormatter.prototype.createDetailsView = function(elem, data) {
     var footer = jQuery("<section>").addClass("cahoots_footer")
         .append(jQuery("<div>").addClass("cahoots_logo"))
         .append(
-            jQuery("<a>", {target:"_blank",href:snippets.reportErrorUrl})
-                .append(jQuery("<button>").addClass("cahoots_button").text("Fehler melden"))
+            jQuery("<a>", {target:"_blank",href:snippets.reportErrorUrl}).addClass("cahoots_button").text("Fehler melden")
         )
 
     var fullCahootsOverlayContent = jQuery("<div>").addClass("cahoots_popover")

@@ -38,6 +38,7 @@ module.exports = function (config) {
 
             {pattern: 'target/js/*.js', included: true},
 
+            
             {pattern: 'src/main/js/chrome/*.js', served: true, included: false},
 
             {pattern: 'src/test/js/chrome/*.js', included: true},

@@ -17,9 +17,9 @@ exports.main = function(options, callbacks) {
         var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
         var StorageUpdater = extension.StorageUpdater
-        var updater = new StorageUpdater('https://api.cahoots.pw/v1');
+        var updater = new StorageUpdater(cahootsStorage, 'https://api.cahoots.pw/v1');
 
-        updater.update(xhr1,xhr2, cahootsStorage,function(){
+        updater.checkUpdate(xhr1,xhr2,function(){
 
         }); // runs async
 
@@ -39,7 +39,8 @@ exports.main = function(options, callbacks) {
                 data.url("jquery_highlight.js"),
                 data.url("jquery.tooltipster.js"),
                 data.url("CahootsContentBundle.js"),
-                data.url("FirefoxContentScript.js")
+                data.url("FirefoxContentScriptBundle.js"),
+                data.url("FirefoxContentScriptLoader.js")
             ],
             contentStyleFile: [
                 data.url("style.css"),
