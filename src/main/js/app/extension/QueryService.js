@@ -2,6 +2,7 @@
 
 function QueryService(queryStorage) {
     this.queryStorage = queryStorage;
+    this.debug=true;
 }
 
 QueryService.prototype.findAuthorHints = function() {
@@ -33,12 +34,14 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
         orgasNew.push(orgaDto)
     }
 
-    return {
+    var result = {
         name: person.name,
         info: person.info,
         id:person.id,
         cahoots: orgasNew
     };
+    if(this.debug) console.log(result)
+    return result;
 }
 
 QueryService.prototype.findOrganizationByCahootsId = function(cahootsID) {

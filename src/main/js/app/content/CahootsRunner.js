@@ -4,7 +4,7 @@ function CahootsRunner( handleFullDetails, handleAuthorHints, uiFormatter) {
     this.handleAuthorHints = handleAuthorHints;
     this.handleFullDetails = handleFullDetails;
     this.uiFormatter = uiFormatter;
-    this.debug = false;
+    this.debug = true;
 }
 
 CahootsRunner.prototype.findMatchingKeys = function(authorHints) {

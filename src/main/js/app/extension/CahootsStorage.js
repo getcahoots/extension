@@ -11,6 +11,7 @@ var CahootsStorage = function(storageObject) {
 
     this.storage = storageObject;
     this.expiryDelta = 60*60*24;
+    this.debug=true;
 }
 
 
@@ -23,7 +24,10 @@ CahootsStorage.prototype._setOrganizations = function (data) {
 }
 
 CahootsStorage.prototype._setUpdated = function() {
-    this.storage.lastUpdated = JSON.stringify(new Date().getMilliseconds / 1000)
+    var now = new Date();
+    var currentTimestamp = now.getMilliseconds / 1000;
+    this.storage.lastUpdated = JSON.stringify(currentTimestamp);
+    if(this.debug) console.log("Database updated " + now);
 }
 
 CahootsStorage.prototype.setData = function (data) {
@@ -35,17 +39,26 @@ CahootsStorage.prototype.setData = function (data) {
 }
 
 CahootsStorage.prototype.isExpired = function() {
+
     try {
         var currentTimestamp = new Date().getMilliseconds() / 1000;
         var lastUpdate = JSON.parse(this.storage.lastUpdated);
 
-        if (currentTimestamp - lastUpdate > this.expiryDelta) {
+        if (lastUpdate==null    ) {
+            if(this.debug) console.log("detected database expired=="+true);
             return true;
         }
+
+        if (currentTimestamp - lastUpdate > this.expiryDelta) {
+            if(this.debug) console.log("detected database expired=="+true);
+            return true;
+        }
+        if(this.debug) console.log("detected database expired=="+false);
         return false;
     } catch(ex) {
         ;
     }
+    if(this.debug) console.log("detected database expired=="+true);
     return true;
 }
 

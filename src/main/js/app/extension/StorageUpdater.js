@@ -1,7 +1,7 @@
 'use strict'
 
 var StorageUpdater = function(cahootsStorageInstance, url) {
-    this.debug = false;
+    this.debug = true;
 
     this.storage = cahootsStorageInstance;
     this.url = url; // 'https://api.cahoots.pw/v1'
