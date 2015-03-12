@@ -1,10 +1,12 @@
 'use strict'
 
-exports.main = function(options, callbacks) {
+exports.main = function (options, callbacks) {
+
+
     try {
         // 1. get the storage element in platform specific way
         var ss = require("sdk/simple-storage");
-        var browserStorageObject = ss.storage.cahoots =  typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
+        var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
         var extension = require("./CahootsExtensionBundle")
         // 2. create new CahootsStorageRepository from storage element
@@ -12,16 +14,16 @@ exports.main = function(options, callbacks) {
         var cahootsStorage = new CahootsStorage(browserStorageObject)
 
         // 3. create updater
-        var Cc, Ci;
-        //const {Cc, Ci} = require("chrome");
-        Cc= Ci = require("chrome");
+        //var Cc, Ci;
+        const {Cc, Ci} = require("chrome");
+        //Cc = Ci = require("chrome");
         var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
         var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
         var StorageUpdater = extension.StorageUpdater
         var updater = new StorageUpdater(cahootsStorage, 'https://api.cahoots.pw/v1');
 
-        updater.checkUpdate(xhr1,xhr2,function(){
+        updater.checkUpdate(xhr1, xhr2, function () {
 
         });
 
@@ -46,21 +48,34 @@ exports.main = function(options, callbacks) {
             ],
             contentStyleFile: [
                 data.url("style.css"),
-                data.url("cahoots-tooltipster.css"),
-                data.url("http://fonts.googleapis.com/css?family=Ubuntu:300,400,500")
+                data.url("cahoots-tooltipster.css")
             ],
-            onAttach: function(worker) {
-                worker.port.on("getAuthorHints",function() {
+            onAttach: function (worker) {
+                worker.port.on("getAuthorHints", function () {
                     var hints = queryService.findAuthorHints();
                     worker.port.emit('gotAuthorHints', hints);
                 })
-                worker.port.on("getFullDetails",function(cahootsId) {
+                worker.port.on("getFullDetails", function (cahootsId) {
                     var author = queryService.findAuthorDetails(cahootsId)
-                    worker.port.emit("gotFullDetails",author);
+                    worker.port.emit("gotFullDetails", author);
                 })
             }
         });
-    } catch(e) {
+
+
+        try {
+            if (typeof browserStorageObject.hasSeenInto == 'undefined') {
+                var tabs = require("sdk/tabs");
+                tabs.open("http://www.cahoots.pw/new_installed.html");
+                browserStorageObject.hasSeenInto = 'yep';
+            }
+        } catch (ex) {
+
+        }
+
+    } catch (e) {
         console.log("unable to load cahoots extension: " + e.message)
     }
 }
+
+

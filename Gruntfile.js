@@ -46,6 +46,11 @@ module.exports = function (grunt) {
                         cwd: 'src/main/resources/css',
                         src: '*.css',
                         dest: '<%= build_dir_firefox %>/data'},
+                    {
+                        expand: true,
+                        cwd: 'src/main/resources/html',
+                        src: '*.html',
+                        dest: '<%= build_dir_firefox %>/data'},
                     // firefox libs
                     {expand: true,
                         cwd: 'bower_components/tooltipster/js/',
@@ -107,6 +112,11 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'src/main/resources/css',
                         src: ['*.css'],
+                        dest: '<%= build_dir_chrome %>'},
+                    {
+                        expand: true,
+                        cwd: 'src/main/resources/html',
+                        src: ['*.html'],
                         dest: '<%= build_dir_chrome %>'},
                     // chrome libs
 //                    {expand: true,

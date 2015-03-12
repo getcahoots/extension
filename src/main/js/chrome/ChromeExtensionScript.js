@@ -25,3 +25,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
         sendResponse(authorDetails)
     }
 })
+
+if (!window.localStorage.getItem('hasSeenIntro')) {
+    window.localStorage.setItem('hasSeenIntro', 'yep');
+    chrome.tabs.create({
+        url: 'http://www.cahoots.pw/news.html'
+    });
+}
