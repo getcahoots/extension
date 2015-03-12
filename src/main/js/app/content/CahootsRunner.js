@@ -67,13 +67,13 @@ CahootsRunner.prototype.run = function() {
 
     var that = this;
     this.handleAuthorHints(function(authorHints){
-        if(debug) console.log("received: " + authorHints)
+        //if(debug) console.log("received: " + authorHints)
         var foundKeys = that.findMatchingKeys(authorHints);
-        if(debug) console.log("foundKeys:")
-        if(debug) console.log(foundKeys)
+        if(debug) console.log("foundKeys:"+foundKeys)
+        //if(debug) console.log(foundKeys)
         that.highlightGivenKeys(foundKeys, authorHints);
         that.tooltipsterize();
-        if(debug) console.log("full cycle done")
+        if(debug) console.log("finished script cycle")
     })
 
 

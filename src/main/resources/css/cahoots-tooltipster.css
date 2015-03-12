@@ -1,389 +1,437 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
+/*
+    Pink:       rgb(245,50,98)
+    Light Grey: rgb(244,244,246)
+    Grey Text: rgb(150,150,154)
+    
+
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500);
 
 
 /* Tooltip Box */
 .tooltipster-default {
-    width: 400px;
-    border-radius: 3px;
-    border: 1px solid rgb(177,177,185);
-    background: rgb(242,242,244);
-    box-shadow: 0 2px 40px rgba(0,0,0,0.5);
-    color: rgb(70,70,80);
+	width: 400px;
+	border-radius: 3px; 
+	border: 1px solid rgb(177,177,185);
+	background: rgb(244,244,246);
+	box-shadow: 0 2px 40px rgba(0,0,0,0.5);
+	color: rgb(70,70,80);
 }
 
 /* Tooltip Content */
 .tooltipster-default .tooltipster-content {
-    font: 400 14px 'Ubuntu',arial,sans-serif !important;
+	font-family: 'Ubuntu',Arial,sans-serif !important;
+	font-weight: 300 !important;
+	font-size: 14px !important;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
     max-width: 400px;
-    line-height: 18px;
-    padding: 0;
-    overflow: hidden;
+	line-height: 18px;
+	padding: 0;
+	overflow: hidden;
 }
 
 /* This next selector defines the color of the border on the outside of the arrow. This will automatically match the color and size of the border set on the main tooltip styles. Set display: none; if you would like a border around the tooltip but no border around the arrow */
 .tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
-    /* border-color: ... !important; */
+	/* border-color: ... !important; */
 }
 
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {
-    cursor: help;
-    margin-left: 4px;
+	cursor: help;
+	margin-left: 4px;
 }
 
 /* This is the base styling required to make all Tooltipsters work */
 .tooltipster-base {
-    padding: 0;
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9999999;
-    pointer-events: none;
-    width: auto;
-    overflow: visible;
-    text-align: left;
-    text-decoration: none;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9999999;
+	pointer-events: none;
+	width: auto;
+	overflow: visible;
+	text-align: left;
+	text-decoration: none;
 }
+
 .tooltipster-base p {
-    line-height: 1.4em;
-    padding: 14px 14px;
-    margin: 0;
-    font-size: 14px;
-    color: rgb(60,60,70);
+	line-height: 1.4em;
+	padding: 15px 15px;
+	margin: 0;
+	font-size: 15px;
+	color: rgb(60,60,70);
 }
+
 .tooltipster-base .tooltipster-content {
-    overflow: hidden;
-    height: auto;
+	overflow: hidden;
+	height: auto;
 }
+
 .tooltipster-content .cahoots_middle {
-    padding: 4px 0;
+    padding: 0;
     max-height: 300px;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
-    background: rgb(255,255,255);
-    border-top: 1px solid rgb(190,190,200);
-    border-bottom: 1px solid rgb(190,190,200);
+	background: rgb(255,255,255);
+	border-top: 1px solid rgb(190,190,200);
+	border-bottom: 1px solid rgb(190,190,200);
 }
 .tooltipster-content .cahoots_footer {
-    padding: 14px 8px 14px 14px;
+	padding: 15px;
+    height: 26px;
 }
+
 .tooltipster-content strong {
-    font-weight: 700;
+	font-weight: 500;
+    font-family: 'Ubuntu', sans-serif;
 }
+
+.tooltipster-content #cahoots_list {
+	padding: 0;
+	margin: 0;
+}
+
 .tooltipster-content .cahoots_item {
-    display: block;
-    list-style: none;
-    padding: 10px 14px;
-    /* width: 314px; */
-    border-bottom: 1px solid rgb(216,216,226);
-    margin: 0;
-    background: transparent !important;
+	list-style: none;
+    line-height: 1.3em;
+	padding: 12px 15px;
+	border-bottom: 1px solid rgb(216,216,226);
+	margin: 0;
+	background: transparent !important;
 }
+
+.tooltipster-content .cahoots_item:last-child {
+	border: none;
+}
+
+/* Cahnge to .cahoots_item_verified */
+.tooltipster-content .cahoots_item {
+    background: linear-gradient(to right, rgb(255,255,255) 30%, rgb(255,255,255) 50%, rgb(237,255,241) 100%) !important;
+}
+
 .tooltipster-content .cahoots_item a {
+    max-width: 280px !important;
+	display: inline-block !important;
     font-weight: 500;
-    text-decoration: none;
-    color: rgb(250,50,100) !important;
-    background: transparent !important;
-    padding: 0;
-    margin: 0;
+	text-decoration: none;
+	color: rgb(245,50,98) !important;
+	background: transparent !important;
+	padding: 0;
+	margin: 0;
+}
+
+.tooltipster-content .cahoots_item a:hover {
+	text-decoration: underline;
+	background: transparent !important;
+}
+
+.tooltipster-content .cahoots_item a:visited {
+	background: transparent !important;
 }
 
 .tooltipster-content .cahoots_item .role {
-    color: rgb(123,123,138);
+    display: inline-block;
+    margin-top: 2px;
+    color: rgb(150,150,154);
+    font-weight: 300;
 }
 
-
-.tooltipster-content .cahoots_item a img {
-    padding: 0 4px 3px 0;
-    margin: 2px 0 0 0;
-    vertical-align: top;
-}
-.tooltipster-content .cahoots_item a:hover {
-    text-decoration: underline;
-    background: transparent !important;
-}
-.tooltipster-content .cahoots_item a:visited {
-    background: transparent !important;
-}
-.cahoots_item a {
-    max-width: 260px !important;
-    display: inline-block !important;
-    font: 500;
-}
-.tooltipster-content .cahoots_item:last-child {
-    border: none;
-}
-.tooltipster-content #cahoots_list {
-    padding: 0;
-    margin: 0;
-}
 .tooltipster-content .quelle {
-    float: right !important;
-    font-weight: 500 !important;
+	color: rgb(60,60,70) !important;
+	font-weight: 500 !important;
+	float: right;
 }
+
+.tooltipster-content .cahoots_item a.quelle::before {
+    content: "";
+    color: transparent;
+    display: inline-block;
+    margin: 0 6px 0 0;
+    vertical-align: middle;
+    min-height: 16px !important;
+    min-width: 16px !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBNkRBNDA3RUM3MzExMUU0ODVDNUQxREI3RkVCQTkxRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBNkRBNDA3RkM3MzExMUU0ODVDNUQxREI3RkVCQTkxRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE2REE0MDdDQzczMTExRTQ4NUM1RDFEQjdGRUJBOTFFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE2REE0MDdEQzczMTExRTQ4NUM1RDFEQjdGRUJBOTFFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hb2PSgAAAV9JREFUeNqM0z8oRVEcwPF7rxcZZLLzUv7GoCwGgz89ZDEYZDC8QlkUKZOBlYSiHoOS0UIZniyUUTzK8uoNZCELirx8f/odHad733PqU/f9zvn9znnnjz/2NO85rRFJ9KFGY1kcI4Vbe3BgfZdiHdeYRj3KVIPGpG8T5SYpZiUfodsr3GTCcdSiHx9mBSv/SH7Du353YdlUbNKqxdokevGsvyckN9ANKymSvIZdnGFJY5KTlAIJZ5kjyFmxc8zot2zmgtWXkAJxZ5n76MAVHjEsm4VKHKDCGh+POUttho97dKIaDxrbQZ0z/ucUslZgVv+rHOsLLjU+h6GQvckFesPsNopDa6k9WIzY3LQU2MaX0yFJp2jHXsQpSU5KCmSwFTKgDReoiphdcjLmJso9T4cM8iOSTzTn9zHJMQ1gA/kCFyqvMw9qzp/XKIEptGAVd/jEK2401qpX2LwJ71uAAQCr3kZM70yFiwAAAABJRU5ErkJggg==); 
+}
+
 .tooltipster-content .cahoots_item a.quelle, .tooltipster-content .quelle a, .tooltipster-content .quelle a:visited {
-    font-weight: 500 !important;
-    color: rgb(60,60,70) !important;
+	font-weight: 500 !important;
+	color: rgb(70,70,80) !important;
 }
 .tooltipster-content .quelle {
-    float: right;
-    color: rgb(60,60,70) !important;
-    font-weight: 500 !important;
+	
 }
 .tooltipster-content .cahoots_button {
-    background: rgb(214,214,220) !important;
-    color: rgb(60,60,70) !important;
-    border: none;
-    outline: none;
-    width: 152px;
-    border-radius: 3px;
-    letter-spacing: 0;
-    padding: 8px 5px !important;
-    border-radius: 2px !important;
-    text-transform: none;
-    cursor: pointer;
+    float: right;
+    font-weight: 500;
+	color: rgb(109,109,122) !important;
+	text-transform: none;
+    margin-top: 3px;
+}
+.tooltipster-content .cahoots_button::before {
+    content: "";
+    color: transparent;
+    display: inline-block;
+    margin: 0 6px 0 0;
+    vertical-align: middle;
+    min-height: 16px !important;
+    min-width: 16px !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyODMxQTBFREM3RTAxMUU0OENDNzhBNzI4Qjg4MjhCMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyODMxQTBFRUM3RTAxMUU0OENDNzhBNzI4Qjg4MjhCMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI4MzFBMEVCQzdFMDExRTQ4Q0M3OEE3MjhCODgyOEIxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI4MzFBMEVDQzdFMDExRTQ4Q0M3OEE3MjhCODgyOEIxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SFOSzwAAAPFJREFUeNqkk98KwWAYxr+NyGVYKX+Ke5CDictYceDE8e7AASmKmstQDpabMMrJykVITcbz6v300Sybp3613n3P835/NdseiQ9VgQXaoMg1H2yAAw7qYF35zoEZ2IEhKIM8U+Ea/VuAgjRlFfMatES8qGEPlHiGgZzB5AezqiYYy8Qap0ZJY6LUJ6/OG5YRyUUeiwJMkV4mBRh/BBi6+E/PU/BjBtyZbzrpfMNEilMguRSwArcU0yePQwEeWKZYAnk8uYl0z90E3bfseT2mAHTAHIQxxpA7d9nz9hqpMAB1MAVHcAVnsOdag6/wRZoeAgwAvFkvK15Rey8AAAAASUVORK5CYII=);
 }
 .tooltipster-content a:first-child .cahoots_button {
-    margin-right: 11px;
-}
-.tooltipster-content .cahoots_button:hover {
-    background: rgb(204,204,210);
-}
-.tooltipster-content .cahoots_button:active {
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+	margin-right: 11px;
 }
 .cahoots_item a {
-    font: 500 !important;
-    color: rgb(250,50,100);
+	font: 500;
+	color: rgb(245,50,98);
 }
+
 .tooltipster-content .name_info {
-    font: 500 !important;
-    color: rgb(60,60,70);
-    padding: 0;
-    margin: 0;
-    text-decoration: underline;
+	font: 500 !important;
+	color: rgb(60,60,70);
+	padding: 0;
+	margin: 0;
 }
+
+.tooltipster-content .cahoots_logo {
+    float: left;
+    min-width: 69px;
+    min-height: 25px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 69px 25px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAAZCAYAAABnweOlAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5OEQ3QTY3REM3RTIxMUU0QTFCNUVFMUUwQTU0RDE4MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5OEQ3QTY3RUM3RTIxMUU0QTFCNUVFMUUwQTU0RDE4MSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk4RDdBNjdCQzdFMjExRTRBMUI1RUUxRTBBNTREMTgxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk4RDdBNjdDQzdFMjExRTRBMUI1RUUxRTBBNTREMTgxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ph0nYgAABhxJREFUeNrUmQtMllUY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);
+}
+
 
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
 .tooltipster-arrow {
-    display: block;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 .tooltipster-arrow span, .tooltipster-arrow-border {
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
+	display: block;
+	width: 0; 
+	height: 0;
+	position: absolute;
 }
 .tooltipster-arrow-top span, .tooltipster-arrow-top-right span, .tooltipster-arrow-top-left span {
-    border-left: 8px solid transparent !important;
-    border-right: 8px solid transparent !important;
-    border-top: 8px solid;
-    bottom: -7px;
+	border-left: 8px solid transparent !important;
+	border-right: 8px solid transparent !important;
+	border-top: 8px solid;
+	bottom: -7px;
 }
 .tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-top-left .tooltipster-arrow-border {
-    border-left: 9px solid transparent !important;
-    border-right: 9px solid transparent !important;
-    border-top: 9px solid;
-    bottom: -7px;
+	border-left: 9px solid transparent !important;
+	border-right: 9px solid transparent !important;
+	border-top: 9px solid;
+	bottom: -7px;
 }
 
 .tooltipster-arrow-bottom span, .tooltipster-arrow-bottom-right span, .tooltipster-arrow-bottom-left span {
-    border-left: 8px solid transparent !important;
-    border-right: 8px solid transparent !important;
-    border-bottom: 8px solid;
-    top: -7px;
+	border-left: 8px solid transparent !important;
+	border-right: 8px solid transparent !important;
+	border-bottom: 8px solid;
+	top: -7px;
 }
 .tooltipster-arrow-bottom .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-    border-left: 9px solid transparent !important;
-    border-right: 9px solid transparent !important;
-    border-bottom: 9px solid;
-    top: -7px;
+	border-left: 9px solid transparent !important;
+	border-right: 9px solid transparent !important;
+	border-bottom: 9px solid;
+	top: -7px;
 }
 .tooltipster-arrow-top span, .tooltipster-arrow-top .tooltipster-arrow-border, .tooltipster-arrow-bottom span, .tooltipster-arrow-bottom .tooltipster-arrow-border {
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 }
 .tooltipster-arrow-top-left span, .tooltipster-arrow-bottom-left span {
-    left: 6px;
+	left: 6px;
 }
 .tooltipster-arrow-top-left .tooltipster-arrow-border, .tooltipster-arrow-bottom-left .tooltipster-arrow-border {
-    left: 5px;
+	left: 5px;
 }
 .tooltipster-arrow-top-right span,  .tooltipster-arrow-bottom-right span {
-    right: 6px;
+	right: 6px;
 }
 .tooltipster-arrow-top-right .tooltipster-arrow-border, .tooltipster-arrow-bottom-right .tooltipster-arrow-border {
-    right: 5px;
+	right: 5px;
 }
 .tooltipster-arrow-left span, .tooltipster-arrow-left .tooltipster-arrow-border {
-    border-top: 8px solid transparent !important;
-    border-bottom: 8px solid transparent !important;
-    border-left: 8px solid;
-    top: 50%;
-    margin-top: -7px;
-    right: -7px;
+	border-top: 8px solid transparent !important;
+	border-bottom: 8px solid transparent !important; 
+	border-left: 8px solid;
+	top: 50%;
+	margin-top: -7px;
+	right: -7px;
 }
 .tooltipster-arrow-left .tooltipster-arrow-border {
-    border-top: 9px solid transparent !important;
-    border-bottom: 9px solid transparent !important;
-    border-left: 9px solid;
-    margin-top: -8px;
+	border-top: 9px solid transparent !important;
+	border-bottom: 9px solid transparent !important; 
+	border-left: 9px solid;
+	margin-top: -8px;
 }
 .tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
-    border-top: 8px solid transparent !important;
-    border-bottom: 8px solid transparent !important;
-    border-right: 8px solid;
-    top: 50%;
-    margin-top: -7px;
-    left: -7px;
+	border-top: 8px solid transparent !important;
+	border-bottom: 8px solid transparent !important; 
+	border-right: 8px solid;
+	top: 50%;
+	margin-top: -7px;
+	left: -7px;
 }
 .tooltipster-arrow-right .tooltipster-arrow-border {
-    border-top: 9px solid transparent !important;
-    border-bottom: 9px solid transparent !important;
-    border-right: 9px solid;
-    margin-top: -8px;
+	border-top: 9px solid transparent !important;
+	border-bottom: 9px solid transparent !important; 
+	border-right: 9px solid;
+	margin-top: -8px;
 }
 
 
 /* Some CSS magic for the awesome animations - feel free to make your own custom animations and reference it in your Tooltipster settings! */
 
 .tooltipster-fade {
-    opacity: 0;
-    -webkit-transition-property: opacity;
-    -moz-transition-property: opacity;
-    -o-transition-property: opacity;
-    -ms-transition-property: opacity;
-    transition-property: opacity;
+	opacity: 0;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	-ms-transition-property: opacity;
+	transition-property: opacity;
 }
 .tooltipster-fade-show {
-    opacity: 1;
+	opacity: 1;
 }
 
 .tooltipster-grow {
-    -webkit-transform: scale(0,0);
-    -moz-transform: scale(0,0);
-    -o-transform: scale(0,0);
-    -ms-transform: scale(0,0);
-    transform: scale(0,0);
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    -ms-transition-property: -ms-transform;
-    transition-property: transform;
-    -webkit-backface-visibility: hidden;
+	-webkit-transform: scale(0,0);
+	-moz-transform: scale(0,0);
+	-o-transform: scale(0,0);
+	-ms-transform: scale(0,0);
+	transform: scale(0,0);
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform;
+	-webkit-backface-visibility: hidden;
 }
 .tooltipster-grow-show {
-    -webkit-transform: scale(1,1);
-    -moz-transform: scale(1,1);
-    -o-transform: scale(1,1);
-    -ms-transform: scale(1,1);
-    transform: scale(1,1);
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+	-webkit-transform: scale(1,1);
+	-moz-transform: scale(1,1);
+	-o-transform: scale(1,1);
+	-ms-transform: scale(1,1);
+	transform: scale(1,1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
 }
 
 .tooltipster-swing {
-    opacity: 0;
-    -webkit-transform: rotateZ(4deg);
-    -moz-transform: rotateZ(4deg);
-    -o-transform: rotateZ(4deg);
-    -ms-transform: rotateZ(4deg);
-    transform: rotateZ(4deg);
-    -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    -ms-transition-property: -ms-transform;
-    transition-property: transform;
+	opacity: 0;
+	-webkit-transform: rotateZ(4deg);
+	-moz-transform: rotateZ(4deg);
+	-o-transform: rotateZ(4deg);
+	-ms-transform: rotateZ(4deg);
+	transform: rotateZ(4deg);
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	-ms-transition-property: -ms-transform;
+	transition-property: transform;
 }
 .tooltipster-swing-show {
-    opacity: 1;
-    -webkit-transform: rotateZ(0deg);
-    -moz-transform: rotateZ(0deg);
-    -o-transform: rotateZ(0deg);
-    -ms-transform: rotateZ(0deg);
-    transform: rotateZ(0deg);
-    -webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
-    -moz-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
-    -ms-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
-    -o-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
-    transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
+	opacity: 1;
+	-webkit-transform: rotateZ(0deg);
+	-moz-transform: rotateZ(0deg);
+	-o-transform: rotateZ(0deg);
+	-ms-transform: rotateZ(0deg);
+	transform: rotateZ(0deg);
+	-webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-moz-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-ms-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	-o-transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4); 
+	transition-timing-function: cubic-bezier(0.230, 0.635, 0.495, 2.4);
 }
 
 .tooltipster-fall {
-    top: 0;
-    -webkit-transition-property: top;
-    -moz-transition-property: top;
-    -o-transition-property: top;
-    -ms-transition-property: top;
-    transition-property: top;
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+	top: 0;
+	-webkit-transition-property: top;
+	-moz-transition-property: top;
+	-o-transition-property: top;
+	-ms-transition-property: top;
+	transition-property: top;
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
 }
 .tooltipster-fall-show {
 }
 .tooltipster-fall.tooltipster-dying {
-    -webkit-transition-property: all;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    -ms-transition-property: all;
-    transition-property: all;
-    top: 0px !important;
-    opacity: 0;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-property: all;
+	top: 0px !important;
+	opacity: 0;
 }
 
 .tooltipster-slide {
-    left: -40px;
-    -webkit-transition-property: left;
-    -moz-transition-property: left;
-    -o-transition-property: left;
-    -ms-transition-property: left;
-    transition-property: left;
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
-    transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
+	left: -40px;
+	-webkit-transition-property: left;
+	-moz-transition-property: left;
+	-o-transition-property: left;
+	-ms-transition-property: left;
+	transition-property: left;
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-ms-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
+	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
 }
 .tooltipster-slide.tooltipster-slide-show {
 }
 .tooltipster-slide.tooltipster-dying {
-    -webkit-transition-property: all;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    -ms-transition-property: all;
-    transition-property: all;
-    left: 0px !important;
-    opacity: 0;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-property: all;
+	left: 0px !important;
+	opacity: 0;
 }
 
 
 /* CSS transition for when contenting is changing in a tooltip that is still open. The only properties that will NOT transition are: width, height, top, and left */
 .tooltipster-content-changing {
-    opacity: 0.5;
-    -webkit-transform: scale(1.1, 1.1);
-    -moz-transform: scale(1.1, 1.1);
-    -o-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
-}
+	opacity: 0.5;
+	-webkit-transform: scale(1.1, 1.1);
+	-moz-transform: scale(1.1, 1.1);
+	-o-transform: scale(1.1, 1.1);
+	-ms-transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
 }

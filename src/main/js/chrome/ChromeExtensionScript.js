@@ -1,7 +1,10 @@
 'use strict'
 
+var debug = true;
+if(debug) console.log("executing chrome extension script")
+
 var CahootsStorage = cahoots.extension.CahootsStorage;
-var cahootsStorage = new CahootsStorage(localStorage)
+var cahootsStorage = new CahootsStorage(window.localStorage)
 
 var StorageUpdater = cahoots.extension.StorageUpdater;
 var updater = new StorageUpdater(cahootsStorage,'https://api.cahoots.pw/v1');

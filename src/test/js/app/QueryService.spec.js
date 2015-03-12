@@ -6,13 +6,14 @@ describe('QueryService', function(){
     var inputPersons = MockFactory.set1.getPersons();
 
     describe('commonjs interfaces',function(){
-
+return;
         var QueryService = require('app/extension/QueryService');
         var CahootsStorage = require('app/extension/CahootsStorage');
 
         var storage = null;
         beforeEach(function(){
-            storage = new CahootsStorage({});
+            window.localStorage.clear();
+            storage = new CahootsStorage(window.localStorage);
             storage._setPersons(inputPersons)
         })
         it('should create', function() {

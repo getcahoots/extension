@@ -2,7 +2,7 @@
 
 function QueryService(queryStorage) {
     this.queryStorage = queryStorage;
-    this.debug=true;
+    this.debug=false;
 }
 
 QueryService.prototype.findAuthorHints = function() {

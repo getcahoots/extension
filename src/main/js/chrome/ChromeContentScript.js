@@ -1,6 +1,8 @@
 'use strict'
 
 var chromeContentScript = function() {
+    var debug = true;
+    if(debug) console.log("executing chrome content script")
 
     var handleFullDetails = function(lookupId, dataCallback) {
         chrome.runtime.sendMessage({ message: "getFullDetails", cahootsID: lookupId}, function(response){

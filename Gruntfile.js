@@ -120,7 +120,7 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_chrome %>'},
                     {expand: true,
                         cwd: 'target/js',
-                        src: '*.js',
+                        src: ['Cahoots*.js','Chrome*.js'],
                         dest: '<%= build_dir_chrome %>/'}
                 ]
             }
