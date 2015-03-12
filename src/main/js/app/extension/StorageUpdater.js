@@ -1,16 +1,14 @@
 'use strict'
 
 var StorageUpdater = function(cahootsStorageInstance, url) {
-    this.debug = true;
+    this.debug = false;
 
     this.storage = cahootsStorageInstance;
-    this.url = url; // 'https://api.cahoots.pw/v1'
+    this.url = url;
 }
 
-// TODO: send custom http header
 StorageUpdater.prototype.update = function(xhr1, xhr2, callback) {
     var that = this;
-    // TODO better error handling
     var debug = this.debug;
 
     var url = this.url; //location relative to current webpage

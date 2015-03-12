@@ -20,7 +20,6 @@ return;
 
             var qs = new QueryService(storage)
             expect(qs).toBeDefined()
-            //console.log(qs.findAuthorHints())
         })
 
         it('should find author hints', function() {

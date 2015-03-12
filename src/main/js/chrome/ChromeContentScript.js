@@ -1,7 +1,7 @@
 'use strict'
 
 var chromeContentScript = function() {
-    var debug = true;
+    var debug = false;
     if(debug) console.log("executing chrome content script")
 
     var handleFullDetails = function(lookupId, dataCallback) {

@@ -110,8 +110,8 @@
 	border: none;
 }
 
-/* Cahnge to .cahoots_item_verified */
-.tooltipster-content .cahoots_item {
+
+.tooltipster-content .cahoots_item.verified {
     background: linear-gradient(to right, rgb(255,255,255) 30%, rgb(255,255,255) 50%, rgb(237,255,241) 100%) !important;
 }
 
@@ -148,7 +148,7 @@
 	float: right;
 }
 
-.tooltipster-content .cahoots_item a.quelle::before {
+.tooltipster-content .cahoots_item.verified a.quelle::before {
     content: "";
     color: transparent;
     display: inline-block;

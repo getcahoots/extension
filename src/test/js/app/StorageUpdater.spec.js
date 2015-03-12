@@ -63,30 +63,14 @@ describe("StorageUpdater", function suite() {
      */
     describe("normal operations", function () {
         it("should make cross domain call to api endpoint", function test(done) {
-done()
-
-
-            //spyOn(XMLHttpRequest.prototype, 'open').and.callThrough();
-            //spyOn(XMLHttpRequest.prototype, 'send').and.callThrough();
 
             var CahootsStorage = require("app/extension/CahootsStorage")
             var storage = new CahootsStorage(window.localStorage);
-
-            //var xhr1 = new XMLHttpRequest();
-            //xhr1.respondWith(TestResponses.getPersons.success);
-
-            //var xhr2 = new XMLHttpRequest();
-            //xhr2.respondWith(TestResponses.getOrganizations.success)
 
             var StorageUpdater = require("app/extension/StorageUpdater");
             var updater = new StorageUpdater(storage, apiEndpointUrl);
 
             updater.update(xhr1, xhr2, function (personValues, orgaValues) {
-                //expect(XMLHttpRequest.prototype.open).toHaveBeenCalled();
-                //expect(XMLHttpRequest.prototype.send).toHaveBeenCalled();
-                //console.log(typeof data)
-                //expect(personValues.length).toBe(62)
-                //expect(orgaValues.length).toBe(62)
                 done()
             });
 

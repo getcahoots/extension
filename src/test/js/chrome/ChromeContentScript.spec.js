@@ -5,18 +5,6 @@ describe('ChromeContentScript', function suite() {
 
     var cs = cahoots.chrome.content //require("chrome/ChromeContentScript")
 
-    //var captureSnippet= function(localStorage, snippetName, snippetContent){
-    //    //if(!localStorage.snippets) {
-    //    //    localStorage.snippets="{}";
-    //    //}
-    //    var snippets = JSON.parse(localStorage.snippets)
-    //    //snippets = {}
-    //    snippets[snippetName] = (snippetContent);
-    //    localStorage.snippets = JSON.stringify(snippets)
-    //    console.log("added snippet: " + snippetName)
-    //
-    //}
-
     beforeEach(function () {
         f = jasmine.getFixtures();
         f.fixturesPath = 'base';
@@ -38,7 +26,6 @@ describe('ChromeContentScript', function suite() {
 
         var CahootsUiFormatter = cahoots.chrome.content.CahootsUiFormatter;
         // inject content script
-
         cs()
 
         // fire dom ready
@@ -56,7 +43,6 @@ describe('ChromeContentScript', function suite() {
         expect(typeof notexistingElement.get(0)).toBe('undefined')
 
         // inject content script
-        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -74,7 +60,6 @@ describe('ChromeContentScript', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -101,7 +86,6 @@ describe('ChromeContentScript', function suite() {
                     message: 'getFullDetails',
                     'cahootsID': 'c29bca5141c539897b9fb19fc071dd12475e86aa'
                 }, jasmine.any(Function))
-            //chrome = originalChrome;
             done();
         }, 1000)
     })
@@ -111,7 +95,6 @@ describe('ChromeContentScript', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready
@@ -160,7 +143,6 @@ describe('ChromeContentScript', function suite() {
         spyOn(chrome.runtime, 'sendMessage').and.callThrough();
 
         // inject content script
-        //var cs = require("chrome/ChromeContentScript")
         cs()
 
         // fire dom ready

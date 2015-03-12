@@ -12,7 +12,9 @@ exports.main = function(options, callbacks) {
         var cahootsStorage = new CahootsStorage(browserStorageObject)
 
         // 3. create updater
-        const {Cc, Ci} = require("chrome");
+        var Cc, Ci;
+        //const {Cc, Ci} = require("chrome");
+        Cc= Ci = require("chrome");
         var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
         var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
@@ -21,7 +23,7 @@ exports.main = function(options, callbacks) {
 
         updater.checkUpdate(xhr1,xhr2,function(){
 
-        }); // runs async
+        });
 
         // 4. create query service with storage
         var QueryService = extension.QueryService
@@ -44,7 +46,8 @@ exports.main = function(options, callbacks) {
             ],
             contentStyleFile: [
                 data.url("style.css"),
-                data.url("cahoots-tooltipster.css")
+                data.url("cahoots-tooltipster.css"),
+                data.url("http://fonts.googleapis.com/css?family=Ubuntu:300,400,500")
             ],
             onAttach: function(worker) {
                 worker.port.on("getAuthorHints",function() {

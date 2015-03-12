@@ -28,8 +28,10 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
             info: orga.info,
             name: orga.name,
             source: orgas[o].source,
-            role: orgas[o].role,
-            verified: orgas[o].verified
+            role: orgas[o].role
+        }
+        if(orgas[o].verified===true) {
+            orgaDto.verified=true;
         }
         orgasNew.push(orgaDto)
     }

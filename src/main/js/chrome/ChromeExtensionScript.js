@@ -1,6 +1,6 @@
 'use strict'
 
-var debug = true;
+var debug = false;
 if(debug) console.log("executing chrome extension script")
 
 var CahootsStorage = cahoots.extension.CahootsStorage;

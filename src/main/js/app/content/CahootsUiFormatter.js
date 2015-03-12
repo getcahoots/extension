@@ -2,10 +2,8 @@
 
 var CahootsUiFormatter = function() {
     this.snippets = {
-        //contributeUrl: "http://cahoots-extension.github.io/index.html#contribute",
         reportErrorUrl : "mailto:mail@cahoots.pw?subject=Fehler",
         verifiedCaption: "Vom Autor verifizierte Verbindung",
-        verifiedImageData : "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAOAAAADgCxW/H3AAABkUlEQVQoz32SP0hbURTGf+e+DBKMoCDSogasoKKmQYp/iCAE3eoTxyooSKeCThncXXXsUCld3BxNqYtERUUcpJBOpbYQBBGxigSDYt49DpL0pfo80x3O75z7ne8TfNW260bCIUkBLiqtAIgeAWuFoi7+HFzLl3ql9IjtjSYd43wRIcoTpUrOs95MNpHOlMHY3mjSccyGIMIzpah6nh3OJtIZadt1I2HH/AjaBPCmuos/N8dcFK9QJVfwbLcJhyT1HNRR1cKnzgXG60ZQVUSIhkOSMiBjgV9TZa55mjt7x9ezTeSfEtegvAoCByJxemtjrB5/49Se+yZKq/E3Jmp6eFf/FkcNapXZ5imuiwU+n6wipvJuoQefJK6q9Fe/ZqLJxa1PsnVxQHukhY+/V7jiGsEHih45L963vxRkSETYv/xO/ibPSMMgfbVx/t5eMv9rCevY/1UsP7JDrdJoGvgQnWT9bJudwqH/KGU7AgOgVkGohHwBMADZRDrjeXZYlVxZhpFHm0pQRVbBH3IZK9sUEPJ7Z0OvDDHwQ3kAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMTAtMDNUMjM6Mzk6NDArMDI6MDB9Z2CiAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTEwLTAzVDIzOjM5OjQwKzAyOjAwDDrYHgAAAABJRU5ErkJggg==",
         unknownRole: "Art der Verbindung unbekannt",
         cahoots_url: "http://www.cahoots.pw/"
     }
@@ -30,7 +28,7 @@ CahootsUiFormatter.prototype.createDetailsView = function(elem, data) {
     for (var i = 0; i < data.cahoots.length; i++) {
 
 
-        var listItem = jQuery("<li>").addClass("cahoots_item"+(data.cahoots[i].verified == "true" ? " verified" : ""));
+        var listItem = jQuery("<li>").addClass("cahoots_item"+(data.cahoots[i].verified === true ? " verified" : ""));
         var organizationAnchor = jQuery("<a>", {target:"_blank",title:"Mehr Infos zu dieser Organisation",href:data.cahoots[i].info});
 
         organizationAnchor.append(data.cahoots[i].name);

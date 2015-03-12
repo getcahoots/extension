@@ -27,8 +27,6 @@ describe('FirefoxContentScript', function suite() {
 
 
     it('should demand authorHints', function () {
-
-
         spyOn(window.self.port, 'once').and.callThrough()
 
         cs()
