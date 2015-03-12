@@ -1,7 +1,7 @@
 'use strict'
 
 var CahootsStorage = function (storageObject) {
-    this.debug = true;
+    this.debug = false;
 
     if (typeof storageObject == "undefined") {
         throw new Error('no storage element passed')

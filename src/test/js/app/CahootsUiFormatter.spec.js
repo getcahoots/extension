@@ -3,7 +3,7 @@
 describe('CahootsUiFormatter', function suite () {
     var CahootsUiFormatter = require("app/content/CahootsUiFormatter");
 
-    var dataResponse = MockFactory.set1.getStefan();
+    var dataResponse = MockFactory.set1.getDummyPerson();
 
     var uif = null;
 

@@ -17,7 +17,7 @@ describe('CahootsRunner', function suite () {
     var cahootsRunner;
     var f;
 
-    var authorsUrl = 'src/test/resources/html/authors.html';
+    var authorsUrl = 'src/test/resources/html/browserTabFixture.html';
 
     beforeEach(function() {
         f = jasmine.getFixtures();

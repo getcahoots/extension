@@ -17,7 +17,7 @@ FirefoxMock.port = {
             FirefoxMock.registeredHandlers["gotAuthorHints"](MockFactory.set1.getHints())
         } else if (msgName == "getFullDetails") {
             if (payload == "c29bca5141c539897b9fb19fc071dd12475e86aa")
-                FirefoxMock.registeredHandlers[msgName](MockFactory.set1.getStefan())
+                FirefoxMock.registeredHandlers[msgName](MockFactory.set1.getDummyPerson())
         } else {
         }
     }
