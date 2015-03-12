@@ -29,6 +29,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 if (!window.localStorage.getItem('hasSeenIntro')) {
     window.localStorage.setItem('hasSeenIntro', 'yep');
     chrome.tabs.create({
-        url: 'http://www.cahoots.pw/news.html'
+        url: 'https://getcahoots.github.io/extension/news.html'
     });
 }

@@ -66,7 +66,7 @@ exports.main = function (options, callbacks) {
         try {
             if (typeof browserStorageObject.hasSeenInto == 'undefined') {
                 var tabs = require("sdk/tabs");
-                tabs.open("http://www.cahoots.pw/new_installed.html");
+                tabs.open("https://getcahoots.github.io/extension/news.html");
                 browserStorageObject.hasSeenInto = 'yep';
             }
         } catch (ex) {
