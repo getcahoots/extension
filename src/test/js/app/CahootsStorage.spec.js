@@ -7,6 +7,14 @@ describe("CahootsStorage", function suite() {
     })
 
 
+    var getCurrentTimestamp = function(){
+        var currentTimestamp = Math.floor(Date.now() / 1000);
+        return currentTimestamp;
+    }
+
+    var getExpiryDelta = function() {
+        return 60*60*24;
+    }
 
     var mockPersons = MockFactory.set1.getPersons();
 
@@ -49,10 +57,19 @@ describe("CahootsStorage", function suite() {
     })
 
     it('should decide not expired when timestamp is younger than expiry delta',function test(){
-        var currentTimestamp = Math.floor(Date.now() / 1000)
+        var currentTimestamp = getCurrentTimestamp();
         window.localStorage.setItem('lastUpdated',currentTimestamp);
         var s = new CahootsStorage(window.localStorage);
         expect(s.isExpired()).toBe(false);
+    })
+
+
+    it('should expire after expiry delta',function test(){
+        var currentTimestamp = getCurrentTimestamp();
+        var expiredTimestamp = currentTimestamp - getExpiryDelta() -1;
+        window.localStorage.setItem('lastUpdated',expiredTimestamp);
+        var s = new CahootsStorage(window.localStorage);
+        expect(s.isExpired()).toBe(true);
     })
 
 
