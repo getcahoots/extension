@@ -21,7 +21,7 @@
    "short_name": "Cahoots",
    "permissions": [ "http://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.0.1",
+   "version": "1.0.2",
    "web_accessible_resources": [
     "db.json",
     "verified.png"
