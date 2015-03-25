@@ -1,6 +1,6 @@
 {
   "name": "cahoots",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "devDependencies": {
     "fake-xml-http-request": "^1.1.3",
