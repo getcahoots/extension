@@ -1,5 +1,10 @@
-'use strict';
+(function () {
+    'use strict';
 
-jQuery(document).ready(
-    cahoots.chrome.content
-)
+    var bootstrapChromeContentScript = function () {
+        jQuery(document).ready(
+            cahoots.chrome.content
+        );
+    };
+    module.exports = bootstrapChromeContentScript;
+}());
