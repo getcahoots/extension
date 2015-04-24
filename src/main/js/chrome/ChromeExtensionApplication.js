@@ -1,6 +1,12 @@
 (function () {
     'use strict';
 
+    //var QueryService= require('./QueryService');
+    //var CahootsStorage = require('./CahootsStorage');
+    //var StorageUpdater = require('./StorageUpdater');
+    //var ProviderMerger = require('./ProviderMerger');
+    //var extensionConfig = require('./ExtensionConfig');
+
     var chromeExtensionScript = function () {
         var config = cahoots.extension.cahootsExtensionConfig;
         var debug = config.debug;
@@ -11,32 +17,40 @@
         var ProviderMerger = cahoots.extension.ProviderMerger;
 
         var cahootsStorage = new CahootsStorage(window.localStorage, new ProviderMerger(), config);
-        var updater = new StorageUpdater(cahootsStorage, config.apiEndpoint);
+        var updater = new StorageUpdater(cahootsStorage,config.apiEndpoint);
 
-        updater.checkUpdate(new XMLHttpRequest(), new XMLHttpRequest(), function () {
+        updater.checkUpdate(new XMLHttpRequest(),new XMLHttpRequest(),function(){
 
         }); // runs async
 
         var QueryService = cahoots.extension.QueryService;
         var queryService = new QueryService(cahootsStorage);
 
-        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-            if (request.message == "getAuthorHints") {
+        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
+            if(request.message=="getAuthorHints") {
                 var authorHints = queryService.findAuthorHints();
                 sendResponse(authorHints)
-            } else if (request.message == "getFullDetails") {
+            } else if(request.message=="getFullDetails") {
                 var authorDetails = queryService.findAuthorDetails(request.cahootsID)
                 sendResponse(authorDetails)
             }
-        });
+        })
 
         if (!window.localStorage.getItem('hasSeenIntro')) {
             window.localStorage.setItem('hasSeenIntro', 'yep');
             chrome.tabs.create({
                 url: 'https://getcahoots.github.io/extension/news/1.0.0.html'
             });
-        };
+        }
+
     };
 
-    module.exports = chromeExtensionScript
+
+
+    //module.exports.QueryService = QueryService;
+    //module.exports.CahootsStorage = CahootsStorage;
+    //module.exports.StorageUpdater = StorageUpdater;
+    //module.exports.ProviderMerger = ProviderMerger;
+    //module.exports.cahootsExtensionConfig = extensionConfig;
+    module.exports.chromeExtensionScript = chromeExtensionScript;
 }());

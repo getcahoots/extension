@@ -1,19 +1,19 @@
 'use strict';
 
 describe('CahootsRunner', function suite () {
-    var handleFullDetails = function(lookupId, dataCallback) {
+    var handleFullDetails = function (lookupId, dataCallback) {
         var data = {}
         dataCallback(data);
     }
 
-    var handleAuthorHints = function(dataCallback) {
+    var handleAuthorHints = function (dataCallback) {
         var data = {}
         dataCallback(data);
     }
 
+    var contentConfig = require('app/content/ContentConfig');
 
-
-    var CahootsRunner = require("app/content/CahootsRunner");
+    var CahootsRunner = require('app/content/CahootsRunner');
     var cahootsRunner;
     var f;
 
@@ -29,16 +29,15 @@ describe('CahootsRunner', function suite () {
     describe('basic tests', function() {
 
         beforeEach(function() {
-            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints)
+            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints, undefined, contentConfig);
         });
 
         it('should create', function () {
             expect(cahootsRunner).toBeDefined();
         });
 
-        it('should execute', function (done) {
+        it('should execute', function () {
             cahootsRunner.run();
-            done()
         });
     })
 });

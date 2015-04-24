@@ -4,7 +4,7 @@ describe('FirefoxContentScript', function suite() {
     var originalFirefoxPort;
 
     var firefoxMock;
-    var cs = cahoots.firefox.content;
+    var firefoxContentScript = cahoots.firefox.content;
 
     beforeEach(function () {
 
@@ -27,11 +27,11 @@ describe('FirefoxContentScript', function suite() {
 
 
     it('should demand authorHints', function () {
-        spyOn(window.self.port, 'once').and.callThrough()
+        spyOn(window.self.port, 'once').and.callThrough();
 
-        cs()
+        firefoxContentScript();
 
-        expect(window.self.port.once).toHaveBeenCalledWith('gotAuthorHints', jasmine.any(Function))
+        expect(window.self.port.once).toHaveBeenCalledWith('gotAuthorHints', jasmine.any(Function));
     })
 
 })

@@ -3,9 +3,13 @@
 describe("StorageUpdater", function suite() {
     var apiEndpointUrl ='https://api.cahoots.pw/v1';
 
+    var ProviderMerger = require('app/extension/ProviderMerger');
+    var providerMerger =  new ProviderMerger();
+
     beforeEach(function(){
         window.localStorage.clear();
     })
+
     var TestResponses = {
         getPersons: {
             success: {
@@ -65,7 +69,7 @@ describe("StorageUpdater", function suite() {
         it("should make cross domain call to api endpoint", function test(done) {
 
             var CahootsStorage = require("app/extension/CahootsStorage")
-            var storage = new CahootsStorage(window.localStorage);
+            var storage = new CahootsStorage(window.localStorage, providerMerger, {expiryDelta: 1});
 
             var StorageUpdater = require("app/extension/StorageUpdater");
             var updater = new StorageUpdater(storage, apiEndpointUrl);

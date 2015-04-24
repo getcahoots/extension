@@ -1,17 +1,20 @@
-'use strict'
+'use strict';
 
 exports.main = function (options, callbacks) {
 
 
     try {
+
         // 1. get the storage element in platform specific way
         var ss = require("sdk/simple-storage");
         var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
-        var extension = require("./CahootsExtensionBundle")
+        var extension = require("./CahootsExtensionBundle");
+        var config = extension.cahootsExtensionConfig;
+
         // 2. create new CahootsStorageRepository from storage element
         var CahootsStorage = extension.CahootsStorage
-        var cahootsStorage = new CahootsStorage(browserStorageObject)
+        var cahootsStorage = new CahootsStorage(browserStorageObject, extension.mergePersons, config)
 
         // 3. create updater
         //var Cc, Ci;
@@ -21,7 +24,7 @@ exports.main = function (options, callbacks) {
         var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
         var StorageUpdater = extension.StorageUpdater
-        var updater = new StorageUpdater(cahootsStorage, 'https://api.cahoots.pw/v1');
+        var updater = new StorageUpdater(cahootsStorage, config.apiEndpoint);
 
         updater.checkUpdate(xhr1, xhr2, function () {
 

@@ -1,10 +1,10 @@
 'use strict';
 
-function CahootsRunner( handleFullDetails, handleAuthorHints, uiFormatter) {
+function CahootsRunner(handleFullDetails, handleAuthorHints, uiFormatter, contentConfig) {
     this.handleAuthorHints = handleAuthorHints;
     this.handleFullDetails = handleFullDetails;
     this.uiFormatter = uiFormatter;
-    this.debug = false;
+    this.config = contentConfig;
 }
 
 CahootsRunner.prototype.findMatchingKeys = function(authorHints) {
@@ -30,15 +30,16 @@ CahootsRunner.prototype.highlightGivenKeys = function(foundKeys, authorHints) {
 CahootsRunner.prototype.tooltipsterize = function() {
     var that = this;
 
+    //var tooltip = jQuery.extend({},)
     jQuery('span[class*=CahootsID]').tooltipster({
-        interactive: true,
         contentAsHTML: false,
-        animation: 'grow',
-        content: jQuery('<span>Daten werden geladen…</span>'),
-        delay: '220',
-        speed: '210',
-        timer: '440',
-        autoClose: true,
+        content: jQuery('<span/>').text(that.config.snippets.loading_text),
+        interactive: that.config.interactive,
+        animation: that.config.animation,
+        delay: that.config.delay,
+        speed: that.config.speed,
+        timer: that.config.timer,
+        autoClose: that.config.autoClose,
         functionBefore: function(origin, continueTooltip) {
             var tooltipElement = this;
             continueTooltip();

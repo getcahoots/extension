@@ -1,7 +1,11 @@
-'use strict'
+'use strict';
 
-var chromeContentScript = function() {
-    var debug = false;
+var chromeContentScript = function () {
+    var CahootsRunner = cahoots.content.CahootsRunner;
+    var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
+    var ContentConfig = cahoots.content.ContentConfig;
+
+    var debug = ContentConfig.debug;
     if(debug) console.log("executing chrome content script")
 
     var handleFullDetails = function(lookupId, dataCallback) {
@@ -16,12 +20,10 @@ var chromeContentScript = function() {
         });
     }
 
-    var CahootsRunner = cahoots.content.CahootsRunner;
-    var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
 
     var uiFormatter = new CahootsUiFormatter();
-    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter);
+    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter, ContentConfig);
     cahootsRunner.run();
 };
 
-module.exports = chromeContentScript
+module.exports = chromeContentScript;

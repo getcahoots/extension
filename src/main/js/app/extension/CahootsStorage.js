@@ -1,9 +1,26 @@
 'use strict';
 
-(function() {
+/*
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 
-    var CahootsStorage = function (storageObject) {
-        this.debug = false;
+/**
+ * @author Oliver Sommer <oliver.sommer@posteo.de>
+ *
+ */
+(function() {
+    var getCurrentTimestamp = function () {
+        return Math.floor(Date.now() / 1000);
+    };
+
+    var CahootsStorage = function (storageObject, providerMerger, config) {
+        this.debug = config.debug;
+        this.providerMerger = providerMerger;
+        this.config = config;
 
         if (typeof storageObject == "undefined") {
             throw new Error('no storage element passed');
@@ -13,8 +30,14 @@
             throw new Error('invalid storage element passed');
         }
 
+        if(!typeof providerMerger == 'function') {
+            throw new Error('invalid merger passed');
+        }
+
+        // TODO assert config
+
         this.storage = storageObject;
-        this.expiryDelta = 60 * 60 * 24;
+        this.expiryDelta = config.expiryDelta;
     }
 
 
@@ -35,7 +58,7 @@
     }
 
     CahootsStorage.prototype._setUpdated = function () {
-        var currentTimestamp = Math.floor(Date.now() / 1000)
+        var currentTimestamp = getCurrentTimestamp();
         if (typeof this.storage.setItem == 'function') {
             this.storage.setItem('lastUpdated', currentTimestamp);
         } else {
@@ -44,15 +67,15 @@
     }
 
     CahootsStorage.prototype.setData = function (data) {
-        this._setPersons(data.persons)
-        this._setOrganizations(data.organizations)
-        this._setUpdated();
+        this._setPersons(this.providerMerger.flattenPersons(data.persons));
+        this._setOrganizations(data.organizations);
+        this._setUpdated();;
     }
 
     CahootsStorage.prototype.isExpired = function () {
         try {
             var lastUpdate = this.getLastUpdated();
-            var currentTimestamp = Math.floor(Date.now() / 1000)
+            var currentTimestamp = getCurrentTimestamp();
 
             if (lastUpdate == null || isNaN(lastUpdate)) {
                 if (this.debug) console.log("detected database expired==" + true + ". no last date present");
@@ -67,7 +90,7 @@
             if (this.debug) console.log("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
             return false;
         } catch (ex) {
-            console.log("error while determining expiry: " + ex)
+            console.log("error while determining expiry: " + ex);
             return true;
         }
         if (this.debug) console.log("detected database expired==" + true);
@@ -76,28 +99,28 @@
 
     CahootsStorage.prototype.getPersons = function () {
         if (typeof this.storage.setItem == 'function') {
-            return JSON.parse(this.storage.getItem('persons'))
+            return JSON.parse(this.storage.getItem('persons'));
         } else {
-            return JSON.parse(this.storage['persons'])
+            return JSON.parse(this.storage['persons']);
         }
     }
 
     CahootsStorage.prototype.getOrganizations = function () {
         if (typeof this.storage.setItem == 'function') {
-            return JSON.parse(this.storage.getItem('organizations'))
+            return JSON.parse(this.storage.getItem('organizations'));
         } else {
-            return JSON.parse(this.storage['organizations'])
+            return JSON.parse(this.storage['organizations']);
         }
     }
 
     CahootsStorage.prototype.getLastUpdated = function () {
         var rawValue = null;
         if (typeof this.storage.setItem == 'function') {
-            rawValue = this.storage.getItem('lastUpdated')
+            rawValue = this.storage.getItem('lastUpdated');
         } else {
-            rawValue = this.storage['lastUpdated']
+            rawValue = this.storage['lastUpdated'];
         }
-        var readValue = parseInt(JSON.parse(rawValue))
+        var readValue = parseInt(JSON.parse(rawValue));
 
         if (typeof readValue == 'number') {
             if (isNaN(readValue)) {

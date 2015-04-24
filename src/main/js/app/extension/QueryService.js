@@ -1,11 +1,23 @@
 'use strict';
 
+/*
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
+
+/**
+ * @author Oliver Sommer <oliver.sommer@posteo.de>
+ *
+ */
 function QueryService(queryStorage) {
     this.queryStorage = queryStorage;
-    this.debug=false;
+    this.debug = false;
 }
 
-QueryService.prototype.findAuthorHints = function() {
+QueryService.prototype.findAuthorHints = function () {
     var persons = this.queryStorage.getPersons();
     var authorMap = {};
     for(var i in persons) {
@@ -28,7 +40,8 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
             info: orga.info,
             name: orga.name,
             source: orgas[o].source,
-            role: orgas[o].role
+            role: orgas[o].role,
+            provider: orga.provider
         }
         if(orgas[o].verified===true) {
             orgaDto.verified=true;
@@ -40,6 +53,7 @@ QueryService.prototype.findAuthorDetails = function(cahootsID) {
         name: person.name,
         info: person.info,
         id:person.id,
+        provider: person.provider,
         cahoots: orgasNew
     };
     if(this.debug) console.log(result)

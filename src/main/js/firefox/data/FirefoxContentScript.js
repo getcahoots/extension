@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var firefoxContentScript = function() {
 
@@ -18,9 +18,10 @@ var firefoxContentScript = function() {
 
     var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
     var CahootsRunner = cahoots.content.CahootsRunner;
+    var ContentConfig = cahoots.content.ContentConfig;
     
-    var uif = new CahootsUiFormatter();
-    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints,uif);
+    var uiFormatter = new CahootsUiFormatter();
+    var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints,uiFormatter, ContentConfig);
     cahootsRunner.run();
 };
 
