@@ -4,7 +4,7 @@ describe('FirefoxContentScript', function suite() {
     var originalFirefoxPort;
 
     var firefoxMock;
-    var firefoxContentScript = cahoots.firefox.content;
+    var firefoxContentScript = cahoots.firefox.content.firefoxContentScript;
 
     beforeEach(function () {
 
