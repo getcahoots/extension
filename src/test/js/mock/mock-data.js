@@ -1,42 +1,127 @@
+
+
+
+
 MockFactory = {
     set1 : {
         getPersons: function () {
             return [{
-                id: 'f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                name: 'Jonas Bergmeier',
-                info: 'http://jonasbergmeier.net'
+                id: 'P-C-1', // cahoots / 1 verbindung
+                name: 'Max Mustermann',
+                info: 'http://www.example.org/p/max-mustermann',
+                provider: "official",
+                cahoots: [
+                    {
+                        "organization": "C-1",
+                        "verified": true,
+                        "source": "https://www.example.org/source/source-www1"
+                    }
+                ]
             }, {
-                id: 'f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                name: 'Alexander Barnickel',
-                info: 'http://alba.io'
+                id: 'P-C-2', // cahoots / 2 verbindungen
+                name: 'Jon Doe',
+                info: 'http://example.org/p/jon-doe',
+                provider: "official",
+                cahoots: [
+                    {
+                        "organization": "C-2",
+                        "source": "https://www.example.org/source/source-www1"
+                    },
+                    {
+                        "organization": "C-3",
+                        "source": "https://www.example.org/source/source-www2"
+                    }
+                ]
             }, {
-                id: 'f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                name: 'André König',
-                info: 'http://andrekoenig.info'
+                id: 'P-T-1', // torial / 1 verbindung
+                name: 'Flash Gordon',
+                info: 'http://www.example.org/p/flash-gordon',
+                provider: "torial",
+                cahoots: [
+                    {
+                        "organization": "T-1",
+                        "verified": true,
+                        "source": "https://www.example.org/source/source-www1"
+                    }
+                ]
             },{
-                id: 'c29bca5141c539897b9fb19fc071dd12475e86aa',
-                name: 'Oliver Sommer',
-                info: 'http://de.wikipedia.org/wiki/Blubb'
+                id: 'P-C-10', // torial und cahoots - cahoots - 1 verbindungen
+                name: 'Julius Caesar',
+                info: 'http://www.example.org/p/julius-caesar',
+                provider: "official",
+                cahoots: [
+                    {
+                        "organization": "C-1",
+                        "verified": true,
+                        "source": "https://www.example.org/source/source-www1"
+                    }
+                ]
+            },{
+                id: 'P-T-10', // torial und cahoots - torial - 1 verbindungen
+                name: 'Julius Caesar',
+                info: 'http://www.example.org/p/julius-caesar',
+                provider: "torial",
+                cahoots: [
+                    {
+                        "organization": "T-1",
+                        "verified": true,
+                        "source": "https://www.example.org/source/source-www1"
+                    }
+                ]
             }]
         },
         getOrganizations: function () {
             return [
                 {
-                    id: 'f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                    name: 'Cahoots Foundation',
-                    info: 'https://cahoots.pw'
+                    "name": "Organization C-1",
+                    "info": "http://www.example.org/organization/official/a",
+                    "id": "C-1",
+                    "provider": "official"
                 },
                 {
-                    id: 'a42423e4f94423e4cf03cff7a4415f79986ee4dc',
-                    name: 'Münchner Sicherheitskonferenz',
-                    info: 'http://de.wikipedia.org/wiki/M%C3%BCnchner_Sicherheitskonferenz'
+                    "name": "Organization C-2",
+                    "info": "http://www.example.org/organization/official/b",
+                    "id": "C-2",
+                    "provider": "official"
                 },
                 {
-                    id: '16025162581bd47bb1b8acab725e42c16f75c840',
-                    name: 'Valdai Discussion Club',
-                    info: 'http://en.wikipedia.org/wiki/Valdai_International_Discussion_Club'
-                }
-            ];
+                    "name": "Organization C-3",
+                    "info": "http://www.example.org/organization/official/c",
+                    "id": "C-3",
+                    "provider": "official"
+                },
+                {
+                    "name": "Organization C-4",
+                    "info": "http://www.example.org/organization/official/b",
+                    "id": "C-4",
+                    "provider": "official"
+                },
+                {
+                    "name": "Organization C-5",
+                    "info": "http://www.example.org/organization/official/c",
+                    "id": "C-5",
+                    "provider": "official"
+                },
+
+
+                {
+                    "name": "Organization T-1",
+                    "info": "http://www.example.org/organization/torial/d",
+                    "id": "T-1",
+                    "provider": "torial"
+                },
+                {
+                    "name": "Organization T-2",
+                    "info": "http://www.example.org/organization/torial/e",
+                    "id": "T-2",
+                    "provider": "torial"
+                },
+                {
+                    "name": "Organization T-3",
+                    "info": "http://www.example.org/organization/torial/f",
+                    "id": "T-3",
+                    "provider": "torial"
+                }];
         },
 
         getHints: function () {
@@ -106,3 +191,63 @@ MockFactory = {
     }
 }
 
+
+
+expectedMerge =
+     [{
+        id: 'P-C-1', // cahoots / 1 verbindung
+        name: 'Max Mustermann',
+        info: 'http://www.example.org/p/max-mustermann',
+        provider: "official",
+        cahoots: [
+            {
+                "organization": "C-1",
+                "verified": true,
+                "source": "https://www.example.org/source/source-www1"
+            }
+        ]
+    }, {
+        id: 'P-C-2', // cahoots / 2 verbindungen
+        name: 'Jon Doe',
+        info: 'http://example.org/p/jon-doe',
+        provider: "official",
+        cahoots: [
+            {
+                "organization": "C-2",
+                "source": "https://www.example.org/source/source-www1"
+            },
+            {
+                "organization": "C-3",
+                "source": "https://www.example.org/source/source-www2"
+            }
+        ]
+    }, {
+        id: 'P-T-1', // torial / 1 verbindung
+        name: 'Flash Gordon',
+        info: 'http://www.example.org/p/flash-gordon',
+        provider: "torial",
+        cahoots: [
+            {
+                "organization": "T-1",
+                "verified": true,
+                "source": "https://www.example.org/source/source-www1"
+            }
+        ]
+    },{
+        id: 'P-C-10', // torial und cahoots - torial - 1 verbindungen
+        name: 'Julius Caesar',
+        info: 'http://www.example.org/p/julius-caesar',
+        provider: "cahoots",
+        cahoots: [
+            {
+                "organization": "C-1",
+                "verified": true,
+                "source": "https://www.example.org/source/source-www1"
+            },
+            {
+                "organization": "T-1",
+                "verified": true,
+                "source": "https://www.example.org/source/source-www1"
+            }
+        ]
+    }]

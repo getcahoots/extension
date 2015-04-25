@@ -3,7 +3,8 @@ describe('ChromeContentScript', function suite() {
     var tabFixture = 'src/test/resources/html/browserTabFixture.html';
     var originalChrome;
 
-    var cs = cahoots.chrome.content
+    var domDelay = 300;
+    var cs = cahoots.chrome.content.chromeContentScript;
 
     beforeEach(function () {
         f = jasmine.getFixtures();
@@ -25,6 +26,7 @@ describe('ChromeContentScript', function suite() {
         spyOn(chrome.runtime, 'sendMessage');
 
         var CahootsUiFormatter = cahoots.chrome.content.CahootsUiFormatter;
+        //var CahootsUiFormatter = require('CahootsUiFormatter');
         // inject content script
         cs()
 
@@ -87,7 +89,7 @@ describe('ChromeContentScript', function suite() {
                     'cahootsID': 'c29bca5141c539897b9fb19fc071dd12475e86aa'
                 }, jasmine.any(Function))
             done();
-        }, 1000)
+        }, domDelay)
     })
 
 
@@ -128,7 +130,7 @@ describe('ChromeContentScript', function suite() {
                 }, jasmine.any(Function))
 
             done();
-        }, 1000)
+        }, domDelay)
 
     })
 
@@ -173,7 +175,7 @@ describe('ChromeContentScript', function suite() {
                 var elem = document.getElementsByClassName('tooltipster-base').item(0);
                 expect(elem).toBeNull()
                 done();
-            },1000);
-        }, 1000)
+            },domDelay);
+        }, domDelay)
     })
 })

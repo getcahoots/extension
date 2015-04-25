@@ -7,5 +7,5 @@
  */
 (function () {
     'use strict';
-    cahoots.chrome.content.bootstrapChromeContentScript();
+    cahoots.chrome.extension.chromeExtensionScript();
 }());
