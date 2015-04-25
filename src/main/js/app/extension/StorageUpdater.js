@@ -8,15 +8,16 @@
 (function () {
     'use strict';
 
-    var StorageUpdater = function (cahootsStorageInstance, url) {
+    var StorageUpdater = function (cahootsStorageInstance, config) {
         if(arguments.length!=2) {
             throw new Error('StorageUpdater() needs exactly 2 arguments');
         }
 
-        this.debug = false;
+        this.config = config;
+        this.debug = config.debug;
 
         this.storage = cahootsStorageInstance;
-        this.url = url;
+        this.url = config.apiEndpoint;
     }
 
     StorageUpdater.prototype.update = function (xhr1, xhr2, callback) {
@@ -67,6 +68,8 @@
         if(arguments.length!=3) {
             throw new Error('StorageUpdater.checkUpdate() needs exactly 3 arguments');
         }
+
+
         if (this.storage.isExpired()) {
             if (this.debug) console.log("checkUpdate: starting update")
             this.update(xhr1, xhr2, callback)
