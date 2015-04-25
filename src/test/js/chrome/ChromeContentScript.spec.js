@@ -4,15 +4,30 @@ describe('ChromeContentScript', function suite() {
     var originalChrome;
 
     var domDelay = 300;
-    var cs = cahoots.chrome.content
+    var cs;
+    var cahoots;
 
     beforeEach(function () {
         f = jasmine.getFixtures();
         f.fixturesPath = 'base';
         f.load(tabFixture);
 
+        if(typeof chrome == 'undefined') {
+            var chrome;
+        }
         originalChrome = chrome;
         chrome = getChromeMock();
+
+
+        cahoots = {
+            chrome: {
+                content: {
+                    CahootsUiFormatter: require("CahootsUiFormatter")
+                }
+            }
+        };
+
+        cs = cahoots.chrome.content;
     });
 
 
@@ -24,7 +39,8 @@ describe('ChromeContentScript', function suite() {
     it('should demand authorHints', function () {
         spyOn(chrome.runtime, 'sendMessage');
 
-        var CahootsUiFormatter = cahoots.chrome.content.CahootsUiFormatter;
+        //var CahootsUiFormatter = cahoots.chrome.content.CahootsUiFormatter;
+        var CahootsUiFormatter = require('CahootsUiFormatter');
         // inject content script
         cs()
 

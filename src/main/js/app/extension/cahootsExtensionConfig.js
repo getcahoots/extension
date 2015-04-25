@@ -1,3 +1,10 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
     var cahootsExtensionConfig = {
         //expiryDelta: (60 * 60 * 24), // for production

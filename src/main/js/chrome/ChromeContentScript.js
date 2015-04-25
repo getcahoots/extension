@@ -1,12 +1,19 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
     'use strict';
 
     var chromeContentScript = function () {
         var CahootsRunner = cahoots.content.CahootsRunner;
         var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
-        var ContentConfig = cahoots.content.ContentConfig;
+        var contentConfig = cahoots.content.cahootsContentConfig;
 
-        var debug = ContentConfig.debug;
+        var debug = contentConfig.debug;
         if(debug) console.log("executing chrome content script")
 
         var handleFullDetails = function(lookupId, dataCallback) {
@@ -23,9 +30,15 @@
 
 
         var uiFormatter = new CahootsUiFormatter();
-        var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter, ContentConfig);
+        var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter, contentConfig);
         cahootsRunner.run();
     };
 
-    module.exports = chromeContentScript;
+    var bootstrapChromeContentScript = function () {
+        jQuery(document).ready(
+            chromeContentScript
+        );
+    };
+    module.exports.chromeContentScript = chromeContentScript;
+    module.exports.bootstrapChromeContentScript = bootstrapChromeContentScript;
 }());

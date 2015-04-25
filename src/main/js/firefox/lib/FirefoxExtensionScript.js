@@ -1,32 +1,36 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
     'use strict';
 
-    console.log("defining ff extension");
     var firefoxExtensionScript = function (options, callbacks) {
-        console.log("running ff extension");
 
         try {
 
             // 1. get the storage element in platform specific way
+            var sdkSelf = require("sdk/self");
+            var pageMod = require("sdk/page-mod");
             var ss = require("sdk/simple-storage");
+            var tabs = require("sdk/tabs");
+            var extension = require("./CahootsExtensionBundle");
+            const {Cc, Ci} = require("chrome");
+
             var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
-            var config = cahoots.extension.cahootsExtensionConfig;
-            //var config = require("../../app/extension/ExtensionConfig")
-
-            //var CahootsStorage = require("../../app/CahootsStorage")
-            //var extension = require("../../app/extension");
-            var extension = cahoots.extension;
-            //var config = extension.cahootsExtensionConfig;
-
             // 2. create new CahootsStorageRepository from storage element
-            var CahootsStorage = extension.CahootsStorage
-            var cahootsStorage = new CahootsStorage(browserStorageObject, extension.mergePersons, config)
+            var CahootsStorage = extension.CahootsStorage;
+            var ProviderMerger = extension.ProviderMerger;
+            var config = extension.cahootsExtensionConfig;
+
+            var cahootsStorage = new CahootsStorage(browserStorageObject, new ProviderMerger(), config);
 
             // 3. create updater
-            //var Cc, Ci;
-            const {Cc, Ci} = require("chrome");
-            //Cc = Ci = require("chrome");
+
             var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
             var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
@@ -42,10 +46,10 @@
             var queryService = new QueryService(cahootsStorage);
 
             // 5. setup page worker with content script
-            var sdkSelf = require("sdk/self");
+
             var data = sdkSelf.data;
 
-            var pageMod = require("sdk/page-mod");
+
             pageMod.PageMod({
                 include: "*",
                 contentScriptFile: [
@@ -75,7 +79,6 @@
 
             try {
                 if (typeof browserStorageObject.hasSeenInto == 'undefined') {
-                    var tabs = require("sdk/tabs");
                     tabs.open("https://getcahoots.github.io/extension/news/1.0.0.html");
                     browserStorageObject.hasSeenInto = 'yep';
                 }
@@ -88,12 +91,5 @@
         }
     };
 
-
     module.exports.main = firefoxExtensionScript;
-    //exports.main = firefoxExtensionScript;
-
 }());
-
-//exports.main = function() {
-//    console.log("lol")
-//}

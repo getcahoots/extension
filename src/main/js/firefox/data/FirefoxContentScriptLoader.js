@@ -1,5 +1,12 @@
-'use strict'
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
+(function () {
+    'use strict';
 
-jQuery(document).ready(
-    cahoots.firefox.content
-)
+    cahoots.firefox.content.bootstrapFirefoxContentScript();
+}());

@@ -1,16 +1,17 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
     'use strict';
-
-    //var QueryService= require('./QueryService');
-    //var CahootsStorage = require('./CahootsStorage');
-    //var StorageUpdater = require('./StorageUpdater');
-    //var ProviderMerger = require('./ProviderMerger');
-    //var extensionConfig = require('./ExtensionConfig');
 
     var chromeExtensionScript = function () {
 
         var config = cahoots.extension.cahootsExtensionConfig;
-        if (config.debug) console.log("executing chrome extension script")
+        if (config.debug) console.log("executing chrome extension script");
 
         var StorageUpdater = cahoots.extension.StorageUpdater;
         var CahootsStorage = cahoots.extension.CahootsStorage;
@@ -45,12 +46,5 @@
 
     };
 
-
-
-    //module.exports.QueryService = QueryService;
-    //module.exports.CahootsStorage = CahootsStorage;
-    //module.exports.StorageUpdater = StorageUpdater;
-    //module.exports.ProviderMerger = ProviderMerger;
-    //module.exports.cahootsExtensionConfig = extensionConfig;
     module.exports.chromeExtensionScript = chromeExtensionScript;
 }());

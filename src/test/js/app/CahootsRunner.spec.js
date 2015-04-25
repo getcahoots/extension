@@ -11,7 +11,7 @@ describe('CahootsRunner', function suite () {
         dataCallback(data);
     }
 
-    var contentConfig = require('app/content/ContentConfig');
+    var contentConfig = require('app/content/cahootsContentConfig');
 
     var CahootsRunner = require('app/content/CahootsRunner');
     var cahootsRunner;

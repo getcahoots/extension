@@ -1,10 +1,11 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
     'use strict';
-
-    var bootstrapChromeContentScript = function () {
-        jQuery(document).ready(
-            cahoots.chrome.content
-        );
-    };
-    module.exports = bootstrapChromeContentScript;
+    cahoots.chrome.content.bootstrapChromeContentScript();
 }());

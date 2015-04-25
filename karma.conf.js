@@ -26,10 +26,8 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-
             {pattern: 'src/test/js/main-test.js', included: true},
             {pattern: 'src/test/js/mock/**/*.js', included: true},
-
 
             {pattern: 'src/main/js/jquery/*js', included: true},
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
@@ -38,11 +36,7 @@ module.exports = function (config) {
 
             {pattern: 'src/test/js/app/*.spec.js', included: true},
 
-            //{pattern: 'target/test-deps/*.js', included: true},
-
-
             {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
-
         ],
 
 

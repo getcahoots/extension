@@ -1,5 +1,12 @@
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
 (function () {
-    var ContentConfig = {
+    var cahootsContentConfig = {
         tooltip: {
             interactive: true,
             animation: 'grow',
@@ -19,6 +26,5 @@
         debug: false
     };
 
-
-    module.exports = ContentConfig;
+    module.exports = cahootsContentConfig;
 }());

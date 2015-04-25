@@ -1,23 +1,22 @@
-'use strict';
-
-/*
+/**
  * cahoots extension
  *
  * Copyright Cahoots.pw
  * MIT Licensed
  *
  */
+(function () {
+    'use strict';
 
-/**
- * @author Oliver Sommer <oliver.sommer@posteo.de>
- *
- */
-(function() {
     var getCurrentTimestamp = function () {
         return Math.floor(Date.now() / 1000);
     };
 
     var CahootsStorage = function (storageObject, providerMerger, config) {
+        if(arguments.length!=3) {
+            throw new Error('CahootsStorage() needs exactly 3 arguments');
+        }
+
         this.debug = config.debug;
         this.providerMerger = providerMerger;
         this.config = config;
@@ -30,7 +29,7 @@
             throw new Error('invalid storage element passed');
         }
 
-        if(!typeof providerMerger == 'function') {
+        if (!typeof providerMerger == 'function') {
             throw new Error('invalid merger passed');
         }
 
@@ -69,7 +68,8 @@
     CahootsStorage.prototype.setData = function (data) {
         this._setPersons(this.providerMerger.flattenPersons(data.persons));
         this._setOrganizations(data.organizations);
-        this._setUpdated();;
+        this._setUpdated();
+        ;
     }
 
     CahootsStorage.prototype.isExpired = function () {
@@ -133,4 +133,4 @@
 
     module.exports = CahootsStorage
 
-})();
+}());

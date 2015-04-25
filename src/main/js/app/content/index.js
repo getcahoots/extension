@@ -1,9 +1,18 @@
-'use strict'
+/**
+ * cahoots extension
+ *
+ * Copyright Cahoots.pw
+ * MIT Licensed
+ *
+ */
+(function () {
+    'use strict'
 
-var CahootsRunner= require('./CahootsRunner');
-var CahootsUiFormatter = require('./CahootsUiFormatter');
-var ContentConfig = require('./ContentConfig');
+    var CahootsRunner = require('./CahootsRunner');
+    var CahootsUiFormatter = require('./CahootsUiFormatter');
+    var cahootsContentConfig = require('./cahootsContentConfig');
 
-module.exports.CahootsRunner= CahootsRunner;
-module.exports.CahootsUiFormatter=CahootsUiFormatter;
-module.exports.ContentConfig=ContentConfig;
+    module.exports.CahootsRunner = CahootsRunner;
+    module.exports.CahootsUiFormatter = CahootsUiFormatter;
+    module.exports.cahootsContentConfig = cahootsContentConfig;
+}());

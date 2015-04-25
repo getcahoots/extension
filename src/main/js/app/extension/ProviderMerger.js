@@ -1,13 +1,8 @@
-/*
+/**
  * cahoots extension
  *
  * Copyright Cahoots.pw
  * MIT Licensed
- *
- */
-
-/**
- * @author Oliver Sommer <oliver.sommer@posteo.de>
  *
  */
 (function () {
