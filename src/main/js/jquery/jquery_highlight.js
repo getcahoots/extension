@@ -1,6 +1,8 @@
 /*
  * jQuery Highlight plugin
  *
+ * Extented for cahoots by Oliver Sommer
+ *
  * Based on highlight v3 by Johann Burkard
  * http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
  *
@@ -43,70 +45,105 @@
  * Licensed under MIT license.
  *
  */
+(function () {
+    'use strict';
+    var letterPattern = /[a-z]/i;
+    var isUnwantedSubmatch = function (node, match) {
+        var wholeLength = node.wholeText.length;
+        var matchBegin = match.index;
+        var matchEnd = matchBegin + match[0].length;
 
-jQuery.extend({
-    highlight: function (node, re, nodeName, className) {
-        if (node.nodeType === 3) {
-            var match = node.data.match(re);
-            if (match) {
-                var highlight = document.createElement(nodeName || 'span');
+        if (matchBegin > 0 && matchEnd < wholeLength) {
+            var letterBefore = node.wholeText.substring(matchBegin - 1, matchBegin);
+            var letterAfter = node.wholeText.substring(matchEnd, matchEnd + 1);
 
-                var wordNode = node.splitText(match.index);
-                wordNode.splitText(match[0].length);
-                var wordClone = wordNode.cloneNode(true);
-
-                highlight.className = className[wordClone.textContent] || 'highlight';
-
-                highlight.appendChild(wordClone);
-                wordNode.parentNode.replaceChild(highlight, wordNode);
-                return 1; //skip added node in parent
+            if (letterBefore.match(letterPattern) || letterAfter.match(letterPattern)) {
+                return true;
             }
-        } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
-                !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
-                !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
-            for (var i = 0; i < node.childNodes.length; i++) {
-                i += jQuery.highlight(node.childNodes[i], re, nodeName, className);
+        } else if (matchBegin > 0) {
+            var letterBefore = node.wholeText.substring(matchBegin - 1, matchBegin);
+            if (letterBefore.match(letterPattern)) {
+                return true;
+            }
+        } else if (matchEnd < wholeLength) {
+            var letterAfter = node.wholeText.substring(matchEnd, matchEnd + 1);
+            if (letterAfter.match(letterPattern)) {
+                return true;
             }
         }
-        return 0;
-    }
-});
+        return false;
+    };
 
-jQuery.fn.unhighlight = function (options) {
-    var settings = { className: 'highlight', element: 'span' };
-    jQuery.extend(settings, options);
+    jQuery.extend({
+        highlight: function (node, re, nodeName, className) {
+            if (node.nodeType === 3) {
+                var match = node.data.match(re);
 
-    return this.find(settings.element + "." + settings.className).each(function () {
-        var parent = this.parentNode;
-        parent.replaceChild(this.firstChild, this);
-        parent.normalize();
-    }).end();
-};
+                if (match) {
+                    if(isUnwantedSubmatch(node, match)) {
+                        return 0;
+                    };
+                    var highlight = document.createElement(nodeName || 'span');
 
-jQuery.fn.highlight = function (words, options) {
-    var settings = { className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false };
-    jQuery.extend(settings, options);
-    
-    if (words.constructor === String) {
-        words = [words];
-    }
-    words = jQuery.grep(words, function(word, i){
-      return word != '';
+                    var wordNode = node.splitText(match.index);
+                    wordNode.splitText(match[0].length);
+                    var wordClone = wordNode.cloneNode(true);
+
+                    highlight.className = className[wordClone.textContent] || 'highlight';
+                    highlight.appendChild(wordClone);
+                    wordNode.parentNode.replaceChild(highlight, wordNode);
+                    return 1; //skip added node in parent
+                }
+            } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
+                !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
+                !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
+                for (var i = 0; i < node.childNodes.length; i++) {
+                    i += jQuery.highlight(node.childNodes[i], re, nodeName, className);
+                }
+            }
+            return 0;
+        }
     });
-    words = jQuery.map(words, function(word, i) {
-      return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    });
-    if (words.length == 0) { return this; };
 
-    var flag = settings.caseSensitive ? "" : "i";
-    var pattern = "(" + words.join("|") + ")";
-    if (settings.wordsOnly) {
-        pattern = "\\b" + pattern + "\\b";
-    }
-    var re = new RegExp(pattern, flag);
-    
-    return this.each(function () {
-        jQuery.highlight(this, re, settings.element, settings.className);
-    });
-};
+    jQuery.fn.unhighlight = function (options) {
+        var settings = {className: 'highlight', element: 'span'};
+        jQuery.extend(settings, options);
 
+        return this.find(settings.element + "." + settings.className).each(function () {
+            var parent = this.parentNode;
+            parent.replaceChild(this.firstChild, this);
+            parent.normalize();
+        }).end();
+    };
+
+    jQuery.fn.highlight = function (words, options) {
+        var settings = {className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false};
+        jQuery.extend(settings, options);
+
+        if (words.constructor === String) {
+            words = [words];
+        }
+        words = jQuery.grep(words, function (word, i) {
+            return word != '';
+        });
+        words = jQuery.map(words, function (word, i) {
+            return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+        });
+        if (words.length == 0) {
+            return this;
+        }
+        ;
+
+        var flag = settings.caseSensitive ? "" : "i";
+        var pattern = "(" + words.join("|") + ")";
+        if (settings.wordsOnly) {
+            pattern = "\\b" + pattern + "\\b";
+        }
+        var re = new RegExp(pattern, flag);
+
+        return this.each(function () {
+            jQuery.highlight(this, re, settings.element, settings.className);
+        });
+    };
+
+}());
