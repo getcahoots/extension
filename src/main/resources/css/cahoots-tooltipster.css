@@ -39,14 +39,15 @@
 .tooltipster-default .tooltipster-content {
     font-family: 'Ubuntu',Arial,sans-serif !important;
     font-weight: 300 !important;
-    font-size: 14.25px !important;
-    text-rendering: geometricPrecision;
-    -webkit-font-smoothing: antialiased;
+    font-size: 15px !important;
     width: 400px !important;
     line-height: 18px;
     padding: 0;
     overflow: hidden;
     border-radius: 3px;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .tooltipster-icon {
@@ -71,7 +72,7 @@
 
 .tooltipster-base p {
     line-height: 1.4em;
-    padding: 18px 15px 17px;
+    padding: 19px 15px 18px;
     margin: 0;
     font-size: 15px;
     color: rgb(60,60,70);
@@ -120,7 +121,7 @@
     color: #F4F4F6;
     text-transform: uppercase;
     font-size: 1.1em;
-    letter-spacing: .3px;
+    letter-spacing: 0.6px;
 
     background: #3e3e47;
     background: -moz-linear-gradient(left, #3e3e47 0%, #25252d 100%);
@@ -222,11 +223,11 @@ a:-webkit-any-link {
     border-radius: 2px;
     text-transform: none !important;
 
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+    -webkit-transition: all .175s ease-in-out;
+    -moz-transition: all .175s ease-in-out;
+    -ms-transition: all .175s ease-in-out;
+    -o-transition: all .175s ease-in-out;
+    transition: all .175s ease-in-out;
 }
 .tooltipster-content .cahoots_button:hover {
     text-decoration: none;
@@ -234,7 +235,7 @@ a:-webkit-any-link {
     border: 1px solid transparent;
     color: #fff !important;
 }
-.tooltipster-content a:first-child .cahoots_button {
+.tooltipster-content a.cahoots_button:nth-child(3) {
     margin-right: 11px;
 }
 .cahoots_item a {
@@ -243,6 +244,7 @@ a:-webkit-any-link {
 }
 
 .tooltipster-content .person_name {
+		font-family: 'Ubuntu',Arial,sans-serif !important;
     color: #F4F4F6;
     font: 500 !important;
     padding: 0;
@@ -253,22 +255,25 @@ a:-webkit-any-link {
     float: right;
     font-weight: 400;
     color: rgb(109,109,122) !important;
-    padding: 5px 6px 4px;
-    border: 1px solid rgba(62,62,71,.5);
+    padding: 3px 7px 2px;
+    border: 1px solid rgba(109,109,122,.75) !important;
     border-radius: 2px;
     text-transform: none !important;
+    margin-top: -4px;
+    text-decoration: none;
 
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+    -webkit-transition: all .175s ease-in-out;
+    -moz-transition: all .175s ease-in-out;
+    -ms-transition: all .175s ease-in-out;
+    -o-transition: all .175s ease-in-out;
+    transition: all .175s ease-in-out;
 }
 .tooltipster-content .person_info:hover {
     text-decoration: none;
     background: rgb(62,62,71);
-    border: 1px solid transparent;
+    border: 1px solid rgb(62,62,71) !important;
     color: #fff !important;
+    text-decoration: none;
 }
 
 .tooltipster-content .cahoots_logo {
