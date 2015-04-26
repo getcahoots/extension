@@ -1,7 +1,7 @@
 /*
  * jQuery Highlight plugin
  *
- * Extented for cahoots by Oliver Sommer
+ * Extended with special functionality for http://cahoots.pw by Oliver Sommer
  *
  * Based on highlight v3 by Johann Burkard
  * http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
