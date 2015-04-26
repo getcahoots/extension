@@ -72,7 +72,10 @@ describe("StorageUpdater", function suite() {
             var storage = new CahootsStorage(window.localStorage, providerMerger, {expiryDelta: 1});
 
             var StorageUpdater = require("app/extension/StorageUpdater");
-            var updater = new StorageUpdater(storage, apiEndpointUrl);
+            var mockConfig = {
+                apiEndpoint: apiEndpointUrl
+            };
+            var updater = new StorageUpdater(storage, mockConfig);
 
             updater.update(xhr1, xhr2, function (personValues, orgaValues) {
                 done()

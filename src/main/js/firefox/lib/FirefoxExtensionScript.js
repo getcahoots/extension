@@ -19,6 +19,7 @@
             var tabs = require("sdk/tabs");
             var extension = require("./CahootsExtensionBundle");
             const {Cc, Ci} = require("chrome");
+            var { setInterval } = require("sdk/timers");
 
             var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
@@ -35,11 +36,18 @@
             var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
 
             var StorageUpdater = extension.StorageUpdater
-            var updater = new StorageUpdater(cahootsStorage, config.apiEndpoint);
+            var updater = new StorageUpdater(cahootsStorage, config);
 
-            updater.checkUpdate(xhr1, xhr2, function () {
 
-            });
+
+            setInterval(function(){
+                updater.checkUpdate(xhr1, xhr2, function () {
+                    if(config.debug) {
+                        console.log("update cycle finished");
+                    }
+                });
+            }, config.updateInterval)
+
 
             // 4. create query service with storage
             var QueryService = extension.QueryService

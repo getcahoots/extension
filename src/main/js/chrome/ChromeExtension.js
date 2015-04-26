@@ -18,11 +18,15 @@
         var ProviderMerger = cahoots.extension.ProviderMerger;
 
         var cahootsStorage = new CahootsStorage(window.localStorage, new ProviderMerger(), config);
-        var updater = new StorageUpdater(cahootsStorage,config.apiEndpoint);
+        var updater = new StorageUpdater(cahootsStorage,config);
 
-        updater.checkUpdate(new XMLHttpRequest(),new XMLHttpRequest(),function(){
-
-        }); // runs async
+        setInterval(function() {
+            updater.checkUpdate(new XMLHttpRequest(), new XMLHttpRequest(), function () {
+                if(config.debug) {
+                    console.log("update cycle finished");
+                }
+            });
+        }, config.updateInterval);
 
         var QueryService = cahoots.extension.QueryService;
         var queryService = new QueryService(cahootsStorage);

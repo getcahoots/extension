@@ -15,7 +15,7 @@
             unknownRole: "Art der Verbindung unbekannt",
             cahoots_url: "http://www.cahoots.pw/",
             forum_url: "https://forum.cahoots.pw/"
-        }
+        };
     }
 
 
@@ -27,11 +27,7 @@
             .append(
             jQuery("<span>").addClass("person_name").text(data.name),
             jQuery("<a>", {'href': data.info, 'target': '_blank'}).addClass("person_info").text("info")
-        )
-
-            .append(
-            jQuery("<strong>")
-        )
+        );
 
         var middleList = jQuery("<ul>", {id: 'cahoots_list'});
         for (var i = 0; i < data.cahoots.length; i++) {
@@ -40,11 +36,9 @@
             var listItem = jQuery("<li>")
                 .addClass("cahoots_item" + (data.cahoots[i].verified === true ? " verified" : ""));
 
-            //console.log(data.cahoots[i])
             if (data.cahoots[i].provider === 'torial') {
                 listItem.addClass('torial')
             }
-
 
             var organizationAnchor = jQuery("<a>", {
                 target: "_blank",
@@ -66,11 +60,11 @@
             listItem.append(jQuery("<br>"));
             listItem.append(roleCaption);
 
-            middleList.append(listItem)
+            middleList.append(listItem);
         }
 
         var middleContent = jQuery("<section>").addClass("cahoots_middle")
-            .append(middleList)
+            .append(middleList);
 
         var footer = jQuery("<section>").addClass("cahoots_footer")
             .append(jQuery("<a>", {'href': snippets.cahoots_url, target: "_blank"}).addClass("cahoots_logo"))
@@ -80,15 +74,14 @@
                 target: "_blank",
                 href: snippets.reportErrorUrl
             }).addClass("cahoots_button").text("Fehler melden")
-        )
+        );
 
         var fullCahootsOverlayContent = jQuery("<div>").addClass("cahoots_popover")
             .append(header)
             .append(middleContent)
             .append(footer);
         return fullCahootsOverlayContent;
-    }
-
+    };
 
     module.exports = CahootsUiFormatter;
 
