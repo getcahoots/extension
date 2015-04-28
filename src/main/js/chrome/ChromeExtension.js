@@ -11,21 +11,50 @@
     var chromeExtensionScript = function () {
 
         var config = cahoots.extension.cahootsExtensionConfig;
+        var configService = cahoots.extension.configService();
         if (config.debug) console.log("executing chrome extension script");
 
         var StorageUpdater = cahoots.extension.StorageUpdater;
         var CahootsStorage = cahoots.extension.CahootsStorage;
         var ProviderMerger = cahoots.extension.ProviderMerger;
 
-        var cahootsStorage = new CahootsStorage(window.localStorage, new ProviderMerger(), config);
-        var updater = new StorageUpdater(cahootsStorage,config);
 
-        setInterval(function() {
-            updater.checkUpdate(new XMLHttpRequest(), new XMLHttpRequest(), function () {
+        var cahootsStorage = new CahootsStorage(window.localStorage, new ProviderMerger(), configService);
+        configService.setStorage(cahootsStorage);
+
+        var xhr1 = new XMLHttpRequest(), xhr2 = new XMLHttpRequest(), xhr3 = new XMLHttpRequest();
+
+        var updater = new StorageUpdater(cahootsStorage, configService);
+
+        var updateCylceFn = function () {
+            updater.checkConfigUpdate(xhr1, function(e) {
                 if(config.debug) {
-                    console.log("update cycle finished");
+                    if(e instanceof Error) {
+                        console.log("config update problem");
+                    } else {
+                        console.log("config update success");
+                    }
+
                 }
             });
+
+            var dataUpdateTimeout = setTimeout(function () {
+                updater.checkUpdate(xhr2, xhr3, function (e) {
+                    if(config.debug) {
+                        if(e instanceof Error) {
+                            console.log("data update problem");
+                        } else {
+                            console.log("data update success");
+                        }
+
+                    }
+                });
+            }, 10000);
+        };
+
+        updateCylceFn();
+        setInterval(function() {
+            updateCylceFn();
         }, config.updateInterval);
 
         var QueryService = cahoots.extension.QueryService;

@@ -12,65 +12,92 @@
         return Math.floor(Date.now() / 1000);
     };
 
-    var CahootsStorage = function (storageObject, providerMerger, config) {
-        if(arguments.length!=3) {
-            throw new Error('CahootsStorage() needs exactly 3 arguments');
+    var CahootsStorage = function (storageObject, providerMerger, configService) {
+        if (arguments.length < 2) {
+            throw new Error('CahootsStorage() needs at least 2 arguments');
         }
 
-        this.debug = config.debug;
+        this.configService = configService;
         this.providerMerger = providerMerger;
-        this.config = config;
 
-        if (typeof storageObject == "undefined") {
+        if (storageObject === undefined) {
             throw new Error('no storage element passed');
         }
 
-        if (!typeof storageObject == "object") {
+        if (typeof storageObject !== "object") {
             throw new Error('invalid storage element passed');
         }
 
-        if (!typeof providerMerger == 'function') {
+        if (typeof providerMerger !== 'object') {
             throw new Error('invalid merger passed');
         }
 
-        // TODO assert config
-
         this.storage = storageObject;
-        this.expiryDelta = config.expiryDelta;
-    }
+    };
 
+    CahootsStorage.prototype.debug = function (logString) {
+        try {
+            if (this.configService.isDebug()) {
+                console.log(logString);
+            }
+        } catch (ignore) {
+
+        }
+    };
+
+    CahootsStorage.prototype._setStorageField = function (fieldName, data) {
+        if (typeof this.storage.setItem === 'function') {
+            this.storage.setItem(fieldName, JSON.stringify(data));
+        }
+        this.storage[fieldName] = JSON.stringify(data);
+    };
+
+    CahootsStorage.prototype._getStorageField = function (fieldName) {
+        if (typeof this.storage.setItem === 'function') {
+            return JSON.parse(this.storage.getItem(fieldName));
+        }
+        return JSON.parse(this.storage[fieldName]);
+    };
 
     CahootsStorage.prototype._setPersons = function (data) {
-        if (typeof this.storage.setItem == 'function') {
-            this.storage.setItem('persons', JSON.stringify(data));
-        } else {
-            this.storage.persons = JSON.stringify(data);
-        }
-    }
+        this._setStorageField('persons', data);
+    };
 
     CahootsStorage.prototype._setOrganizations = function (data) {
-        if (typeof this.storage.setItem == 'function') {
-            this.storage.setItem('organizations', JSON.stringify(data));
-        } else {
-            this.storage.organizations = JSON.stringify(data);
-        }
-    }
+        this._setStorageField('organizations', data);
+    };
 
     CahootsStorage.prototype._setUpdated = function () {
         var currentTimestamp = getCurrentTimestamp();
-        if (typeof this.storage.setItem == 'function') {
-            this.storage.setItem('lastUpdated', currentTimestamp);
-        } else {
-            this.storage['lastUpdated'] = currentTimestamp;
-        }
-    }
+        this._setStorageField('lastUpdated', currentTimestamp);
+    };
 
     CahootsStorage.prototype.setData = function (data) {
         this._setPersons(this.providerMerger.flattenPersons(data.persons));
         this._setOrganizations(data.organizations);
         this._setUpdated();
-        ;
-    }
+    };
+
+    CahootsStorage.prototype.isValidApiUrl = function (url) {
+        if (typeof url !== 'string') {
+            return false;
+        }
+        if (url.substring(0, 4) === 'http' && url.match(/cahoots/)) {
+            return true;
+        }
+        return false;
+    };
+
+    CahootsStorage.prototype.setApiEndpointOverride = function (data) {
+        if (!this.isValidApiUrl(data)) {
+            throw new Error("given api url is invalid, ignoring");
+        }
+        this._setStorageField('apiEndpointOverride', data);
+    };
+
+    CahootsStorage.prototype.getApiEndpointOverride = function () {
+        return this._getStorageField('apiEndpointOverride');
+    };
 
     CahootsStorage.prototype.isExpired = function () {
         try {
@@ -78,48 +105,35 @@
             var currentTimestamp = getCurrentTimestamp();
 
             if (lastUpdate == null || isNaN(lastUpdate)) {
-                if (this.debug) console.log("detected database expired==" + true + ". no last date present");
+                this.debug("detected database expired==" + true + ". no last date present");
                 return true;
             }
 
-            if (currentTimestamp - lastUpdate > this.expiryDelta) {
-                if (this.debug) console.log("detected database expired==" + true + ", time delta is seconds: " + (currentTimestamp - lastUpdate));
+            if (currentTimestamp - lastUpdate > this.configService.getExpiryDelta()) {
+                this.debug("detected database expired==" + true + ", time delta is seconds: " + (currentTimestamp - lastUpdate));
                 return true;
             }
 
-            if (this.debug) console.log("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
+            this.debug("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
             return false;
         } catch (ex) {
-            console.log("error while determining expiry: " + ex);
+            this.debug("error while determining expiry: " + ex);
             return true;
         }
-        if (this.debug) console.log("detected database expired==" + true);
+        this.debug("detected database expired==" + true);
         return true;
     }
 
     CahootsStorage.prototype.getPersons = function () {
-        if (typeof this.storage.setItem == 'function') {
-            return JSON.parse(this.storage.getItem('persons'));
-        } else {
-            return JSON.parse(this.storage['persons']);
-        }
+        return this._getStorageField('persons');
     }
 
     CahootsStorage.prototype.getOrganizations = function () {
-        if (typeof this.storage.setItem == 'function') {
-            return JSON.parse(this.storage.getItem('organizations'));
-        } else {
-            return JSON.parse(this.storage['organizations']);
-        }
+        return this._getStorageField('organizations');
     }
 
     CahootsStorage.prototype.getLastUpdated = function () {
-        var rawValue = null;
-        if (typeof this.storage.setItem == 'function') {
-            rawValue = this.storage.getItem('lastUpdated');
-        } else {
-            rawValue = this.storage['lastUpdated'];
-        }
+        var rawValue = this._getStorageField('lastUpdated');
         var readValue = parseInt(JSON.parse(rawValue));
 
         if (typeof readValue == 'number') {
@@ -129,8 +143,7 @@
             return readValue;
         }
         return null;
-    }
+    };
 
-    module.exports = CahootsStorage
-
+    module.exports = CahootsStorage;
 }());

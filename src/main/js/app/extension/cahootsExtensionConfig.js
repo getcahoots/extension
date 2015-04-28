@@ -7,24 +7,55 @@
  */
 (function () {
     var cahootsExtensionConfig = {
-        /*
-        expiry delta in seconds
-         */
-        //expiryDelta: (60 * 60 * 24), // for production
-        expiryDelta: 10, // for testing
+        /* expiry delta in seconds */
+        expiryDelta: (60 * 60 * 24), // for production
 
+        /* update interval in milliseconds */
+        updateInterval: (60 * 60 * 24) * 1000,
 
-        /*
-        update interval in milliseconds
-         */
-        updateInterval: 10 * 1000 + 5000,
-        //updateInterval: (60 * 60 * 24) * 1000 + 10000,
-
-        //apiEndpoint: 'https://api.cahoots.pw/v2'
-        //apiEndpoint: 'http://api-beta.cahoots.pw/v2',
-        apiEndpoint: 'http://api-beta.cahoots.pw/v1',
-        debug: true
+        apiEndpoint: 'http://api-beta.cahoots.pw/v2',
+        apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
+        debug: false
     };
 
-    module.exports = cahootsExtensionConfig;
+    var ConfigService = function (cahootsStorage) {
+        if (arguments.length < 1) {
+            throw new Error('ConfigService expects at least one argument');
+        }
+        this.storage = cahootsStorage;
+    };
+
+    ConfigService.prototype.getApiEndpoint = function () {
+        var storageSetting = this.storage.getApiEndpointOverride();
+        if (typeof storageSetting === 'string' && storageSetting.length > 10) {
+            return storageSetting;
+        }
+        return cahootsExtensionConfig.apiEndpoint;
+    };
+
+    ConfigService.prototype.isDebug = function () {
+        return cahootsExtensionConfig.debug;
+    };
+
+    ConfigService.prototype.getExpiryDelta = function () {
+        return cahootsExtensionConfig.expiryDelta;
+    };
+
+    ConfigService.prototype.getApiEndpointUpdateUrl = function () {
+        return cahootsExtensionConfig.apiEndpointUpdateUrl;
+    };
+
+    ConfigService.prototype.setStorage = function (storage) {
+        this.storage = storage;
+    };
+
+    var configServiceInstance = null;
+
+    module.exports.cahootsExtensionConfig = cahootsExtensionConfig;
+    module.exports.configService = function getInstance(initialConfig) {
+        if (configServiceInstance === null) {
+            configServiceInstance = new ConfigService(initialConfig);
+        }
+        return configServiceInstance;
+    };
 }());

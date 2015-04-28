@@ -11,8 +11,6 @@
     var firefoxExtensionScript = function (options, callbacks) {
 
         try {
-
-            // 1. get the storage element in platform specific way
             var sdkSelf = require("sdk/self");
             var pageMod = require("sdk/page-mod");
             var ss = require("sdk/simple-storage");
@@ -20,33 +18,57 @@
             var extension = require("./CahootsExtensionBundle");
             const {Cc, Ci} = require("chrome");
             var { setInterval } = require("sdk/timers");
+            var { setTimeout } = require("sdk/timers");
 
-            var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
-
-            // 2. create new CahootsStorageRepository from storage element
             var CahootsStorage = extension.CahootsStorage;
             var ProviderMerger = extension.ProviderMerger;
+            var StorageUpdater = extension.StorageUpdater;
             var config = extension.cahootsExtensionConfig;
+            var configService = extension.configService();
 
-            var cahootsStorage = new CahootsStorage(browserStorageObject, new ProviderMerger(), config);
+            // get the storage element in platform specific way
+            var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
 
-            // 3. create updater
+            // create new CahootsStorageRepository from storage element
+            var cahootsStorage = new CahootsStorage(browserStorageObject, new ProviderMerger(), configService);
+            configService.setStorage(cahootsStorage);
 
+            // create updater
             var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
             var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
+            var xhr3 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
+            var updater = new StorageUpdater(cahootsStorage, configService);
 
-            var StorageUpdater = extension.StorageUpdater
-            var updater = new StorageUpdater(cahootsStorage, config);
-
-
-
-            setInterval(function(){
-                updater.checkUpdate(xhr1, xhr2, function () {
+            var updateCylceFn = function () {
+                updater.checkConfigUpdate(xhr1, function(e) {
                     if(config.debug) {
-                        console.log("update cycle finished");
+                        if(e instanceof Error) {
+                            console.log("config update problem");
+                        } else {
+                            console.log("config update success");
+                        }
+
                     }
                 });
-            }, config.updateInterval)
+
+                var dataUpdateTimeout = setTimeout(function () {
+                    updater.checkUpdate(xhr2, xhr3, function (e) {
+                        if(config.debug) {
+                            if(e instanceof Error) {
+                                console.log("data update problem");
+                            } else {
+                                console.log("data update success");
+                            }
+
+                        }
+                    });
+                }, 10000);
+            };
+
+            updateCylceFn();
+            setInterval(function() {
+                updateCylceFn();
+            }, config.updateInterval);
 
 
             // 4. create query service with storage

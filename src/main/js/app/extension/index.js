@@ -18,5 +18,6 @@
     module.exports.CahootsStorage = CahootsStorage;
     module.exports.StorageUpdater = StorageUpdater;
     module.exports.ProviderMerger = ProviderMerger;
-    module.exports.cahootsExtensionConfig = cahootsExtensionConfig;
+    module.exports.cahootsExtensionConfig = cahootsExtensionConfig.cahootsExtensionConfig;
+    module.exports.configService = cahootsExtensionConfig.configService;
 }());
