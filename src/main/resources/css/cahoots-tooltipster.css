@@ -24,16 +24,16 @@
     border-radius: 3px;
     border: 1px solid rgb(190,190,195);
 
-    background: #f4f4f6;
-    background: -moz-linear-gradient(45deg,  #f4f4f6 0%, #ffffff 100%);
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f4f4f6), color-stop(100%,#ffffff));
-    background: -webkit-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%);
-    background: -o-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%);
-    background: -ms-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%);
-    background: linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%);
+    background: #f4f4f6 !important;
+    background: -moz-linear-gradient(45deg,  #f4f4f6 0%, #ffffff 100%) !important;
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f4f4f6), color-stop(100%,#ffffff)) !important;
+    background: -webkit-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%) !important;
+    background: -o-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%) !important;
+    background: -ms-linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%) !important;
+    background: linear-gradient(45deg,  #f4f4f6 0%,#ffffff 100%) !important;
 
-    box-shadow: 0 1px 20px rgba(0,0,0,0.3);
-    color: rgb(62,62,71);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.3) !important;
+    color: rgb(62,62,71) !important;
 }
 
 .tooltipster-default .tooltipster-content {
@@ -75,7 +75,7 @@
     padding: 19px 15px 18px;
     margin: 0;
     font-size: 15px;
-    color: rgb(60,60,70);
+    color: rgb(62,62,71);
 }
 
 .tooltipster-base .tooltipster-content {
@@ -88,11 +88,12 @@
     max-height: 300px;
     overflow: auto;
     overflow-x: hidden;
-    background: rgb(255,255,255);
+    background: rgb(255,255,255) !important;
     border-top: 1px solid rgb(190,190,200);
     border-bottom: 1px solid rgb(190,190,200);
 }
 .tooltipster-content .cahoots_footer {
+		background: #f4f4f6 !important;
     padding: 14px 15px 16px;
     height: 26px;
 }
@@ -123,13 +124,13 @@
     font-size: 1.1em;
     letter-spacing: 0.6px;
 
-    background: #3e3e47;
-    background: -moz-linear-gradient(left, #3e3e47 0%, #25252d 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#3e3e47), color-stop(100%,#25252d));
-    background: -webkit-linear-gradient(left, #3e3e47 0%,#25252d 100%);
-    background: -o-linear-gradient(left, #3e3e47 0%,#25252d 100%);
-    background: -ms-linear-gradient(left, #3e3e47 0%,#25252d 100%);
-    background: linear-gradient(to right, #3e3e47 0%,#25252d 100%);
+    background: #3e3e47 !important;
+    background: -moz-linear-gradient(left, #3e3e47 0%, #25252d 100%) !important;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#3e3e47), color-stop(100%,#25252d)) !important;
+    background: -webkit-linear-gradient(left, #3e3e47 0%,#25252d 100%) !important;
+    background: -o-linear-gradient(left, #3e3e47 0%,#25252d 100%) !important;
+    background: -ms-linear-gradient(left, #3e3e47 0%,#25252d 100%) !important;
+    background: linear-gradient(to right, #3e3e47 0%,#25252d 100%) !important;
 }
 
 .tooltipster-content .cahoots_item:last-child {
@@ -183,7 +184,7 @@
 }
 
 .tooltipster-content .quelle {
-    color: rgb(60,60,70) !important;
+    color: rgb(62,62,71) !important;
     font-weight: 500 !important;
     float: right;
 }
