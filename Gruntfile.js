@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-crx');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-browserify');
-
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     var out_dir = 'target';
     var mozillaConfig = {
@@ -295,19 +295,13 @@ module.exports = function (grunt) {
                         standalone: 'cahoots.chrome.extension'
                     }
                 }
-            },
+            }
 
-            /*firefox_extension_application: {
-                src: ['src/main/js/firefox/FirefoxExtensionScript.js'],
-                dest: out_dir + "/js/" + 'FirefoxExtensionBundle.js',
-                options: {
-                    ignore: ['chrome', 'sdk/self', 'sdk/page-mod', 'sdk/tabs', 'sdk/simple-storage'],
-                    browserifyOptions: {
-                        //standalone: "cahoots.firefox.extension"
-                    }
-                }
-            }*/
+        },
 
+        watch: {
+            files: ['src/**/*'],
+            tasks: ['tests']
         }
     };
 

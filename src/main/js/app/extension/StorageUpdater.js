@@ -8,76 +8,114 @@
 (function () {
     'use strict';
 
-    var StorageUpdater = function (cahootsStorageInstance, config) {
-        if(arguments.length!=2) {
+    var StorageUpdater = function (cahootsStorageInstance, configService) {
+        if (arguments.length !== 2) {
             throw new Error('StorageUpdater() needs exactly 2 arguments');
         }
 
-        this.config = config;
-        this.debug = config.debug;
+        this.configService = configService;
 
         this.storage = cahootsStorageInstance;
-        this.url = config.apiEndpoint;
-    }
+    };
+
+    StorageUpdater.prototype.debug = function (logString) {
+        if (this.configService.isDebug()) {
+            console.log(logString);
+        }
+    };
 
     StorageUpdater.prototype.update = function (xhr1, xhr2, callback) {
-        if(arguments.length!=3) {
+        if (arguments.length !== 3) {
             throw new Error('StorageUpdater.update() needs exactly 3 arguments');
         }
         var that = this;
-        var debug = this.debug;
+        var url = this.configService.getApiEndpoint();
 
-        var url = this.url; //location relative to current webpage
+        this.debug('starting update from api with endpoint url: ' + url);
 
         xhr1.open('GET', url + '/persons', true); // async
 
 
         xhr1.onload = function () {
-            //console.log(this);
-            var personValues = JSON.parse(xhr1.response);
-            //console.log("xhr1 onload with status " + this.status)
             if (this.status < 200 || this.status >= 300) {
-                callback(new Error("connection to the cahoots database service failed"))
+                callback(new Error("connection to the cahoots database service failed: " + this.status));
             }
+            var personValues = JSON.parse(xhr1.response);
 
-            //console.log("xhr1 call success, got data: " + JSON.stringify(personValues));
-            xhr2.open('GET', url + '/organizations', true); // async
-            xhr2.onload = function (xmlEvent) {
-                //console.log("xhr2 onload with status " + this.status)
+            xhr2.open('GET', url + '/organizations', true);
+            xhr2.onload = function () {
                 if (this.status < 200 || this.status >= 300) {
-                    callback(new Error("connection to the cahoots database service failed"))
+                    callback(new Error('connection to the cahoots database service failed'));
                 }
-                //console.log("xhr2 call success");
                 var orgaValues = JSON.parse(xhr2.response);
 
-                //if(debug) console.log("loaded through.")
-                //that.setPersons(personValues)
-                //that.setOrganizations(orgaValues)
-                that.storage.setData({persons: personValues, organizations: orgaValues})
-                if (debug) console.log("update complete")
-                callback(personValues, orgaValues)
-            }
+                that.storage.setData({persons: personValues, organizations: orgaValues});
+                that.debug('data update complete');
+                callback(personValues, orgaValues);
+            };
             xhr2.send();
         };
 
         xhr1.send();
+    };
 
-    }
+    StorageUpdater.prototype.updateApiEndpointSetting = function (xhr, callback) {
+        if (arguments.length !== 2) {
+            throw new Error('StorageUpdater.updateApiEndpointSetting() needs exactly 2 arguments');
+        }
+        var receivedOverrideUrl;
+        var that = this;
+        var url = this.configService.getApiEndpointUpdateUrl();
+
+        xhr.open('GET', url, true);
+
+        this.debug('starting update for config from url: ' + url);
+
+        xhr.onload = function () {
+            if (this.status < 200 || this.status >= 300) {
+                callback(new Error("connection to the cahoots config url failed"));
+            }
+            try {
+                var receivedConfigData = JSON.parse(xhr.response);
+                if (typeof receivedConfigData.apiUpdateOverrideUrl === 'string') {
+                    receivedOverrideUrl = receivedConfigData.apiUpdateOverrideUrl;
+                    that.debug('received api override url: ' + receivedOverrideUrl);
+                    that.storage.setApiEndpointOverride(receivedOverrideUrl);
+                    callback();
+                } else {
+                    that.debug('received garbage: ' + receivedOverrideUrl);
+                    callback(new Error('received garbage: ' + receivedOverrideUrl));
+                }
+            } catch (e) {
+                that.debug('could not update api endpoint url: ' + e);
+                callback(new Error('could not update api endpoint url: ' + e));
+            }
+        };
+
+        xhr.send();
+    };
 
     StorageUpdater.prototype.checkUpdate = function (xhr1, xhr2, callback) {
-        if(arguments.length!=3) {
+        if (arguments.length !== 3) {
             throw new Error('StorageUpdater.checkUpdate() needs exactly 3 arguments');
         }
 
-
         if (this.storage.isExpired()) {
-            if (this.debug) console.log("checkUpdate: starting update")
-            this.update(xhr1, xhr2, callback)
+            this.debug("checkUpdate: starting update");
+            this.update(xhr1, xhr2, callback);
         } else {
-            if (this.debug) console.log("checkUpdate: no update needed")
+            this.debug("checkUpdate: no update needed");
         }
-    }
+    };
 
+    StorageUpdater.prototype.checkConfigUpdate = function (xhr, callback) {
+        if (arguments.length !== 2) {
+            throw new Error('StorageUpdater.checkConfigUpdate() needs exactly 2 arguments');
+        }
+
+        this.debug("checkConfigUpdate");
+        this.updateApiEndpointSetting(xhr, callback);
+    }
 
     module.exports = StorageUpdater;
 }());
