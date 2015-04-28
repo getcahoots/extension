@@ -7,6 +7,8 @@
  */
 (function () {
     var cahootsExtensionConfig = {
+        cahootsExtensionVersion: '1.1.0',
+
         /* expiry delta in seconds */
         expiryDelta: (60 * 60 * 24), // for production
 
@@ -47,6 +49,10 @@
 
     ConfigService.prototype.setStorage = function (storage) {
         this.storage = storage;
+    };
+
+    ConfigService.prototype.getReleaseNotesPageUrl = function () {
+        return 'https://getcahoots.github.io/extension/news/' + cahootsExtensionConfig.cahootsExtensionVersion + '.html';
     };
 
     var configServiceInstance = null;

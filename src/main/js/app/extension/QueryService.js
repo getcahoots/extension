@@ -9,7 +9,7 @@
     'use strict';
 
     function QueryService(queryStorage) {
-        if(arguments.length!=1) {
+        if (arguments.length !== 1) {
             throw new Error('QueryService() needs exactly 1 arguments');
         }
         this.queryStorage = queryStorage;
@@ -20,7 +20,7 @@
         var persons = this.queryStorage.getPersons();
         var authorMap = {};
         for (var i in persons) {
-            authorMap[(persons[i].name)] = "CahootsID_" + persons[i].id;
+            authorMap[(persons[i].name)] = 'CahootsID_' + persons[i].id;
         }
         return authorMap;
     }
@@ -41,7 +41,7 @@
                 source: orgas[o].source,
                 role: orgas[o].role,
                 provider: orga.provider
-            }
+            };
             if (orgas[o].verified === true) {
                 orgaDto.verified = true;
             }
@@ -55,16 +55,16 @@
             provider: person.provider,
             cahoots: orgasNew
         };
-        if (this.debug) console.log(result)
+        if (this.debug) console.log(result);
         return result;
-    }
+    };
 
     QueryService.prototype.findOrganizationByCahootsId = function (cahootsID) {
         var organization = this.queryStorage.getOrganizations().filter(function (e) {
             return e.id == cahootsID
         });
         return organization[0];
-    }
+    };
 
     module.exports = QueryService;
 }());

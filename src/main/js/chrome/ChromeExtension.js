@@ -70,13 +70,18 @@
             }
         })
 
-        if (!window.localStorage.getItem('hasSeenIntro')) {
-            window.localStorage.setItem('hasSeenIntro', 'yep');
-            chrome.tabs.create({
-                url: 'https://getcahoots.github.io/extension/news/1.0.0.html'
-            });
-        }
+        var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
+        var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
 
+        try {
+            if (!window.localStorage.getItem(hasSeenIntroKey)) {
+                window.localStorage.setItem(hasSeenIntroKey, 'yep');
+                chrome.tabs.create({
+                    url: releaseNotesPageUrl
+                });
+            }
+        } catch (ignore) {
+        }
     };
 
     module.exports.chromeExtensionScript = chromeExtensionScript;

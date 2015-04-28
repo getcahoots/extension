@@ -23,7 +23,7 @@ describe('FirefoxContentScript', function suite() {
 
     afterEach(function() {
         window.self.port = originalFirefoxPort;
-    })
+    });
 
 
     it('should demand authorHints', function () {
@@ -32,6 +32,5 @@ describe('FirefoxContentScript', function suite() {
         firefoxContentScript();
 
         expect(window.self.port.once).toHaveBeenCalledWith('gotAuthorHints', jasmine.any(Function));
-    })
-
-})
+    });
+});

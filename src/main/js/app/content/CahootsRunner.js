@@ -9,7 +9,7 @@
     'use strict';
 
     function CahootsRunner(handleFullDetails, handleAuthorHints, uiFormatter, contentConfig) {
-        if(arguments.length!=4) {
+        if (arguments.length !== 4) {
             throw new Error('CahootsRunner() needs exactly 4 arguments');
         }
         this.handleAuthorHints = handleAuthorHints;

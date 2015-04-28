@@ -24,16 +24,13 @@
             var ProviderMerger = extension.ProviderMerger;
             var StorageUpdater = extension.StorageUpdater;
             var config = extension.cahootsExtensionConfig;
+            var QueryService = extension.QueryService;
             var configService = extension.configService();
 
-            // get the storage element in platform specific way
             var browserStorageObject = ss.storage.cahoots = typeof ss.storage.cahoots == 'undefined' ? {} : ss.storage.cahoots;
-
-            // create new CahootsStorageRepository from storage element
             var cahootsStorage = new CahootsStorage(browserStorageObject, new ProviderMerger(), configService);
             configService.setStorage(cahootsStorage);
 
-            // create updater
             var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
             var xhr2 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
             var xhr3 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
@@ -71,14 +68,8 @@
             }, config.updateInterval);
 
 
-            // 4. create query service with storage
-            var QueryService = extension.QueryService
             var queryService = new QueryService(cahootsStorage);
-
-            // 5. setup page worker with content script
-
             var data = sdkSelf.data;
-
 
             pageMod.PageMod({
                 include: "*",
@@ -106,14 +97,14 @@
                 }
             });
 
-
             try {
-                if (typeof browserStorageObject.hasSeenInto == 'undefined') {
-                    tabs.open("https://getcahoots.github.io/extension/news/1.0.0.html");
-                    browserStorageObject.hasSeenInto = 'yep';
+                var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
+                var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
+                if (browserStorageObject[hasSeenIntroKey] === undefined) {
+                    tabs.open(releaseNotesPageUrl);
+                    browserStorageObject[hasSeenIntroKey] = 'yep';
                 }
-            } catch (ex) {
-
+            } catch (ignore) {
             }
 
         } catch (e) {
