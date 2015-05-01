@@ -62,10 +62,10 @@
 
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
             if(request.message=="getAuthorHints") {
-                var authorHints = queryService.findAuthorHints();
+                var authorHints = queryService.queryAuthorHints();
                 sendResponse(authorHints)
             } else if(request.message=="getFullDetails") {
-                var authorDetails = queryService.findAuthorDetails(request.cahootsID)
+                var authorDetails = queryService.queryAuthorDetails(request.cahootsID);
                 sendResponse(authorDetails)
             }
         })

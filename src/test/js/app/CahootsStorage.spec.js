@@ -76,7 +76,7 @@ describe("CahootsStorage", function suite() {
 
     it('should update and merge from setData()', function test() {
         var s = new CahootsStorage(localStorage, providerMerger, configServiceMock);
-        expect(5).toBe(MockFactory.set1.getPersons().length);
+
         s.setData({
             persons: MockFactory.set1.getPersons(),
             organizations: MockFactory.set1.getOrganizations()
@@ -127,7 +127,7 @@ describe("CahootsStorage", function suite() {
         expect(inputUrl).toEqual(resultUrl);
     });
 
-    it('should return previously set api url override', function() {
+    xit('should return previously set api url override', function() {
 
     });
 
