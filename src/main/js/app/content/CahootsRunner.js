@@ -57,7 +57,6 @@
             timer: that.config.tooltip.timer,
             autoClose: that.config.tooltip.autoClose,
             functionBefore: function (origin, continueTooltip) {
-
                 var tooltipElement = this;
                 continueTooltip();
                 var id = jQuery(this).attr('class').replace(' tooltipstered', '');
