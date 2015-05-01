@@ -87,11 +87,11 @@
                 ],
                 onAttach: function (worker) {
                     worker.port.on("getAuthorHints", function () {
-                        var hints = queryService.findAuthorHints();
+                        var hints = queryService.queryAuthorHints();
                         worker.port.emit('gotAuthorHints', hints);
                     })
                     worker.port.on("getFullDetails", function (cahootsId) {
-                        var author = queryService.findAuthorDetails(cahootsId)
+                        var author = queryService.queryAuthorDetails(cahootsId);
                         worker.port.emit("gotFullDetails", author);
                     })
                 }

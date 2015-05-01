@@ -22,6 +22,10 @@
              p.cahoots !== undefined;
     };
 
+    var isEmptyPersonRecord = function (p) {
+        return isValidPersonRecord(p) && Array.isArray(p.cahoots) && p.cahoots.length === 0;
+    };
+
     var mergePersonsWithSameName = function (a, b) {
         if (a.provider === 'official' || b.provider === 'official') {
             var item = a.provider === 'official' ? a : b;
@@ -41,7 +45,12 @@
     };
 
     var reducePersonsFunction = function (a, b) {
-
+        if (isEmptyPersonRecord(b)) {
+            if(Array.isArray(a)) {
+                return a;
+            }
+            return [a];
+        }
         if (Array.isArray(a)) {
             if (containsEntry(a, b)) {
                 var existing = a.filter(nameFilterFunction(b.name))[0];
