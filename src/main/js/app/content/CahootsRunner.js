@@ -18,6 +18,12 @@
         this.config = contentConfig;
     }
 
+    CahootsRunner.prototype.debug = function (debugMsg) {
+        if (this.config.debug === true) {
+            console.log(debugMsg);
+        }
+    };
+
     CahootsRunner.prototype.findMatchingKeys = function (authorHints) {
         var foundKeys = [];
         for (var key in authorHints) {
@@ -65,16 +71,15 @@
     }
 
     CahootsRunner.prototype.run = function () {
-        var debug = this.debug;
-        if(debug) { console.log("CahootsRunner.run()")};
+        this.debug("CahootsRunner.run()");
 
         var that = this;
         this.handleAuthorHints(function (authorHints) {
             var foundKeys = that.findMatchingKeys(authorHints);
-            if (debug) console.log("foundKeys:" + foundKeys)
+            that.debug('found keys: ' + foundKeys.length);
             that.highlightGivenKeys(foundKeys, authorHints);
             that.tooltipsterize();
-            if (debug) console.log("finished script cycle")
+            that.debug('finished script cycle');
         });
     };
 

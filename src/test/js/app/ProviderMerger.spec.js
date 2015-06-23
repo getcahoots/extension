@@ -62,16 +62,16 @@ describe('extension/ProviderMerger', function suite () {
     });
 
 
-    it('should merge 5 persons to keep 4', function test () {
+    it('should merge 5 persons to keep 4', function test() {
         var unreduced = MockFactory.set1.getPersons();
-        expect(unreduced.length).toBe(5);
+        expect(unreduced.length).toBe(7);
 
         var reduced = providerMerger.flattenPersons(unreduced);
 
         expect(reduced.length).toBe(4);
     });
 
-    it('should merge organizations', function test () {
+    it('should merge organizations', function test() {
         var givenC10 = MockFactory.set1.getPersons()[3];
         var givenT10 = MockFactory.set1.getPersons()[4];
         var expected = {
@@ -98,4 +98,25 @@ describe('extension/ProviderMerger', function suite () {
 
         expect([expected]).toEqual(reduced);
     });
+
+    it('AC_30_2: when merging entities: should omit entity with no relations', function test () {
+        var givenC1 = MockFactory.set1.getPersons()[3];
+        var givenT5 = MockFactory.set1.getPersons()[5];
+        var givenC5 = MockFactory.set1.getPersons()[6];
+
+
+        var unreduced = [givenC1,givenT5];
+        var reduced1 = providerMerger.flattenPersons(unreduced);
+        expect(reduced1.length).toBe(1);
+        expect(givenC1.name).toEqual(reduced1[0].name);
+
+        var reduced2 = providerMerger.flattenPersons([givenC1,givenT5]);
+        expect(reduced2.length).toBe(1);
+        expect(givenC1.name).toEqual(reduced2[0].name);
+
+        var reduced3 = providerMerger.flattenPersons([givenC1,givenC5,givenT5]);
+        expect(reduced3.length).toBe(1);
+        expect(givenC1.name).toEqual(reduced2[0].name);
+    });
+
 })

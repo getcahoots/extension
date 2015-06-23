@@ -11,13 +11,13 @@ describe('CahootsUiFormatter', function suite () {
         uif = new CahootsUiFormatter();
     });
 
-    it('should call', function(){
+    it('should call', function test() {
         var elem = new jQuery("<div></div>");
         var resultElem = uif.createDetailsView(elem, dataResponse);
 
         expect(resultElem).toBeDefined();
-        expect(resultElem.hasClass("cahoots_popover")).toBe(true)
-    })
+        expect(resultElem.hasClass("cahoots_popover")).toBe(true);
+    });
 });
 
 

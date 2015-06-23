@@ -1,7 +1,4 @@
 
-
-
-
 MockFactory = {
     set1 : {
         getPersons: function () {
@@ -44,7 +41,7 @@ MockFactory = {
                         "source": "https://www.example.org/source/source-www1"
                     }
                 ]
-            },{
+            }, {
                 id: 'P-C-10', // torial und cahoots - cahoots - 1 verbindungen
                 name: 'Julius Caesar',
                 info: 'http://www.example.org/p/julius-caesar',
@@ -56,7 +53,7 @@ MockFactory = {
                         "source": "https://www.example.org/source/source-www1"
                     }
                 ]
-            },{
+            }, {
                 id: 'P-T-10', // torial und cahoots - torial - 1 verbindungen
                 name: 'Julius Caesar',
                 info: 'http://www.example.org/p/julius-caesar',
@@ -68,7 +65,19 @@ MockFactory = {
                         "source": "https://www.example.org/source/source-www1"
                     }
                 ]
-            }]
+            }, {
+                id: 'P-C-5', // cahoots -  0 verbindungen
+                name: 'Dieter Hammerlasch',
+                info: 'http://www.example.org/p/dieter-hammerlasch',
+                provider: 'official',
+                cahoots: []
+            }, {
+                id: 'P-T-5', // torial - 0 verbindungen
+                name: 'Hans im Glück',
+                info: 'http://www.example.org/p/hans-im-glück',
+                provider: 'torial',
+                cahoots: []
+            }];
         },
         getOrganizations: function () {
             return [
@@ -126,17 +135,20 @@ MockFactory = {
 
         getHints: function () {
             return {
-                'Jonas Bergmeier': 'CahootsID_f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                'Alexander Barnickel': 'CahootsID_f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                'André König': 'CahootsID_f94423e4cf03cff7a4415f79986ee4dc60a5116b',
-                'Oliver Sommer': 'CahootsID_c29bca5141c539897b9fb19fc071dd12475e86aa'
+                'Max Mustermann': 'CahootsID_' + 'P-C-1',
+                'Jon Doe': 'CahootsID_' + 'P-C-2',
+                'Flash Gordon': 'CahootsID_' + 'P-T-1',
+                'Julius Caesar': 'CahootsID_' + 'P-C-10',
+                'Julius Caesar': 'CahootsID_' + 'P-T-10'
             };
         },
 
         getPersonDetails: function (idx) {
-            if (typeof idx == undefined || idx < 0) {
-                throw new Error("get mocked person with index >=0")
+            if (idx === undefined || idx < 0) {
+                throw new Error("get mocked person with index >=0");
             }
+            var result = {};
+            //result. = MockFactory.set1.getPersons()[idx].name;
             switch (idx) {
                 case 0:
                 default:
@@ -172,13 +184,13 @@ MockFactory = {
                 }]
             }
         }
-    },
+    }/*,
 
     getStorageObject: function () {
         return {
             persons: mock.getMockedPersons(),
             organizations: mock.getMockedOrganizations()
-        }
+        };
     },
 
     getEmptyStorage: function () {
@@ -188,7 +200,7 @@ MockFactory = {
     getDataStorage: function () {
         var storage = new CahootsStorage(mocks.getStorageObject());
         return storage;
-    }
+    }*/
 }
 
 
