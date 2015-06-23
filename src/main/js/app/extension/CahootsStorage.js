@@ -53,10 +53,16 @@
     };
 
     CahootsStorage.prototype._getStorageField = function (fieldName) {
+        var storedJson;
         if (typeof this.storage.setItem === 'function') {
-            return JSON.parse(this.storage.getItem(fieldName));
+            storedJson = this.storage.getItem(fieldName);
+        } else {
+            storedJson = this.storage[fieldName];
         }
-        return JSON.parse(this.storage[fieldName]);
+        if(storedJson === undefined) {
+            return undefined;
+        }
+        return JSON.parse(storedJson);
     };
 
     CahootsStorage.prototype._setPersons = function (data) {
@@ -134,6 +140,10 @@
 
     CahootsStorage.prototype.getLastUpdated = function () {
         var rawValue = this._getStorageField('lastUpdated');
+        if(rawValue === undefined) {
+            return null;
+        }
+
         var readValue = parseInt(JSON.parse(rawValue));
 
         if (typeof readValue == 'number') {
