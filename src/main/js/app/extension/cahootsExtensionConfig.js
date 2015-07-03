@@ -7,7 +7,7 @@
  */
 (function () {
     var cahootsExtensionConfig = {
-        cahootsExtensionVersion: '1.1.0',
+        cahootsExtensionVersion: '1.1.4',
 
         /* expiry delta in seconds */
         expiryDelta: (60 * 60 * 24), // for production
