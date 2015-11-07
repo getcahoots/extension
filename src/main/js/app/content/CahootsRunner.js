@@ -8,12 +8,14 @@
 (function () {
     'use strict';
 
-    function CahootsRunner(handleFullDetails, handleAuthorHints, uiFormatter, contentConfig) {
-        if (arguments.length !== 4) {
-            throw new Error('CahootsRunner() needs exactly 4 arguments');
+    function CahootsRunner(handleFullDetails, handleAuthorHints, reportMatches, uiFormatter, contentConfig) {
+        if (arguments.length !== 5) {
+            throw new Error('CahootsRunner() needs exactly 5 arguments');
         }
         this.handleAuthorHints = handleAuthorHints;
         this.handleFullDetails = handleFullDetails;
+        this.reportMatches = reportMatches;
+
         this.uiFormatter = uiFormatter;
         this.config = contentConfig;
     }
@@ -47,7 +49,7 @@
     CahootsRunner.prototype.tooltipsterize = function () {
         var that = this;
 
-        jQuery('span[class*=CahootsID]').tooltipster({
+        jQuery(that.config.tooltipsterSelector).tooltipster({
             contentAsHTML: false,
             content: jQuery('<span/>').text(that.config.snippets.loading_text),
             interactive: that.config.tooltip.interactive,
@@ -71,12 +73,13 @@
     }
 
     CahootsRunner.prototype.run = function () {
-        this.debug("CahootsRunner.run()");
+        this.debug('CahootsRunner.run()');
 
         var that = this;
         this.handleAuthorHints(function (authorHints) {
             var foundKeys = that.findMatchingKeys(authorHints);
             that.debug('found keys: ' + foundKeys.length);
+            that.reportMatches(foundKeys.length);
             that.highlightGivenKeys(foundKeys, authorHints);
             that.tooltipsterize();
             that.debug('finished script cycle');

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('CahootsRunner', function suite () {
+xdescribe('CahootsRunner', function suite () {
     var handleFullDetails = function (lookupId, dataCallback) {
         var data = {}
         dataCallback(data);

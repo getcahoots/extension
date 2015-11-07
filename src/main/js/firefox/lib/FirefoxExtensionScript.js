@@ -36,6 +36,46 @@
             var xhr3 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
             var updater = new StorageUpdater(cahootsStorage, configService);
 
+            /***********/
+
+            var btnRef = null;
+
+
+            var loadUrlbarButton = function(doc, urlBtnClick) {
+                var urlBarIcons = doc.getElementById('urlbar-icons')
+                var btn = doc.createElement('toolbarbutton');
+                btn.setAttribute('id', 'my-id');
+                btn.setAttribute('image', require('sdk/self').data.url('icon14_gray.png'));
+                btn.addEventListener('command', urlBtnClick, false);
+                btnRef = btn;
+                urlBarIcons.appendChild(btn);
+                return btn;
+            }
+
+            var doc = require('sdk/window/utils').getMostRecentBrowserWindow().document;
+
+            var setButtonState = function(newButtonState) {
+                if(newButtonState == true) {
+                    btnRef.setAttribute('image', require('sdk/self').data.url('icon14.png'));
+                } else {
+                    btnRef.setAttribute('image', require('sdk/self').data.url('icon14_gray.png'));
+                }
+            }
+
+            var workerRef = null;
+            var onBtnClick = function(event) {
+                if(workerRef !== null) {
+                    workerRef.port.emit('contentAction');
+                }
+
+                //btnRef.setAttribute('image', require('sdk/self').data.url('icon16.png'));
+            }
+
+            var urlbarButton = loadUrlbarButton(doc, onBtnClick);
+
+
+            /***********/
+
             var updateCylceFn = function () {
                 updater.checkConfigUpdate(xhr1, function(e) {
                     if(config.debug) {
@@ -86,6 +126,7 @@
                     data.url("cahoots-tooltipster.css")
                 ],
                 onAttach: function (worker) {
+                    workerRef = worker;
                     worker.port.on("getAuthorHints", function () {
                         var hints = queryService.queryAuthorHints();
                         worker.port.emit('gotAuthorHints', hints);
@@ -93,6 +134,9 @@
                     worker.port.on("getFullDetails", function (cahootsId) {
                         var author = queryService.queryAuthorDetails(cahootsId);
                         worker.port.emit("gotFullDetails", author);
+                    })
+                    worker.port.on("reportMatches", function (matchCount) {
+                        setButtonState(matchCount > 0);
                     })
                 }
             });
