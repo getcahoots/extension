@@ -23,7 +23,7 @@
             forum_url: 'https://forum.cahoots.pw/',
             loading_text: 'Daten werden geladen…'
         },
-        debug: false,
+        debug: true,
         tooltipsterSelector: 'span[class*=CahootsID]',
         jumpSelector: 'span[class*=CahootsID].tooltipstered'
     };

@@ -61,14 +61,43 @@
         var queryService = new QueryService(cahootsStorage);
 
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
-            if(request.message=="getAuthorHints") {
+            if(request.message == 'getAuthorHints') {
                 var authorHints = queryService.queryAuthorHints();
                 sendResponse(authorHints)
-            } else if(request.message=="getFullDetails") {
+            } else if(request.message == 'getFullDetails') {
                 var authorDetails = queryService.queryAuthorDetails(request.cahootsID);
                 sendResponse(authorDetails)
             }
-        })
+        });
+
+
+        chrome.pageAction.onClicked.addListener(function(tab) {
+            chrome.tabs.sendMessage(tab.id, {message: 'contentAction'})
+
+        });
+
+
+        chrome.runtime.onMessage.addListener(function (request, sender) {
+            if (request.message == 'reportMatches') {
+                var tabId = sender.tab.id;
+                var matchCount = request.matchCount;
+                if(matchCount > 0) {
+                    chrome.pageAction.show(tabId);
+                    var tabTitle = "";
+                    if(matchCount == 1) {
+                        tabTitle = config.pageActionTitleSingleHit;
+                    } else {
+                        tabTitle = config.pageActionTitleMultipleHits.replace(/COUNT/i, matchCount);
+                    }
+                    chrome.pageAction.setTitle({tabId: tabId, title: tabTitle});
+                } else {
+                    chrome.pageAction.hide(tabId);
+                }
+
+            }
+        });
+
+
 
         var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
         var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();

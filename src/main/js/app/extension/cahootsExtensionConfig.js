@@ -7,7 +7,7 @@
  */
 (function () {
     var cahootsExtensionConfig = {
-        cahootsExtensionVersion: '1.1.4',
+        cahootsExtensionVersion: '1.1.5',
 
         /* expiry delta in seconds */
         expiryDelta: (60 * 60 * 24), // for production
@@ -17,7 +17,9 @@
 
         apiEndpoint: 'http://api-beta.cahoots.pw/v2',
         apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
-        debug: false
+        pageActionTitleSingleHit: '[Cahoots] Verbindung gefunden',
+        pageActionTitleMultipleHits: '[Cahoots] COUNT Verbindungen gefunden',
+        debug: true
     };
 
     var ConfigService = function (cahootsStorage) {

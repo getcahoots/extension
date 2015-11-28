@@ -25,7 +25,7 @@
     };
 
     var reportMatches = function (matchCount) {
-        self.port.emit('reportMatches', matchCount);
+        self.port.emit('reportMatches', matchCount, self);
     };
 
     var curJumpIndex = null;
