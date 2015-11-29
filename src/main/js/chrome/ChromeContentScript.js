@@ -10,6 +10,7 @@
     var contentConfig = cahoots.content.cahootsContentConfig;
 
     var chromeContentScript = function () {
+
         var CahootsRunner = cahoots.content.CahootsRunner;
         var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
 
@@ -37,7 +38,6 @@
 
         var installContentActionHandler = function () {
             chrome.runtime.onMessage.addListener( function (request, sender, sendResponse) {
-                //console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
                 if (request.message == 'contentAction') {
                     console.log('content action');
 
