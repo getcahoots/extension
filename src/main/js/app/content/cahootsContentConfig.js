@@ -25,7 +25,8 @@
         },
         debug: true,
         tooltipsterSelector: 'span[class*=CahootsID]',
-        jumpSelector: 'span[class*=CahootsID].tooltipstered'
+        jumpSelector: 'span[class*=CahootsID].tooltipstered',
+        skipSubFrames: true
     };
 
     module.exports = cahootsContentConfig;

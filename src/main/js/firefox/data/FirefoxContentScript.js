@@ -40,7 +40,7 @@
                 return;
             }
             var jumpToIndex = curJumpIndex == null ? 0 : (curJumpIndex + 1) % elemCount;
-            console.log(elemCount + ' elems present, jumping to ' + jumpToIndex);
+            console.log(elemCount + ' elems present, jumping to #' + jumpToIndex);
             $('html, body').animate({
                 scrollTop: $(highlightedElements[jumpToIndex]).offset().top
             }, 1000);
@@ -49,6 +49,24 @@
     };
 
     var firefoxContentScript = function () {
+        if (contentConfig.skipSubFrames) {
+            try {
+                var str1 = top.location.toString();
+                var str2 = location;
+                if(top.location.toString() != location.toString()) {
+                    console.log('--- skipping execution within subframe frame(1) --- ' + top.location + ' -> ' + location);
+                    return;
+                }
+
+                if(top.window.document !== document) {
+                    console.log('--- skipping execution in subframe(3) --- ' );
+                    return;
+                }
+            } catch (e) {
+                console.log('--- skipping execution in foreign frame(2) --- ' );
+                return;
+            }
+        }
 
         var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
         var CahootsRunner = cahoots.content.CahootsRunner;
