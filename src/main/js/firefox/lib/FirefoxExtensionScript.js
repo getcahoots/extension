@@ -17,13 +17,11 @@
     var QueryService = extension.QueryService;
 
     /**
-     * tracks state of window tabs and updates url bar button status
+     * tracks state of window tabs to support page action functionality
      *
      * @constructor
      */
-    var FirefoxTabTracking = function (tabsRef, config) {
-        this.config = config;
-
+    var FirefoxTabTracking = function (tabsRef) {
         this.tabMap = new Map();
         this.windowMap = new Map();
 
@@ -97,7 +95,7 @@
             console.log("trackWindow: skipping on undefined xulWindow");
             return;
         }
-        var pageAction= new FirefoxPageAction(window, this.config, this);
+        var pageAction= new FirefoxPageAction(window, config, this);
         this.windowMap.set(window, pageAction);
     }
 
@@ -152,18 +150,17 @@
 
     /**
      * FirefoxPageAction
-     * stateful management of a
+     * stateful management of a page action simulation
      * @constructor
      */
     var FirefoxPageAction = function (window, config, tabTracking) {
-        var document = window.document,
-            iconInactive='cdot_14px_grau.png';;
+        var document = window.document;
 
         var firefoxUrlbarIcons = document.getElementById('urlbar-icons')
         var toolbarButton = document.createElement('toolbarbutton');
 
         toolbarButton.setAttribute('id', 'cahootsToolbarButton');
-        toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
+        toolbarButton.setAttribute('image', require('sdk/self').data.url(config.icons.smallInactive));
         toolbarButton.setAttribute('tooltiptext', config.pageActionTitleDefault);
         var that = this;
 
@@ -175,7 +172,6 @@
         firefoxUrlbarIcons.appendChild(toolbarButton);
 
         this.toolbarButton = toolbarButton;
-        this.config = config;
         console.log("page action created")
     };
 
@@ -185,28 +181,26 @@
     };
 
     FirefoxPageAction.prototype.draw = function () {
-        var matchCount = this.state.data,
-            iconActive='cdot_14px.png',
-            iconInactive='cdot_14px_grau.png';
+        var matchCount = this.state.data;
 
         if(matchCount === null) {
             this.toolbarButton.setAttribute('tooltiptext', config.pageActionTitleDefault);
-            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(config.icons.smallInactive));
         } else if (matchCount > 0) {
             /** show the button **/
             var tabTitleCaption = '';
             if (matchCount === 1) {
-                tabTitleCaption = this.config.pageActionTitleSingleHit;
+                tabTitleCaption = config.pageActionTitleSingleHit;
             } else {
-                tabTitleCaption = this.config.pageActionTitleMultipleHits.replace(/COUNT/i, matchCount);
+                tabTitleCaption = config.pageActionTitleMultipleHits.replace(/COUNT/i, matchCount);
             }
 
-            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconActive));
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(config.icons.smallActive));
             this.toolbarButton.setAttribute('style', '');
             this.toolbarButton.setAttribute('tooltiptext', tabTitleCaption);
         } else {
             this.toolbarButton.setAttribute('tooltiptext', config.pageActionTitleNothingFound);
-            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(config.icons.smallInactive));
         }
     };
 

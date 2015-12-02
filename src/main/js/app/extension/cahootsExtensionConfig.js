@@ -21,6 +21,10 @@
         pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',
         pageActionTitleDefault: 'Cahoots: bereit',
         pageActionTitleNothingFound: 'Cahoots: nichts gefunden',
+        icons: {
+            smallActive: 'cdot_14px.png',
+            smallInactive: 'cdot_14px_grau.png'
+        },
         debug: true
     };
 
