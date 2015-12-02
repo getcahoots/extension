@@ -44,7 +44,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/main/resources/images/icon',
-                        src: ['icon14.png', 'icon14_gray.png'],
+                        src: ['cdot_14px.png', 'cdot_14px_grau.png'],
                         dest: '<%= build_dir_firefox %>/data'
                     },
                     // firefox addon business assets: stylesheets

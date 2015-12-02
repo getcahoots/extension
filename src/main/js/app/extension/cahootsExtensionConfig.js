@@ -17,9 +17,10 @@
 
         apiEndpoint: 'http://api-beta.cahoots.pw/v2',
         apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
-        pageActionTitleSingleHit: '[Cahoots] Verbindung gefunden',
-        pageActionTitleMultipleHits: '[Cahoots] COUNT Verbindungen gefunden',
-        pageActionTitleDefault: 'Cahoots ist aktiv',
+        pageActionTitleSingleHit: 'Cahoots: Eine Verbindung gefunden',
+        pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',
+        pageActionTitleDefault: 'Cahoots: bereit',
+        pageActionTitleNothingFound: 'Cahoots: nichts gefunden',
         debug: true
     };
 

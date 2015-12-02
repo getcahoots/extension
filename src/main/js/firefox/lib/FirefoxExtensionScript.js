@@ -8,130 +8,217 @@
 (function () {
     'use strict';
 
+    /** cahoots imports **/
+    var extension = require("./CahootsExtensionBundle");
+    var CahootsStorage = extension.CahootsStorage;
+    var ProviderMerger = extension.ProviderMerger;
+    var StorageUpdater = extension.StorageUpdater;
+    var config = extension.cahootsExtensionConfig;
+    var QueryService = extension.QueryService;
+
     /**
      * tracks state of window tabs and updates url bar button status
      *
      * @constructor
      */
-    var FirefoxTabTracking = function (tabsRef) {
-        this.clients = [];
+    var FirefoxTabTracking = function (tabsRef, config) {
+        this.config = config;
 
-        /**  **/
         this.tabMap = new Map();
+        this.windowMap = new Map();
 
-        var tabMap = this.tabMap;
+        var that = this,
+            tabMap = this.tabMap;
+
         tabsRef.on('open', function (tab) {
-            tabMap.set(tab.id, [0]);
+            var window = require('sdk/window/utils').getMostRecentBrowserWindow();
+            that.trackTab(tab, window);
         });
 
         tabsRef.on('close', function (tab) {
-            tabMap.delete(tab.id);
+            that.unTrackTab(tab);
         });
-        var that = this;
+
         tabsRef.on('activate', function (tab) {
             if (!tabMap.has(tab.id)) {
-                tabMap.set(tab.id, [0]);
-            } else {
-                var tabState = tabMap.get(tab.id);
-
-                //updateUrlbarButtonStateFn(tabState[0]);
-                that.updateClients(tab.id, tabState[0], tabState[1]);
+                console.log("adding untracked tab");
+                var xulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
+                that.trackTab(tab, xulWindow);
             }
+
+            var trackingInfo = tabMap.get(tab.id);
+            var pageAction = that.windowMap.get(trackingInfo.xulWindow);
+            pageAction.updatePageActionState(trackingInfo);
         });
     };
 
-    FirefoxTabTracking.prototype.setTabTrackingInfo = function (tabId, matchCount, reportingTabWorker) {
-        if (this.tabMap.has(tabId)) {
-            var registeredTabWorker = this.tabMap.get(tabId)[1];
-            if (registeredTabWorker !== undefined) {
-                if (registeredTabWorker !== reportingTabWorker ) {
-                    console.log('seems to be a frame, skipping');
-                    return;
-                }
+    FirefoxTabTracking.prototype.trackTab = function (tab, window) {
+        if (!this.hasWindowTracked(window)) {
+            console.log("trackTab " + tab.id + ": xul window is new, tracking...");
+            this.trackWindow(window);
+        }
+
+        var trackingInfo = {
+            tab: tab,
+            xulWindow: window,
+            worker: null,
+            data: null
+        }
+
+        this.tabMap.set(tab.id, trackingInfo);
+    };
+
+    FirefoxTabTracking.prototype.unTrackTab = function (tab) {
+        var trackingInfo = this.tabMap.get(tab.id);
+        this.tabMap.delete(tab.id);
+
+        var windowRefCount = 0;
+        this.tabMap.forEach(function(val, key) {
+            if(val.xulWindow === trackingInfo.xulWindow) {
+                windowRefCount++;
             }
+        });
+        if(windowRefCount === 0) {
+            console.log("window got orphaned, remove refs");
+            this.windowMap.delete(trackingInfo.xulWindow);
         }
-        this.tabMap.set(tabId, [matchCount, reportingTabWorker]);
-        this.updateClients(tabId, matchCount, reportingTabWorker);
-    };
+    }
 
-
-    FirefoxTabTracking.prototype.addClient = function (client) {
-        this.clients.push(client);
-    };
-
-    FirefoxTabTracking.prototype.updateClients = function (tabId, matchCount, reportingTabWorker) {
-        for (var client in this.clients) {
-            this.clients[client].updateTabStateInfos(tabId, matchCount, reportingTabWorker);
+    FirefoxTabTracking.prototype.hasWindowTracked = function (window) {
+        if (this.windowMap.has(window)) {
+            return true;
         }
+        return false;
     };
+
+    FirefoxTabTracking.prototype.trackWindow = function (window) {
+        console.log ('trackWindow: tracking new window: ' + window);
+        if(window == null) {
+            console.log("trackWindow: skipping on undefined xulWindow");
+            return;
+        }
+        var pageAction= new FirefoxPageAction(window, this.config, this);
+        this.windowMap.set(window, pageAction);
+    }
+
+    FirefoxTabTracking.prototype.updateFromTabWorker = function (tab, matchCount, reportingTabWorker, optionalRecentWindow) {
+        console.log('updateFromTabWorker/setTabTrackingInfo: ' + arguments);
+        if (!this.tabMap.has(tab.id)) {
+            console.log("!! updateFromTabWorker reporting for untracked tab");
+            this.trackTab(tab, optionalRecentWindow);
+        }
+
+        console.log("updateFromTabWorker reporting for known tab");
+        var trackingInfo = this.tabMap.get(tab.id);
+        trackingInfo.data = matchCount
+        trackingInfo.worker = reportingTabWorker;
+        this.tabMap.set(tab.id, trackingInfo);
+
+        // find page action
+        var window = trackingInfo.xulWindow;
+        var pageAction = this.windowMap.get(window);
+        pageAction.updatePageActionState(trackingInfo)
+    }
+
 
     FirefoxTabTracking.prototype.activateTraceLogging = function () {
+        var { setInterval } = require("sdk/timers");
+        var that = this;
+
+        var dumpTab = function(trackingInfo) {
+            console.log(" - [" + trackingInfo.tab.id + "] data:" + trackingInfo.data
+                + ", xulWin:" + (trackingInfo.xulWindow != null)
+                + ", wrk:" + (trackingInfo.worker!=null))
+        }
+
         setInterval(function () {
-            console.log("---[ begin dump ]---")
-            console.log("tabs: " + this.tabs.length);
-            console.log("tab map: " + this.tabMap.size)
-            for (var t in this.tabs) {
-                console.log("#" + t + ", " + this.tabs[t].id + ", " + this.tabMap.get(this.tabs[t].id))
-            }
-            console.log("---[ end dump ]---")
+            console.log(" ")
+
+            var windowCount = 0;
+            that.windowMap.forEach(function(pageAction, xulWindow) {
+                console.log("window #" + windowCount);
+                that.tabMap.forEach(function(tabTracking, tabId) {
+                    if(tabTracking.xulWindow === xulWindow) {
+                        dumpTab(tabTracking);
+                    } else {
+                        //console.log("skipping: ")
+                    }
+                });
+                windowCount++;
+            });
         }, 10000);
     };
 
 
     /**
      * FirefoxPageAction
+     * stateful management of a
      * @constructor
      */
-    var FirefoxPageAction = function (document, config) {
+    var FirefoxPageAction = function (window, config, tabTracking) {
+        var document = window.document,
+            iconInactive='cdot_14px_grau.png';;
+
         var firefoxUrlbarIcons = document.getElementById('urlbar-icons')
         var toolbarButton = document.createElement('toolbarbutton');
 
         toolbarButton.setAttribute('id', 'cahootsToolbarButton');
-        toolbarButton.setAttribute('image', require('sdk/self').data.url('icon14_gray.png'));
+        toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
         toolbarButton.setAttribute('tooltiptext', config.pageActionTitleDefault);
         var that = this;
-        toolbarButton.addEventListener('command', function () {
-            that.sendContentActionMessage();
-        }, false);
-        firefoxUrlbarIcons.appendChild(toolbarButton);
-        this.toolbarButton = toolbarButton;
 
-        this.activeTabWorker = null;
+
+        toolbarButton.addEventListener('command', function () {
+            that.sendContentActionMessage(that.state.worker);
+        }, false);
+
+        firefoxUrlbarIcons.appendChild(toolbarButton);
+
+        this.toolbarButton = toolbarButton;
         this.config = config;
+        console.log("page action created")
     };
 
-    FirefoxPageAction.prototype.updateTabStateInfos = function (tabId, matchCount, reportingTabWorker) {
-        var newButtonState = matchCount > 0;
+    FirefoxPageAction.prototype.updatePageActionState = function (trackingInfo) {
+        this.state = trackingInfo;
+        this.draw();
+    };
 
-        this.activeTabWorker = reportingTabWorker;
-        if (newButtonState == true) {
+    FirefoxPageAction.prototype.draw = function () {
+        var matchCount = this.state.data,
+            iconActive='cdot_14px.png',
+            iconInactive='cdot_14px_grau.png';
+
+        if(matchCount === null) {
+            this.toolbarButton.setAttribute('tooltiptext', config.pageActionTitleDefault);
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
+        } else if (matchCount > 0) {
             /** show the button **/
             var tabTitleCaption = '';
-            if (matchCount == 1) {
+            if (matchCount === 1) {
                 tabTitleCaption = this.config.pageActionTitleSingleHit;
             } else {
                 tabTitleCaption = this.config.pageActionTitleMultipleHits.replace(/COUNT/i, matchCount);
             }
 
-            this.toolbarButton.setAttribute('image', require('sdk/self').data.url('icon14.png'));
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconActive));
             this.toolbarButton.setAttribute('style', '');
             this.toolbarButton.setAttribute('tooltiptext', tabTitleCaption);
         } else {
-            this.toolbarButton.setAttribute('style', 'display: none');
-            this.toolbarButton.setAttribute('image', require('sdk/self').data.url('icon14_gray.png'));
+            this.toolbarButton.setAttribute('tooltiptext', config.pageActionTitleNothingFound);
+            this.toolbarButton.setAttribute('image', require('sdk/self').data.url(iconInactive));
         }
     };
 
-    FirefoxPageAction.prototype.sendContentActionMessage = function () {
-        if (this.activeTabWorker !== null) {
+    FirefoxPageAction.prototype.sendContentActionMessage = function (receivingWorker) {
+        console.log("sendContentActionMessage")
+        if (receivingWorker !== null) {
             /** send message to active tab worker **/
-            this.activeTabWorker.port.emit('contentAction');
+            receivingWorker.port.emit('contentAction');
         } else {
-            console.log('cannot send \'contentAction\': tabWorker is null');
+            console.log('sendContentActionMessage: cannot send \'contentAction\': tabWorker is null');
         }
-    }
-
-
+    };
 
 
     var firefoxExtensionScript = function (options, callbacks) {
@@ -142,17 +229,12 @@
             var pageMod = require("sdk/page-mod");
             var ss = require("sdk/simple-storage");
             var tabs = require("sdk/tabs");
-            var extension = require("./CahootsExtensionBundle");
+
             const {Cc, Ci} = require("chrome");
             var { setInterval } = require("sdk/timers");
             var { setTimeout } = require("sdk/timers");
 
             /** cahoots imports **/
-            var CahootsStorage = extension.CahootsStorage;
-            var ProviderMerger = extension.ProviderMerger;
-            var StorageUpdater = extension.StorageUpdater;
-            var config = extension.cahootsExtensionConfig;
-            var QueryService = extension.QueryService;
             var configService = extension.configService();
 
             /** prepare browser storage handling **/
@@ -160,14 +242,9 @@
             var cahootsStorage = new CahootsStorage(browserStorageObject, new ProviderMerger(), configService);
             configService.setStorage(cahootsStorage);
 
-            /** prepare url bar button **/
-            var doc = require('sdk/window/utils').getMostRecentBrowserWindow().document;
-            var urlBarButton = new FirefoxPageAction(doc, config);
-            /** observe state of windows tabs to update button state **/
-            var firefoxTabTracker = new FirefoxTabTracking(tabs);
-            /** update url bar button with state information **/
-            firefoxTabTracker.addClient(urlBarButton);
-
+            /** observe state of windows and tabs to manage page action state **/
+            var firefoxTabTracker = new FirefoxTabTracking(tabs, config);
+            firefoxTabTracker.activateTraceLogging();
 
             /** prepare data updater **/
             var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
@@ -237,10 +314,10 @@
                         worker.port.emit("gotFullDetails", author);
                     })
                     worker.port.on("reportMatches", function (matchCount) {
-                        //updateUrlbarButtonState(urlBarButton, matchCount);
                         var tab = worker.tab;
                         console.log("new matches: " + matchCount + " for tab " + tab.id);
-                        firefoxTabTracker.setTabTrackingInfo(tab.id, matchCount, worker);
+                        var recentXulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
+                        firefoxTabTracker.updateFromTabWorker(tab, matchCount, worker, recentXulWindow);
                     })
                 }
             });
