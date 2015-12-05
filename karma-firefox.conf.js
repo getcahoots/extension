@@ -11,7 +11,7 @@ module.exports = function (config) {
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         //frameworks: ['jasmine-jquery', 'jasmine'],
-        frameworks: ['jasmine-jquery','jasmine','commonjs'],
+        frameworks: ['jasmine-jquery', 'jasmine', 'commonjs'],
 
         plugins: [
             'karma-commonjs',
@@ -37,6 +37,7 @@ module.exports = function (config) {
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
 
 
+            {pattern: 'src/test/js/sdk/**/*.js', included: true},
 
             //{pattern: 'target/js/*.js', included: true},
             //
@@ -52,8 +53,8 @@ module.exports = function (config) {
             {pattern: 'target/exploded-firefox/lib/FirefoxExtensionBundle.js', served: true, included: true},
 
 
-            {pattern: 'src/test/js/sdk/**/*.js', included: true},
-            {pattern: 'src/test/js/firefox/*.js', included: true},
+
+            {pattern: 'src/test/js/firefox/**/*.js', included: true},
 
                             //{pattern: 'src/main/js/chrome/**/*js', included: true},
                             //{pattern: 'node_modules/karma-jasmine-jquery/node_modules/bower-installer/node_modules/node-fs/lib/fs.js', included: true, served: true},

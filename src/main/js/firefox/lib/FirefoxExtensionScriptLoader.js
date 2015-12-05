@@ -16,9 +16,6 @@
     var cahootsExtensionBundle = require("CahootsExtensionBundle");
     var firefoxExtensionBundle = require("FirefoxExtensionBundle");
 
-    for(var i in firefoxExtensionBundle) {
-        console.log(i)
-    }
     var extensionScriptLoader = function () {
         console.log("executing loader")
         console.log("... arguments: " + JSON.stringify(arguments))
@@ -31,5 +28,4 @@
     };
 
     module.exports.main = extensionScriptLoader;
-    //module.exports.main = firefoxExtensionScript;
 }());
