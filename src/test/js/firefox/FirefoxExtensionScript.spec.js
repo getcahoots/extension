@@ -1,7 +1,17 @@
 describe('FirefoxExtensionScript', function suite() {
     var firefoxMock;
     //var firefoxExtensionScript = require('firefox/lib/FirefoxExtensionScript');
+    //var firefoxExtensionScript = require('FirefoxExtensionBundle');
+    console.log(">>>")
+    console.log( cahoots.firefox)
+    for(var i in cahoots.firefox) {
+        console.log(i)
+    }
+    console.log(">>>")
+    var firefoxExtensionScript = cahoots.firefox.extension.firefoxExtensionScript;
+    var cahootsBase = cahoots;
 
+    //console.log("cahoots extension. " + cahoots.extension)
     beforeEach(function () {
         firefoxMock = getFirefoxMock();
         originalFirefoxPort = window.self.port;
@@ -12,7 +22,7 @@ describe('FirefoxExtensionScript', function suite() {
         window.self.port = originalFirefoxPort;
     })
 
-    xit('should execute extension script', function test() {
-        //firefoxExtensionScript.main();
+    it('should execute extension script', function test() {
+        firefoxExtensionScript(cahootsBase);
     });
 });

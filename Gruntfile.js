@@ -82,8 +82,8 @@ module.exports = function (grunt) {
                         src: 'CahootsExtensionBundle.js',
                         dest: '<%= build_dir_firefox %>/lib'},
                     {expand: true,
-                        cwd: 'src/main/js/firefox/lib',
-                        src: 'CahootsExtensionBundle.js',
+                        cwd: 'target/js',
+                        src: 'FirefoxExtensionBundle.js',
                         dest: '<%= build_dir_firefox %>/lib'}
 
                 ]
@@ -295,8 +295,32 @@ module.exports = function (grunt) {
                         standalone: 'cahoots.chrome.extension'
                     }
                 }
-            }
+            },
 
+            firefox_extension_application: {
+                src: [
+                    /*'src/main/js/app/extension/index.js', */
+                    'src/main/js/firefox/lib/lol.js',
+                    'src/main/js/firefox/lib/FirefoxExtensionScript.js'
+                ],
+                dest: out_dir + "/js/" + 'FirefoxExtensionBundle.js',
+                options: {
+                    browserifyOptions: {
+                        debug: false,
+                        standalone: 'cahoots.firefox.extension'
+
+                    },
+                    external: [
+                        'chrome',
+                        'sdk/timers',
+                        'sdk/self',
+                        'sdk/page-mod',
+                        'sdk/simple-storage',
+                        'sdk/tabs',
+                        'sdk/window/utils'
+                    ]
+                }
+            }
         },
 
         watch: {
@@ -316,8 +340,13 @@ module.exports = function (grunt) {
     grunt.registerTask('tests', ['build_all', 'karma:chrome_ui_tests', 'karma:firefox_ui_tests']);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle', 'browserify:extension_bundle' ]);
-    grunt.registerTask('browserify_chrome', [ 'browserify:chrome_content_script', 'browserify:chrome_extension_application']);
-    grunt.registerTask('browserify_firefox', [ 'browserify_app', 'browserify:firefox_content_script'/*, 'browserify:firefox_extension_application'*/]);
+
+    grunt.registerTask('browserify_chrome',
+        [ 'browserify:chrome_content_script', 'browserify:chrome_extension_application']
+    );
+    grunt.registerTask('browserify_firefox',
+        [ 'browserify_app', 'browserify:firefox_content_script', 'browserify:firefox_extension_application'
+    ]);
 
     //grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','browserify_firefox','copy:firefox','mozilla-cfx-xpi:stable' ]);
     grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_firefox', 'copy:firefox', 'mozilla-cfx-xpi:stable' ]);

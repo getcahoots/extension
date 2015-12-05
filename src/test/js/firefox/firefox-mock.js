@@ -10,8 +10,10 @@ FirefoxMock.port = {
             }
         } else {
         }
-    }
-    ,
+    },
+    on: function(msgName, callback) {
+        console.log('firefox mock: port.on registered fake noopFn: ' + msgName);
+    },
     emit: function (msgName, payload) {
         if (msgName == "getAuthorHints") {
             FirefoxMock.registeredHandlers["gotAuthorHints"](MockFactory.set1.getHints())

@@ -8,5 +8,5 @@
   "version": "1.1.5",
   "icon": "data/cdot_14px.png",
   "icon64": "data/cdot_48px.png",
-  "main":"FirefoxExtensionScript.js"
+  "main":"FirefoxExtensionScriptLoader.js"
 }
