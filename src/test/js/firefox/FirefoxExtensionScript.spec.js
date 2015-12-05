@@ -16,9 +16,6 @@ describe('FirefoxExtensionScript', function suite() {
         firefoxMock = getFirefoxMock();
         originalFirefoxPort = window.self.port;
         window.self.port = firefoxMock.port;
-
-
-        var foo = require("sdk/self")
     });
 
     afterEach(function() {

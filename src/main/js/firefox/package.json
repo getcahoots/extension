@@ -5,8 +5,8 @@
   "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
   "author": "",
   "license": "MIT",
-  "version": "1.1.5",
-  "icon": "data/cdot_14px.png",
-  "icon64": "data/cdot_48px.png",
+  "version": "${BUILD_CAHOOTS_VERSION}",
+  "icon": "data/${ICON_48}",
+  "icon64": "data/${ICON_64}",
   "main":"FirefoxExtensionScriptLoader.js"
 }

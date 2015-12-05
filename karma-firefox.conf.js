@@ -37,7 +37,7 @@ module.exports = function (config) {
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
 
 
-            {pattern: 'src/test/js/sdk/**/*.js', included: true},
+            {pattern: 'src/test/js/sdk/**/*.js', served: true, included: true},
 
             //{pattern: 'target/js/*.js', included: true},
             //

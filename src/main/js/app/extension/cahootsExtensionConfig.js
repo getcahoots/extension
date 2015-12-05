@@ -7,7 +7,7 @@
  */
 (function () {
     var cahootsExtensionConfig = {
-        cahootsExtensionVersion: '1.1.5',
+        cahootsExtensionVersion: '${BUILD_CAHOOTS_VERSION}',
 
         /* expiry delta in seconds */
         expiryDelta: (60 * 60 * 24), // for production
@@ -22,8 +22,8 @@
         pageActionTitleDefault: 'Cahoots: bereit',
         pageActionTitleNothingFound: 'Cahoots: nichts gefunden',
         icons: {
-            smallActive: 'cdot_14px.png',
-            smallInactive: 'cdot_14px_grau.png'
+            smallActive: '${ICON_14}',
+            smallInactive: '${ICON_14_GREY}'
         },
         debug: true
     };

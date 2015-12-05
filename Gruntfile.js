@@ -13,8 +13,38 @@ module.exports = function (grunt) {
         stable_sdk_version: '1.17'
     }
 
+    var packageInfo = grunt.file.readJSON('package.json');
+
+    var replaceContentMap = {
+        BUILD_CAHOOTS_VERSION: packageInfo.version,
+        ICON_14:    'cdot_14px.png',
+        ICON_14_GREY: 'cdot_14px_grau.png',
+        ICON_16: 'cdot_16px.png',
+        ICON_16_GREY: 'cdot_16px_grau.png',
+        ICON_19: 'cdot_19px.png',
+        ICON_19_GREY: 'cdot_19px_grau.png',
+        ICON_38: 'cdot_38px.png',
+        ICON_38_GREY: 'cdot_38px_grau.png',
+        ICON_48: 'cdot_48px.png',
+        ICON_48_GREY: 'cdot_48px_grau.png',
+        ICON_64: 'cdot_64px.png',
+        ICON_64_GREY: 'cdot_64px_grau.png',
+        ICON_128: 'cdot_128px.png',
+        ICON_128_GREY: 'cdot_128px_grau.png'
+    };
+
+    var processingFunction = function (content, srcpath) {
+        var resultContent = content;
+        for(var cm in replaceContentMap) {
+            var re = new RegExp('\\$\{'+cm+'\}','g')
+            resultContent = resultContent.replace(re, replaceContentMap[cm]);
+        }
+        return resultContent;
+        //return content.replace(/\$\{CAHOOTS_VERSION\}/g, packageInfo.version);
+    };
+
     var userConfig = {
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: packageInfo,
 
         src: 'src/main/js',
         src_ff: 'src/main/plugin/firefox',
@@ -32,14 +62,11 @@ module.exports = function (grunt) {
             out_dir
         ],
         copy: {
-            firefox: {
+            firefox_text: {
+                options: {
+                    process: processingFunction
+                },
                 files: [
-                    {
-                        expand: true,
-                        cwd: 'src/main/resources/images/icon',
-                        src: ['cdot_*.png'],
-                        dest: '<%= build_dir_firefox %>/data'
-                    },
                     // firefox addon business assets: stylesheets
                     {
                         expand: true,
@@ -65,11 +92,12 @@ module.exports = function (grunt) {
                         cwd: 'src/main/js/jquery',
                         src: '*.js',
                         dest: '<%= build_dir_firefox %>/data'},
-                    {expand: true,
+                    {
+                        expand: true,
                         cwd: 'src/main/js/firefox',
                         src: '**/*',
-                        dest: '<%= build_dir_firefox %>'},
-                    {expand: true,
+                        dest: '<%= build_dir_firefox %>'
+                    }, {expand: true,
                         cwd: 'target/js',
                         src: 'CahootsContentBundle.js',
                         dest: '<%= build_dir_firefox %>/data'},
@@ -88,20 +116,27 @@ module.exports = function (grunt) {
 
                 ]
             },
-            chrome: {
+            firefox_bin: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/main/resources/images/icon',
+                        src: ['cdot_*.png'],
+                        dest: '<%= build_dir_firefox %>/data'
+                    }
+
+                ]
+            },
+            chrome_text: {
+                options: {
+                    process: processingFunction
+                },
                 files: [
                     // chrome plugin skeleton
                     {expand: true,
                         cwd: 'src/main/js/chrome',
                         src: ['ChromeContentScriptLoader.js', 'ChromeExtensionLoader.js', 'manifest.json'],
                         dest: '<%= build_dir_chrome %>'},
-                    // chrome addon assets: icons
-                    {
-                        expand: true,
-                        cwd: 'src/main/resources/images/icon',
-                        src: ['cdot_*.png', 'verified.png'],
-                        dest: '<%= build_dir_chrome %>/img'
-                    },
                     //
                     {expand: true,
                         cwd: 'bower_components/tooltipster/js/',
@@ -136,6 +171,16 @@ module.exports = function (grunt) {
                         cwd: 'target/js',
                         src: ['Cahoots*.js','Chrome*.js'],
                         dest: '<%= build_dir_chrome %>/'}
+                ]
+            },
+            chrome_bin: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/main/resources/images/icon',
+                        src: ['cdot_*.png', 'verified.png'],
+                        dest: '<%= build_dir_chrome %>/img'
+                    }
                 ]
             }
         },
@@ -349,11 +394,22 @@ module.exports = function (grunt) {
     ]);
 
     //grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','browserify_firefox','copy:firefox','mozilla-cfx-xpi:stable' ]);
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_firefox', 'copy:firefox', 'mozilla-cfx-xpi:stable' ]);
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [
+        'browserify_firefox',
+        'copy:firefox_bin',
+        'copy:firefox_text',
+        'mozilla-cfx-xpi:stable'
+    ]);
 
     //grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
 
-    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[ 'browserify_app','browserify_chrome','copy:chrome','crx' ]);
+    grunt.registerTask('build_chrome', "builds the cahoots chrome extension",[
+        'browserify_app',
+        'browserify_chrome',
+        'copy:chrome_bin',
+        'copy:chrome_text',
+        'crx'
+    ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma:app','build_firefox','mozilla-cfx:run_stable' ]);
     grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);
