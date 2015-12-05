@@ -1,9 +1,9 @@
 {
   "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
   "icons": {
-    "128": "img/icon128.png",
-    "16": "img/icon16.png",
-    "48": "img/icon48.png"
+    "128": "img/cdot_48px.png",
+    "16": "img/cdot_16px.png",
+    "48": "img/cdot_48px.png"
   },
   "manifest_version": 2,
   "name": "Cahoots",
@@ -12,7 +12,6 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "version": "1.1.5",
   "web_accessible_resources": [
-    "db.json",
     "verified.png"
   ],
   "content_scripts": [
@@ -47,8 +46,8 @@
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "page_action": {
     "default_icon": {
-      "19": "img/icon19.png",
-      "38": "img/icon48.png"
+      "19": "img/cdot_19px.png",
+      "38": "img/cdot_48px.png"
     },
     "default_title": "default title cahoots page action"
   }

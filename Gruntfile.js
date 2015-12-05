@@ -21,9 +21,9 @@ module.exports = function (grunt) {
         src_chrome: 'src/main/plugin/chrome',
         lib_dir: 'cahoots-deps/libs',
 
-        build_dir_firefox: out_dir+'/exploded-firefox',
-        build_dir_chrome: out_dir+'/exploded-chrome',
-        export_dir: out_dir+'/packaged-out',
+        build_dir_firefox: out_dir + '/exploded-firefox',
+        build_dir_chrome: out_dir + '/exploded-chrome',
+        export_dir: out_dir + '/packaged-out',
 
         private_key: "development-test.key"
     };
@@ -34,17 +34,10 @@ module.exports = function (grunt) {
         copy: {
             firefox: {
                 files: [
-                    // firefox addon assets: icons
                     {
                         expand: true,
                         cwd: 'src/main/resources/images/icon',
-                        src: ['icon.png', 'icon64.png'],
-                        dest: '<%= build_dir_firefox %>'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'src/main/resources/images/icon',
-                        src: ['cdot_14px.png', 'cdot_14px_grau.png'],
+                        src: ['cdot_*.png'],
                         dest: '<%= build_dir_firefox %>/data'
                     },
                     // firefox addon business assets: stylesheets
@@ -106,9 +99,9 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/main/resources/images/icon',
-                        src: ['icon14.png','icon16.png','icon19.png','icon48.png','icon128.png','verified.png'],
-                        dest: '<%= build_dir_chrome %>/img'},
-
+                        src: ['cdot_*.png', 'verified.png'],
+                        dest: '<%= build_dir_chrome %>/img'
+                    },
                     //
                     {expand: true,
                         cwd: 'bower_components/tooltipster/js/',

@@ -6,7 +6,7 @@
   "author": "",
   "license": "MIT",
   "version": "1.1.5",
-  "icon": "icon.png",
-  "icon64": "icon64.png",
+  "icon": "data/cdot_14px.png",
+  "icon64": "data/cdot_48px.png",
   "main":"FirefoxExtensionScript.js"
 }

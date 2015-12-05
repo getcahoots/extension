@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('CahootsRunner', function suite () {
+describe('CahootsRunner', function suite () {
     var handleFullDetails = function (lookupId, dataCallback) {
         var data = {}
         dataCallback(data);
@@ -29,7 +29,8 @@ xdescribe('CahootsRunner', function suite () {
     describe('basic tests', function() {
 
         beforeEach(function() {
-            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints, undefined, contentConfig);
+            var reportMatches2 = function(){};
+            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints, reportMatches2, undefined, contentConfig);
         });
 
         it('should create', function () {
