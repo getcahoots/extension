@@ -9,17 +9,10 @@
     'use strict';
 
     var firefoxExtensionScript = function (cahoots) {
-        console.log("entering firefoxExtensionScript (loading)")
+        cahoots.extension.debugMsg('entering firefoxExtensionScript (loading)')
 
-        //console.log("... arguments: " + JSON.stringify(arguments))
-        //console.log("... cahoots: " + JSON.stringify(cahoots))
         /** cahoots imports **/
-        //var extension = require("./CahootsExtension");
-        //var extension = require("CahootsExtensionBundle");
-        //var config = extension.cahootsExtensionConfig;
         var extension = cahoots.extension;
-
-        //var config = cahoots.extension.cahootsExtensionConfig;
         var config = extension.cahootsExtensionConfig;
 
         var CahootsStorage = extension.CahootsStorage;
@@ -51,7 +44,7 @@
 
             tabsRef.on('activate', function (tab) {
                 if (!tabMap.has(tab.id)) {
-                    console.log("adding untracked tab");
+                    cahoots.extension.debugMsg('adding untracked tab');
                     var xulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
                     that.trackTab(tab, xulWindow);
                 }
@@ -64,7 +57,7 @@
 
         FirefoxTabTracking.prototype.trackTab = function (tab, window) {
             if (!this.hasWindowTracked(window)) {
-                console.log("trackTab " + tab.id + ": xul window is new, tracking...");
+                cahoots.extension.debugMsg("trackTab " + tab.id + ": xul window is new, tracking...");
                 this.trackWindow(window);
             }
 
@@ -89,7 +82,7 @@
                 }
             });
             if (windowRefCount === 0) {
-                console.log("window got orphaned, remove refs");
+                cahoots.extension.debugMsg("window got orphaned, remove refs");
                 this.windowMap.delete(trackingInfo.xulWindow);
             }
         }
@@ -102,9 +95,9 @@
         };
 
         FirefoxTabTracking.prototype.trackWindow = function (window) {
-            console.log ('trackWindow: tracking new window: ' + window);
+            cahoots.extension.debugMsg ('trackWindow: tracking new window: ' + window);
             if (window == null) {
-                console.log("trackWindow: skipping on undefined xulWindow");
+                cahoots.extension.debugMsg("trackWindow: skipping on undefined xulWindow");
                 return;
             }
             var pageAction = new FirefoxPageAction(window, config, this);
@@ -112,13 +105,13 @@
         }
 
         FirefoxTabTracking.prototype.updateFromTabWorker = function (tab, matchCount, reportingTabWorker, optionalRecentWindow) {
-            console.log('updateFromTabWorker/setTabTrackingInfo: ' + arguments);
+            cahoots.extension.debugMsg('updateFromTabWorker/setTabTrackingInfo: ' + arguments);
             if (!this.tabMap.has(tab.id)) {
-                console.log("!! updateFromTabWorker reporting for untracked tab");
+                cahoots.extension.debugMsg("!! updateFromTabWorker reporting for untracked tab");
                 this.trackTab(tab, optionalRecentWindow);
             }
 
-            console.log("updateFromTabWorker reporting for known tab");
+            cahoots.extension.debugMsg("updateFromTabWorker reporting for known tab");
             var trackingInfo = this.tabMap.get(tab.id);
             trackingInfo.data = matchCount
             trackingInfo.worker = reportingTabWorker;
@@ -136,22 +129,20 @@
             var that = this;
 
             var dumpTab = function (trackingInfo) {
-                console.log(" - [" + trackingInfo.tab.id + "] data:" + trackingInfo.data
+                cahoots.extension.debugMsg(" - [" + trackingInfo.tab.id + "] data:" + trackingInfo.data
                     + ", xulWin:" + (trackingInfo.xulWindow != null)
                     + ", wrk:" + (trackingInfo.worker != null))
             }
 
             setInterval(function () {
-                console.log(" ")
+                cahoots.extension.debugMsg(" ")
 
                 var windowCount = 0;
                 that.windowMap.forEach(function (pageAction, xulWindow) {
-                    console.log("window #" + windowCount);
+                    cahoots.extension.debugMsg("window #" + windowCount);
                     that.tabMap.forEach(function (tabTracking, tabId) {
                         if (tabTracking.xulWindow === xulWindow) {
                             dumpTab(tabTracking);
-                        } else {
-                            //console.log("skipping: ")
                         }
                     });
                     windowCount++;
@@ -175,8 +166,6 @@
             toolbarButton.setAttribute('image', require('sdk/self').data.url(config.icons.smallInactive));
             toolbarButton.setAttribute('tooltiptext', config.pageActionTitleDefault);
             var that = this;
-
-
             toolbarButton.addEventListener('command', function () {
                 that.sendContentActionMessage(that.state.worker);
             }, false);
@@ -184,7 +173,7 @@
             firefoxUrlbarIcons.appendChild(toolbarButton);
 
             this.toolbarButton = toolbarButton;
-            console.log("page action created")
+            cahoots.extension.debugMsg("page action created")
         };
 
         FirefoxPageAction.prototype.updatePageActionState = function (trackingInfo) {
@@ -217,18 +206,18 @@
         };
 
         FirefoxPageAction.prototype.sendContentActionMessage = function (receivingWorker) {
-            console.log("sendContentActionMessage")
+            cahoots.extension.debugMsg("sendContentActionMessage")
             if (receivingWorker !== null) {
                 /** send message to active tab worker **/
                 receivingWorker.port.emit('contentAction');
             } else {
-                console.log('sendContentActionMessage: cannot send \'contentAction\': tabWorker is null');
+                cahoots.extension.debugMsg('sendContentActionMessage: cannot send \'contentAction\': tabWorker is null');
             }
         };
 
 
         var firefoxExtensionMainScript = function (options, callbacks) {
-            console.log("... booting extension in firefoxExtensionMainScript()")
+            cahoots.extension.debugMsg("... booting extension in firefoxExtensionMainScript()")
             try {
                 /** addon sdk imports **/
                 var sdkSelf = require("sdk/self");
@@ -262,9 +251,9 @@
                     updater.checkConfigUpdate(xhr1, function (e) {
                         if (config.debug) {
                             if (e instanceof Error) {
-                                console.log("config update problem");
+                                cahoots.extension.debugMsg("config update problem");
                             } else {
-                                console.log("config update success");
+                                cahoots.extension.debugMsg("config update success");
                             }
 
                         }
@@ -274,9 +263,9 @@
                         updater.checkUpdate(xhr2, xhr3, function (e) {
                             if (config.debug) {
                                 if (e instanceof Error) {
-                                    console.log("data update problem");
+                                    cahoots.extension.debugMsg("data update problem");
                                 } else {
-                                    console.log("data update success");
+                                    cahoots.extension.debugMsg("data update success");
                                 }
 
                             }
@@ -321,7 +310,7 @@
                         })
                         worker.port.on("reportMatches", function (matchCount) {
                             var tab = worker.tab;
-                            console.log("new matches: " + matchCount + " for tab " + tab.id);
+                            cahoots.extension.debugMsg("new matches: " + matchCount + " for tab " + tab.id);
                             var recentXulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
                             firefoxTabTracker.updateFromTabWorker(tab, matchCount, worker, recentXulWindow);
                         })
@@ -340,14 +329,13 @@
                 }
 
             } catch (e) {
-                console.log("unable to load cahoots extension: " + e.message)
+                cahoots.extension.debugMsg("unable to load cahoots extension: " + e.message)
             }
         };
 
-        console.log("calling firefoxExtensionMainScript (executing)")
+        cahoots.extension.debugMsg("calling firefoxExtensionMainScript (executing)")
         firefoxExtensionMainScript();
     }
 
-    //module.exports.main = firefoxExtensionScript;
     module.exports.firefoxExtensionScript = firefoxExtensionScript;
 }());

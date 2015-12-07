@@ -42,9 +42,9 @@
                 updater.checkUpdate(xhr2, xhr3, function (e) {
                     if(config.debug) {
                         if(e instanceof Error) {
-                            console.log("data update problem");
+                            cahoots.extension.debugMsg('data update problem');
                         } else {
-                            console.log("data update success");
+                            cahoots.extension.debugMsg('data update success');
                         }
 
                     }

@@ -15,4 +15,9 @@
     module.exports.CahootsRunner = CahootsRunner;
     module.exports.CahootsUiFormatter = CahootsUiFormatter;
     module.exports.cahootsContentConfig = cahootsContentConfig;
+    module.exports.debugMsg = function (msg) {
+        if(cahootsContentConfig.debug === true) {
+            console.log(msg);
+        }
+    };
 }());

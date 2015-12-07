@@ -15,12 +15,11 @@
         var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
 
 
-        var debug = contentConfig.debug;
-        if(debug) console.log("executing chrome content script")
+        cahoots.content.debugMsg('executing chrome content script');
 
         var handleFullDetails = function(lookupId, dataCallback) {
-            chrome.runtime.sendMessage({ message: "getFullDetails", cahootsID: lookupId}, function(response){
-                dataCallback(response)
+            chrome.runtime.sendMessage({ message: "getFullDetails", cahootsID: lookupId}, function (response) {
+                dataCallback(response);
             });
         }
 
@@ -39,7 +38,7 @@
         var installContentActionHandler = function () {
             chrome.runtime.onMessage.addListener( function (request, sender, sendResponse) {
                 if (request.message == 'contentAction') {
-                    console.log('content action');
+                    cahoots.content.debugMsg('content action');
 
                     var highlightedElements = $(contentConfig.jumpSelector);
                     var elemCount = highlightedElements.length;
@@ -47,7 +46,7 @@
                         return;
                     }
                     var jumpToIndex = curJumpIndex == null ? 0 : (curJumpIndex + 1) % elemCount;
-                    console.log(elemCount + ' elems present, jumping to ' + jumpToIndex);
+                    cahoots.content.debugMsg(elemCount + ' elems present, jumping to ' + jumpToIndex);
                     $('html, body').animate({
                         scrollTop: $(highlightedElements[jumpToIndex]).offset().top
                     }, 1000);

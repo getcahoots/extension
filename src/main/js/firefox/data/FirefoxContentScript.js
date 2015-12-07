@@ -32,7 +32,7 @@
 
     var installContentActionHandler = function () {
         self.port.on('contentAction', function () {
-            console.log('content action');
+            cahoots.content.debugMsg('content action');
 
             var highlightedElements = $(contentConfig.jumpSelector);
             var elemCount = highlightedElements.length;
@@ -40,7 +40,7 @@
                 return;
             }
             var jumpToIndex = curJumpIndex == null ? 0 : (curJumpIndex + 1) % elemCount;
-            console.log(elemCount + ' elems present, jumping to #' + jumpToIndex);
+            cahoots.content.debugMsg(elemCount + ' elems present, jumping to #' + jumpToIndex);
             $('html, body').animate({
                 scrollTop: $(highlightedElements[jumpToIndex]).offset().top
             }, 1000);
@@ -54,16 +54,16 @@
                 var str1 = top.location.toString();
                 var str2 = location;
                 if(top.location.toString() != location.toString()) {
-                    console.log('--- skipping execution within subframe frame(1) --- ' + top.location + ' -> ' + location);
+                    cahoots.content.debugMsg('--- skipping execution within subframe --- ' + top.location + ' -> ' + location);
                     return;
                 }
 
                 if(top.window.document !== document) {
-                    console.log('--- skipping execution in subframe(3) --- ' );
+                    cahoots.content.debugMsg('--- skipping execution in subframe --- ');
                     return;
                 }
             } catch (e) {
-                console.log('--- skipping execution in foreign frame(2) --- ' );
+                cahoots.content.debugMsg('--- skipping execution in foreign frame --- ');
                 return;
             }
         }

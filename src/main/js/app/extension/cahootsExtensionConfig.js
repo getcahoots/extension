@@ -25,7 +25,7 @@
             smallActive: '${ICON_14}',
             smallInactive: '${ICON_14_GREY}'
         },
-        debug: true
+        debug: false
     };
 
     var ConfigService = function (cahootsStorage) {

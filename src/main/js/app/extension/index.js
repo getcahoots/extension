@@ -20,4 +20,9 @@
     module.exports.ProviderMerger = ProviderMerger;
     module.exports.cahootsExtensionConfig = cahootsExtensionConfig.cahootsExtensionConfig;
     module.exports.configService = cahootsExtensionConfig.configService;
+    module.exports.debugMsg = function (msg) {
+        if(cahootsExtensionConfig.cahootsExtensionConfig.debug === true) {
+            console.log(msg);
+        }
+    };
 }());
