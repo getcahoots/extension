@@ -7,11 +7,13 @@
  */
 (function () {
     'use strict';
+    var contentConfig = cahoots.content.cahootsContentConfig;
 
     var chromeContentScript = function () {
+
         var CahootsRunner = cahoots.content.CahootsRunner;
         var CahootsUiFormatter = cahoots.content.CahootsUiFormatter;
-        var contentConfig = cahoots.content.cahootsContentConfig;
+
 
         var debug = contentConfig.debug;
         if(debug) console.log("executing chrome content script")
@@ -28,9 +30,37 @@
             });
         }
 
+        var reportMatches = function (matchCount) {
+            chrome.runtime.sendMessage({ message: 'reportMatches', matchCount: matchCount});
+        };
+
+        var curJumpIndex = null;
+
+        var installContentActionHandler = function () {
+            chrome.runtime.onMessage.addListener( function (request, sender, sendResponse) {
+                if (request.message == 'contentAction') {
+                    console.log('content action');
+
+                    var highlightedElements = $(contentConfig.jumpSelector);
+                    var elemCount = highlightedElements.length;
+                    if (elemCount <= 0) {
+                        return;
+                    }
+                    var jumpToIndex = curJumpIndex == null ? 0 : (curJumpIndex + 1) % elemCount;
+                    console.log(elemCount + ' elems present, jumping to ' + jumpToIndex);
+                    $('html, body').animate({
+                        scrollTop: $(highlightedElements[jumpToIndex]).offset().top
+                    }, 1000);
+                    curJumpIndex = jumpToIndex;
+                }
+            });
+        };
+
+
+        installContentActionHandler();
 
         var uiFormatter = new CahootsUiFormatter();
-        var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, uiFormatter, contentConfig);
+        var cahootsRunner = new CahootsRunner(handleFullDetails,handleAuthorHints, reportMatches, uiFormatter, contentConfig);
         cahootsRunner.run();
     };
 

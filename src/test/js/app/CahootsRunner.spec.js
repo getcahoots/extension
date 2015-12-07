@@ -29,7 +29,8 @@ describe('CahootsRunner', function suite () {
     describe('basic tests', function() {
 
         beforeEach(function() {
-            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints, undefined, contentConfig);
+            var reportMatches2 = function(){};
+            cahootsRunner = new CahootsRunner(handleFullDetails, handleAuthorHints, reportMatches2, undefined, contentConfig);
         });
 
         it('should create', function () {

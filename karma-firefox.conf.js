@@ -11,7 +11,7 @@ module.exports = function (config) {
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         //frameworks: ['jasmine-jquery', 'jasmine'],
-        frameworks: ['jasmine-jquery','jasmine','commonjs'],
+        frameworks: ['jasmine-jquery', 'jasmine', 'commonjs'],
 
         plugins: [
             'karma-commonjs',
@@ -36,15 +36,29 @@ module.exports = function (config) {
             {pattern: 'src/main/js/jquery/*js', included: true},
             {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
 
-            {pattern: 'target/js/*.js', included: true},
 
-            {pattern: 'src/main/js/firefox/**/*.js', served: true, included: false},
+            {pattern: 'src/test/js/sdk/**/*.js', served: true, included: true},
 
-            {pattern: 'src/test/js/firefox/*.js', included: true},
+            //{pattern: 'target/js/*.js', included: true},
+            //
+            //{pattern: 'src/main/js/firefox/**/*.js', served: true, included: false},
 
-            //{pattern: 'src/main/js/chrome/**/*js', included: true},
-            //{pattern: 'node_modules/karma-jasmine-jquery/node_modules/bower-installer/node_modules/node-fs/lib/fs.js', included: true, served: true},
-            //{pattern: 'node_modules/node-fs/lib/fs.js', included: true, served: true},
+            //{pattern: 'target/exploded-firefox/data/*.js', served: true, included: false},
+
+            {pattern: 'target/exploded-firefox/data/CahootsContentBundle.js', served: true, included: true},
+            {pattern: 'target/exploded-firefox/data/FirefoxContentScriptBundle.js', served: true, included: true},
+            //{pattern: 'target/exploded-firefox/data/FirefoxContentScriptLoader.js', served: true, included: true},
+
+            {pattern: 'target/exploded-firefox/lib/CahootsExtensionBundle.js', served: true, included: true},
+            {pattern: 'target/exploded-firefox/lib/FirefoxExtensionBundle.js', served: true, included: true},
+
+
+
+            {pattern: 'src/test/js/firefox/**/*.js', included: true},
+
+                            //{pattern: 'src/main/js/chrome/**/*js', included: true},
+                            //{pattern: 'node_modules/karma-jasmine-jquery/node_modules/bower-installer/node_modules/node-fs/lib/fs.js', included: true, served: true},
+                            //{pattern: 'node_modules/node-fs/lib/fs.js', included: true, served: true},
             {pattern: 'src/test/resources/html/*.html', watched: true, served: true, included: true},
 
         ],

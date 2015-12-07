@@ -29,7 +29,15 @@ describe('FirefoxContentScript', function suite() {
     it('should demand authorHints', function () {
         spyOn(window.self.port, 'once').and.callThrough();
 
-        firefoxContentScript();
+        cahoots.content.cahootsContentConfig.skipSubFrames = false;
+
+
+        console.log(self.port)
+        try {
+            firefoxContentScript();
+        } catch(e) {
+            throw e;
+        }
 
         expect(window.self.port.once).toHaveBeenCalledWith('gotAuthorHints', jasmine.any(Function));
     });
