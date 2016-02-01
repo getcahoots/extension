@@ -238,8 +238,13 @@
                 configService.setStorage(cahootsStorage);
 
                 /** observe state of windows and tabs to manage page action state **/
-                var firefoxTabTracker = new FirefoxTabTracking(tabs, config);
-                firefoxTabTracker.activateTraceLogging();
+
+                var firefoxTabTracker = null;
+                if (config.enableFirefoxPageActionEmulation) {
+                    firefoxTabTracker = new FirefoxTabTracking(tabs, config);
+                    firefoxTabTracker.activateTraceLogging();
+                }
+
 
                 /** prepare data updater **/
                 var xhr1 = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance(Ci.nsIXMLHttpRequest);
@@ -308,12 +313,15 @@
                             var author = queryService.queryAuthorDetails(cahootsId);
                             worker.port.emit("gotFullDetails", author);
                         })
-                        worker.port.on("reportMatches", function (matchCount) {
-                            var tab = worker.tab;
-                            cahoots.extension.debugMsg("new matches: " + matchCount + " for tab " + tab.id);
-                            var recentXulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
-                            firefoxTabTracker.updateFromTabWorker(tab, matchCount, worker, recentXulWindow);
-                        })
+
+                        if (config.enableFirefoxPageActionEmulation) {
+                            worker.port.on("reportMatches", function (matchCount) {
+                                var tab = worker.tab;
+                                cahoots.extension.debugMsg("new matches: " + matchCount + " for tab " + tab.id);
+                                var recentXulWindow = require('sdk/window/utils').getMostRecentBrowserWindow();
+                                firefoxTabTracker.updateFromTabWorker(tab, matchCount, worker, recentXulWindow);
+                            })
+                        }
                     }
                 });
 
