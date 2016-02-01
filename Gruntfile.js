@@ -2,16 +2,14 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-mozilla-addon-sdk');
     grunt.loadNpmTasks('grunt-crx');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-mkdir');
+    grunt.loadNpmTasks('grunt-jpm');
+
 
     var out_dir = 'target';
-    var mozillaConfig = {
-        stable_sdk_version: '1.17'
-    }
 
     var packageInfo = grunt.file.readJSON('package.json');
 
@@ -40,7 +38,6 @@ module.exports = function (grunt) {
             resultContent = resultContent.replace(re, replaceContentMap[cm]);
         }
         return resultContent;
-        //return content.replace(/\$\{CAHOOTS_VERSION\}/g, packageInfo.version);
     };
 
     var userConfig = {
@@ -57,6 +54,7 @@ module.exports = function (grunt) {
 
         private_key: "development-test.key"
     };
+
     var taskConfig = {
         clean: [
             out_dir
@@ -184,63 +182,19 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        "mozilla-addon-sdk": {
-            'stable': {
+
+        mkdir: {
+            target_dir: {
                 options: {
-                    revision: mozillaConfig.stable_sdk_version
-                }
+                    create: [userConfig.build_dir_firefox, userConfig.build_dir_chrome]
+                },
             },
-            'master': {
-                options: {
-                    revision: "master",
-                    github: true
-                    // github_user: "mozilla" // default value
-                }
-            }
         },
-        /**
-         * https://www.npmjs.org/package/grunt-mozilla-addon-sdk
-         */
-        "mozilla-cfx-xpi": {
-            'stable': {
-                options: {
-                    "mozilla-addon-sdk": "stable",
-                    extension_dir: "<%= build_dir_firefox %>",
-                    dist_dir: "<%= export_dir %>"
-                }
-            },
-            'experimental': {
-                options: {
-                    "mozilla-addon-sdk": "master",
-                    extension_dir: "<%= build_dir_firefox %>",
-                    dist_dir: "<%= export_dir %>/firedox-addon-experimental"
 
-                }
-            }
-        },
-        'mozilla-cfx': {
-            'run_stable': {
-                options: {
-                    "mozilla-addon-sdk": "stable",
-                    extension_dir: "<%= build_dir_firefox %>",
-                    command: "run",
-
-                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
-                    pipe_output: true
-
-                    //arguments: "--binary-args '-url \"www.mozilla.org\" -jsconsole'"
-                }
-            },
-            'run_experimental': {
-                options: {
-                    "mozilla-addon-sdk": "master",
-                    extension_dir: "<%= build_dir_firefox %>",
-                    command: "run",
-
-                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
-
-                    pipe_output: true
-                }
+        jpm: {
+            options: {
+                src: "<%= build_dir_firefox %>",
+                //xpi: "<%= export_dir %>"
             }
         },
 
@@ -381,7 +335,7 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('default', [ 'build_all' ]);
 
-    grunt.registerTask('build_all', [ 'clean', 'karma:app', 'build_firefox', 'build_chrome' ]);
+    grunt.registerTask('build_all', [ 'clean', 'mkdir:target_dir', 'karma:app', 'build_firefox', 'build_chrome' ]);
     grunt.registerTask('tests', ['build_all', 'karma:chrome_ui_tests', 'karma:firefox_ui_tests']);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle', 'browserify:extension_bundle' ]);
@@ -394,11 +348,14 @@ module.exports = function (grunt) {
     ]);
 
     //grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [ 'browserify_app','browserify_firefox','copy:firefox','mozilla-cfx-xpi:stable' ]);
-    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (stable sdk version)", [
+    grunt.registerTask('build_firefox', "builds the cahoots firefox addon (jpm)", [
+        'browserify_app',
         'browserify_firefox',
         'copy:firefox_bin',
         'copy:firefox_text',
-        'mozilla-cfx-xpi:stable'
+        //'jpm',
+        //'mkdir:target_dir',
+        'jpm:xpi'
     ]);
 
     //grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
