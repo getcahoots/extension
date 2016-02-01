@@ -1,11 +1,11 @@
 {
   "name": "cahoots",
-  "version": "1.1.6",
+  "version": "1.1.7-dev",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/username/repository.git"
+    "url": "git://github.com/getcahoots/extension.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -14,7 +14,9 @@
     "grunt-contrib-clean": "^0.5",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-crx": "^1.0.3",
+    "grunt-jpm": "^0.1.2",
     "grunt-karma": "^0.10.1",
+    "grunt-mkdir": "^0.1.2",
     "grunt-mozilla-addon-sdk": "^0.4.0",
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",

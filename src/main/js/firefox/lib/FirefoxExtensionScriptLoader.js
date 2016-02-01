@@ -8,8 +8,8 @@
 (function () {
     'use strict';
 
-    var cahootsExtensionBundle = require("CahootsExtensionBundle");
-    var firefoxExtensionBundle = require("FirefoxExtensionBundle");
+    var cahootsExtensionBundle = require("./CahootsExtensionBundle");
+    var firefoxExtensionBundle = require("./FirefoxExtensionBundle");
 
     var extensionScriptLoader = function () {
         cahootsExtensionBundle.debugMsg('executing loader')
