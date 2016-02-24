@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-mozilla-addon-sdk');
     grunt.loadNpmTasks('grunt-crx');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-browserify');
@@ -10,7 +11,11 @@ module.exports = function (grunt) {
 
 
     var out_dir = 'target';
+    var export_dir = out_dir + '/packaged-out';
 
+    var mozillaConfig = {
+        palemoon_compatible_sdk_version: '1.16'
+    }
     var packageInfo = grunt.file.readJSON('package.json');
 
     var replaceContentMap = {
@@ -49,8 +54,12 @@ module.exports = function (grunt) {
         lib_dir: 'cahoots-deps/libs',
 
         build_dir_firefox: out_dir + '/exploded-firefox',
+        build_dir_palemoon: out_dir + '/exploded-palemoon',
         build_dir_chrome: out_dir + '/exploded-chrome',
-        export_dir: out_dir + '/packaged-out',
+
+        export_dir_firefox: export_dir + '/firefox',
+        export_dir_palemoon: export_dir + '/palemoon',
+        export_dir_chrome: export_dir + '/chrome',
 
         private_key: "development-test.key"
     };
@@ -180,6 +189,21 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_chrome %>/img'
                     }
                 ]
+            },
+            palemoon_ff_clone: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'target/exploded-firefox',
+                        src: ['**/*'],
+                        dest: '<%= build_dir_palemoon %>'
+                    }, {
+                        expand: true,
+                        cwd: 'src/main/js/palemoon',
+                        src: ['package.json'],
+                        dest: '<%= build_dir_palemoon %>'
+                    }
+                ]
             }
         },
 
@@ -189,12 +213,21 @@ module.exports = function (grunt) {
                     create: [userConfig.build_dir_firefox, userConfig.build_dir_chrome]
                 },
             },
+            export_dir: {
+                options: {
+                    create: [
+                        userConfig.export_dir_firefox,
+                        userConfig.export_dir_palemoon,
+                        userConfig.export_dir_chrome
+                    ]
+                }
+            }
         },
 
         jpm: {
             options: {
                 src: "<%= build_dir_firefox %>",
-                //xpi: "<%= export_dir %>"
+                xpi: "<%= export_dir_firefox %>"
             }
         },
 
@@ -207,11 +240,69 @@ module.exports = function (grunt) {
         crx: {
             cahootsExtension: {
                 "src": ["<%= build_dir_chrome %>/**/*"],
-                "dest": "<%= export_dir %>",
-                "zipDest": "<%= export_dir %>",
+                "dest": "<%= export_dir_chrome %>",
+                "zipDest": "<%= export_dir_chrome %>",
 
                 "options": {
                     "privateKey": userConfig.private_key
+                }
+            }
+        },
+
+
+
+        "mozilla-addon-sdk": {
+            'palemoon': {
+                options: {
+                    revision: mozillaConfig.palemoon_compatible_sdk_version
+                }
+            },
+            'master': {
+                options: {
+                    revision: "master",
+                    github: true
+                    // github_user: "mozilla" // default value
+                }
+            }
+        },
+        "mozilla-cfx-xpi": {
+            'palemoon': {
+                options: {
+                    "mozilla-addon-sdk": "palemoon",
+                    extension_dir: "<%= build_dir_palemoon %>",
+                    dist_dir: "<%= export_dir_palemoon %>"
+                }
+            },
+            'experimental': {
+                options: {
+                    "mozilla-addon-sdk": "master",
+                    extension_dir: "<%= build_dir_firefox %>",
+                    dist_dir: "<%= export_dir %>/firedox-addon-experimental"
+
+                }
+            }
+        },
+        'mozilla-cfx': {
+            'run_palemoon': {
+                options: {
+                    "mozilla-addon-sdk": "palemoon",
+                    extension_dir: "<%= build_dir_palemoon %>",
+                    command: "run",
+
+                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
+                    pipe_output: true
+
+                }
+            },
+            'run_experimental': {
+                options: {
+                    "mozilla-addon-sdk": "master",
+                    extension_dir: "<%= build_dir_firefox %>",
+                    command: "run",
+
+                    arguments: "-p ../../firefox_profile --binary-args '-jsconsole'",
+
+                    pipe_output: true
                 }
             }
         },
@@ -335,7 +426,7 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('default', [ 'build_all' ]);
 
-    grunt.registerTask('build_all', [ 'clean', 'mkdir:target_dir', 'karma:app', 'build_firefox', 'build_chrome' ]);
+    grunt.registerTask('build_all', [ 'clean', 'mkdir:export_dir', 'mkdir:target_dir', 'karma:app', 'build_firefox', 'build_chrome' ]);
     grunt.registerTask('tests', ['build_all', 'karma:chrome_ui_tests', 'karma:firefox_ui_tests']);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle', 'browserify:extension_bundle' ]);
@@ -353,10 +444,13 @@ module.exports = function (grunt) {
         'browserify_firefox',
         'copy:firefox_bin',
         'copy:firefox_text',
-        //'jpm',
-        //'mkdir:target_dir',
-        'jpm:xpi'
+        'mkdir:target_dir',
+        'jpm:xpi',
+        'copy:palemoon_ff_clone',
+        'mozilla-cfx-xpi:palemoon'
     ]);
+
+
 
     //grunt.registerTask('build_firefox_experimental', "builds the cahoots firefox addon (unstable sdk version)", [ 'browserify_app','copy:firefox','mozilla-cfx-xpi:experimental' ]);
 
@@ -368,8 +462,8 @@ module.exports = function (grunt) {
         'crx'
     ]);
 
-    grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma:app','build_firefox','mozilla-cfx:run_stable' ]);
-    grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);
+    //grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma:app','build_firefox','mozilla-cfx:run_stable' ]);
+    //grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);
 
 
 };

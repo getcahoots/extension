@@ -1,4 +1,5 @@
 {
+  "cahoots-platform-identifier": "chrome",
   "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
   "icons": {
     "128": "img/${ICON_128}",
