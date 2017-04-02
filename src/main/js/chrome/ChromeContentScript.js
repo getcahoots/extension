@@ -17,6 +17,19 @@
 
         cahoots.content.debugMsg('executing chrome content script');
 
+        let pageActionEnabled = false;
+        try {
+            var getting = browser.storage.local.get("optionShowUiElement");
+            getting.then((newValue) => {
+                console.log("show ui element: ", newValue);
+                getting = newValue;
+            }, () => {
+                console.log("error reading property");
+            });
+        } catch(e) {
+            cahoots.content.debugMsg('error while loation ui setting from localstorage');
+        }
+
         var handleFullDetails = function(lookupId, dataCallback) {
             chrome.runtime.sendMessage({ message: "getFullDetails", cahootsID: lookupId}, function (response) {
                 dataCallback(response);
@@ -29,8 +42,13 @@
             });
         }
 
+        /**
+         * to trigger page action visualization
+         */
         var reportMatches = function (matchCount) {
-            chrome.runtime.sendMessage({ message: 'reportMatches', matchCount: matchCount});
+            if (pageActionEnabled) {
+                chrome.runtime.sendMessage({message: 'reportMatches', matchCount: matchCount});
+            }
         };
 
         var curJumpIndex = null;

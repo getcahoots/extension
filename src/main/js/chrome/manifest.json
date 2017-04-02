@@ -49,6 +49,12 @@
       "19": "img/${ICON_19}",
       "38": "img/${ICON_38}"
     },
-    "default_title": "default title cahoots page action"
-  }
+    "default_title": "default title cahoots page action",
+    "browser_style": true
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "permissions": ["storage"]
 }

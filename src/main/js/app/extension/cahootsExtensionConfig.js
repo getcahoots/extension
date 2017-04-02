@@ -26,6 +26,7 @@
             smallInactive: '${ICON_14_GREY}'
         },
         enableFirefoxPageActionEmulation: false, // buggy, disable for now
+        showVersionUpdatePage: false,
         debug: false
     };
 

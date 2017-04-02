@@ -99,18 +99,22 @@
 
 
 
-        var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
-        var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
+        if (config.showVersionUpdatePage) {
+            var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
+            var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
 
-        try {
-            if (!window.localStorage.getItem(hasSeenIntroKey)) {
-                window.localStorage.setItem(hasSeenIntroKey, 'yep');
-                chrome.tabs.create({
-                    url: releaseNotesPageUrl
-                });
+            try {
+                if (!window.localStorage.getItem(hasSeenIntroKey)) {
+                    window.localStorage.setItem(hasSeenIntroKey, 'yep');
+                    chrome.tabs.create({
+                        url: releaseNotesPageUrl
+                    });
+                }
+            } catch (ignore) {
+                // empty
             }
-        } catch (ignore) {
         }
+
     };
 
     module.exports.chromeExtensionScript = chromeExtensionScript;
