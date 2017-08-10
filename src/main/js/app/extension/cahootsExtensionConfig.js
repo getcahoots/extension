@@ -5,73 +5,74 @@
  * MIT Licensed
  *
  */
-(function () {
-    var cahootsExtensionConfig = {
-        cahootsExtensionVersion: '${BUILD_CAHOOTS_VERSION}',
 
-        /* expiry delta in seconds */
-        expiryDelta: (60 * 60 * 24), // for production
+const cahootsExtensionConfig = {
+    cahootsExtensionVersion: '${BUILD_CAHOOTS_VERSION}',
 
-        /* update interval in milliseconds */
-        updateInterval: (60 * 60 * 24) * 1000,
+    /* expiry delta in seconds */
+    expiryDelta: (60 * 60 * 24), // for production
 
-        apiEndpoint: 'http://api-beta.cahoots.pw/v2',
-        apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
-        pageActionTitleSingleHit: 'Cahoots: Eine Verbindung gefunden',
-        pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',
-        pageActionTitleDefault: 'Cahoots: bereit',
-        pageActionTitleNothingFound: 'Cahoots: nichts gefunden',
-        icons: {
-            smallActive: '${ICON_14}',
-            smallInactive: '${ICON_14_GREY}'
-        },
-        enableFirefoxPageActionEmulation: false, // buggy, disable for now
-        showVersionUpdatePage: false,
-        debug: false
-    };
+    /* update interval in milliseconds */
+    updateInterval: (60 * 60 * 24) * 1000,
 
-    var ConfigService = function (cahootsStorage) {
-        if (arguments.length < 1) {
-            throw new Error('ConfigService expects at least one argument');
-        }
-        this.storage = cahootsStorage;
-    };
+    apiEndpoint: 'http://api-beta.cahoots.pw/v2',
+    apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
+    pageActionTitleSingleHit: 'Cahoots: Eine Verbindung gefunden',
+    pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',
+    pageActionTitleDefault: 'Cahoots: bereit',
+    pageActionTitleNothingFound: 'Cahoots: nichts gefunden',
+    icons: {
+        smallActive: '${ICON_14}',
+        smallInactive: '${ICON_14_GREY}'
+    },
+    enableFirefoxPageActionEmulation: false, // buggy, disable for now
+    showVersionUpdatePage: false,
+    debug: false
+};
 
-    ConfigService.prototype.getApiEndpoint = function () {
-        var storageSetting = this.storage.getApiEndpointOverride();
-        if (typeof storageSetting === 'string' && storageSetting.length > 10) {
-            return storageSetting;
-        }
-        return cahootsExtensionConfig.apiEndpoint;
-    };
+var ConfigService = function (cahootsStorage) {
+    if (arguments.length < 1) {
+        throw new Error('ConfigService expects at least one argument');
+    }
+    this.storage = cahootsStorage;
+};
 
-    ConfigService.prototype.isDebug = function () {
-        return cahootsExtensionConfig.debug;
-    };
+ConfigService.prototype.getApiEndpoint = function () {
+    var storageSetting = this.storage.getApiEndpointOverride();
+    if (typeof storageSetting === 'string' && storageSetting.length > 10) {
+        return storageSetting;
+    }
+    return cahootsExtensionConfig.apiEndpoint;
+};
 
-    ConfigService.prototype.getExpiryDelta = function () {
-        return cahootsExtensionConfig.expiryDelta;
-    };
+ConfigService.prototype.isDebug = function () {
+    return cahootsExtensionConfig.debug;
+};
 
-    ConfigService.prototype.getApiEndpointUpdateUrl = function () {
-        return cahootsExtensionConfig.apiEndpointUpdateUrl;
-    };
+ConfigService.prototype.getExpiryDelta = function () {
+    return cahootsExtensionConfig.expiryDelta;
+};
 
-    ConfigService.prototype.setStorage = function (storage) {
-        this.storage = storage;
-    };
+ConfigService.prototype.getApiEndpointUpdateUrl = function () {
+    return cahootsExtensionConfig.apiEndpointUpdateUrl;
+};
 
-    ConfigService.prototype.getReleaseNotesPageUrl = function () {
-        return 'https://getcahoots.github.io/extension/news/' + cahootsExtensionConfig.cahootsExtensionVersion + '.html';
-    };
+ConfigService.prototype.setStorage = function (storage) {
+    this.storage = storage;
+};
 
-    var configServiceInstance = null;
+ConfigService.prototype.getReleaseNotesPageUrl = function () {
+    return 'https://getcahoots.github.io/extension/news/' + cahootsExtensionConfig.cahootsExtensionVersion + '.html';
+};
 
-    module.exports.cahootsExtensionConfig = cahootsExtensionConfig;
-    module.exports.configService = function getInstance(initialConfig) {
-        if (configServiceInstance === null) {
-            configServiceInstance = new ConfigService(initialConfig);
-        }
-        return configServiceInstance;
-    };
-}());
+var configServiceInstance = null;
+
+module.exports.cahootsExtensionConfig = cahootsExtensionConfig;
+module.exports.configService = function getInstance(initialConfig) {
+    if (configServiceInstance === null) {
+        configServiceInstance = new ConfigService(initialConfig);
+    }
+    return configServiceInstance;
+};
+
+export default cahootsExtensionConfig;

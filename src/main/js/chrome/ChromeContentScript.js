@@ -22,12 +22,12 @@
             var getting = browser.storage.local.get("optionShowUiElement");
             getting.then((newValue) => {
                 console.log("show ui element: ", newValue);
-                getting = newValue;
+                pageActionEnabled = newValue;
             }, () => {
-                console.log("error reading property");
+                console.log("error reading property optionShowUiElement");
             });
         } catch(e) {
-            cahoots.content.debugMsg('error while loation ui setting from localstorage');
+            cahoots.content.debugMsg('error while loading ui setting from localstorage optionShowUiElement');
         }
 
         var handleFullDetails = function(lookupId, dataCallback) {

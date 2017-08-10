@@ -1,19 +1,19 @@
-/**
- * cahoots extension
- *
- * Copyright Cahoots.pw
- * MIT Licensed
- *
- */
-(function () {
-    'use strict';
+var getCurrentTimestamp = function () {
+    return Math.floor(Date.now() / 1000);
+};
 
-    var getCurrentTimestamp = function () {
-        return Math.floor(Date.now() / 1000);
-    };
+class CahootsStorage {
 
-    var CahootsStorage = function (storageObject, providerMerger, configService) {
-        if (arguments.length < 2) {
+    /**
+     * cahoots extension
+     *
+     * Copyright Cahoots.pw
+     * MIT Licensed
+     *
+     */
+
+    constructor(storageObject, providerMerger, configService) {
+        if (arguments.length < 2) {
             throw new Error('CahootsStorage() needs at least 2 arguments');
         }
 
@@ -35,7 +35,7 @@
         this.storage = storageObject;
     };
 
-    CahootsStorage.prototype.debug = function (logString) {
+    debug(logString) {
         try {
             if (this.configService.isDebug()) {
                 console.log(logString);
@@ -45,67 +45,67 @@
         }
     };
 
-    CahootsStorage.prototype._setStorageField = function (fieldName, data) {
+    _setStorageField(fieldName, data) {
         if (typeof this.storage.setItem === 'function') {
             this.storage.setItem(fieldName, JSON.stringify(data));
         }
         this.storage[fieldName] = JSON.stringify(data);
     };
 
-    CahootsStorage.prototype._getStorageField = function (fieldName) {
+    _getStorageField(fieldName) {
         var storedJson;
         if (typeof this.storage.setItem === 'function') {
             storedJson = this.storage.getItem(fieldName);
         } else {
             storedJson = this.storage[fieldName];
         }
-        if(storedJson === undefined) {
+        if (storedJson === undefined) {
             return undefined;
         }
         return JSON.parse(storedJson);
     };
 
-    CahootsStorage.prototype._setPersons = function (data) {
+    _setPersons(data) {
         this._setStorageField('persons', data);
     };
 
-    CahootsStorage.prototype._setOrganizations = function (data) {
+    _setOrganizations(data) {
         this._setStorageField('organizations', data);
     };
 
-    CahootsStorage.prototype._setUpdated = function () {
+    _setUpdated() {
         var currentTimestamp = getCurrentTimestamp();
         this._setStorageField('lastUpdated', currentTimestamp);
     };
 
-    CahootsStorage.prototype.setData = function (data) {
+    setData(data) {
         this._setPersons(this.providerMerger.flattenPersons(data.persons));
         this._setOrganizations(data.organizations);
         this._setUpdated();
     };
 
-    CahootsStorage.prototype.isValidApiUrl = function (url) {
+    isValidApiUrl(url) {
         if (typeof url !== 'string') {
             return false;
         }
-        if (url.substring(0, 4) === 'http' && url.match(/cahoots/)) {
+        if (url.substring(0, 4) === 'http' && url.match(/cahoots/)) {
             return true;
         }
         return false;
     };
 
-    CahootsStorage.prototype.setApiEndpointOverride = function (data) {
+    setApiEndpointOverride(data) {
         if (!this.isValidApiUrl(data)) {
             throw new Error("given api url is invalid, ignoring");
         }
         this._setStorageField('apiEndpointOverride', data);
     };
 
-    CahootsStorage.prototype.getApiEndpointOverride = function () {
+    getApiEndpointOverride() {
         return this._getStorageField('apiEndpointOverride');
     };
 
-    CahootsStorage.prototype.isExpired = function () {
+    isExpired() {
         try {
             var lastUpdate = this.getLastUpdated();
             var currentTimestamp = getCurrentTimestamp();
@@ -130,17 +130,17 @@
         return true;
     }
 
-    CahootsStorage.prototype.getPersons = function () {
+    getPersons() {
         return this._getStorageField('persons');
     }
 
-    CahootsStorage.prototype.getOrganizations = function () {
+    getOrganizations() {
         return this._getStorageField('organizations');
     }
 
-    CahootsStorage.prototype.getLastUpdated = function () {
+    getLastUpdated() {
         var rawValue = this._getStorageField('lastUpdated');
-        if(rawValue === undefined) {
+        if (rawValue === undefined) {
             return null;
         }
 
@@ -154,6 +154,6 @@
         }
         return null;
     };
+}
 
-    module.exports = CahootsStorage;
-}());
+export default CahootsStorage;

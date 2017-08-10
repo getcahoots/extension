@@ -5,11 +5,10 @@
  * MIT Licensed
  *
  */
-(function () {
-    'use strict';
+class StorageUpdater {
 
-    var StorageUpdater = function (cahootsStorageInstance, configService) {
-        if (arguments.length !== 2) {
+    constructor(cahootsStorageInstance, configService) {
+        if (arguments.length !== 2) {
             throw new Error('StorageUpdater() needs exactly 2 arguments');
         }
 
@@ -18,14 +17,14 @@
         this.storage = cahootsStorageInstance;
     };
 
-    StorageUpdater.prototype.debug = function (logString) {
+    debug(logString) {
         if (this.configService.isDebug()) {
             console.log(logString);
         }
     };
 
-    StorageUpdater.prototype.update = function (xhr1, xhr2, callback) {
-        if (arguments.length !== 3) {
+    update(xhr1, xhr2, callback) {
+        if (arguments.length !== 3) {
             throw new Error('StorageUpdater.update() needs exactly 3 arguments');
         }
         var that = this;
@@ -59,8 +58,8 @@
         xhr1.send();
     };
 
-    StorageUpdater.prototype.updateApiEndpointSetting = function (xhr, callback) {
-        if (arguments.length !== 2) {
+    updateApiEndpointSetting(xhr, callback) {
+        if (arguments.length !== 2) {
             throw new Error('StorageUpdater.updateApiEndpointSetting() needs exactly 2 arguments');
         }
         var receivedOverrideUrl;
@@ -95,8 +94,8 @@
         xhr.send();
     };
 
-    StorageUpdater.prototype.checkUpdate = function (xhr1, xhr2, callback) {
-        if (arguments.length !== 3) {
+    checkUpdate(xhr1, xhr2, callback) {
+        if (arguments.length !== 3) {
             throw new Error('StorageUpdater.checkUpdate() needs exactly 3 arguments');
         }
 
@@ -108,14 +107,14 @@
         }
     };
 
-    StorageUpdater.prototype.checkConfigUpdate = function (xhr, callback) {
-        if (arguments.length !== 2) {
+    checkConfigUpdate(xhr, callback) {
+        if (arguments.length !== 2) {
             throw new Error('StorageUpdater.checkConfigUpdate() needs exactly 2 arguments');
         }
 
         this.debug("checkConfigUpdate");
         this.updateApiEndpointSetting(xhr, callback);
     }
+}
 
-    module.exports = StorageUpdater;
-}());
+export default StorageUpdater;
