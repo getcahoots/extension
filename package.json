@@ -1,6 +1,6 @@
 {
   "name": "cahoots",
-  "version": "1.2",
+  "version": "1.2.1",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -46,6 +46,6 @@
   "scripts": {
     "build": "node_modules/webpack/bin/webpack.js",
     "watch": "node_modules/webpack/bin/webpack.js -w",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"no test specified\" && exit 0"
   }
 }
