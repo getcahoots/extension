@@ -4,7 +4,7 @@ const path = require('path');
 let config = {
     entry: './src/main/js/extension.js',
     output: {
-        path: path.resolve('__dirname', './public'),
+        path: path.resolve(__dirname, './target'),
         filename: 'output.js'
     },
     module: {
