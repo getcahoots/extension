@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-crx');
-    grunt.loadNpmTasks('grunt-karma');
+    // grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-jpm');
@@ -335,8 +335,8 @@ module.exports = function (grunt) {
      */
     grunt.registerTask('default', [ 'build_all' ]);
 
-    grunt.registerTask('build_all', [ 'clean', 'mkdir:target_dir', 'karma:app', 'build_firefox', 'build_chrome' ]);
-    grunt.registerTask('tests', ['build_all', 'karma:chrome_ui_tests', 'karma:firefox_ui_tests']);
+    grunt.registerTask('build_all', [ 'clean', 'mkdir:target_dir', /*'karma:app', */'build_firefox', 'build_chrome' ]);
+    grunt.registerTask('tests', ['build_all'/*, 'karma:chrome_ui_tests', 'karma:firefox_ui_tests'*/]);
 
     grunt.registerTask('browserify_app', [ 'browserify:content_bundle', 'browserify:extension_bundle' ]);
 
@@ -364,8 +364,8 @@ module.exports = function (grunt) {
         'browserify_app',
         'browserify_chrome',
         'copy:chrome_bin',
-        'copy:chrome_text',
-        'crx'
+        'copy:chrome_text'
+        // 'crx'
     ]);
 
     grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma:app','build_firefox','mozilla-cfx:run_stable' ]);
