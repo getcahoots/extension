@@ -23,9 +23,7 @@
         "jquery.js",
         "jquery_highlight.js",
         "jquery.tooltipster.js",
-        "CahootsContentBundle.js",
-        "ChromeContentScriptBundle.js",
-        "ChromeContentScriptLoader.js"
+        "content.js"
       ],
       "matches": [
         "http://*/*",
@@ -36,9 +34,7 @@
   ],
   "background": {
     "scripts": [
-      "CahootsExtensionBundle.js",
-      "ChromeExtensionBundle.js",
-      "ChromeExtensionLoader.js"
+      "background.js"
     ],
     "persistent": false
   },
