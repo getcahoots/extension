@@ -1,23 +1,9 @@
-/**
- * cahoots extension
- *
- * Copyright Cahoots.pw
- * MIT Licensed
- *
- */
-(function () {
-    'use strict';
+import StorageService from './StorageService';
 
-    function QueryService(queryStorage) {
-        if (arguments.length !== 1) {
-            throw new Error('QueryService() needs exactly 1 arguments');
-        }
-        this.queryStorage = queryStorage;
-        this.debug = false;
-    }
+class QueryService {
 
-    QueryService.prototype.queryAuthorHints = function () {
-        var persons = this.queryStorage.getPersons();
+    queryAuthorHints() {
+        var persons = StorageService.getInstance().getPersons();
 
         if(!Array.isArray(persons)) {
             return {};
@@ -32,9 +18,9 @@
         return authorMap;
     }
 
-    QueryService.prototype.queryAuthorDetails = function (cahootsID) {
-        var matchedPersons = this.queryStorage.getPersons().filter(function (elem) {
-            return (elem.id == cahootsID);
+    queryAuthorDetails(cahootsID) {
+        var matchedPersons = StorageService.getInstance().getPersons().filter(function (elem) {
+            return (elem.id === cahootsID);
         });
 
         if(Array.isArray(matchedPersons)) {
@@ -46,7 +32,7 @@
         return {};
     };
 
-    QueryService.prototype.mapAuthorDto = function mapAuthorDto(person) {
+    mapAuthorDto(person) {
         var cahootsRefs = person.cahoots;
         var cahootsDto = [];
         for (var o in cahootsRefs) {
@@ -76,12 +62,13 @@
         return personDto;
     };
 
-    QueryService.prototype.findOrganizationByCahootsId = function (cahootsID) {
-        var organization = this.queryStorage.getOrganizations().filter(function (e) {
-            return e.id == cahootsID
+    findOrganizationByCahootsId (cahootsID) {
+        var organization = StorageService.getInstance().getOrganizations().filter(function (e) {
+            return e.id === cahootsID
         });
         return organization[0];
     };
 
-    module.exports = QueryService;
-}());
+}
+
+export default QueryService;

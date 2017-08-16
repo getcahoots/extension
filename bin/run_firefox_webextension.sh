@@ -5,6 +5,7 @@ function die {
   exit
 }
 test -z $FIREFOX_LOCATION && die "environment variable FIREFOX_LOCATION should point to a firefox developer or nightly installation"
-grunt clean default
-export WEB_EXT_SOURCE_DIR=target/exploded-chrome
+
+yarn run build
+export WEB_EXT_SOURCE_DIR=target/new
 ./node_modules/web-ext/bin/web-ext run --firefox=$FIREFOX_LOCATION --verbose

@@ -1,34 +1,60 @@
+# Chrome/Firefox webextension 
+work in progress. 
 
-# cahoots extension
+## install and build
 
-## Perequisites
+cahoots webextension uses webpack.
 
-* npm
-* bower
-* grunt
+1. install dependencies
 
+    ```
+    yarn install
+    ```
+2. build
 
-### install npm + grunt-cli  + bower-cli
-`# npm install -g grunt-cli`
-`# npm install -g bower`
+    ```
+    yarn run build
+    ```
 
-### fetch project dependencies
-after git clone, cd into extension and execute:
+3. run in browser
+    1. launch firefox: 
 
-`npm install`
-`bower install`
-### install mozilla addon sdk (one time)
-grunt mozilla-addon-sdk
+    ```
+    yarn run firefox
+    ```
 
+    2. launch chrome: 
 
-## Build
-Build for Firefox and Chrome:
-`grunt`
-
-
-### run firefox xpi
-`grunt clean run_firefox`
+    ```
+    yarn run chrome
+    ``` 
 
 
-## generate test key for chrome packaging
-`openssl genrsa -out development-test.key 4096`
+## details
+(should not be necessary anymore)
+### Firefox
+
+#### install
+
+Install jpm and web-ext: 
+```
+npm -g install jpm
+npm -g install web-ext
+```
+
+For more information see here:
+https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm
+
+#### run
+- Install Firefox version "developer" or "nightly" 
+- set env var like this:  
+```export FIREFOX_LOCATION=/Applications/FirefoxDeveloperEdition.app```
+- run 
+```bin/run_firefox_webextension.sh```
+
+### Chrome
+
+- run grunt clean default
+- open chrome and manually add extension (extensions > load unpacked extension > ...)
+
+

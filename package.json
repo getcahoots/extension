@@ -8,6 +8,7 @@
     "url": "git://github.com/getcahoots/extension.git"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.5.0",
     "grunt-cli": "0.1.13",
@@ -46,6 +47,8 @@
   "scripts": {
     "build": "node_modules/webpack/bin/webpack.js",
     "watch": "node_modules/webpack/bin/webpack.js -w",
-    "test": "echo \"no test specified\" && exit 0"
+    "test": "echo \"no test specified\" && exit 0",
+    "firefox": "sh ./bin/run_firefox_webextension.sh",
+    "chrome": "sh ./bin/run_chrome_webextension.sh"
   }
 }
