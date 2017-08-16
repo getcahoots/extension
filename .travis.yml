@@ -5,4 +5,8 @@ node_js:
 install:
   - yarn install
   - bower install
+
 before_script: yarn run build
+
+cache:
+  yarn: true
