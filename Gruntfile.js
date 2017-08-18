@@ -78,8 +78,8 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_firefox %>/data'},
                     // firefox libs
                     {expand: true,
-                        cwd: 'bower_components/tooltipster/js/',
-                        src: 'jquery.tooltipster.js',
+                        cwd: 'bower_components/tooltipster/dist/js/',
+                        src: 'tooltipster.main.js',
                         dest: '<%= build_dir_firefox %>/data'},
                     {expand: true,
                         cwd: 'node_modules/jquery/dist',
@@ -137,8 +137,8 @@ module.exports = function (grunt) {
                         dest: '<%= build_dir_chrome %>'},
                     //
                     {expand: true,
-                        cwd: 'bower_components/tooltipster/js/',
-                        src: 'jquery.tooltipster.js',
+                        cwd: 'bower_components/tooltipster/dist/js/',
+                        src: 'tooltipster.main.min.js',
                         dest: '<%= build_dir_chrome %>'},
                     {expand: true,
                         cwd: 'node_modules/jquery/dist',

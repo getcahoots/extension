@@ -30,7 +30,7 @@ module.exports = function (config) {
             {pattern: 'src/test/js/mock/**/*.js', included: true},
 
             {pattern: 'src/main/js/jquery/*js', included: true},
-            {pattern: 'bower_components/tooltipster/js/jquery.tooltipster.js', included: true},
+            {pattern: 'bower_components/tooltipster/dist/js/tooltipster.main.min.js', included: true},
 
             {pattern: 'src/main/js/app/**/*js', included: true},
 

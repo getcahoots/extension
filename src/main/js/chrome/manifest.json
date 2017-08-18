@@ -23,7 +23,7 @@
       "js": [
         "jquery.js",
         "jquery_highlight.js",
-        "jquery.tooltipster.js",
+        "tooltipster.main.min.js",
         "CahootsContentBundle.js",
         "ChromeContentScriptBundle.js",
         "ChromeContentScriptLoader.js"

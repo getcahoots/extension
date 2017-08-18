@@ -13,8 +13,7 @@
             delay: '120',
             speed: '210',
             timer: '440',
-            autoClose: true,
-            repositionOnScroll: true
+            repositionOnScroll: true,
         },
         snippets: {
             reportErrorUrl: 'mailto:mail@cahoots.pw?subject=Fehler',
@@ -24,7 +23,7 @@
             forum_url: 'https://forum.cahoots.pw/',
             loading_text: 'Daten werden geladen…'
         },
-        debug: false,
+        debug: true,
         tooltipsterSelector: 'span[class*=CahootsID]',
         jumpSelector: 'span[class*=CahootsID].tooltipstered',
         skipSubFrames: true
