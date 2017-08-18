@@ -10,10 +10,11 @@
         tooltip: {
             interactive: true,
             animation: 'grow',
-            delay: '220',
+            delay: '120',
             speed: '210',
             timer: '440',
-            autoClose: true
+            autoClose: true,
+            repositionOnScroll: true
         },
         snippets: {
             reportErrorUrl: 'mailto:mail@cahoots.pw?subject=Fehler',

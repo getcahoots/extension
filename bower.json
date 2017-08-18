@@ -15,6 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "tooltipster": "~3.3.0"
+    "tooltipster": "~4.2.5"
   }
 }
