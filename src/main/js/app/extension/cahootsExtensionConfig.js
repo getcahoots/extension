@@ -15,7 +15,7 @@
         /* update interval in milliseconds */
         updateInterval: (60 * 60 * 24) * 1000,
 
-        apiEndpoint: 'http://api-beta.cahoots.pw/v2',
+        apiEndpoint: 'https://cahoots.now.sh/v2',
         apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
         pageActionTitleSingleHit: 'Cahoots: Eine Verbindung gefunden',
         pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',

@@ -253,16 +253,17 @@
                 var updater = new StorageUpdater(cahootsStorage, configService);
 
                 var updateCylceFn = function () {
-                    updater.checkConfigUpdate(xhr1, function (e) {
-                        if (config.debug) {
-                            if (e instanceof Error) {
-                                cahoots.extension.debugMsg("config update problem");
-                            } else {
-                                cahoots.extension.debugMsg("config update success");
-                            }
-
-                        }
-                    });
+                    /** DISABLED for now - review needed in upcoming release **/
+                    // updater.checkConfigUpdate(xhr1, function (e) {
+                    //     if (config.debug) {
+                    //         if (e instanceof Error) {
+                    //             cahoots.extension.debugMsg("config update problem");
+                    //         } else {
+                    //             cahoots.extension.debugMsg("config update success");
+                    //         }
+                    //
+                    //     }
+                    // });
 
                     var dataUpdateTimeout = setTimeout(function () {
                         updater.checkUpdate(xhr2, xhr3, function (e) {
@@ -326,15 +327,16 @@
                 });
 
                 /** open info page on first time run of this version **/
-                try {
-                    var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
-                    var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
-                    if (browserStorageObject[hasSeenIntroKey] === undefined) {
-                        tabs.open(releaseNotesPageUrl);
-                        browserStorageObject[hasSeenIntroKey] = 'yep';
-                    }
-                } catch (ignore) {
-                }
+                /** DISABLED for now - review needed after upcoming webextension rewrite **/
+                // try {
+                //     var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
+                //     var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
+                //     if (browserStorageObject[hasSeenIntroKey] === undefined) {
+                //         tabs.open(releaseNotesPageUrl);
+                //         browserStorageObject[hasSeenIntroKey] = 'yep';
+                //     }
+                // } catch (ignore) {
+                // }
 
             } catch (e) {
                 cahoots.extension.debugMsg("unable to load cahoots extension: " + e.message)

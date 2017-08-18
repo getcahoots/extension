@@ -368,7 +368,7 @@ module.exports = function (grunt) {
         // 'crx'
     ]);
 
-    grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean','karma:app','build_firefox','mozilla-cfx:run_stable' ]);
+    grunt.registerTask('run_firefox', "runs the cahoots firefox addon (stable sdk version)",[ 'clean',/*'karma:app',*/'build_firefox','mozilla-cfx:run_stable' ]);
     grunt.registerTask('run_firefox_experimental', "runs the cahoots firefox addon (unstable sdk version)",[ 'clean','karma','build_firefox_experimental','mozilla-cfx:run_experimental' ]);
 
 
