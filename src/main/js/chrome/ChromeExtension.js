@@ -27,16 +27,17 @@
         var updater = new StorageUpdater(cahootsStorage, configService);
 
         var updateCylceFn = function () {
-            updater.checkConfigUpdate(xhr1, function(e) {
-                if(config.debug) {
-                    if(e instanceof Error) {
-                        console.log("config update problem");
-                    } else {
-                        console.log("config update success");
-                    }
-
-                }
-            });
+            /** DISABLED for now - review needed in upcoming release **/
+            // updater.checkConfigUpdate(xhr1, function(e) {
+            //     if(config.debug) {
+            //         if(e instanceof Error) {
+            //             console.log("config update problem");
+            //         } else {
+            //             console.log("config update success");
+            //         }
+            //
+            //     }
+            // });
 
             var dataUpdateTimeout = setTimeout(function () {
                 updater.checkUpdate(xhr2, xhr3, function (e) {
@@ -98,19 +99,19 @@
         });
 
 
-
-        var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
-        var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
-
-        try {
-            if (!window.localStorage.getItem(hasSeenIntroKey)) {
-                window.localStorage.setItem(hasSeenIntroKey, 'yep');
-                chrome.tabs.create({
-                    url: releaseNotesPageUrl
-                });
-            }
-        } catch (ignore) {
-        }
+        /** DISABLED for now - review needed in upcoming release **/
+        // var hasSeenIntroKey = 'hasSeenIntro-' + config.cahootsExtensionVersion;
+        // var releaseNotesPageUrl = configService.getReleaseNotesPageUrl();
+        //
+        // try {
+        //     if (!window.localStorage.getItem(hasSeenIntroKey)) {
+        //         window.localStorage.setItem(hasSeenIntroKey, 'yep');
+        //         chrome.tabs.create({
+        //             url: releaseNotesPageUrl
+        //         });
+        //     }
+        // } catch (ignore) {
+        // }
     };
 
     module.exports.chromeExtensionScript = chromeExtensionScript;
