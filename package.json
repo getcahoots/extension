@@ -37,6 +37,7 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
+    "bower": "^1.8.0",
     "css-loader": "^0.28.4",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
@@ -45,6 +46,7 @@
     "webpack-dev-server": "^2.6.1"
   },
   "scripts": {
+    "postinstall": "node_modules/bower/bin/bower install",
     "build": "node_modules/webpack/bin/webpack.js",
     "watch": "node_modules/webpack/bin/webpack.js -w",
     "test": "echo \"no test specified\" && exit 0",
