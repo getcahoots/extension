@@ -3,7 +3,7 @@ work in progress.
 
 ## install and build
 
-cahoots webextension uses webpack.
+cahoots webextension requires yarn.
 
 1. install dependencies
 

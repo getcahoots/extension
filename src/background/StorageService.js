@@ -1,10 +1,13 @@
-import ProviderMerger from '../main/js/app/extension/ProviderMerger';
+import ProviderMerger from './ProviderMerger';
+import StorageRepository from './StorageRepository';
 
 var getCurrentTimestamp = function () {
     return Math.floor(Date.now() / 1000);
 };
 
 import backgroundProperties from './backgroundProperties';
+
+let INSTANCE = null;
 
 class StorageService {
 
@@ -17,24 +20,31 @@ class StorageService {
      */
 
     static getInstance() {
-        if (StorageService.INSTANCE === null) {
-            StorageService.INSTANCE = new StorageService();
+        if (INSTANCE === null) {
+            console.log('creating StorageService')
+            const repository = new StorageRepository();
+            INSTANCE = new StorageService(repository);
         }
-        return StorageService.INSTANCE;
+        return INSTANCE;
     }
 
-    constructor() {
-        this.storageRepository = new StorageRepository();
+    constructor(storageRepository) {
+        // console.log(window.localStorage)
+        this.storageRepository = storageRepository;
         
-        this.providerMerger = new ProviderMerger();
     };
 
-    
+
 
 
 
     setData(data) {
-        this._setPersons(this.providerMerger.flattenPersons(data.persons));
+        // console.log('setData', data)
+        const providerMerger = new ProviderMerger();
+        console.log('merging')
+        const dataFlat = providerMerger.flattenPersons(data.persons);
+        console.log('merging done')
+        this._setPersons(dataFlat);
         this._setOrganizations(data.organizations);
         this._setUpdated();
     };
@@ -49,41 +59,41 @@ class StorageService {
         return false;
     };
 
-    setApiEndpointOverride(data) {
-        if (!this.isValidApiUrl(data)) {
-            throw new Error("given api url is invalid, ignoring");
-        }
-        this.storageRepository.setField('apiEndpointOverride', data);
-    };
+    // setApiEndpointOverride(data) {
+    //     if (!this.isValidApiUrl(data)) {
+    //         throw new Error("given api url is invalid, ignoring");
+    //     }
+    //     this.storageRepository.setField('apiEndpointOverride', data);
+    // };
+    //
+    // getApiEndpointOverride() {
+    //     return this.storageRepository.getField('apiEndpointOverride');
+    // };
 
-    getApiEndpointOverride() {
-        return this.storageRepository.getField('apiEndpointOverride');
-    };
-
-    isExpired() {
-        try {
-            var lastUpdate = this.getLastUpdated();
-            var currentTimestamp = getCurrentTimestamp();
-
-            if (lastUpdate == null || isNaN(lastUpdate)) {
-                this.debug("detected database expired==" + true + ". no last date present");
-                return true;
-            }
-
-            if (currentTimestamp - lastUpdate > backgroundProperties.expiryDelta) {
-                this.debug("detected database expired==" + true + ", time delta is seconds: " + (currentTimestamp - lastUpdate));
-                return true;
-            }
-
-            this.debug("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
-            return false;
-        } catch (ex) {
-            this.debug("error while determining expiry: " + ex);
-            return true;
-        }
-        this.debug("detected database expired==" + true);
-        return true;
-    }
+    // isExpired() {
+    //     try {
+    //         var lastUpdate = this.getLastUpdated();
+    //         var currentTimestamp = getCurrentTimestamp();
+    //
+    //         if (lastUpdate == null || isNaN(lastUpdate)) {
+    //             this.debug("detected database expired==" + true + ". no last date present");
+    //             return true;
+    //         }
+    //
+    //         if (currentTimestamp - lastUpdate > backgroundProperties.expiryDelta) {
+    //             this.debug("detected database expired==" + true + ", time delta is seconds: " + (currentTimestamp - lastUpdate));
+    //             return true;
+    //         }
+    //
+    //         this.debug("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
+    //         return false;
+    //     } catch (ex) {
+    //         this.debug("error while determining expiry: " + ex);
+    //         return true;
+    //     }
+    //     this.debug("detected database expired==" + true);
+    //     return true;
+    // }
 
     getPersons() {
         return this.storageRepository.getField('persons');
@@ -122,6 +132,10 @@ class StorageService {
         var currentTimestamp = getCurrentTimestamp();
         this.storageRepository.setField('lastUpdated', currentTimestamp);
     };
+
+    clearStorage() {
+        this.storageRepository.clearRepository();
+    }
 }
 
 export default StorageService;

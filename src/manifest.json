@@ -21,7 +21,7 @@
       ],
       "js": [
         "jquery.js",
-        "jquery_highlight.js",
+        "jquery.highlight.js",
         "jquery.tooltipster.js",
         "content.js"
       ],

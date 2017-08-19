@@ -10,7 +10,7 @@ let config = {
     },
     output: {
         filename: '[name].js',
-        path: __dirname + '/target/new'
+        path: __dirname + '/build'
     },
     module: {
         rules: [{
@@ -26,13 +26,13 @@ let config = {
         new CopyWebpackPlugin([
             // Copy glob results to /absolute/path/
             {
-                context: 'src/main/resources',
+                context: 'public',
                 from: '**/*png',
                 to: 'img',
                 flatten: true
             },
             {
-                context: 'src/main/resources',
+                context: 'public',
                 from: '**/*css',
                 to: '.',
                 flatten: true

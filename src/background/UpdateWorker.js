@@ -1,8 +1,13 @@
-import StorageService from './StorageService';
+import 'whatwg-fetch';
 
-const UPDATE_INTERVAL = 10000;
-const API_ENDPOINT_PERSONS = 'dummy persons api endpoint';
-const API_ENDPOINT_ORGANIZATIONS = 'dummy organiuation api endpoint';
+import StorageService from './StorageService';
+import backgroundProperties from './backgroundProperties';
+
+const UPDATE_INTERVAL = 10000 //backgroundProperties.updateInterval;
+const EXPIRY_DELTA = backgroundProperties.expiryDelta;
+
+const API_ENDPOINT_PERSONS = backgroundProperties.apiEndpoint + '/persons';
+const API_ENDPOINT_ORGANIZATIONS = backgroundProperties.apiEndpoint + '/organizations';
 
 
 const getCurrentTimestamp = () => {
@@ -25,15 +30,42 @@ class UpdateWorker {
     }
 
     async updateCycle() {
-        if (this.lastFetchTimestamp + UPDATE_INTERVAL > getCurrentTimestamp()) {
+        const storageService = StorageService.getInstance();
+        const lastFetchTimestamp = storageService.getLastUpdated();
+        console.log(`-- update worker enter (lastFetchTimestamp: ${lastFetchTimestamp}) --`)
+
+        let personsDataFetched;
+        let orgaDataFetched;
+        let personsDataMock = null
+        let orgaDataMock = null
+
+        if (lastFetchTimestamp + EXPIRY_DELTA < getCurrentTimestamp()) {
+
             try {
-                const personsData = await fetch(API_ENDPOINT_PERSONS);
-                const orgaData = await fetch(API_ENDPOINT_ORGANIZATIONS);
-                StorageService.getInstance().setData({persons: personsData, organizations: orgaData});
+                console.log('fetching')
+                const personsDataRequest = await fetch(API_ENDPOINT_PERSONS);
+                const orgaDataRequest = await fetch(API_ENDPOINT_ORGANIZATIONS);
+                personsDataFetched = await personsDataRequest.json();
+                orgaDataFetched = await orgaDataRequest.json();
+
+                // personsDataMock = require('../test/persons.json.js')
+                // orgaDataMock = require('../test/organizations.json')
+
+
+                console.log('orgaDataFetched', orgaDataFetched)
             } catch (e) {
-                console.error('update fetch failed');
+                console.log('error while fetching', e)
+            }
+            console.log('fetched data')
+
+            try {
+                console.log('putting')
+                storageService.setData({persons: personsDataFetched, organizations: orgaDataFetched});
+            } catch (e) {
+                console.error('error while putting', e);
             }
         }
+        console.log('-- update worker exit --')
     }
 
     setTargetStorage(cahootsStorage) {

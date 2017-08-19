@@ -1,26 +1,44 @@
-class StorageRepository {
+export default class StorageRepository {
 
     constructor() {
+        if ( typeof localStorage !== 'object') {
+            throw Error('window.localStorage not an Object')
+        }
 
+        // this.storage = localStorage;
     }
 
     setField(fieldName, data) {
-        if (typeof this.storage.setItem === 'function') {
-            this.storage.setItem(fieldName, JSON.stringify(data));
+        // console.log('setField', fieldName, data)
+        if (typeof localStorage.setItem === 'function') {
+            localStorage.setItem(fieldName, JSON.stringify(data));
         }
-        this.storage[fieldName] = JSON.stringify(data);
+        localStorage[fieldName] = JSON.stringify(data);
     };
 
     getField(fieldName) {
-        var storedJson;
-        if (typeof this.storage.setItem === 'function') {
-            storedJson = this.storage.getItem(fieldName);
+        // console.log('getField', fieldName);
+        let storedJson;
+
+        if (typeof localStorage.setItem === 'function') {
+            storedJson = localStorage.getItem(fieldName);
         } else {
-            storedJson = this.storage[fieldName];
+            storedJson = localStorage[fieldName];
         }
+
+
         if (storedJson === undefined) {
+            console.log('getField', fieldName, 'is undefined');
             return undefined;
         }
-        return JSON.parse(storedJson);
+        const parse = JSON.parse(storedJson);
+        console.log('parse <<' + typeof parse + '>> ', parse)
+
+        return parse;
     };
+
+    clearRepository() {
+        console.log('repository: clearing storage')
+        localStorage.clear();
+    }
 }

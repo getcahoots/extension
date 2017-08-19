@@ -13,12 +13,16 @@ class BackgroundApp {
     }
 
     initChrome() {
+        let queryService = this.queryService;
         chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
+            console.log('chrome.runtime.onMessage.addListener', arguments)
             if(request.message === 'getAuthorHints') {
-                var authorHints = this.queryService.queryAuthorHints();
+                console.log('backgroundapp: author hints requested ')
+                const authorHints = queryService.queryAuthorHints();
+                console.log('backgroundapp sending author hints: ' + typeof authorHints)
                 sendResponse(authorHints)
             } else if(request.message === 'getFullDetails') {
-                var authorDetails = this.queryService.queryAuthorDetails(request.cahootsID);
+                var authorDetails = queryService.queryAuthorDetails(request.cahootsID);
                 sendResponse(authorDetails)
             }
         });
@@ -26,6 +30,7 @@ class BackgroundApp {
 
 
         chrome.runtime.onMessage.addListener(function (request, sender) {
+            console.log(arguments)
             if (request.message == 'reportMatches') {
                 var tabId = sender.tab.id;
                 var matchCount = request.matchCount;

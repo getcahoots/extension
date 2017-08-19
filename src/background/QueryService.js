@@ -2,8 +2,13 @@ import StorageService from './StorageService';
 
 class QueryService {
 
+    constructor() {
+        this.storageService = StorageService.getInstance();
+    }
+
     queryAuthorHints() {
-        var persons = StorageService.getInstance().getPersons();
+        console.log('query author hints')
+        var persons = this.storageService.getPersons();
 
         if(!Array.isArray(persons)) {
             return {};
@@ -19,7 +24,7 @@ class QueryService {
     }
 
     queryAuthorDetails(cahootsID) {
-        var matchedPersons = StorageService.getInstance().getPersons().filter(function (elem) {
+        var matchedPersons = this.storageService.getPersons().filter(function (elem) {
             return (elem.id === cahootsID);
         });
 
@@ -63,7 +68,7 @@ class QueryService {
     };
 
     findOrganizationByCahootsId (cahootsID) {
-        var organization = StorageService.getInstance().getOrganizations().filter(function (e) {
+        var organization = this.storageService.getOrganizations().filter(function (e) {
             return e.id === cahootsID
         });
         return organization[0];
