@@ -1,20 +1,13 @@
 {
-  "id": "010450efc693bb80421d08f2e9ab570e47552d5c",
-  "name": "Heribert Prantl",
-  "info": "http://de.wikipedia.org/wiki/Heribert_Prantl",
+  "id": "P-C-1",
+  "name": "Max Mustermann",
+  "info": "http://www.example.org/p/max-mustermann",
+  "provider": "official",
   "cahoots": [
     {
-      "organization": "26c45aa6a16f0198a218f29f9ab2b11faafbaf79",
-      "source": "http://de.wikipedia.org/wiki/Heribert_Prantl"
-    },
-    {
-      "organization": "924ca45cd688e8cc9a9b709a6608c206ae376d97",
-      "source": "http://de.wikipedia.org/wiki/Heribert_Prantl"
-    },
-    {
-      "organization": "fa666eae56953ba1a552f7f0369f9e5bd7e86644",
-      "source": "http://de.wikipedia.org/wiki/Heribert_Prantl"
+      "organization": "C-1",
+      "verified": true,
+      "source": "https://www.example.org/source/source-www1"
     }
-  ],
-  "provider": "official"
+  ]
 }
