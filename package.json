@@ -37,7 +37,8 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "firefox": "sh ./bin/run_firefox_webextension.sh",
-    "chrome": "sh ./bin/run_chrome_webextension.sh"
+    "chrome": "sh ./bin/run_chrome_webextension.sh",
+    "pack": "sh ./bin/pack.sh"
   },
   "jest": {
     "verbose": false,

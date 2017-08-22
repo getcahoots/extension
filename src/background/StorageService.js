@@ -1,9 +1,6 @@
 import ProviderMerger from './ProviderMerger';
 import StorageRepository from './StorageRepository';
 
-var getCurrentTimestamp = function () {
-    return Math.floor(Date.now() / 1000);
-};
 
 import backgroundProperties from './backgroundProperties';
 
@@ -34,11 +31,7 @@ class StorageService {
         
     };
 
-
-
-
-
-    setData(data) {
+    updateProviderData(data) {
         // console.log('setData', data)
         const providerMerger = new ProviderMerger();
         console.log('merging')
@@ -49,67 +42,21 @@ class StorageService {
         this._setUpdated();
     };
 
-    isValidApiUrl(url) {
-        if (typeof url !== 'string') {
-            return false;
-        }
-        if (url.substring(0, 4) === 'http' && url.match(/cahoots/)) {
-            return true;
-        }
-        return false;
-    };
-
-    // setApiEndpointOverride(data) {
-    //     if (!this.isValidApiUrl(data)) {
-    //         throw new Error("given api url is invalid, ignoring");
-    //     }
-    //     this.storageRepository.setField('apiEndpointOverride', data);
-    // };
-    //
-    // getApiEndpointOverride() {
-    //     return this.storageRepository.getField('apiEndpointOverride');
-    // };
-
-    // isExpired() {
-    //     try {
-    //         var lastUpdate = this.getLastUpdated();
-    //         var currentTimestamp = getCurrentTimestamp();
-    //
-    //         if (lastUpdate == null || isNaN(lastUpdate)) {
-    //             this.debug("detected database expired==" + true + ". no last date present");
-    //             return true;
-    //         }
-    //
-    //         if (currentTimestamp - lastUpdate > backgroundProperties.expiryDelta) {
-    //             this.debug("detected database expired==" + true + ", time delta is seconds: " + (currentTimestamp - lastUpdate));
-    //             return true;
-    //         }
-    //
-    //         this.debug("detected database expired==" + false + ", delta is " + (currentTimestamp - lastUpdate));
-    //         return false;
-    //     } catch (ex) {
-    //         this.debug("error while determining expiry: " + ex);
-    //         return true;
-    //     }
-    //     this.debug("detected database expired==" + true);
-    //     return true;
-    // }
-
-    getPersons() {
+    findPersons() {
         return this.storageRepository.getField('persons');
     }
 
-    getOrganizations() {
+    findOrganizations() {
         return this.storageRepository.getField('organizations');
     }
 
     getLastUpdated() {
-        var rawValue = this.storageRepository.getField('lastUpdated');
+        const rawValue = this.storageRepository.getField('lastUpdated');
         if (rawValue === undefined) {
             return null;
         }
 
-        var readValue = parseInt(JSON.parse(rawValue));
+        const readValue = parseInt(JSON.parse(rawValue));
 
         if (typeof readValue == 'number') {
             if (isNaN(readValue)) {
@@ -129,7 +76,7 @@ class StorageService {
     };
 
     _setUpdated() {
-        var currentTimestamp = getCurrentTimestamp();
+        const currentTimestamp = Date.now();
         this.storageRepository.setField('lastUpdated', currentTimestamp);
     };
 

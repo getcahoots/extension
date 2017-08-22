@@ -5,5 +5,15 @@ node_js:
 
 before_script: yarn run build
 
+after_success: ./bin/pack.sh
+
 cache:
   yarn: true
+
+# safelist
+branches:
+  only:
+  - master
+  - stage
+  - release
+  - feature/45_webextension

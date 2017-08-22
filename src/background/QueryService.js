@@ -8,23 +8,34 @@ class QueryService {
 
     queryAuthorHints() {
         console.log('query author hints')
-        var persons = this.storageService.getPersons();
 
-        if(!Array.isArray(persons)) {
-            return {};
-        }
+        return new Promise((resolve, reject) => {
+            const persons = this.storageService.findPersons();
+            if(!Array.isArray(persons)) {
+                resolve({});
+            }
 
-        var authorMap = {};
-        for (var i in persons.filter(function (p) {
-                return Array.isArray(p.cahoots) && p.cahoots.length > 0}
-        )) {
-            authorMap[(persons[i].name)] = 'CahootsID_' + persons[i].id;
-        }
-        return authorMap;
+            const authorMap = {};
+            persons
+                .filter((p) => Array.isArray(p.cahoots) && p.cahoots.length > 0)
+                .forEach((p) => authorMap[(persons[i].name)] = 'CahootsID_' + persons[i].id)
+            resolve (authorMap);
+        })
+
+
+
+
+
+        // for (let i in persons.filter(function (p) {
+        //         return Array.isArray(p.cahoots) && p.cahoots.length > 0}
+        // )) {
+        //     authorMap[(persons[i].name)] = 'CahootsID_' + persons[i].id;
+        // }
+        // return authorMap;
     }
 
     queryAuthorDetails(cahootsID) {
-        var matchedPersons = this.storageService.getPersons().filter(function (elem) {
+        var matchedPersons = this.storageService.findPersons().filter(function (elem) {
             return (elem.id === cahootsID);
         });
 
@@ -68,7 +79,7 @@ class QueryService {
     };
 
     findOrganizationByCahootsId (cahootsID) {
-        var organization = this.storageService.getOrganizations().filter(function (e) {
+        var organization = this.storageService.findOrganizations().filter(function (e) {
             return e.id === cahootsID
         });
         return organization[0];

@@ -19,13 +19,13 @@ describe('StorageService.js', () => {
     test('should return initially given persons', function () {
         const mockPersons = TestDataPersons;
         storageService._setPersons(mockPersons)
-        expect(storageService.getPersons()).toEqual(mockPersons);
+        expect(storageService.findPersons()).toEqual(mockPersons);
     })
 
     test('should return initially given organizations', function () {
         const mockOrganizations = TestDataOrganizations;
         storageService._setOrganizations(mockOrganizations)
-        expect(storageService.getOrganizations()).toEqual(mockOrganizations);
+        expect(storageService.findOrganizations()).toEqual(mockOrganizations);
     })
 
 
@@ -35,7 +35,7 @@ describe('StorageService.js', () => {
         const mockOrganizations = TestDataOrganizations
 
         console.log(mockPersons);
-        storageService.setData({
+        storageService.updateProviderData({
             persons: mockPersons,
             organizations: mockOrganizations,
             lastUpdated: 34
@@ -50,7 +50,7 @@ describe('StorageService.js', () => {
         const mockPersons = TestDataPersons
         const mockOrganizations = TestDataOrganizations
 
-        storageService.setData({
+        storageService.updateProviderData({
             persons: mockPersons,
             organizations: mockOrganizations,
             lastUpdated: 34
