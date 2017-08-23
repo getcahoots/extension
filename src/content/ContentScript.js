@@ -1,6 +1,6 @@
 import DocumentScanner from './DocumentScanner';
 
-export default class ContentApp {
+export default class ContentScript {
 
     constructor(messenger, documentScanner, highlighter, tooltipsterWrapper) {
         this.messenger = messenger;

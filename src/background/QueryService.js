@@ -18,7 +18,7 @@ class QueryService {
             const authorMap = {};
             persons
                 .filter((p) => Array.isArray(p.cahoots) && p.cahoots.length > 0)
-                .forEach((p) => authorMap[(persons[i].name)] = 'CahootsID_' + persons[i].id)
+                .forEach((p) => authorMap[(p.name)] = 'CahootsID_' + p.id)
             resolve (authorMap);
         })
 

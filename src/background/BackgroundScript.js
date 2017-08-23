@@ -42,6 +42,7 @@ class BackgroundScript {
                     chrome.pageAction.hide(requestingTabId);
                 }
             }
+            return true;
         });
     }
 

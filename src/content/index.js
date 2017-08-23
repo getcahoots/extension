@@ -1,4 +1,4 @@
-import ContentApp from './ContentApp';
+import ContentScript from './ContentScript';
 import Messenger from './Messenger';
 import DocumentScanner from './DocumentScanner';
 import Highlighter from './Highlighter';
@@ -11,11 +11,11 @@ const documentScanner = new DocumentScanner(document);
 const highlighter = new Highlighter();
 const tooltipsterWrapper = new TooltipsterWrapper();
 
-const contentApp = new ContentApp(
+const contentScript = new ContentScript(
     messenger,
     documentScanner,
     highlighter,
     tooltipsterWrapper
 );
-contentApp.runInTab(document);
+contentScript.runInTab(document);
 // console.log('exiting content index.js')

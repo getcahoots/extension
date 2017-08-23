@@ -1,25 +1,25 @@
+import '../test/localStorageMock';
 
-import ProviderMerger from './ProviderMerger';
 import StorageService from './StorageService';
+import QueryService from './QueryService';
+import StorageRepository from './StorageRepository';
 
 describe('QueryService', () => {
     describe('tests on empty storage', function suite() {
-        let emptyStorage;
-        let localStorageMock;
+        let emptyStorageService;
 
         beforeEach(function () {
-            localStorageMock = localStorageMock();
-            emptyStorage = new StorageService()
+            // localStorageMock = localStorageMock();
+            emptyStorageService = new StorageService(new StorageRepository())
         });
 
         it('should return empty hints on empty storage without throwing error', function test() {
-            var qs = new QueryService(emptyStorage);
-            var ah = qs.queryAuthorHints();
-            expect(ah).toEqual({});
+            const qs = new QueryService(emptyStorageService);
+            qs.queryAuthorHints().then((ah) => {
+                expect(ah).toEqual({});
+            });
+
         });
 
-        xit('should return empty details on empty storage without throwing error', function test() {
-            // TODO
-        });
     });
 });

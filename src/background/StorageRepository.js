@@ -1,29 +1,29 @@
 export default class StorageRepository {
 
-    constructor() {
-        if ( typeof localStorage !== 'object') {
-            throw Error('window.localStorage not an Object')
+    constructor(bindLocalStorage = localStorage) {
+        if ( typeof bindLocalStorage !== 'object') {
+            throw Error('bindLocalStorage not an Object')
         }
 
-        // this.storage = localStorage;
+        this.bindLocalStorage = bindLocalStorage;
     }
 
     setField(fieldName, data) {
         // console.log('setField', fieldName, data)
-        if (typeof localStorage.setItem === 'function') {
-            localStorage.setItem(fieldName, JSON.stringify(data));
+        if (typeof this.bindLocalStorage.setItem === 'function') {
+            this.bindLocalStorage.setItem(fieldName, JSON.stringify(data));
         }
-        localStorage[fieldName] = JSON.stringify(data);
+        this.bindLocalStorage[fieldName] = JSON.stringify(data);
     };
 
     getField(fieldName) {
         // console.log('getField', fieldName);
         let storedJson;
 
-        if (typeof localStorage.setItem === 'function') {
-            storedJson = localStorage.getItem(fieldName);
+        if (typeof this.bindLocalStorage.setItem === 'function') {
+            storedJson = this.bindLocalStorage.getItem(fieldName);
         } else {
-            storedJson = localStorage[fieldName];
+            storedJson = this.bindLocalStorage[fieldName];
         }
 
 
@@ -39,6 +39,6 @@ export default class StorageRepository {
 
     clearRepository() {
         console.log('repository: clearing storage')
-        localStorage.clear();
+        this.bindLocalStorage.clear();
     }
 }
