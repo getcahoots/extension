@@ -211,10 +211,6 @@
 
 }
 
-a:-webkit-any-link {
-    text-decoration: none;
-}
-
 .tooltipster-content .cahoots_button {
     float: right;
     font-weight: 400;
@@ -223,6 +219,7 @@ a:-webkit-any-link {
     border: 1px solid rgba(62,62,71,.5);
     border-radius: 2px;
     text-transform: none !important;
+    text-decoration: none !important;
 
     -webkit-transition: all .175s ease-in-out;
     -moz-transition: all .175s ease-in-out;
