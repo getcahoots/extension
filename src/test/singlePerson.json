@@ -1,0 +1,13 @@
+{
+  "id": "P-C-1",
+  "name": "Max Mustermann",
+  "info": "http://www.example.org/p/max-mustermann",
+  "provider": "official",
+  "cahoots": [
+    {
+      "organization": "C-1",
+      "verified": true,
+      "source": "https://www.example.org/source/source-www1"
+    }
+  ]
+}

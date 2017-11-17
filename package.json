@@ -1,6 +1,6 @@
 {
   "name": "cahoots",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -8,27 +8,41 @@
     "url": "git://github.com/getcahoots/extension.git"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-browserify": "^3.5.0",
-    "grunt-cli": "0.1.13",
-    "grunt-contrib-clean": "^0.5",
-    "grunt-contrib-copy": "^0.5.0",
-    "grunt-crx": "^1.0.3",
-    "grunt-jpm": "^0.1.2",
-    "grunt-karma": "^0.10.1",
-    "grunt-mkdir": "^0.1.2",
-    "grunt-mozilla-addon-sdk": "^0.4.0",
-    "jasmine-core": "^2.4.1",
-    "jasmine-jquery": "^2.1.1",
+    "copy-webpack-plugin": "^4.0.1",
     "jquery": "^3.2.1",
-    "karma": "^0.12.37",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-commonjs": "^0.0.13",
-    "karma-commonjs-require": "^0.0.3",
-    "karma-firefox-launcher": "^0.1.4",
-    "karma-jasmine": "^0.3.5",
-    "karma-jasmine-jquery": "^0.1.1",
-    "karma-nyan-reporter": "^0.0.51",
-    "karma-phantomjs-launcher": "^0.1.4"
+    "web-ext": "^2.0.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.25.0",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "bower": "^1.8.0",
+    "css-loader": "^0.28.4",
+    "jest": "^20.0.4",
+    "node-sass": "^4.5.3",
+    "react": "^15.6.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "scripts": {
+    "postinstall": "node_modules/bower/bin/bower install",
+    "build": "node_modules/webpack/bin/webpack.js",
+    "watch": "node_modules/webpack/bin/webpack.js -w",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "firefox": "sh ./bin/run_firefox_webextension.sh",
+    "chrome": "sh ./bin/run_chrome_webextension.sh",
+    "pack": "sh ./bin/pack.sh"
+  },
+  "jest": {
+    "verbose": false,
+    "rootDir": "src"
   }
 }
