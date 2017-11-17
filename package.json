@@ -2,6 +2,7 @@
   "name": "cahoots",
   "version": "1.2.0",
   "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/getcahoots/extension.git"
