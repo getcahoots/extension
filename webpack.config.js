@@ -49,8 +49,8 @@ let config = {
                     data.icons['128'] = 'img/cdot_128px.png';
                     data.icons['48'] = 'img/cdot_48px.png';
                     data.icons['16'] = 'img/cdot_16px.png';
-                    data.page_action.default_icon['19'] = 'img/cdot_19px.png';
-                    data.page_action.default_icon['38'] = 'img/cdot_38px.png';
+                    // data.page_action.default_icon['19'] = 'img/cdot_19px.png';
+                    // data.page_action.default_icon['38'] = 'img/cdot_38px.png';
                     data.relativePath = relativePath;
                     return new Buffer(JSON.stringify(data));
                 }

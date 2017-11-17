@@ -8,7 +8,6 @@
   "manifest_version": 2,
   "name": "Cahoots",
   "short_name": "Cahoots",
-  "permissions": ["http://*/*"],
   "version": "${BUILD_CAHOOTS_VERSION}",
   "web_accessible_resources": [
     "verified.png"
@@ -35,17 +34,8 @@
   "background": {
     "scripts": [
       "background.js"
-    ],
-    "persistent": false
+    ]
   },
-  "page_action": {
-    "default_icon": {
-      "19": "img/${ICON_19}",
-      "38": "img/${ICON_38}"
-    },
-    "default_title": "default title cahoots page action",
-    "browser_style": true
-  },
-
-  "permissions": ["storage"]
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "permissions": ["storage", "http://*/*", "https://*/*"]
 }
