@@ -29,7 +29,7 @@ export default class SettingsService {
             organizationCount: organizations.length,
             lastUpdated: lastUpdated
         }
-        console.log(info)
+        //console.log(info)
         return info
     }
 }

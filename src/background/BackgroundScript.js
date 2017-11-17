@@ -14,11 +14,11 @@ class BackgroundScript {
     initChrome(chrome) {
         let queryService = this.queryService;
         chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-            console.log('chrome.runtime.onMessage.addListener', arguments);
+            //console.log('chrome.runtime.onMessage.addListener', arguments);
             if(request.message === 'getAuthorHints') {
-                console.log('backgroundapp: author hints requested ');
+                //console.log('backgroundapp: author hints requested ');
                 queryService.queryAuthorHints().then((authorHints) => {
-                    console.log('backgroundapp sending author hints: ' + typeof authorHints)
+                    //console.log('backgroundapp sending author hints: ' + typeof authorHints)
                     sendResponse(authorHints)
                 });
 

@@ -52,13 +52,13 @@ class UpdateWorker {
         const storageService = StorageService.getInstance();
         storageService.updateProviderData({persons: personsDataFetched, organizations: orgaDataFetched});
         // }
-        console.log('-- update worker exit --')
+        //console.log('-- update worker exit --')
     }
 
 
     async _fetchData(personsDataFetched, orgaDataFetched) {
         try {
-            console.log('fetching')
+            //console.log('fetching')
             const personsDataRequest = await fetch(API_ENDPOINT_PERSONS);
             const orgaDataRequest = await fetch(API_ENDPOINT_ORGANIZATIONS);
             personsDataFetched = await personsDataRequest.json();
@@ -72,7 +72,7 @@ class UpdateWorker {
         } catch (e) {
             console.log('error while fetching', e)
         }
-        console.log('fetched data')
+        //console.log('fetched data')
         return {personsDataFetched, orgaDataFetched};
     }
 }

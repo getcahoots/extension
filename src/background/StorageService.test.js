@@ -34,7 +34,7 @@ describe('StorageService.js', () => {
         const mockPersons = TestDataPersons
         const mockOrganizations = TestDataOrganizations
 
-        console.log(mockPersons);
+        //console.log(mockPersons);
         storageService.updateProviderData({
             persons: mockPersons,
             organizations: mockOrganizations,

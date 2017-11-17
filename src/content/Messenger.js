@@ -7,11 +7,11 @@ export default class Messenger {
 
     findAuthorHints() {
         // return "foo"
-        console.log('findAuthorHints enter')
+        //console.log('findAuthorHints enter')
         let promise = new Promise((resolve, reject) => {
-            console.log('sending message: author hints')
+            //console.log('sending message: author hints')
             this.chrome.runtime.sendMessage({message: "getAuthorHints"},  (response) => {
-                console.log('getting message response, resolving author hints: ', typeof response)
+                //console.log('getting message response, resolving author hints: ', typeof response)
                 // console.log(response)
 
                 if (typeof response !== 'object') {

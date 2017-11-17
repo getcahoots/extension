@@ -7,7 +7,7 @@ class QueryService {
     }
 
     queryAuthorHints() {
-        console.log('query author hints')
+        //console.log('query author hints')
 
         return new Promise((resolve, reject) => {
             const persons = this.storageService.findPersons();
@@ -74,7 +74,9 @@ class QueryService {
             provider: person.provider,
             cahoots: cahootsDto
         };
-        if (this.debug) console.log(personDto);
+        if (this.debug) {
+            console.log(personDto);
+        }
         return personDto;
     };
 

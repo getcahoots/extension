@@ -10,7 +10,7 @@ export default class SettingsViewController {
     }
 
     populateOptionsPage(document) {
-        console.log('populateOptionsPage')
+        //console.log('populateOptionsPage')
         document.addEventListener("DOMContentLoaded", () => this.restoreOptions());
         document.querySelector('button[name=applyConfig]').addEventListener("click", (e) => this.applyConfig(e));
         document.querySelector('button[name=clearStorage]').addEventListener("click", (e) => this.clearStorage(e));
@@ -26,7 +26,7 @@ export default class SettingsViewController {
     populateInfo(document) {
         const info = this.settingsService.findInfo();
         const querySelector = document.querySelector('.infoSpace');
-        console.log('querySelector', querySelector)
+        //console.log('querySelector', querySelector)
 
 
         const string = `items: ${info.personCount}/${info.organizationCount}, lastUpdated: ${new Date(info.lastUpdated*1000)}`
@@ -36,13 +36,13 @@ export default class SettingsViewController {
 
     clearStorage(e) {
         e.preventDefault();
-        console.log('clear storage')
+        //console.log('clear storage')
         const storageService = StorageService.getInstance();
         storageService.clearStorage();
     }
 
     applyConfig(e) {
-        console.log('apply config')
+        //console.log('apply config')
 
         let config = {
             optionShowUiElement: document.querySelector("#optionShowUiElement").checked,
@@ -50,13 +50,13 @@ export default class SettingsViewController {
         }
 
         this.settingsService.updateSettings(config);
-        console.log(config)
+        //console.log(config)
     }
 
     restoreOptions() {
         const settings = this.settingsService.findSettings();
         this._setCurrentChoice(settings)
-        console.log('restored options')
+        //console.log('restored options')
     }
 
     _setCurrentChoice(result) {

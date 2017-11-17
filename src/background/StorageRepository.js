@@ -28,17 +28,17 @@ export default class StorageRepository {
 
 
         if (storedJson === undefined) {
-            console.log('getField', fieldName, 'is undefined');
+            //console.log('getField', fieldName, 'is undefined');
             return undefined;
         }
         const parse = JSON.parse(storedJson);
-        console.log('parse <<' + typeof parse + '>> ', parse)
+        //console.log('parse <<' + typeof parse + '>> ', parse)
 
         return parse;
     };
 
     clearRepository() {
-        console.log('repository: clearing storage')
+        //console.log('repository: clearing storage')
         this.bindLocalStorage.clear();
     }
 }

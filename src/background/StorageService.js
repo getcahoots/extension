@@ -18,7 +18,7 @@ class StorageService {
 
     static getInstance() {
         if (INSTANCE === null) {
-            console.log('creating StorageService')
+            //console.log('creating StorageService')
             const repository = new StorageRepository();
             INSTANCE = new StorageService(repository);
         }
@@ -34,9 +34,9 @@ class StorageService {
     updateProviderData(data) {
         // console.log('setData', data)
         const providerMerger = new ProviderMerger();
-        console.log('merging')
+        //console.log('merging')
         const dataFlat = providerMerger.flattenPersons(data.persons);
-        console.log('merging done')
+        //console.log('merging done')
         this._setPersons(dataFlat);
         this._setOrganizations(data.organizations);
         this._setUpdated();
