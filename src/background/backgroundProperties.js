@@ -2,7 +2,7 @@ const backgroundProperties = {
     cahootsExtensionVersion: '${BUILD_CAHOOTS_VERSION}',
 
     /* expiry delta (ms) */
-    expiryDelta: (60 * 60 * 24) * 1000, // for production
+    expiryDelta: (60 * 60 * 24) * 1000 * 7, // for production: once per week
 
     apiEndpoint: 'https://cahoots.now.sh/v2',
     apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
