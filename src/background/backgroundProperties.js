@@ -4,7 +4,7 @@ const backgroundProperties = {
     /* expiry delta (ms) */
     expiryDelta: (60 * 60 * 24) * 1000 * 7, // for production: once per week
 
-    apiEndpoint: 'https://cahoots.now.sh/v2',
+    apiEndpoint: 'https://api.cahoots.ninja/v2',
     apiEndpointUpdateUrl: 'https://getcahoots.github.io/extension/config/extension.json',
     pageActionTitleSingleHit: 'Cahoots: Eine Verbindung gefunden',
     pageActionTitleMultipleHits: 'Cahoots: COUNT Verbindungen gefunden',
