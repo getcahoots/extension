@@ -24,12 +24,16 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "web-ext": "^6.0.0",
-    "webpack": "^3.4.1",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "react": "^15.6.1",
     "whatwg-fetch": "^2.0.3"
+  },
+  "resolutions": {
+    "chokidar": "^3.4.0"
   },
   "scripts": {
     "postinstall": "node_modules/bower/bin/bower install",
