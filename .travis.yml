@@ -17,3 +17,4 @@ branches:
   - stage
   - release
   - feature/45_webextension
+  - feature/57
