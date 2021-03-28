@@ -1,28 +1,25 @@
 {
   "description": "Cahoots zeigt dir Verbindungen von Journalisten zu Vereinen, Organisationen und Unternehmen.",
   "icons": {
-    "128": "img/${ICON_128}",
-    "16": "img/${ICON_16}",
-    "48": "img/${ICON_48}"
+    "128": "assets/images/icon/cdot_128px.png",
+    "48": "assets/images/icon/cdot_48px.png",
+    "16": "assets/images/icon/cdot_16px.png"
   },
   "manifest_version": 2,
   "name": "Cahoots",
   "short_name": "Cahoots",
-  "version": "${BUILD_CAHOOTS_VERSION}",
+  "version": "1.2.99",
   "web_accessible_resources": [
     "verified.png"
   ],
   "content_scripts": [
     {
       "css": [
-        "style.css",
-        "cahoots-tooltipster.css"
+        "assets/css/style.css",
+        "assets/css/cahoots-tooltipster.css"
       ],
       "js": [
-        "jquery.js",
-        "jquery.highlight.js",
-        "jquery.tooltipster.js",
-        "content.js"
+        "content/index.js"
       ],
       "matches": [
         "http://*/*",
@@ -33,7 +30,7 @@
   ],
   "background": {
     "scripts": [
-      "background.js"
+      "background/index.js"
     ]
   },
   "content_security_policy": "script-src 'self'; object-src 'self';",
