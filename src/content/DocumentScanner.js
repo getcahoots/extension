@@ -1,3 +1,5 @@
+import jQuery from 'jquery';
+
 export default class DocumentScanner {
 
     findMatchingKeys(document, authorHints) {

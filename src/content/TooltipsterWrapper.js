@@ -1,5 +1,7 @@
 import Messenger from './Messenger';
 import UiFormatter from './UiFormatter';
+import '../jquery/jquery-global';
+import '../../bower_components/tooltipster/js/jquery.tooltipster';
 
 import contentProperties from './contentProperties';
 

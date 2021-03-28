@@ -6,5 +6,8 @@ function die {
 }
 test -z "$CHROME_LOCATION" && die "environment variable CHROME_LOCATION should point to a chrome installation"
 
-"$CHROME_LOCATION" --user-data-dir=profiles/chrome/ --load-extension=build --no-first-run
+npx parcel build src/manifest.json
+export WEB_EXT_DIST_DIR=dist
+
+"$CHROME_LOCATION" --user-data-dir=profiles/chrome/ --load-extension=$WEB_EXT_DIST_DIR --no-first-run
 
