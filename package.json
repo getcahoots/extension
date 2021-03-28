@@ -1,6 +1,6 @@
 {
   "name": "cahoots",
-  "version": "1.2.0",
+  "version": "1.2.99",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -8,21 +8,27 @@
     "url": "git://github.com/getcahoots/extension.git"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.13",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
     "@parcel/config-webextension": "^2.0.0-beta.2",
     "bower": "^1.8.0",
     "jest": "^26.6.0",
-    "jquery": "^3.2.1",
     "parcel": "^2.0.0-beta.2",
     "web-ext": "^6.0.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
+    "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.1823",
+    "core-js": "^3.9.1",
+    "jquery": "^3.2.1",
+    "regenerator-runtime": "^0.13.7",
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
     "postinstall": "node_modules/bower/bin/bower install",
-    "build": "node_modules/webpack/bin/webpack.js",
-    "clean": "rm -rf build",
-    "watch": "node_modules/webpack/bin/webpack.js -w",
+    "build": "parcel build src/manifest.json",
+    "clean": "rm -rf dist",
     "test": "jest",
     "test-watch": "jest --watch",
     "firefox": "sh ./bin/run_firefox_webextension.sh",

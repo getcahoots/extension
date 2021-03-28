@@ -12,3 +12,6 @@ tmp
 yarn.lock
 profiles
 
+.DS_Store
+dist
+.parcel-cache
