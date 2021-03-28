@@ -8,7 +8,7 @@
   "manifest_version": 2,
   "name": "Cahoots",
   "short_name": "Cahoots",
-  "version": "1.2.99",
+  "version": "1.2.2",
   "web_accessible_resources": [
     "verified.png"
   ],
