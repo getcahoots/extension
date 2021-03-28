@@ -11,9 +11,9 @@ cache:
   yarn: true
 
 # safelist
-branches:
-  only:
-  - master
-  - stage
-  - release
-  - feature/57
+#branches:
+#  only:
+#  - master
+#  - stage
+#  - release
+#  - feature/57
