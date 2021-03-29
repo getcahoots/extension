@@ -2,12 +2,16 @@
 Cahoots WebExtension for firefox and chrome. 
 
 ## build distribution bundle from source code
-This information is also relevant to code reviewers from Mozila, Google etc. 
+Information given in this section is also relevant for code reviewers from Mozila, Google etc. 
 
-The Cahoots webextension requires yarn to build. 
-In order to create the bundle as shipped in the extension, follow these steps: 
 
-1. checkout the source code repo with git
+The Cahoots web-extension requires node version 12 and yarn to build (newer versions of node might work). 
+In order to create the bundle as shipped with the extension, follow these steps: 
+
+1. get the source code 
+   Unless you haven't received the source code already: check out the git repo on github.
+   (as mozilla reviewer you might have received a copy of the code and don't need to checkout the repo)
+   
 2. install dependencies
 
     ```
