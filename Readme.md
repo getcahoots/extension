@@ -1,3 +1,4 @@
+note: The Cahoots project has been discontinued. 
 # Chrome/Firefox webextension 
 Cahoots WebExtension for firefox and chrome. 
 
